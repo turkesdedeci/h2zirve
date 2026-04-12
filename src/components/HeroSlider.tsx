@@ -1,0 +1,60 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+const slides = [
+  "/turkesdedeci_Hydrogen_and_green_enviroment_--chaos_15_--ar_16_470798fe-ab50-45a0-bde2-cec14670290b_0.png",
+  "/turkesdedeci_httpss.mj.runK9hiqbM1jkc_make_green_add_green_en_1a205479-f462-43b3-9e8c-d83fa3c770e6_1.png",
+];
+
+export default function HeroSlider() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      {slides.map((src, i) => (
+        <div
+          key={src}
+          className="absolute inset-0 transition-opacity duration-1000"
+          style={{ opacity: i === current ? 1 : 0 }}
+        >
+          <Image
+            src={src}
+            alt=""
+            fill
+            className="object-cover"
+            priority={i === 0}
+          />
+        </div>
+      ))}
+
+      {/* Koyu overlay */}
+      <div className="absolute inset-0 bg-[#06091A]/75" />
+
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#0066CC]/15 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#00C8FF]/10 rounded-full blur-[80px]" />
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 pointer-events-auto z-10">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              i === current ? "bg-white w-6" : "bg-white/30"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
