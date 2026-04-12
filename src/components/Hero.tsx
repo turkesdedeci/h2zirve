@@ -1,4 +1,3 @@
-import Image from "next/image";
 import CountdownTimer from "./CountdownTimer";
 
 export default function Hero() {
@@ -76,26 +75,12 @@ export default function Hero() {
         </div>
 
         {/* Organizers */}
-        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col items-center gap-4">
-          <span className="text-slate-600 text-xs uppercase tracking-widest font-semibold">
-            Düzenleyenler
-          </span>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
-            <Image
-              src="/logos/tespam.png"
-              alt="TESPAM"
-              width={120}
-              height={60}
-              className="object-contain opacity-80 hover:opacity-100 transition-opacity"
-            />
-            <span className="text-slate-700 hidden sm:block text-xl">×</span>
-            <Image
-              src="/logos/h2team.png"
-              alt="AYBÜ H2TEAM"
-              width={140}
-              height={60}
-              className="object-contain opacity-80 hover:opacity-100 transition-opacity"
-            />
+        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-slate-600">
+          <span>Düzenleyenler:</span>
+          <div className="flex items-center gap-3">
+            <span className="text-slate-400 font-semibold">TESPAM</span>
+            <span className="text-slate-700">&times;</span>
+            <span className="text-slate-400 font-semibold">AYBÜ Hidrojen Araştırma Merkezi</span>
           </div>
         </div>
       </div>

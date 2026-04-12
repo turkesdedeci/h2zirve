@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const links = [
   { label: "Hakkında", href: "#about" },
   { label: "Program", href: "#program" },
@@ -56,31 +54,17 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">
               Düzenleyenler
             </h4>
-            <div className="space-y-5">
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/logos/tespam.png"
-                  alt="TESPAM"
-                  width={48}
-                  height={48}
-                  className="object-contain opacity-70"
-                />
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  Türkiye Enerji Stratejileri &amp;
-                  <br />Politikaları Araştırma Merkezi
+            <div className="space-y-4">
+              <div>
+                <p className="text-slate-300 font-semibold text-sm">TESPAM</p>
+                <p className="text-slate-600 text-xs mt-1 leading-relaxed">
+                  Türkiye Enerji Stratejileri &amp; Politikaları Araştırma Merkezi
                 </p>
               </div>
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/logos/h2team.png"
-                  alt="AYBÜ H2TEAM"
-                  width={80}
-                  height={30}
-                  className="object-contain opacity-70"
-                />
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  AYBÜ Hidrojen
-                  <br />Araştırma Merkezi
+              <div>
+                <p className="text-slate-300 font-semibold text-sm">AYBÜ H2TEAM</p>
+                <p className="text-slate-600 text-xs mt-1 leading-relaxed">
+                  Ankara Yıldırım Beyazıt Üniversitesi Hidrojen Araştırma Merkezi
                 </p>
               </div>
             </div>
