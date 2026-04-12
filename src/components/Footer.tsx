@@ -4,7 +4,7 @@ const links = [
   { label: "Hakkında", href: "#about" },
   { label: "Program", href: "#program" },
   { label: "Konuşmacılar", href: "#speakers" },
-  { label: "Bildiri Çağrısı", href: "#cfp" },
+  { label: "Poster Çağrısı", href: "#cfp" },
   { label: "Sponsorluk", href: "#sponsors" },
   { label: "İletişim", href: "#contact" },
 ];

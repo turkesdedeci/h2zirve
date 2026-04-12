@@ -16,17 +16,16 @@ const topics = [
 ];
 
 const dates = [
-  { label: "Özet Gönderim Son Tarihi", value: "Yakında Duyurulacak" },
+  { label: "Poster Başvuru Son Tarihi", value: "Yakında Duyurulacak" },
   { label: "Kabul Bildirimi", value: "Yakında Duyurulacak" },
-  { label: "Tam Metin Son Tarihi", value: "Yakında Duyurulacak" },
-  { label: "Kongre Tarihleri", value: "15–16 Ekim 2026", highlight: true },
+  { label: "Zirve Tarihleri", value: "15–16 Ekim 2026", highlight: true },
 ];
 
 const steps = [
-  { n: "01", text: "Özet gönderin (Abstract Submission)" },
+  { n: "01", text: "Poster özeti gönderin" },
   { n: "02", text: "Bilimsel kurul değerlendirmesi" },
-  { n: "03", text: "Kabul edilen çalışmalar için tam metin gönderim" },
-  { n: "04", text: "Kongrede sunum yapın" },
+  { n: "03", text: "Kabul bildirimi ve poster hazırlığı" },
+  { n: "04", text: "Zirve'de poster sunumu yapın" },
 ];
 
 export default function CallForPapers() {
@@ -39,11 +38,12 @@ export default function CallForPapers() {
             Akademik Katkı
           </span>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3">
-            Bildiri Çağrısı
+            Poster Çağrısı
           </h2>
           <p className="text-slate-400 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
-            Türkiye Hidrojen Zirvesi 2026 kapsamında araştırmacıları, akademisyenleri, uzmanları
-            ve lisansüstü öğrencileri özgün çalışmalarını sunmaya davet ediyoruz.
+            Türkiye Hidrojen Zirvesi 2026 kapsamında araştırmacıları,
+            akademisyenleri, uzmanları ve lisansüstü öğrencileri poster
+            çalışmalarını sunmaya davet ediyoruz.
           </p>
         </div>
 
@@ -68,21 +68,23 @@ export default function CallForPapers() {
             <div className="mt-10 bg-gradient-to-br from-[#00D084]/10 to-transparent border border-[#00D084]/20 rounded-2xl p-7">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-[#00D084]/15 border border-[#00D084]/25 flex items-center justify-center flex-shrink-0 text-xl">
-                  📚
+                  🏆
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-lg mb-2">
-                    Yayın İmkânı
+                    Poster Ödülleri
                   </h4>
                   <p className="text-slate-400 text-sm leading-relaxed">
-                    Kongrede sunulan çalışmalar arasından seçilecek ve
-                    genişletilmiş tam metinler, kongre ile iş birliği içinde olan{" "}
+                    Zirve'de sunulan posterler bilimsel kurul tarafından
+                    değerlendirilecek olup dereceye giren çalışmalar{" "}
+                    <span className="text-[#00D084] font-semibold">
+                      ödüllendirilecektir.
+                    </span>{" "}
+                    Ayrıca seçilen çalışmalar,{" "}
                     <span className="text-[#00D084] font-semibold">
                       Q1 kategorisindeki uluslararası bir dergide
                     </span>{" "}
-                    değerlendirilmek üzere davet edilecektir. Dergide yayımlanma
-                    kararı, derginin bilimsel değerlendirme süreci sonucunda
-                    kesinleşecektir.
+                    değerlendirilmek üzere davet edilecektir.
                   </p>
                 </div>
               </div>
@@ -122,7 +124,7 @@ export default function CallForPapers() {
             {/* Submission process */}
             <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-7">
               <h3 className="text-white font-bold text-xl mb-6">
-                Gönderim Süreci
+                Başvuru Süreci
               </h3>
               <div className="space-y-5">
                 {steps.map(({ n, text }) => (
@@ -139,7 +141,7 @@ export default function CallForPapers() {
                 href="#contact"
                 className="mt-8 w-full block text-center bg-[#00D084] hover:bg-[#00b872] text-white font-semibold py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-[#00D084]/20"
               >
-                Bildiri Gönder
+                Poster Başvurusu Yap
               </a>
             </div>
           </div>
