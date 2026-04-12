@@ -7,22 +7,36 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#06091A]"
     >
-      {/* Ambient glow blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/5 w-[500px] h-[500px] bg-[#0066CC]/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/3 right-1/5 w-[400px] h-[400px] bg-[#00C8FF]/10 rounded-full blur-[100px]" />
-        <div className="absolute top-2/3 left-1/2 w-[300px] h-[300px] bg-[#00D084]/10 rounded-full blur-[80px]" />
+      {/* Background images — split left/right */}
+      <div className="absolute inset-0 flex pointer-events-none">
+        <div className="relative w-1/2 h-full">
+          <Image
+            src="/turkesdedeci_Hydrogen_and_green_enviroment_--chaos_15_--ar_16_470798fe-ab50-45a0-bde2-cec14670290b_0.png"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="relative w-1/2 h-full">
+          <Image
+            src="/turkesdedeci_httpss.mj.runK9hiqbM1jkc_make_green_add_green_en_1a205479-f462-43b3-9e8c-d83fa3c770e6_1.png"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
       </div>
 
-      {/* Subtle grid */}
-      <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
+      {/* Dark overlay — metni okunabilir kılar */}
+      <div className="absolute inset-0 bg-[#06091A]/80 pointer-events-none" />
+
+      {/* Mavi/cyan ambient glow — görsellere karışır */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#0066CC]/15 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#00C8FF]/10 rounded-full blur-[80px]" />
+      </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
         {/* Date badge */}
