@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-h2-dark:   #06091A;
+  --color-h2-card:   #0D1530;
+  --color-h2-border: #1A2845;
+  --color-h2-blue:   #0066CC;
+  --color-h2-cyan:   #00C8FF;
+  --color-h2-green:  #00D084;
+  --color-h2-text:   #E8EDF5;
+  --color-h2-muted:  #7A8BA8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #06091A;
+  color: #E8EDF5;
+  -webkit-font-smoothing: antialiased;
+}
