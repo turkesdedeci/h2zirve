@@ -33,11 +33,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-1 group">
-            <span className="text-white font-extrabold text-xl tracking-tight">
-              TESPAM
+            <span className="text-white font-extrabold text-lg tracking-tight">
+              Türkiye Hidrojen
             </span>
-            <span className="text-[#00C8FF] font-extrabold text-xl">-H2</span>
-            <span className="text-[#00D084] font-extrabold text-xl ml-0.5">
+            <span className="text-[#00C8FF] font-extrabold text-lg ml-1">Zirvesi</span>
+            <span className="text-[#00D084] font-extrabold text-lg ml-1">
               2026
             </span>
           </a>

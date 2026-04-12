@@ -42,7 +42,7 @@ export default function CallForPapers() {
             Bildiri Çağrısı
           </h2>
           <p className="text-slate-400 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
-            TESPAM-H2-2026 kapsamında araştırmacıları, akademisyenleri, uzmanları
+            Türkiye Hidrojen Zirvesi 2026 kapsamında araştırmacıları, akademisyenleri, uzmanları
             ve lisansüstü öğrencileri özgün çalışmalarını sunmaya davet ediyoruz.
           </p>
         </div>

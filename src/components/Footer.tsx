@@ -14,12 +14,13 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="text-white font-extrabold text-2xl mb-3">
-              TESPAM<span className="text-[#00C8FF]">-H2</span>
-              <span className="text-[#00D084] ml-1">2026</span>
+            <div className="text-white font-extrabold text-xl mb-3 leading-tight">
+              Türkiye Hidrojen{" "}
+              <span className="text-[#00C8FF]">Zirvesi</span>{" "}
+              <span className="text-[#00D084]">2026</span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
-              4. Uluslararası Hidrojen Kongresi ve Strateji Forumu.
+              Türkiye Hidrojen Zirvesi 2026 (TESPAM-H2-2026)
               <br />
               15–16 Ekim 2026 · Ankara, Türkiye
             </p>
@@ -74,7 +75,7 @@ export default function Footer() {
 
         <div className="border-t border-[#1A2845] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-700 text-sm">
-            © 2026 TESPAM-H2-2026. Tüm hakları saklıdır.
+            © 2026 Türkiye Hidrojen Zirvesi. Tüm hakları saklıdır.
           </p>
           <p className="text-slate-800 text-xs">
             TESPAM &amp; AYBÜ Hidrojen Araştırma Merkezi iş birliğiyle

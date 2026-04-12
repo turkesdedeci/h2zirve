@@ -34,10 +34,10 @@ export default function Hero() {
 
         {/* Title */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-5">
-          4. Uluslararası
+          Türkiye Hidrojen
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C8FF] via-[#0099DD] to-[#0066CC]">
-            Hidrojen Kongresi
+            Zirvesi 2026
           </span>
         </h1>
 

@@ -33,7 +33,7 @@ export default function About() {
             Kongre Hakkında
           </span>
           <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3">
-            Neden TESPAM-H2-2026?
+            Neden Türkiye Hidrojen Zirvesi 2026?
           </h2>
         </div>
 
@@ -50,7 +50,7 @@ export default function About() {
             </p>
             <p>
               Ankara Yıldırım Beyazıt Üniversitesi ve TESPAM Hidrojen Araştırma
-              Merkezi iş birliğiyle düzenlenen TESPAM-H2-2026; araştırmacıları,
+              Merkezi iş birliğiyle düzenlenen Türkiye Hidrojen Zirvesi 2026; araştırmacıları,
               kamu kurumlarını, özel sektör temsilcilerini, yatırımcıları,
               teknoloji geliştiricileri ve politika yapıcıları Ankara&apos;da
               buluşturacaktır.

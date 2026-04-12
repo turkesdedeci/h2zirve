@@ -76,7 +76,7 @@ export default function Sponsors() {
             Sponsorluk
           </h2>
           <p className="text-slate-400 mt-5 max-w-2xl mx-auto leading-relaxed">
-            TESPAM-H2-2026, sponsor kurumlara yalnızca görünürlük değil; hedef
+            Türkiye Hidrojen Zirvesi 2026, sponsor kurumlara yalnızca görünürlük değil; hedef
             odaklı erişim, uzman ağlarına temas ve karar verici aktörlerle aynı
             platformda yer alma imkânı sunar.
           </p>

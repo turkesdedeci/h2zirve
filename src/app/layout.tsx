@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TESPAM-H2-2026 | 4. Uluslararası Hidrojen Kongresi",
+  title: "Türkiye Hidrojen Zirvesi 2026 | 15–16 Ekim · Ankara",
   description:
-    "TESPAM 4. Uluslararası Hidrojen Kongresi ve Strateji Forumu — 15–16 Ekim 2026, Ankara. Türkiye'de Hidrojen Ekosisteminin İnşası: Teknoloji, Strateji ve Uygulama.",
+    "Türkiye Hidrojen Zirvesi 2026 — 15–16 Ekim 2026, Ankara. Türkiye'de Hidrojen Ekosisteminin İnşası: Teknoloji, Strateji ve Uygulama. TESPAM & AYBÜ Hidrojen Araştırma Merkezi.",
 };
 
 export default function RootLayout({
