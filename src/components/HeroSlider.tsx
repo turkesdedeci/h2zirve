@@ -48,18 +48,6 @@ export default function HeroSlider() {
       <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-[#0066CC]/15 rounded-full blur-[100px]" />
       <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#00C8FF]/10 rounded-full blur-[80px]" />
 
-      {/* Dot indicators */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 pointer-events-auto z-10">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              i === current ? "bg-white w-6" : "bg-white/30"
-            }`}
-          />
-        ))}
-      </div>
     </div>
   );
 }

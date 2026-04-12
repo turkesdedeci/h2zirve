@@ -63,35 +63,34 @@ export default function Hero() {
         </div>
 
         {/* Organizers */}
-        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col items-center gap-4">
-          <span className="text-slate-600 text-xs uppercase tracking-widest font-semibold">
+        <div className="mt-16 pt-8 border-t border-white/8 flex flex-col items-center gap-5">
+          <span className="text-slate-500 text-xs uppercase tracking-widest font-semibold">
             Düzenleyenler
           </span>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
+          <div className="flex items-center justify-center gap-10">
             <Image
               src="/logos/tespam.png"
               alt="TESPAM"
-              width={110}
-              height={55}
-              className="object-contain opacity-75 hover:opacity-100 transition-opacity"
+              width={90}
+              height={90}
+              className="object-contain opacity-80 hover:opacity-100 transition-opacity"
             />
-            <span className="text-slate-700 hidden sm:block text-2xl font-light">×</span>
+            <span className="text-slate-700 text-2xl font-light">×</span>
             <Image
               src="/logos/h2team.png"
               alt="AYBÜ H2TEAM"
-              width={140}
-              height={50}
-              className="object-contain opacity-75 hover:opacity-100 transition-opacity"
+              width={130}
+              height={46}
+              className="object-contain opacity-80 hover:opacity-100 transition-opacity"
             />
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <span className="text-slate-600 text-xs font-medium">Keşfet</span>
+      {/* Scroll indicator — sayfanın en altında */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce z-10">
         <svg
-          className="w-5 h-5 text-slate-600"
+          className="w-5 h-5 text-slate-500"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
