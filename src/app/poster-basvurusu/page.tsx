@@ -76,7 +76,7 @@ export default function PosterBasvurusu() {
     let pdf_url: string | null = null;
 
     if (pdfFile) {
-      const fileName = `${Date.now()}_${pdfFile.name.replace(/\s+/g, "_")}`;
+      const fileName = `${Date.now()}_${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, "_")}`;
       const { error: uploadError } = await supabase.storage
         .from("poster-dosyalari")
         .upload(fileName, pdfFile);
