@@ -20,14 +20,17 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Title */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-5">
-          Türkiye Hidrojen
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00C8FF] via-[#0099DD] to-[#0066CC]">
-            Zirvesi 2026
-          </span>
-        </h1>
+        {/* Logo */}
+        <div className="flex justify-center mb-6">
+          <Image
+            src="/logos/h2zirve-logo.png"
+            alt="Türkiye Hidrojen Zirvesi 2026"
+            width={320}
+            height={110}
+            className="object-contain drop-shadow-2xl"
+            priority
+          />
+        </div>
 
         <p className="text-[#00D084] font-bold text-xl sm:text-2xl mb-3 tracking-[0.2em] uppercase">
           TESPAM-H2-2026

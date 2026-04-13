@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const navItems = [
   { label: "Hakkında", href: "#about" },
@@ -32,12 +33,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-1 group">
-            <span className="text-white font-extrabold text-lg tracking-tight">
-              Türkiye Hidrojen
-            </span>
-            <span className="text-[#00C8FF] font-extrabold text-lg ml-1">Zirvesi</span>
-            <span className="text-[#00D084] font-extrabold text-lg ml-1">2026</span>
+          <a href="#" className="flex items-center">
+            <Image
+              src="/logos/h2zirve-logo.png"
+              alt="Türkiye Hidrojen Zirvesi 2026"
+              width={140}
+              height={46}
+              className="object-contain"
+            />
           </a>
 
           {/* Desktop nav */}
