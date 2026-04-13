@@ -86,6 +86,24 @@ export default function PosterBasvurusu() {
     }
   }
 
+  function handleAdSoyad(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    // Türkçe dahil sadece harf ve boşluk
+    if (/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]*$/.test(val)) {
+      setForm((f) => ({ ...f, ad_soyad: val }));
+    }
+  }
+
+  function handleOzet(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    const val = e.target.value;
+    const wordCount = val.trim() === "" ? 0 : val.trim().split(/\s+/).length;
+    if (wordCount <= 300) {
+      setForm((f) => ({ ...f, ozet: val }));
+    }
+  }
+
+  const ozetWordCount = form.ozet.trim() === "" ? 0 : form.ozet.trim().split(/\s+/).length;
+
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -217,7 +235,7 @@ export default function PosterBasvurusu() {
                 <input
                   required
                   value={form.ad_soyad}
-                  onChange={set("ad_soyad")}
+                  onChange={handleAdSoyad}
                   placeholder="Ad Soyad"
                   className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600"
                 />
@@ -291,13 +309,16 @@ export default function PosterBasvurusu() {
             </div>
 
             <div>
-              <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">
-                Özet * <span className="normal-case text-slate-600">(max 300 kelime)</span>
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Özet *</label>
+                <span className={`text-xs font-semibold ${ozetWordCount >= 290 ? "text-red-400" : "text-slate-500"}`}>
+                  {ozetWordCount} / 300 kelime
+                </span>
+              </div>
               <textarea
                 required
                 value={form.ozet}
-                onChange={set("ozet")}
+                onChange={handleOzet}
                 placeholder="Çalışmanızın kısa özetini yazın..."
                 rows={6}
                 className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600 resize-none"
