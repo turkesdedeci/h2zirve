@@ -57,7 +57,7 @@ export default function Hero() {
             Kayıt Ol
           </a>
           <a
-            href="#cfp"
+            href="/poster-basvurusu"
             className="bg-white/8 hover:bg-white/15 border border-white/20 text-white font-semibold px-10 py-4 rounded-xl text-lg transition-all hover:scale-105 backdrop-blur-sm"
           >
             Poster Başvurusu
