@@ -13,8 +13,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
         {/* Date badge */}
-        <div className="inline-flex items-center gap-2 bg-[#0066CC]/20 border border-[#0066CC]/40 rounded-full px-5 py-2 mb-10">
-          <span className="w-2 h-2 rounded-full bg-[#00C8FF] animate-pulse" />
+        <div className="inline-flex items-center bg-[#0066CC]/20 border border-[#0066CC]/40 rounded-full px-5 py-2 mb-10">
           <span className="text-[#00C8FF] text-sm font-semibold tracking-wide">
             15–16 Ekim 2026 &nbsp;|&nbsp; Ankara, Türkiye
           </span>
@@ -23,10 +22,10 @@ export default function Hero() {
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/logos/h2zirve-logo.png"
+            src="/logos/orta.png"
             alt="Türkiye Hidrojen Zirvesi 2026"
-            width={320}
-            height={110}
+            width={420}
+            height={140}
             className="object-contain drop-shadow-2xl"
             priority
           />

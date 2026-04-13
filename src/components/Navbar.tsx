@@ -35,10 +35,10 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center">
             <Image
-              src="/logos/h2zirve-logo.png"
+              src="/logos/header.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
-              width={140}
-              height={46}
+              width={200}
+              height={52}
               className="object-contain"
             />
           </a>
