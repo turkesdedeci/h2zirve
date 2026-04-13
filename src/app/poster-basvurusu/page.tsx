@@ -41,8 +41,21 @@ const empty: FormData = {
   ozet: "",
 };
 
+const EMAIL_RE = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+const PHONE_RE = /^0\(\d{3}\)\d{7}$/;
+
+function formatPhone(raw: string): string {
+  const digits = raw.replace(/\D/g, "").slice(0, 11);
+  if (digits.length === 0) return "";
+  if (digits.length <= 1) return digits;
+  if (digits.length <= 4) return `${digits[0]}(${digits.slice(1)}`;
+  if (digits.length <= 11) return `${digits[0]}(${digits.slice(1, 4)})${digits.slice(4)}`;
+  return raw;
+}
+
 export default function PosterBasvurusu() {
   const [form, setForm] = useState<FormData>(empty);
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -52,6 +65,26 @@ export default function PosterBasvurusu() {
   const set = (k: keyof FormData) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
       setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  function handlePhone(e: React.ChangeEvent<HTMLInputElement>) {
+    const formatted = formatPhone(e.target.value);
+    setForm((f) => ({ ...f, telefon: formatted }));
+    if (formatted && !PHONE_RE.test(formatted)) {
+      setFieldErrors((fe) => ({ ...fe, telefon: "Format: 0(555)5555555" }));
+    } else {
+      setFieldErrors((fe) => ({ ...fe, telefon: undefined }));
+    }
+  }
+
+  function handleEmail(e: React.ChangeEvent<HTMLInputElement>) {
+    const val = e.target.value;
+    setForm((f) => ({ ...f, email: val }));
+    if (val && !EMAIL_RE.test(val)) {
+      setFieldErrors((fe) => ({ ...fe, email: "Geçerli bir e-posta adresi girin" }));
+    } else {
+      setFieldErrors((fe) => ({ ...fe, email: undefined }));
+    }
+  }
 
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -70,6 +103,14 @@ export default function PosterBasvurusu() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!EMAIL_RE.test(form.email)) {
+      setFieldErrors((fe) => ({ ...fe, email: "Geçerli bir e-posta adresi girin" }));
+      return;
+    }
+    if (form.telefon && !PHONE_RE.test(form.telefon)) {
+      setFieldErrors((fe) => ({ ...fe, telefon: "Format: 0(555)5555555" }));
+      return;
+    }
     setLoading(true);
     setError("");
 
@@ -200,19 +241,21 @@ export default function PosterBasvurusu() {
                   required
                   type="email"
                   value={form.email}
-                  onChange={set("email")}
+                  onChange={handleEmail}
                   placeholder="ornek@kurum.edu.tr"
-                  className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600"
+                  className={`w-full bg-[#060B18] border rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600 ${fieldErrors.email ? "border-red-500/60" : "border-[#1A2845] focus:border-[#0066CC]"}`}
                 />
+                {fieldErrors.email && <p className="text-red-400 text-xs mt-1">{fieldErrors.email}</p>}
               </div>
               <div>
                 <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Telefon</label>
                 <input
                   value={form.telefon}
-                  onChange={set("telefon")}
-                  placeholder="05xx xxx xx xx"
-                  className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600"
+                  onChange={handlePhone}
+                  placeholder="0(555)5555555"
+                  className={`w-full bg-[#060B18] border rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600 ${fieldErrors.telefon ? "border-red-500/60" : "border-[#1A2845] focus:border-[#0066CC]"}`}
                 />
+                {fieldErrors.telefon && <p className="text-red-400 text-xs mt-1">{fieldErrors.telefon}</p>}
               </div>
             </div>
           </div>
