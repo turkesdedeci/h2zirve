@@ -58,29 +58,33 @@ export default function Footer() {
             </h4>
             <div className="space-y-5">
               <div className="flex items-center gap-3">
-                <Image
-                  src="/logos/tespam.png"
-                  alt="TESPAM"
-                  width={44}
-                  height={44}
-                  className="object-contain opacity-60"
-                />
+                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src="/logos/tespam.png"
+                    alt="TESPAM"
+                    width={44}
+                    height={44}
+                    className="object-contain opacity-60"
+                  />
+                </div>
                 <p className="text-slate-600 text-xs leading-relaxed">
                   Türkiye Enerji Stratejileri &amp;
                   <br />Politikaları Araştırma Merkezi
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <Image
-                  src="/logos/aybu.png"
-                  alt="Ankara Yıldırım Beyazıt Üniversitesi"
-                  width={44}
-                  height={44}
-                  className="object-contain opacity-60"
-                />
+                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src="/logos/aybu.png"
+                    alt="Ankara Yıldırım Beyazıt Üniversitesi"
+                    width={44}
+                    height={44}
+                    className="object-contain opacity-60"
+                  />
+                </div>
                 <p className="text-slate-600 text-xs leading-relaxed">
-                  AYBÜ Hidrojen
-                  <br />Araştırma Merkezi
+                  Ankara Yıldırım Beyazıt
+                  <br />Üniversitesi
                 </p>
               </div>
             </div>
