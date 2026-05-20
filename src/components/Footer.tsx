@@ -74,8 +74,8 @@ export default function Footer() {
                 <Image
                   src="/logos/aybu.png"
                   alt="Ankara Yıldırım Beyazıt Üniversitesi"
-                  width={76}
-                  height={28}
+                  width={44}
+                  height={44}
                   className="object-contain opacity-60"
                 />
                 <p className="text-slate-600 text-xs leading-relaxed">

@@ -81,8 +81,8 @@ export default function Hero() {
             <Image
               src="/logos/aybu.png"
               alt="Ankara Yıldırım Beyazıt Üniversitesi"
-              width={130}
-              height={46}
+              width={90}
+              height={90}
               className="object-contain opacity-80 hover:opacity-100 transition-opacity"
             />
           </div>
