@@ -261,7 +261,7 @@ export default function Program() {
             >
               <div className="font-bold">{day}. Gün</div>
               <div className="text-xs opacity-70 mt-0.5">
-                {day === 1 ? "15 Ekim • Perşembe" : "16 Ekim • Cuma"}
+                {day === 1 ? "22 Ekim • Perşembe" : "23 Ekim • Cuma"}
               </div>
             </button>
           ))}

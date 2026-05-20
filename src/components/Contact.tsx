@@ -15,7 +15,7 @@ const info = [
     value: "Ankara Yıldırım Beyazıt Üniversitesi — Hidrojen Araştırma Merkezi",
   },
   { icon: "📍", label: "Yer", value: "Ankara, Türkiye" },
-  { icon: "📅", label: "Tarih", value: "15–16 Ekim 2026" },
+  { icon: "📅", label: "Tarih", value: "22–23 Ekim 2026" },
   { icon: "📧", label: "E-posta", value: "info@tespam.org.tr" },
 ];
 

@@ -16,7 +16,7 @@ const audience = [
 ];
 
 const details = [
-  { label: "Tarih", value: "15–16 Ekim 2026" },
+  { label: "Tarih", value: "22–23 Ekim 2026" },
   { label: "Yer", value: "Ankara, Türkiye" },
   { label: "Format", value: "Kongre + Strateji Forumu" },
   { label: "Dil", value: "Türkçe / İngilizce" },

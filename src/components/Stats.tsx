@@ -1,5 +1,5 @@
 const stats = [
-  { value: "2", label: "Tam Gün", desc: "15–16 Ekim 2026" },
+  { value: "2", label: "Tam Gün", desc: "22–23 Ekim 2026" },
   { value: "5+", label: "Panel", desc: "Strateji, Teknoloji & Endüstri" },
   { value: "2", label: "Keynote", desc: "Uluslararası Konuşmacı" },
   { value: "Q1", label: "Yayın İmkânı", desc: "Seçilen çalışmalar için" },

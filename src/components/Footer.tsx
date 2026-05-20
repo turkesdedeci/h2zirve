@@ -24,7 +24,7 @@ export default function Footer() {
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
               Türkiye Hidrojen Zirvesi 2026 (TESPAM-H2-2026)
               <br />
-              15–16 Ekim 2026 · Ankara, Türkiye
+              22–23 Ekim 2026 · Ankara, Türkiye
             </p>
             <p className="text-slate-700 text-xs mt-3 italic">
               Türkiye&apos;de Hidrojen Ekosisteminin İnşası: Teknoloji, Strateji ve
@@ -72,8 +72,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Image
-                  src="/logos/h2team.png"
-                  alt="AYBÜ H2TEAM"
+                  src="/logos/aybu.png"
+                  alt="Ankara Yıldırım Beyazıt Üniversitesi"
                   width={76}
                   height={28}
                   className="object-contain opacity-60"

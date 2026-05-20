@@ -6,9 +6,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Türkiye Hidrojen Zirvesi 2026 | 15–16 Ekim · Ankara",
+  title: "Türkiye Hidrojen Zirvesi 2026 | 22–23 Ekim · Ankara",
   description:
-    "Türkiye Hidrojen Zirvesi 2026 — 15–16 Ekim 2026, Ankara. Türkiye'de Hidrojen Ekosisteminin İnşası: Teknoloji, Strateji ve Uygulama. TESPAM & AYBÜ Hidrojen Araştırma Merkezi.",
+    "Türkiye Hidrojen Zirvesi 2026 — 22–23 Ekim 2026, Ankara. Türkiye'de Hidrojen Ekosisteminin İnşası: Teknoloji, Strateji ve Uygulama. TESPAM & AYBÜ Hidrojen Araştırma Merkezi.",
 };
 
 export default function RootLayout({

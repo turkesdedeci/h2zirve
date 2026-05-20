@@ -18,7 +18,7 @@ const topics = [
 const dates = [
   { label: "Poster Başvuru Son Tarihi", value: "Yakında Duyurulacak" },
   { label: "Kabul Bildirimi", value: "Yakında Duyurulacak" },
-  { label: "Zirve Tarihleri", value: "15–16 Ekim 2026", highlight: true },
+  { label: "Zirve Tarihleri", value: "22–23 Ekim 2026", highlight: true },
 ];
 
 const steps = [

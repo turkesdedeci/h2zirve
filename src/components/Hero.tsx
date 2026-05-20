@@ -15,7 +15,7 @@ export default function Hero() {
         {/* Date badge */}
         <div className="inline-flex items-center bg-[#0066CC]/20 border border-[#0066CC]/40 rounded-full px-5 py-2 mb-10">
           <span className="text-[#00C8FF] text-sm font-semibold tracking-wide">
-            15–16 Ekim 2026 &nbsp;|&nbsp; Ankara, Türkiye
+            22–23 Ekim 2026 &nbsp;|&nbsp; Ankara, Türkiye
           </span>
         </div>
 
@@ -79,8 +79,8 @@ export default function Hero() {
             />
             <span className="text-slate-700 text-2xl font-light">×</span>
             <Image
-              src="/logos/h2team.png"
-              alt="AYBÜ H2TEAM"
+              src="/logos/aybu.png"
+              alt="Ankara Yıldırım Beyazıt Üniversitesi"
               width={130}
               height={46}
               className="object-contain opacity-80 hover:opacity-100 transition-opacity"
