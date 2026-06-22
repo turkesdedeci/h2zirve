@@ -4,6 +4,7 @@ const links = [
   { label: "Hakkında", href: "#about" },
   { label: "Program", href: "#program" },
   { label: "Konuşmacılar", href: "#speakers" },
+  { label: "Katılımcı Firmalar", href: "#exhibitors" },
   { label: "Poster Çağrısı", href: "#cfp" },
   { label: "Sponsorluk", href: "#sponsors" },
   { label: "İletişim", href: "#contact" },
@@ -11,30 +12,24 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#03050E] border-t border-[#1A2845] py-14">
+    <footer className="bg-[#03050E] border-t border-h2-border py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="text-white font-extrabold text-xl mb-3 leading-tight">
-              Türkiye Hidrojen{" "}
-              <span className="text-[#00C8FF]">Zirvesi</span>{" "}
-              <span className="text-[#00D084]">2026</span>
+            <div className="font-display text-h2-h3 font-bold text-h2-ink-1 mb-3 leading-tight">
+              Türkiye Hidrojen <span className="text-h2-cyan">Zirvesi 2026</span>
             </div>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-xs">
+            <p className="text-h2-ink-3 text-h2-small leading-relaxed max-w-xs">
               Türkiye Hidrojen Zirvesi 2026 (TESPAM-H2-2026)
               <br />
               22–23 Ekim 2026 · Ankara, Türkiye
-            </p>
-            <p className="text-slate-700 text-xs mt-3 italic">
-              Türkiye&apos;de Hidrojen Ekosisteminin İnşası: Teknoloji, Strateji ve
-              Uygulama
             </p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">
+            <h4 className="text-h2-ink-1 font-semibold text-h2-small mb-4 uppercase tracking-wider">
               Hızlı Bağlantılar
             </h4>
             <ul className="space-y-2.5">
@@ -42,7 +37,7 @@ export default function Footer() {
                 <li key={label}>
                   <a
                     href={href}
-                    className="text-slate-500 hover:text-white text-sm transition-colors"
+                    className="text-h2-ink-3 hover:text-h2-ink-1 text-h2-small transition-colors"
                   >
                     {label}
                   </a>
@@ -51,10 +46,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Organizers */}
+          {/* Organizer and host */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">
-              Düzenleyenler
+            <h4 className="text-h2-ink-1 font-semibold text-h2-small mb-4 uppercase tracking-wider">
+              Organizasyon
             </h4>
             <div className="space-y-5">
               <div className="flex items-center gap-3">
@@ -67,9 +62,9 @@ export default function Footer() {
                     className="object-contain opacity-60"
                   />
                 </div>
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  Türkiye Enerji Stratejileri &amp;
-                  <br />Politikaları Araştırma Merkezi
+                <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
+                  <span className="text-h2-cyan font-semibold">Ana düzenleyici</span>
+                  <br />Türkiye Enerji Stratejileri &amp; Politikaları Araştırma Merkezi
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -82,21 +77,21 @@ export default function Footer() {
                     className="object-contain opacity-60"
                   />
                 </div>
-                <p className="text-slate-600 text-xs leading-relaxed">
-                  Ankara Yıldırım Beyazıt
-                  <br />Üniversitesi
+                <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
+                  <span className="text-h2-ink-3 font-semibold">Ev sahibi üniversite</span>
+                  <br />Ankara Yıldırım Beyazıt Üniversitesi
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-[#1A2845] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-700 text-sm">
+        <div className="border-t border-h2-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-h2-ink-disabled text-h2-small">
             © 2026 Türkiye Hidrojen Zirvesi. Tüm hakları saklıdır.
           </p>
-          <p className="text-slate-800 text-xs">
-            TESPAM &amp; AYBÜ Hidrojen Araştırma Merkezi iş birliğiyle
+          <p className="text-h2-ink-disabled text-h2-micro">
+            TESPAM tarafından, AYBÜ ev sahipliğinde
           </p>
         </div>
       </div>

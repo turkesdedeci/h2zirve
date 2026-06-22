@@ -1,44 +1,9 @@
 const tiers = [
-  {
-    name: "Ana Sponsor",
-    color: "text-yellow-300",
-    border: "border-yellow-500/30",
-    bg: "bg-yellow-500/5",
-    slots: 1,
-    size: "h-20 w-52",
-  },
-  {
-    name: "Platin Sponsor",
-    color: "text-slate-200",
-    border: "border-slate-400/25",
-    bg: "bg-slate-400/4",
-    slots: 2,
-    size: "h-16 w-44",
-  },
-  {
-    name: "Altın Sponsor",
-    color: "text-amber-400",
-    border: "border-amber-500/25",
-    bg: "bg-amber-500/4",
-    slots: 3,
-    size: "h-14 w-36",
-  },
-  {
-    name: "Gümüş Sponsor",
-    color: "text-slate-400",
-    border: "border-slate-500/20",
-    bg: "bg-transparent",
-    slots: 4,
-    size: "h-12 w-32",
-  },
-  {
-    name: "Destek Sponsoru",
-    color: "text-slate-500",
-    border: "border-slate-600/20",
-    bg: "bg-transparent",
-    slots: 5,
-    size: "h-10 w-28",
-  },
+  { name: "Ana Sponsor", color: "text-h2-amber", slots: 1, size: "h-20 w-52" },
+  { name: "Platin Sponsor", color: "text-h2-ink-1", slots: 2, size: "h-16 w-44" },
+  { name: "Altın Sponsor", color: "text-h2-amber/80", slots: 3, size: "h-14 w-36" },
+  { name: "Gümüş Sponsor", color: "text-h2-ink-3", slots: 4, size: "h-12 w-32" },
+  { name: "Destek Sponsoru", color: "text-h2-ink-disabled", slots: 5, size: "h-10 w-28" },
 ];
 
 const benefits = [
@@ -65,40 +30,40 @@ const special = [
 
 export default function Sponsors() {
   return (
-    <section id="sponsors" className="bg-[#06091A] py-24">
+    <section id="sponsors" className="bg-h2-bg py-16 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
         <div className="text-center mb-16">
-          <span className="text-[#00C8FF] font-semibold text-sm uppercase tracking-widest">
+          <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
             Kurumsal Destek
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3">
+          <h2 className="font-display text-h2-h1 font-bold text-h2-ink-1 mt-3">
             Sponsorluk
           </h2>
-          <p className="text-slate-400 mt-5 max-w-2xl mx-auto leading-relaxed">
-            Türkiye Hidrojen Zirvesi 2026, sponsor kurumlara yalnızca görünürlük değil; hedef
-            odaklı erişim, uzman ağlarına temas ve karar verici aktörlerle aynı
-            platformda yer alma imkânı sunar.
+          <p className="text-h2-ink-2 mt-5 max-w-2xl mx-auto text-h2-body-lg leading-relaxed">
+            Türkiye Hidrojen Zirvesi 2026, sponsor kurumları; akademisyenler, kamu
+            kurumları, enerji şirketleri ve yatırımcılardan oluşan paydaş
+            kitlesiyle aynı çatı altında buluşturur.
           </p>
         </div>
 
-        {/* Sponsor tiers */}
-        <div className="space-y-5 mb-14">
+        {/* Sponsor tiers — Linear List Row pattern, no boxed tier containers */}
+        <div className="space-y-10 mb-16">
           {tiers.map((tier) => (
-            <div
-              key={tier.name}
-              className={`${tier.bg} border ${tier.border} rounded-2xl p-6`}
-            >
-              <p className={`font-bold text-sm uppercase tracking-widest mb-5 ${tier.color}`}>
-                {tier.name}
-              </p>
+            <div key={tier.name}>
+              <div className="mb-5 flex items-center gap-4">
+                <span className={`whitespace-nowrap font-display text-h2-small font-bold uppercase tracking-[0.18em] ${tier.color}`}>
+                  {tier.name}
+                </span>
+                <span className="h-px w-full bg-h2-border" />
+              </div>
               <div className="flex flex-wrap gap-4">
                 {Array.from({ length: tier.slots }).map((_, i) => (
                   <div
                     key={i}
-                    className={`${tier.size} bg-white/4 border border-white/8 rounded-xl flex items-center justify-center text-slate-700 text-xs font-medium`}
+                    className={`${tier.size} flex items-center justify-center rounded-h2-md border border-dashed border-h2-border text-center text-h2-micro font-medium leading-tight text-h2-ink-disabled px-2`}
                   >
-                    Logo
+                    Sponsor logonuz
                   </div>
                 ))}
               </div>
@@ -109,30 +74,30 @@ export default function Sponsors() {
         {/* Benefits + special side by side */}
         <div className="grid md:grid-cols-2 gap-6 mb-10">
           {/* Why sponsor */}
-          <div className="bg-gradient-to-br from-[#0066CC]/10 to-transparent border border-[#0066CC]/20 rounded-2xl p-7">
-            <h3 className="text-white font-bold text-xl mb-5">
+          <div className="bg-gradient-to-br from-h2-blue/10 to-transparent border border-h2-blue/20 rounded-h2-lg p-7">
+            <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-5">
               Neden Sponsor Olmalısınız?
             </h3>
             <div className="space-y-3">
               {benefits.map((b) => (
                 <div key={b} className="flex items-center gap-3">
-                  <span className="text-[#00C8FF] font-bold text-sm">✓</span>
-                  <span className="text-slate-400 text-sm">{b}</span>
+                  <span className="text-h2-cyan font-bold text-h2-small">✓</span>
+                  <span className="text-h2-ink-2 text-h2-small">{b}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Special sponsorships */}
-          <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-7">
-            <h3 className="text-white font-bold text-xl mb-5">
+          <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-7">
+            <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-5">
               Özel Sponsorluk Fırsatları
             </h3>
             <div className="space-y-3">
               {special.map((s) => (
                 <div key={s} className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] flex-shrink-0" />
-                  <span className="text-slate-400 text-sm">{s}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-h2-green flex-shrink-0" />
+                  <span className="text-h2-ink-2 text-h2-small">{s}</span>
                 </div>
               ))}
             </div>
@@ -143,7 +108,7 @@ export default function Sponsors() {
         <div className="text-center">
           <a
             href="#contact"
-            className="inline-block bg-[#0066CC] hover:bg-[#0055bb] text-white font-semibold px-12 py-4 rounded-xl text-lg transition-all hover:scale-105 hover:shadow-2xl hover:shadow-[#0066CC]/25"
+            className="inline-block bg-h2-blue hover:bg-h2-blue-bright text-white font-semibold px-12 py-4 rounded-h2-md text-base transition-all hover:shadow-lg hover:shadow-h2-blue/25"
           >
             Sponsor Olmak İçin İletişime Geçin
           </a>

@@ -7,18 +7,18 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="bg-gradient-to-r from-[#0055bb] via-[#0066CC] to-[#0044aa] py-14">
+    <section className="bg-h2-blue py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {stats.map(({ value, label, desc }) => (
             <div key={label}>
-              <div className="text-4xl sm:text-5xl font-extrabold text-white">
+              <div className="font-display text-4xl font-bold text-white sm:text-5xl">
                 {value}
               </div>
-              <div className="text-blue-200 font-semibold text-lg mt-1">
+              <div className="mt-1 text-h2-body-lg font-semibold text-white/85">
                 {label}
               </div>
-              <div className="text-blue-300/60 text-sm mt-0.5">{desc}</div>
+              <div className="mt-0.5 text-h2-small text-white/55">{desc}</div>
             </div>
           ))}
         </div>

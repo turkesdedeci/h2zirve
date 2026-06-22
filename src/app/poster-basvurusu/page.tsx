@@ -119,6 +119,13 @@ export default function PosterBasvurusu() {
     setPdfFile(file);
   }
 
+  function handleDropZoneKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      fileRef.current?.click();
+    }
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!EMAIL_RE.test(form.email)) {
@@ -164,23 +171,26 @@ export default function PosterBasvurusu() {
     }
   }
 
+  const inputCls =
+    "w-full bg-h2-bg border border-h2-border focus:border-h2-blue rounded-h2-md px-4 py-3 text-h2-ink-1 text-h2-small outline-none transition-colors placeholder:text-h2-ink-disabled";
+
   if (success) {
     return (
-      <div className="min-h-screen bg-[#06091A] flex items-center justify-center px-4">
+      <div className="min-h-screen bg-h2-bg flex items-center justify-center px-4">
         <div className="text-center max-w-md">
-          <div className="w-20 h-20 rounded-full bg-[#00D084]/15 border border-[#00D084]/30 flex items-center justify-center text-4xl mx-auto mb-6">
+          <div className="w-20 h-20 rounded-full bg-h2-green/15 border border-h2-green/30 flex items-center justify-center text-4xl mx-auto mb-6">
             ✅
           </div>
-          <h2 className="text-white font-bold text-2xl mb-3">Başvurunuz Alındı!</h2>
-          <p className="text-slate-400 leading-relaxed mb-8">
+          <h2 className="font-display text-h2-h2 font-bold text-h2-ink-1 mb-3">Başvurunuz Alındı!</h2>
+          <p className="text-h2-ink-2 leading-relaxed mb-8">
             Poster başvurunuz bilimsel kurulumuza iletildi.
             Değerlendirme sonucunu{" "}
-            <span className="text-white font-semibold">{form.email}</span>{" "}
+            <span className="text-h2-ink-1 font-semibold">{form.email}</span>{" "}
             adresine göndereceğiz.
           </p>
           <a
             href="/"
-            className="bg-[#00D084] hover:bg-[#00b872] text-white font-semibold px-8 py-3 rounded-xl transition-all inline-block"
+            className="bg-h2-green hover:bg-h2-green/85 text-white font-semibold px-8 py-3 rounded-h2-md transition-all inline-block"
           >
             Ana Sayfaya Dön
           </a>
@@ -190,9 +200,9 @@ export default function PosterBasvurusu() {
   }
 
   return (
-    <div className="min-h-screen bg-[#06091A]">
+    <div className="min-h-screen bg-h2-bg">
       {/* Header */}
-      <div className="bg-[#06091A]/95 border-b border-[#1A2845] px-4 py-4">
+      <div className="bg-h2-bg/95 border-b border-h2-border px-4 py-4">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <a href="/">
             <Image
@@ -203,7 +213,7 @@ export default function PosterBasvurusu() {
               className="object-contain"
             />
           </a>
-          <a href="/#cfp" className="text-slate-400 hover:text-white text-sm transition-colors">
+          <a href="/#cfp" className="text-h2-ink-2 hover:text-h2-ink-1 text-h2-small transition-colors">
             ← Geri
           </a>
         </div>
@@ -212,13 +222,13 @@ export default function PosterBasvurusu() {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 py-14">
         <div className="mb-10">
-          <span className="text-[#00D084] font-semibold text-sm uppercase tracking-widest">
+          <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
             Akademik Katkı
           </span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mt-3 mb-3">
+          <h1 className="font-display text-h2-h1 font-bold text-h2-ink-1 mt-3 mb-3">
             Poster Başvurusu
           </h1>
-          <p className="text-slate-400 leading-relaxed">
+          <p className="text-h2-ink-2 leading-relaxed">
             Formu eksiksiz doldurun. Başvurunuz bilimsel kurul tarafından
             değerlendirilecek ve sonuç e-posta ile bildirilecektir.
           </p>
@@ -226,80 +236,80 @@ export default function PosterBasvurusu() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Kişisel bilgiler */}
-          <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-6 space-y-4">
-            <h2 className="text-white font-semibold text-base mb-2">Kişisel Bilgiler</h2>
+          <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-6 space-y-4">
+            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-2">Kişisel Bilgiler</h2>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Ad Soyad *</label>
+                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Ad Soyad *</label>
                 <input
                   required
                   value={form.ad_soyad}
                   onChange={handleAdSoyad}
                   placeholder="Ad Soyad"
-                  className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600"
+                  className={inputCls}
                 />
               </div>
               <div>
-                <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Kurum / Üniversite *</label>
+                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Kurum / Üniversite *</label>
                 <input
                   required
                   value={form.kurum}
                   onChange={set("kurum")}
                   placeholder="Kurum adı"
-                  className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600"
+                  className={inputCls}
                 />
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">E-posta *</label>
+                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">E-posta *</label>
                 <input
                   required
                   type="email"
                   value={form.email}
                   onChange={handleEmail}
                   placeholder="ornek@kurum.edu.tr"
-                  className={`w-full bg-[#060B18] border rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600 ${fieldErrors.email ? "border-red-500/60" : "border-[#1A2845] focus:border-[#0066CC]"}`}
+                  className={`${inputCls} ${fieldErrors.email ? "border-red-500/60" : ""}`}
                 />
-                {fieldErrors.email && <p className="text-red-400 text-xs mt-1">{fieldErrors.email}</p>}
+                {fieldErrors.email && <p className="text-red-400 text-h2-micro mt-1">{fieldErrors.email}</p>}
               </div>
               <div>
-                <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Telefon</label>
+                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Telefon</label>
                 <input
                   value={form.telefon}
                   onChange={handlePhone}
                   placeholder="0(555)5555555"
-                  className={`w-full bg-[#060B18] border rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600 ${fieldErrors.telefon ? "border-red-500/60" : "border-[#1A2845] focus:border-[#0066CC]"}`}
+                  className={`${inputCls} ${fieldErrors.telefon ? "border-red-500/60" : ""}`}
                 />
-                {fieldErrors.telefon && <p className="text-red-400 text-xs mt-1">{fieldErrors.telefon}</p>}
+                {fieldErrors.telefon && <p className="text-red-400 text-h2-micro mt-1">{fieldErrors.telefon}</p>}
               </div>
             </div>
           </div>
 
           {/* Poster bilgileri */}
-          <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-6 space-y-4">
-            <h2 className="text-white font-semibold text-base mb-2">Poster Bilgileri</h2>
+          <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-6 space-y-4">
+            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-2">Poster Bilgileri</h2>
 
             <div>
-              <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Poster Başlığı *</label>
+              <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Poster Başlığı *</label>
               <input
                 required
                 value={form.poster_basligi}
                 onChange={set("poster_basligi")}
                 placeholder="Posterinizin tam başlığı"
-                className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600"
+                className={inputCls}
               />
             </div>
 
             <div>
-              <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Konu Başlığı *</label>
+              <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Konu Başlığı *</label>
               <select
                 required
                 value={form.konu_basligi}
                 onChange={set("konu_basligi")}
-                className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors"
+                className={inputCls}
               >
                 <option value="" disabled>Konu seçin</option>
                 {topics.map((t) => (
@@ -310,8 +320,8 @@ export default function PosterBasvurusu() {
 
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Özet *</label>
-                <span className={`text-xs font-semibold ${ozetWordCount >= 290 ? "text-red-400" : "text-slate-500"}`}>
+                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider">Özet *</label>
+                <span className={`text-h2-micro font-semibold ${ozetWordCount >= 290 ? "text-red-400" : "text-h2-ink-3"}`}>
                   {ozetWordCount} / 300 kelime
                 </span>
               </div>
@@ -321,22 +331,26 @@ export default function PosterBasvurusu() {
                 onChange={handleOzet}
                 placeholder="Çalışmanızın kısa özetini yazın..."
                 rows={6}
-                className="w-full bg-[#060B18] border border-[#1A2845] focus:border-[#0066CC] rounded-xl px-4 py-3 text-white text-sm outline-none transition-colors placeholder:text-slate-600 resize-none"
+                className={`${inputCls} resize-none`}
               />
             </div>
           </div>
 
           {/* PDF Yükleme */}
-          <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-6">
-            <h2 className="text-white font-semibold text-base mb-1">Poster Dosyası</h2>
-            <p className="text-slate-500 text-xs mb-4">Opsiyonel — PDF formatında, max 10 MB</p>
+          <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-6">
+            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-1">Poster Dosyası</h2>
+            <p className="text-h2-ink-3 text-h2-micro mb-4">Opsiyonel — PDF formatında, max 10 MB</p>
 
             <div
               onClick={() => fileRef.current?.click()}
-              className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
+              onKeyDown={handleDropZoneKeyDown}
+              role="button"
+              tabIndex={0}
+              aria-label="PDF dosyası seç"
+              className={`border-2 border-dashed rounded-h2-md p-8 text-center cursor-pointer transition-all ${
                 pdfFile
-                  ? "border-[#00D084]/50 bg-[#00D084]/5"
-                  : "border-[#1A2845] hover:border-[#0066CC]/50 hover:bg-[#0066CC]/5"
+                  ? "border-h2-green/50 bg-h2-green/5"
+                  : "border-h2-border hover:border-h2-blue/50 hover:bg-h2-blue/5"
               }`}
             >
               <input
@@ -349,14 +363,14 @@ export default function PosterBasvurusu() {
               {pdfFile ? (
                 <div>
                   <div className="text-3xl mb-2">📄</div>
-                  <p className="text-[#00D084] font-semibold text-sm">{pdfFile.name}</p>
-                  <p className="text-slate-500 text-xs mt-1">
+                  <p className="text-h2-green font-semibold text-h2-small">{pdfFile.name}</p>
+                  <p className="text-h2-ink-3 text-h2-micro mt-1">
                     {(pdfFile.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); setPdfFile(null); }}
-                    className="text-slate-500 hover:text-red-400 text-xs mt-2 transition-colors"
+                    className="text-h2-ink-3 hover:text-red-400 text-h2-micro mt-2 transition-colors"
                   >
                     Kaldır
                   </button>
@@ -364,23 +378,23 @@ export default function PosterBasvurusu() {
               ) : (
                 <div>
                   <div className="text-3xl mb-2">📎</div>
-                  <p className="text-slate-400 text-sm font-medium">PDF dosyanızı buraya sürükleyin</p>
-                  <p className="text-slate-600 text-xs mt-1">veya tıklayarak seçin</p>
+                  <p className="text-h2-ink-2 text-h2-small font-medium">PDF dosyanızı buraya sürükleyin</p>
+                  <p className="text-h2-ink-disabled text-h2-micro mt-1">veya tıklayarak seçin</p>
                 </div>
               )}
             </div>
           </div>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3">
-              <p className="text-red-400 text-sm">{error}</p>
+            <div className="bg-red-500/10 border border-red-500/30 rounded-h2-md px-4 py-3">
+              <p className="text-red-400 text-h2-small">{error}</p>
             </div>
           )}
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#00D084] hover:bg-[#00b872] disabled:opacity-50 text-white font-bold py-4 rounded-xl transition-all hover:shadow-lg hover:shadow-[#00D084]/20 text-base"
+            className="w-full bg-h2-green hover:bg-h2-green/85 disabled:opacity-50 text-white font-bold py-4 rounded-h2-md transition-all hover:shadow-lg hover:shadow-h2-green/20 text-base"
           >
             {loading ? "Gönderiliyor..." : "Başvuruyu Gönder"}
           </button>

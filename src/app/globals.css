@@ -1,14 +1,65 @@
 @import "tailwindcss";
 
+/*
+  Renk rolleri (kesin kural):
+  - blue   = birincil aksiyon (buton, aktif sekme) — küçük metin için kontrast yetersiz, sadece dolgu/büyük başlıkta kullan
+  - cyan   = bilgi/etiket (eyebrow, link, rozet)
+  - green  = akademik fırsat / başarı (Poster Çağrısı, onay mesajları)
+  - amber  = sponsor rütbe göstergesi (yalnızca Sponsors bölümü)
+*/
 @theme {
-  --color-h2-dark:   #06091A;
-  --color-h2-card:   #0D1530;
-  --color-h2-border: #1A2845;
-  --color-h2-blue:   #0066CC;
-  --color-h2-cyan:   #00C8FF;
-  --color-h2-green:  #00D084;
-  --color-h2-text:   #E8EDF5;
-  --color-h2-muted:  #7A8BA8;
+  /* Surfaces */
+  --color-h2-bg:          #06091A;
+  --color-h2-surface-1:   #0A0F24;
+  --color-h2-surface-2:   #0D1530;
+  --color-h2-surface-3:   #111B3C;
+  --color-h2-border:      #1A2845;
+  --color-h2-border-soft: #14203A;
+
+  /* Text hierarchy */
+  --color-h2-ink-1:        #F2F5FA;
+  --color-h2-ink-2:        #B7C2D6;
+  --color-h2-ink-3:        #7A8BA8;
+  --color-h2-ink-disabled: #4B5A78;
+
+  /* Accents */
+  --color-h2-blue:        #0066CC;
+  --color-h2-blue-bright: #1C7FE0;
+  --color-h2-cyan:        #00C8FF;
+  --color-h2-green:       #00D084;
+  --color-h2-amber:       #E8A33D;
+
+  /* Radius scale */
+  --radius-h2-sm: 6px;
+  --radius-h2-md: 12px;
+  --radius-h2-lg: 20px;
+  --radius-h2-xl: 28px;
+
+  /* Type scale */
+  --text-h2-display:  3.5rem;
+  --text-h2-display--line-height: 1.05;
+  --text-h2-h1:        2.75rem;
+  --text-h2-h1--line-height: 1.1;
+  --text-h2-h2:         2rem;
+  --text-h2-h2--line-height: 1.15;
+  --text-h2-h3:        1.375rem;
+  --text-h2-h3--line-height: 1.3;
+  --text-h2-body-lg:   1.125rem;
+  --text-h2-body-lg--line-height: 1.65;
+  --text-h2-body:       1rem;
+  --text-h2-body--line-height: 1.6;
+  --text-h2-small:     0.875rem;
+  --text-h2-small--line-height: 1.5;
+  --text-h2-micro:     0.75rem;
+  --text-h2-micro--line-height: 1.4;
+
+  /* Section rhythm */
+  --spacing-h2-section-y:    7rem;
+  --spacing-h2-section-y-sm: 4rem;
+
+  /* Fonts — raw font-family variables come from next/font in layout.tsx */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, sans-serif;
 }
 
 html {
@@ -16,7 +67,24 @@ html {
 }
 
 body {
-  background-color: #06091A;
-  color: #E8EDF5;
+  background-color: var(--color-h2-bg);
+  color: var(--color-h2-ink-1);
   -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-h2-cyan);
+  outline-offset: 2px;
+  border-radius: var(--radius-h2-sm);
 }

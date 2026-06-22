@@ -1,14 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Türkiye Hidrojen Zirvesi 2026 | 22–23 Ekim · Ankara",
   description:
-    "Türkiye Hidrojen Zirvesi 2026 — 22–23 Ekim 2026, Ankara. Türkiye'de Hidrojen Ekosisteminin İnşası: Teknoloji, Strateji ve Uygulama. TESPAM & AYBÜ Hidrojen Araştırma Merkezi.",
+    "TESPAM tarafından Ankara Yıldırım Beyazıt Üniversitesi ev sahipliğinde düzenlenen Türkiye Hidrojen Zirvesi 2026 — 22–23 Ekim 2026, Ankara.",
 };
 
 export default function RootLayout({
@@ -17,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr" className={inter.className}>
-      <body>
+    <html lang="tr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="font-sans">
         {children}
         <SpeedInsights />
       </body>

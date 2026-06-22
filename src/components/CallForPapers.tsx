@@ -30,123 +30,123 @@ const steps = [
 
 export default function CallForPapers() {
   return (
-    <section id="cfp" className="bg-[#060B18] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Heading */}
-          <div className="text-center mb-16">
-            <span className="text-[#00D084] font-semibold text-sm uppercase tracking-widest">
-              Akademik Katkı
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3">
-              Poster Çağrısı
-            </h2>
-            <p className="text-slate-400 mt-5 max-w-3xl mx-auto text-lg leading-relaxed">
-              Türkiye Hidrojen Zirvesi 2026 kapsamında araştırmacıları,
-              akademisyenleri, uzmanları ve lisansüstü öğrencileri poster
-              çalışmalarını sunmaya davet ediyoruz.
-            </p>
+    <section id="cfp" className="bg-h2-surface-1 py-16 sm:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
+            Akademik Katkı
+          </span>
+          <h2 className="font-display text-h2-h1 font-bold text-h2-ink-1 mt-3">
+            Poster Çağrısı
+          </h2>
+          <p className="text-h2-ink-2 mt-5 max-w-3xl mx-auto text-h2-body-lg leading-relaxed">
+            Türkiye Hidrojen Zirvesi 2026 kapsamında araştırmacıları,
+            akademisyenleri, uzmanları ve lisansüstü öğrencileri poster
+            çalışmalarını sunmaya davet ediyoruz.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-14">
+          {/* Left: topics + publication */}
+          <div>
+            <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-6">
+              Konu Başlıkları
+            </h3>
+            <div className="flex flex-wrap gap-2.5">
+              {topics.map((t) => (
+                <span
+                  key={t}
+                  className="bg-h2-surface-2 border border-h2-border hover:border-h2-green/40 hover:text-h2-ink-1 text-h2-ink-2 text-h2-small px-4 py-2 rounded-full transition-all cursor-default"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* Publication opportunity */}
+            <div className="mt-10 bg-gradient-to-br from-h2-green/10 to-transparent border border-h2-green/20 rounded-h2-lg p-7">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-h2-md bg-h2-green/15 border border-h2-green/25 flex items-center justify-center flex-shrink-0 text-xl">
+                  🏆
+                </div>
+                <div>
+                  <h4 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-2">
+                    Poster Ödülleri
+                  </h4>
+                  <p className="text-h2-ink-2 text-h2-small leading-relaxed">
+                    Zirve&apos;de sunulan posterler bilimsel kurul tarafından
+                    değerlendirilecek olup dereceye giren çalışmalar{" "}
+                    <span className="text-h2-green font-semibold">
+                      ödüllendirilecektir.
+                    </span>{" "}
+                    Ayrıca seçilen çalışmalar,{" "}
+                    <span className="text-h2-green font-semibold">
+                      Q1 kategorisindeki uluslararası bir dergide
+                    </span>{" "}
+                    değerlendirilmek üzere davet edilecektir.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-14">
-            {/* Left: topics + publication */}
+          {/* Right: dates + process */}
+          <div className="space-y-8">
+            {/* Important dates */}
             <div>
-              <h3 className="text-white font-bold text-xl mb-6">
-                Konu Başlıkları
+              <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-5">
+                Önemli Tarihler
               </h3>
-              <div className="flex flex-wrap gap-2.5">
-                {topics.map((t) => (
-                  <span
-                    key={t}
-                    className="bg-[#0D1530] border border-[#1A2845] hover:border-[#00D084]/40 hover:text-white text-slate-400 text-sm px-4 py-2 rounded-full transition-all cursor-default"
+              <div className="space-y-2.5">
+                {dates.map(({ label, value, highlight }) => (
+                  <div
+                    key={label}
+                    className={`flex items-center justify-between p-4 rounded-h2-md border ${
+                      highlight
+                        ? "bg-h2-blue/10 border-h2-blue/35"
+                        : "bg-h2-surface-2 border-h2-border"
+                    }`}
                   >
-                    {t}
-                  </span>
+                    <span className="text-h2-ink-2 text-h2-small">{label}</span>
+                    <span
+                      className={`font-semibold text-h2-small ${
+                        highlight ? "text-h2-cyan" : "text-h2-ink-3"
+                      }`}
+                    >
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Submission process */}
+            <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-7">
+              <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-6">
+                Başvuru Süreci
+              </h3>
+              <div className="space-y-5">
+                {steps.map(({ n, text }) => (
+                  <div key={n} className="flex items-center gap-4">
+                    <div className="w-9 h-9 rounded-full bg-h2-blue/20 border border-h2-blue/35 flex items-center justify-center text-h2-cyan text-h2-micro font-bold flex-shrink-0">
+                      {n}
+                    </div>
+                    <span className="text-h2-ink-2 text-h2-small">{text}</span>
+                  </div>
                 ))}
               </div>
 
-              {/* Publication opportunity */}
-              <div className="mt-10 bg-gradient-to-br from-[#00D084]/10 to-transparent border border-[#00D084]/20 rounded-2xl p-7">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#00D084]/15 border border-[#00D084]/25 flex items-center justify-center flex-shrink-0 text-xl">
-                    🏆
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-lg mb-2">
-                      Poster Ödülleri
-                    </h4>
-                    <p className="text-slate-400 text-sm leading-relaxed">
-                      Zirve&apos;de sunulan posterler bilimsel kurul tarafından
-                      değerlendirilecek olup dereceye giren çalışmalar{" "}
-                      <span className="text-[#00D084] font-semibold">
-                        ödüllendirilecektir.
-                      </span>{" "}
-                      Ayrıca seçilen çalışmalar,{" "}
-                      <span className="text-[#00D084] font-semibold">
-                        Q1 kategorisindeki uluslararası bir dergide
-                      </span>{" "}
-                      değerlendirilmek üzere davet edilecektir.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: dates + process */}
-            <div className="space-y-8">
-              {/* Important dates */}
-              <div>
-                <h3 className="text-white font-bold text-xl mb-5">
-                  Önemli Tarihler
-                </h3>
-                <div className="space-y-2.5">
-                  {dates.map(({ label, value, highlight }) => (
-                    <div
-                      key={label}
-                      className={`flex items-center justify-between p-4 rounded-xl border ${
-                        highlight
-                          ? "bg-[#0066CC]/10 border-[#0066CC]/35"
-                          : "bg-[#0D1530] border-[#1A2845]"
-                      }`}
-                    >
-                      <span className="text-slate-400 text-sm">{label}</span>
-                      <span
-                        className={`font-bold text-sm ${
-                          highlight ? "text-[#00C8FF]" : "text-slate-500"
-                        }`}
-                      >
-                        {value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Submission process */}
-              <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-7">
-                <h3 className="text-white font-bold text-xl mb-6">
-                  Başvuru Süreci
-                </h3>
-                <div className="space-y-5">
-                  {steps.map(({ n, text }) => (
-                    <div key={n} className="flex items-center gap-4">
-                      <div className="w-9 h-9 rounded-full bg-[#0066CC]/20 border border-[#0066CC]/35 flex items-center justify-center text-[#00C8FF] text-xs font-bold flex-shrink-0">
-                        {n}
-                      </div>
-                      <span className="text-slate-400 text-sm">{text}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <a
-                  href="/poster-basvurusu"
-                  className="mt-8 w-full block text-center bg-[#00D084] hover:bg-[#00b872] text-white font-semibold py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-[#00D084]/20"
-                >
-                  Poster Başvurusu Yap
-                </a>
-              </div>
+              <a
+                href="/poster-basvurusu"
+                className="mt-8 w-full block text-center bg-h2-green hover:bg-h2-green/85 text-white font-semibold py-3.5 rounded-h2-md transition-all hover:shadow-lg hover:shadow-h2-green/20"
+              >
+                Poster Başvurusu Yap
+              </a>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
   );
 }

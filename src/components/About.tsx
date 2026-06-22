@@ -25,32 +25,32 @@ const details = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-[#06091A] py-24">
+    <section id="about" className="bg-h2-bg py-16 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <span className="text-[#00C8FF] font-semibold text-sm uppercase tracking-widest">
+        <div className="mb-16 max-w-2xl">
+          <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
             Kongre Hakkında
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold text-white mt-3">
+          <h2 className="mt-3 font-display text-h2-h1 font-bold leading-tight text-h2-ink-1">
             Neden Türkiye Hidrojen Zirvesi 2026?
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-14 items-start">
           {/* Left: text */}
-          <div className="space-y-6 text-slate-400 text-lg leading-relaxed">
+          <div className="space-y-6 text-h2-body-lg leading-relaxed text-h2-ink-2">
             <p>
               Küresel enerji dönüşümünün hız kazandığı günümüzde hidrojen;
               sürdürülebilir enerji sistemlerinin kurulması, karbon emisyonlarının
               azaltılması, sanayinin dönüşümü ve yeni nesil temiz enerji
               çözümlerinin geliştirilmesi açısından{" "}
-              <span className="text-white font-medium">stratejik bir alan</span>{" "}
+              <span className="font-medium text-h2-ink-1">stratejik bir alan</span>{" "}
               haline gelmiştir.
             </p>
             <p>
-              Ankara Yıldırım Beyazıt Üniversitesi ve TESPAM Hidrojen Araştırma
-              Merkezi iş birliğiyle düzenlenen Türkiye Hidrojen Zirvesi 2026; araştırmacıları,
+              TESPAM tarafından, Ankara Yıldırım Beyazıt Üniversitesi ev
+              sahipliğinde düzenlenen Türkiye Hidrojen Zirvesi 2026; araştırmacıları,
               kamu kurumlarını, özel sektör temsilcilerini, yatırımcıları,
               teknoloji geliştiricileri ve politika yapıcıları Ankara&apos;da
               buluşturacaktır.
@@ -58,7 +58,7 @@ export default function About() {
             <p>
               Etkinlik, yalnızca akademik bildirilerin sunulduğu bir kongre
               değil; aynı zamanda{" "}
-              <span className="text-white font-medium">
+              <span className="font-medium text-h2-ink-1">
                 stratejik paneller, yüksek düzey konuşmalar
               </span>{" "}
               ve sektör odaklı etkileşimlerle güçlendirilmiş bir buluşma zemini
@@ -66,14 +66,16 @@ export default function About() {
             </p>
 
             <div className="pt-4">
-              <h3 className="text-white font-bold text-xl mb-5">
+              <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-5">
                 Temel Hedefler
               </h3>
               <ul className="space-y-3">
-                {objectives.map((obj) => (
+                {objectives.map((obj, i) => (
                   <li key={obj} className="flex items-start gap-3">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#00C8FF] flex-shrink-0" />
-                    <span>{obj}</span>
+                    <span className="mt-0.5 font-display text-h2-small font-semibold text-h2-cyan flex-shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-h2-body">{obj}</span>
                   </li>
                 ))}
               </ul>
@@ -83,17 +85,17 @@ export default function About() {
           {/* Right: cards */}
           <div className="space-y-6">
             {/* Event info card */}
-            <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-7">
-              <h3 className="text-white font-bold text-xl pb-4 border-b border-[#1A2845] mb-5">
+            <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-7">
+              <h3 className="text-h2-h3 font-semibold text-h2-ink-1 pb-4 border-b border-h2-border mb-5">
                 Etkinlik Bilgileri
               </h3>
               <div className="space-y-4">
                 {details.map(({ label, value }) => (
                   <div key={label} className="flex justify-between items-start gap-4">
-                    <span className="text-slate-500 font-medium text-sm">
+                    <span className="text-h2-small font-medium text-h2-ink-3">
                       {label}
                     </span>
-                    <span className="text-white font-semibold text-sm text-right">
+                    <span className="text-h2-small font-semibold text-h2-ink-1 text-right">
                       {value}
                     </span>
                   </div>
@@ -102,15 +104,15 @@ export default function About() {
             </div>
 
             {/* Audience card */}
-            <div className="bg-[#0D1530] border border-[#1A2845] rounded-2xl p-7">
-              <h3 className="text-white font-bold text-xl mb-5">
+            <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-7">
+              <h3 className="text-h2-h3 font-semibold text-h2-ink-1 mb-5">
                 Kimler Katılacak?
               </h3>
               <div className="space-y-2.5">
                 {audience.map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <span className="text-[#00D084] font-bold text-sm">✓</span>
-                    <span className="text-slate-400 text-sm">{item}</span>
+                    <span className="text-h2-small font-bold text-h2-green">✓</span>
+                    <span className="text-h2-small text-h2-ink-2">{item}</span>
                   </div>
                 ))}
               </div>

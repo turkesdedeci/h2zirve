@@ -30,23 +30,24 @@ export default function CountdownTimer() {
   const units = [
     { v: t.days, l: "Gün" },
     { v: t.hours, l: "Saat" },
-    { v: t.minutes, l: "Dakika" },
-    { v: t.seconds, l: "Saniye" },
+    { v: t.minutes, l: "Dk" },
+    { v: t.seconds, l: "Sn" },
   ];
 
   return (
-    <div className="flex gap-3 sm:gap-5">
-      {units.map(({ v, l }) => (
-        <div key={l} className="flex flex-col items-center">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl w-16 sm:w-20 h-16 sm:h-20 flex items-center justify-center">
-            <span className="text-2xl sm:text-3xl font-bold text-white tabular-nums">
-              {pad(v)}
-            </span>
-          </div>
-          <span className="text-xs sm:text-sm text-slate-400 mt-2 font-medium">
+    <div className="flex items-baseline gap-2.5 font-display tabular-nums">
+      {units.map(({ v, l }, i) => (
+        <span key={l} className="flex items-baseline gap-1">
+          <span className="text-h2-h3 font-semibold text-h2-ink-1">{pad(v)}</span>
+          <span className="text-h2-micro font-sans font-medium uppercase tracking-wide text-h2-ink-3">
             {l}
           </span>
-        </div>
+          {i < units.length - 1 && (
+            <span className="ml-1.5 text-h2-ink-disabled" aria-hidden="true">
+              ·
+            </span>
+          )}
+        </span>
       ))}
     </div>
   );
