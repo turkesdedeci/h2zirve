@@ -107,11 +107,15 @@ export default function Sponsors() {
         {/* CTA */}
         <div className="text-center">
           <a
-            href="#contact"
+            href="/sponsorluk-basvurusu"
             className="inline-block bg-h2-blue hover:bg-h2-blue-bright text-white font-semibold px-12 py-4 rounded-h2-md text-base transition-all hover:shadow-lg hover:shadow-h2-blue/25"
           >
-            Sponsor Olmak İçin İletişime Geçin
+            Sponsorluk Başvurusu Yap
           </a>
+          <p className="mx-auto mt-4 max-w-xl text-h2-small leading-relaxed text-h2-ink-3">
+            Başvurunuz alındıktan sonra sponsorluk tipi, görünürlük beklentisi
+            ve bütçe aralığına göre ekip sizinle iletişime geçecektir.
+          </p>
         </div>
       </div>
     </section>

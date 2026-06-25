@@ -19,6 +19,17 @@ const info = [
   { icon: "📧", label: "E-posta", value: "h2zirvesi@tespam.org" },
 ];
 
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/showcase/t%C3%BCrkiye-hidrojen-zirvesi",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/h2zirvesi/",
+  },
+];
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -170,13 +181,15 @@ export default function Contact() {
                 Sosyal Medya
               </h3>
               <div className="flex flex-wrap gap-3">
-                {["LinkedIn", "X (Twitter)", "Instagram"].map((p) => (
+                {socialLinks.map((p) => (
                   <a
-                    key={p}
-                    href="#"
+                    key={p.label}
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
                     className="bg-white/5 hover:bg-h2-blue/20 border border-white/8 hover:border-h2-blue/35 rounded-h2-md px-4 py-2.5 text-h2-ink-2 hover:text-h2-ink-1 text-h2-small font-medium transition-all"
                   >
-                    {p}
+                    {p.label}
                   </a>
                 ))}
               </div>

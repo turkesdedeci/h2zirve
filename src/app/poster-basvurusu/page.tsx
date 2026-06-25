@@ -1,108 +1,139 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 
 const topics = [
-  "Hidrojen Üretim Teknolojileri",
-  "Elektroliz ve Yenilikçi Üretim Yöntemleri",
-  "Depolama ve Taşıma",
-  "Yakıt Pilleri",
-  "Enerji Sistemlerinde Hidrojen Kullanımı",
-  "Ulaşım ve Mobilite",
-  "Sanayide Hidrojen Uygulamaları",
-  "Güvenlik ve Standartlar",
-  "Maliyet Analizi ve Ticarileşme",
-  "Finansman, Teşvik ve Yatırım Modelleri",
-  "Politika, Mevzuat ve Strateji Geliştirme",
-  "Ar-Ge, İnovasyon ve Teknoloji Yönetimi",
-  "Savunma ve Sanayi Uygulamaları",
-  "Uluslararası İş Birlikleri",
+  "Hidrojen üretim teknolojileri (elektroliz, termokimyasal vb.)",
+  "Hidrojen depolama ve taşıma teknolojileri",
+  "Hidrojen dağıtım altyapısı ve sistemleri",
+  "Yakıt hücreleri (PEM, SOFC, SOEC vb.)",
+  "Hidrojenin endüstriyel uygulamaları",
+  "Enerji sistemleri entegrasyonu ve hibrit sistemler",
+  "Karbon azaltımı ve sürdürülebilirlik çözümleri",
+  "Hidrojen ekonomisi, politikalar ve stratejiler",
+  "Güvenlik, standartlar ve regülasyonlar",
+  "Mobilite ve ulaşım uygulamaları (kara, deniz, hava)",
+  "Diğer",
+];
+
+const trlLevels = [
+  "TRL 1-3 (Temel araştırma)",
+  "TRL 4-6 (Geliştirme / prototip aşaması)",
+  "TRL 7-9 (Ürün / saha uygulaması)",
+];
+
+const exhibitionNeeds = [
+  "Elektrik bağlantısı",
+  "Masa / stand alanı",
+  "Güvenlik / koruma",
+  "Diğer",
 ];
 
 interface FormData {
-  ad_soyad: string;
-  kurum: string;
-  email: string;
-  telefon: string;
   poster_basligi: string;
-  konu_basligi: string;
-  ozet: string;
+  yazarlar: string;
+  sorumlu_yazar: string;
+  email: string;
+  kurum: string;
+  telefon: string;
+  calisma_alani: string;
+  trl: string;
+  katkisi: string;
+  prototip: "Evet" | "Hayır" | "";
+  prototip_aciklama: string;
+  sergi_ihtiyaclari: string[];
+  notlar: string;
 }
 
 const empty: FormData = {
-  ad_soyad: "",
-  kurum: "",
-  email: "",
-  telefon: "",
   poster_basligi: "",
-  konu_basligi: "",
-  ozet: "",
+  yazarlar: "",
+  sorumlu_yazar: "",
+  email: "",
+  kurum: "",
+  telefon: "",
+  calisma_alani: "",
+  trl: "",
+  katkisi: "",
+  prototip: "",
+  prototip_aciklama: "",
+  sergi_ihtiyaclari: [],
+  notlar: "",
 };
 
 const EMAIL_RE = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-const PHONE_RE = /^0\(\d{3}\)\d{7}$/;
+const PHONE_RE = /^[0-9()+\s-]{10,20}$/;
 
-function formatPhone(raw: string): string {
-  const digits = raw.replace(/\D/g, "").slice(0, 11);
-  if (digits.length === 0) return "";
-  if (digits.length <= 1) return digits;
-  if (digits.length <= 4) return `${digits[0]}(${digits.slice(1)}`;
-  if (digits.length <= 11) return `${digits[0]}(${digits.slice(1, 4)})${digits.slice(4)}`;
-  return raw;
+function wordCount(value: string) {
+  return value.trim() === "" ? 0 : value.trim().split(/\s+/).length;
 }
 
 export default function PosterBasvurusu() {
   const [form, setForm] = useState<FormData>(empty);
-  const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData | "pdf", string>>>({});
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const set = (k: keyof FormData) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-      setForm((f) => ({ ...f, [k]: e.target.value }));
+  const set = (key: keyof FormData) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) => {
+      setForm((current) => ({ ...current, [key]: e.target.value }));
+    };
 
-  function handlePhone(e: React.ChangeEvent<HTMLInputElement>) {
-    const formatted = formatPhone(e.target.value);
-    setForm((f) => ({ ...f, telefon: formatted }));
-    if (formatted && !PHONE_RE.test(formatted)) {
-      setFieldErrors((fe) => ({ ...fe, telefon: "Format: 0(555)5555555" }));
-    } else {
-      setFieldErrors((fe) => ({ ...fe, telefon: undefined }));
+  function handleResponsibleAuthor(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    if (/^[\p{L}\s.'-]*$/u.test(value)) {
+      setForm((current) => ({ ...current, sorumlu_yazar: value }));
     }
   }
 
   function handleEmail(e: React.ChangeEvent<HTMLInputElement>) {
-    const val = e.target.value;
-    setForm((f) => ({ ...f, email: val }));
-    if (val && !EMAIL_RE.test(val)) {
-      setFieldErrors((fe) => ({ ...fe, email: "Geçerli bir e-posta adresi girin" }));
-    } else {
-      setFieldErrors((fe) => ({ ...fe, email: undefined }));
+    const value = e.target.value;
+    setForm((current) => ({ ...current, email: value }));
+    setFieldErrors((current) => ({
+      ...current,
+      email: value && !EMAIL_RE.test(value) ? "Geçerli bir e-posta adresi girin" : undefined,
+    }));
+  }
+
+  function handlePhone(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setForm((current) => ({ ...current, telefon: value }));
+    setFieldErrors((current) => ({
+      ...current,
+      telefon:
+        value && !PHONE_RE.test(value)
+          ? "Telefon numarasını 10-20 karakter arasında girin"
+          : undefined,
+    }));
+  }
+
+  function handleContribution(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    const value = e.target.value;
+    if (wordCount(value) <= 80) {
+      setForm((current) => ({ ...current, katkisi: value }));
     }
   }
 
-  function handleAdSoyad(e: React.ChangeEvent<HTMLInputElement>) {
-    const val = e.target.value;
-    // Türkçe dahil sadece harf ve boşluk
-    if (/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]*$/.test(val)) {
-      setForm((f) => ({ ...f, ad_soyad: val }));
-    }
+  function toggleNeed(need: string) {
+    setForm((current) => {
+      const selected = current.sergi_ihtiyaclari.includes(need);
+      return {
+        ...current,
+        sergi_ihtiyaclari: selected
+          ? current.sergi_ihtiyaclari.filter((item) => item !== need)
+          : [...current.sergi_ihtiyaclari, need],
+      };
+    });
   }
-
-  function handleOzet(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    const val = e.target.value;
-    const wordCount = val.trim() === "" ? 0 : val.trim().split(/\s+/).length;
-    if (wordCount <= 300) {
-      setForm((f) => ({ ...f, ozet: val }));
-    }
-  }
-
-  const ozetWordCount = form.ozet.trim() === "" ? 0 : form.ozet.trim().split(/\s+/).length;
 
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -111,12 +142,13 @@ export default function PosterBasvurusu() {
       setError("Yalnızca PDF dosyası yükleyebilirsiniz.");
       return;
     }
-    if (file.size > 10 * 1024 * 1024) {
-      setError("Dosya boyutu 10 MB'ı geçemez.");
+    if (file.size > 15 * 1024 * 1024) {
+      setError("Dosya boyutu 15 MB'ı geçemez.");
       return;
     }
     setError("");
     setPdfFile(file);
+    setFieldErrors((current) => ({ ...current, pdf: undefined }));
   }
 
   function handleDropZoneKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
@@ -126,71 +158,126 @@ export default function PosterBasvurusu() {
     }
   }
 
+  function buildSubmissionSummary() {
+    const lines = [
+      `Yazar(lar): ${form.yazarlar}`,
+      `Sorumlu Yazar: ${form.sorumlu_yazar}`,
+      `Çalışma Alanı: ${form.calisma_alani}`,
+      `Teknoloji Hazırlık Seviyesi: ${form.trl}`,
+      `Öne Çıkan Katkı: ${form.katkisi}`,
+      `Poster ile prototip/ürün sergileme isteği: ${form.prototip}`,
+    ];
+
+    if (form.prototip === "Evet" && form.prototip_aciklama.trim()) {
+      lines.push(`Sergilenecek ürün/prototip: ${form.prototip_aciklama}`);
+    }
+
+    if (form.sergi_ihtiyaclari.length > 0) {
+      lines.push(`Sergi özel ihtiyaçları: ${form.sergi_ihtiyaclari.join(", ")}`);
+    }
+
+    if (form.notlar.trim()) {
+      lines.push(`Not / Açıklama: ${form.notlar}`);
+    }
+
+    return lines.join("\n");
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
     if (!EMAIL_RE.test(form.email)) {
-      setFieldErrors((fe) => ({ ...fe, email: "Geçerli bir e-posta adresi girin" }));
+      setFieldErrors((current) => ({
+        ...current,
+        email: "Geçerli bir e-posta adresi girin",
+      }));
       return;
     }
+
     if (form.telefon && !PHONE_RE.test(form.telefon)) {
-      setFieldErrors((fe) => ({ ...fe, telefon: "Format: 0(555)5555555" }));
+      setFieldErrors((current) => ({
+        ...current,
+        telefon: "Telefon numarasını 10-20 karakter arasında girin",
+      }));
       return;
     }
+
+    if (!pdfFile) {
+      setFieldErrors((current) => ({
+        ...current,
+        pdf: "Genişletilmiş özet PDF dosyası zorunludur",
+      }));
+      return;
+    }
+
     setLoading(true);
     setError("");
 
-    let pdf_url: string | null = null;
+    const fileName = `${Date.now()}_${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, "_")}`;
+    const { error: uploadError } = await supabase.storage
+      .from("poster-dosyalari")
+      .upload(fileName, pdfFile);
 
-    if (pdfFile) {
-      const fileName = `${Date.now()}_${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, "_")}`;
-      const { error: uploadError } = await supabase.storage
-        .from("poster-dosyalari")
-        .upload(fileName, pdfFile);
-
-      if (uploadError) {
-        setError("PDF yüklenirken hata oluştu: " + uploadError.message);
-        setLoading(false);
-        return;
-      }
-
-      const { data } = supabase.storage
-        .from("poster-dosyalari")
-        .getPublicUrl(fileName);
-      pdf_url = data.publicUrl;
+    if (uploadError) {
+      setError("PDF yüklenirken hata oluştu: " + uploadError.message);
+      setLoading(false);
+      return;
     }
 
-    const { error: err } = await supabase
+    const { data } = supabase.storage
+      .from("poster-dosyalari")
+      .getPublicUrl(fileName);
+
+    const { error: insertError } = await supabase
       .from("poster_basvurulari")
-      .insert([{ ...form, pdf_url }]);
+      .insert([
+        {
+          ad_soyad: form.sorumlu_yazar,
+          kurum: form.kurum,
+          email: form.email,
+          telefon: form.telefon || null,
+          poster_basligi: form.poster_basligi,
+          konu_basligi: form.calisma_alani,
+          ozet: buildSubmissionSummary(),
+          pdf_url: data.publicUrl,
+        },
+      ]);
 
     setLoading(false);
-    if (err) {
-      setError("Bir hata oluştu: " + err.message);
-    } else {
-      setSuccess(true);
+
+    if (insertError) {
+      setError("Bir hata oluştu: " + insertError.message);
+      return;
     }
+
+    setSuccess(true);
   }
 
   const inputCls =
-    "w-full bg-h2-bg border border-h2-border focus:border-h2-blue rounded-h2-md px-4 py-3 text-h2-ink-1 text-h2-small outline-none transition-colors placeholder:text-h2-ink-disabled";
+    "min-w-0 w-full rounded-h2-md border border-h2-border bg-h2-bg px-4 py-3 text-h2-small text-h2-ink-1 outline-none transition-colors placeholder:text-h2-ink-disabled focus:border-h2-blue";
+  const labelCls =
+    "mb-1.5 block text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3";
+  const contributionCount = wordCount(form.katkisi);
 
   if (success) {
     return (
-      <div className="min-h-screen bg-h2-bg flex items-center justify-center px-4">
-        <div className="text-center max-w-md">
-          <div className="w-20 h-20 rounded-full bg-h2-green/15 border border-h2-green/30 flex items-center justify-center text-4xl mx-auto mb-6">
-            ✅
+      <div className="flex min-h-screen items-center justify-center bg-h2-bg px-4">
+        <div className="max-w-md text-center">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-green/30 bg-h2-green/15 text-3xl text-h2-green">
+            ✓
           </div>
-          <h2 className="font-display text-h2-h2 font-bold text-h2-ink-1 mb-3">Başvurunuz Alındı!</h2>
-          <p className="text-h2-ink-2 leading-relaxed mb-8">
-            Poster başvurunuz bilimsel kurulumuza iletildi.
-            Değerlendirme sonucunu{" "}
-            <span className="text-h2-ink-1 font-semibold">{form.email}</span>{" "}
+          <h2 className="mb-3 font-display text-h2-h2 font-bold text-h2-ink-1">
+            Başvurunuz Alındı
+          </h2>
+          <p className="mb-8 leading-relaxed text-h2-ink-2">
+            Poster özeti başvurunuz bilimsel kurulumuza iletildi. Değerlendirme
+            sonucunu{" "}
+            <span className="font-semibold text-h2-ink-1">{form.email}</span>{" "}
             adresine göndereceğiz.
           </p>
           <a
             href="/"
-            className="bg-h2-green hover:bg-h2-green/85 text-white font-semibold px-8 py-3 rounded-h2-md transition-all inline-block"
+            className="inline-block rounded-h2-md bg-h2-green px-8 py-3 font-semibold text-white transition-all hover:bg-h2-green/85"
           >
             Ana Sayfaya Dön
           </a>
@@ -200,11 +287,10 @@ export default function PosterBasvurusu() {
   }
 
   return (
-    <div className="min-h-screen bg-h2-bg">
-      {/* Header */}
-      <div className="bg-h2-bg/95 border-b border-h2-border px-4 py-4">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <a href="/">
+    <div className="min-h-screen overflow-x-hidden bg-h2-bg">
+      <div className="border-b border-h2-border bg-h2-bg/95 px-4 py-4">
+        <div className="mx-auto flex max-w-5xl items-center justify-between">
+          <a href="/" aria-label="Ana sayfa">
             <Image
               src="/logos/header.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
@@ -213,193 +299,406 @@ export default function PosterBasvurusu() {
               className="object-contain"
             />
           </a>
-          <a href="/#cfp" className="text-h2-ink-2 hover:text-h2-ink-1 text-h2-small transition-colors">
-            ← Geri
+          <a
+            href="/#cfp"
+            className="text-h2-small text-h2-ink-2 transition-colors hover:text-h2-ink-1"
+          >
+            Geri
           </a>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="max-w-3xl mx-auto px-4 py-14">
-        <div className="mb-10">
-          <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
-            Akademik Katkı
-          </span>
-          <h1 className="font-display text-h2-h1 font-bold text-h2-ink-1 mt-3 mb-3">
-            Poster Başvurusu
-          </h1>
-          <p className="text-h2-ink-2 leading-relaxed">
-            Formu eksiksiz doldurun. Başvurunuz bilimsel kurul tarafından
-            değerlendirilecek ve sonuç e-posta ile bildirilecektir.
-          </p>
-        </div>
+      <main className="mx-auto grid max-w-5xl gap-10 px-4 py-12 lg:grid-cols-[1fr_20rem] lg:py-16">
+        <div className="min-w-0">
+          <div className="mb-10">
+            <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
+              Poster Özeti Başvurusu
+            </span>
+            <h1 className="mt-3 font-display text-h2-h2 font-bold text-h2-ink-1 sm:text-h2-h1">
+              Türkiye Hidrojen Zirvesi 2026
+            </h1>
+            <p className="mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
+              Genişletilmiş özetinizi 1 Eylül 2026 tarihine kadar yükleyin.
+              Kabul edilen çalışmalar için final poster yükleme süreci 10 Eylül
+              2026 tarihinde açılacaktır.
+            </p>
+          </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Kişisel bilgiler */}
-          <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-6 space-y-4">
-            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-2">Kişisel Bilgiler</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <section className="min-w-0 space-y-4 rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
+              <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
+                Başvuru Bilgileri
+              </h2>
 
-            <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Ad Soyad *</label>
+                <label className={labelCls}>Poster Başlığı *</label>
                 <input
                   required
-                  value={form.ad_soyad}
-                  onChange={handleAdSoyad}
-                  placeholder="Ad Soyad"
+                  value={form.poster_basligi}
+                  onChange={set("poster_basligi")}
+                  placeholder="Posterinizin tam başlığı"
                   className={inputCls}
                 />
               </div>
+
               <div>
-                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Kurum / Üniversite *</label>
+                <label className={labelCls}>Yazar(lar) *</label>
                 <input
                   required
-                  value={form.kurum}
-                  onChange={set("kurum")}
-                  placeholder="Kurum adı"
+                  value={form.yazarlar}
+                  onChange={set("yazarlar")}
+                  placeholder="Örn: Ad Soyad, Ad Soyad..."
                   className={inputCls}
                 />
               </div>
-            </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">E-posta *</label>
-                <input
-                  required
-                  type="email"
-                  value={form.email}
-                  onChange={handleEmail}
-                  placeholder="ornek@kurum.edu.tr"
-                  className={`${inputCls} ${fieldErrors.email ? "border-red-500/60" : ""}`}
-                />
-                {fieldErrors.email && <p className="text-red-400 text-h2-micro mt-1">{fieldErrors.email}</p>}
-              </div>
-              <div>
-                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Telefon</label>
-                <input
-                  value={form.telefon}
-                  onChange={handlePhone}
-                  placeholder="0(555)5555555"
-                  className={`${inputCls} ${fieldErrors.telefon ? "border-red-500/60" : ""}`}
-                />
-                {fieldErrors.telefon && <p className="text-red-400 text-h2-micro mt-1">{fieldErrors.telefon}</p>}
-              </div>
-            </div>
-          </div>
-
-          {/* Poster bilgileri */}
-          <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-6 space-y-4">
-            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-2">Poster Bilgileri</h2>
-
-            <div>
-              <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Poster Başlığı *</label>
-              <input
-                required
-                value={form.poster_basligi}
-                onChange={set("poster_basligi")}
-                placeholder="Posterinizin tam başlığı"
-                className={inputCls}
-              />
-            </div>
-
-            <div>
-              <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-1.5 block">Konu Başlığı *</label>
-              <select
-                required
-                value={form.konu_basligi}
-                onChange={set("konu_basligi")}
-                className={inputCls}
-              >
-                <option value="" disabled>Konu seçin</option>
-                {topics.map((t) => (
-                  <option key={t} value={t}>{t}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider">Özet *</label>
-                <span className={`text-h2-micro font-semibold ${ozetWordCount >= 290 ? "text-red-400" : "text-h2-ink-3"}`}>
-                  {ozetWordCount} / 300 kelime
-                </span>
-              </div>
-              <textarea
-                required
-                value={form.ozet}
-                onChange={handleOzet}
-                placeholder="Çalışmanızın kısa özetini yazın..."
-                rows={6}
-                className={`${inputCls} resize-none`}
-              />
-            </div>
-          </div>
-
-          {/* PDF Yükleme */}
-          <div className="bg-h2-surface-2 border border-h2-border rounded-h2-lg p-6">
-            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-1">Poster Dosyası</h2>
-            <p className="text-h2-ink-3 text-h2-micro mb-4">Opsiyonel — PDF formatında, max 10 MB</p>
-
-            <div
-              onClick={() => fileRef.current?.click()}
-              onKeyDown={handleDropZoneKeyDown}
-              role="button"
-              tabIndex={0}
-              aria-label="PDF dosyası seç"
-              className={`border-2 border-dashed rounded-h2-md p-8 text-center cursor-pointer transition-all ${
-                pdfFile
-                  ? "border-h2-green/50 bg-h2-green/5"
-                  : "border-h2-border hover:border-h2-blue/50 hover:bg-h2-blue/5"
-              }`}
-            >
-              <input
-                ref={fileRef}
-                type="file"
-                accept="application/pdf"
-                onChange={handleFile}
-                className="hidden"
-              />
-              {pdfFile ? (
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <div className="text-3xl mb-2">📄</div>
-                  <p className="text-h2-green font-semibold text-h2-small">{pdfFile.name}</p>
-                  <p className="text-h2-ink-3 text-h2-micro mt-1">
-                    {(pdfFile.size / 1024 / 1024).toFixed(2)} MB
-                  </p>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); setPdfFile(null); }}
-                    className="text-h2-ink-3 hover:text-red-400 text-h2-micro mt-2 transition-colors"
-                  >
-                    Kaldır
-                  </button>
+                  <label className={labelCls}>Sorumlu Yazar *</label>
+                  <input
+                    required
+                    value={form.sorumlu_yazar}
+                    onChange={handleResponsibleAuthor}
+                    placeholder="İletişim kişisi"
+                    className={inputCls}
+                  />
                 </div>
-              ) : (
                 <div>
-                  <div className="text-3xl mb-2">📎</div>
-                  <p className="text-h2-ink-2 text-h2-small font-medium">PDF dosyanızı buraya sürükleyin</p>
-                  <p className="text-h2-ink-disabled text-h2-micro mt-1">veya tıklayarak seçin</p>
+                  <label className={labelCls}>Kurum / Şirket *</label>
+                  <input
+                    required
+                    value={form.kurum}
+                    onChange={set("kurum")}
+                    placeholder="Kurum veya şirket adı"
+                    className={inputCls}
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className={labelCls}>E-posta *</label>
+                  <input
+                    required
+                    type="email"
+                    value={form.email}
+                    onChange={handleEmail}
+                    placeholder="ornek@kurum.edu.tr"
+                    className={`${inputCls} ${fieldErrors.email ? "border-red-500/60" : ""}`}
+                  />
+                  {fieldErrors.email && (
+                    <p className="mt-1 text-h2-micro text-red-400">
+                      {fieldErrors.email}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label className={labelCls}>Telefon</label>
+                  <input
+                    value={form.telefon}
+                    onChange={handlePhone}
+                    placeholder="+90 555 555 55 55"
+                    className={`${inputCls} ${fieldErrors.telefon ? "border-red-500/60" : ""}`}
+                  />
+                  {fieldErrors.telefon && (
+                    <p className="mt-1 text-h2-micro text-red-400">
+                      {fieldErrors.telefon}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </section>
+
+            <section className="min-w-0 space-y-4 rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
+              <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
+                Çalışma Bilgileri
+              </h2>
+
+              <div>
+                <label className={labelCls}>Çalışma Alanı *</label>
+                <select
+                  required
+                  value={form.calisma_alani}
+                  onChange={set("calisma_alani")}
+                  className={inputCls}
+                >
+                  <option value="" disabled>
+                    Alan seçin
+                  </option>
+                  {topics.map((topic) => (
+                    <option key={topic} value={topic}>
+                      {topic}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className={labelCls}>Teknoloji Hazırlık Seviyesi *</label>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {trlLevels.map((level) => (
+                    <label
+                      key={level}
+                      className={`cursor-pointer rounded-h2-md border p-4 text-h2-small transition-colors ${
+                        form.trl === level
+                          ? "border-h2-blue bg-h2-blue/15 text-h2-ink-1"
+                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-blue/45"
+                      }`}
+                    >
+                      <input
+                        required
+                        type="radio"
+                        name="trl"
+                        value={level}
+                        checked={form.trl === level}
+                        onChange={set("trl")}
+                        className="sr-only"
+                      />
+                      {level}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-1.5 flex items-center justify-between gap-4">
+                  <label className="text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
+                    Öne Çıkan Katkı *
+                  </label>
+                  <span
+                    className={`text-h2-micro font-semibold ${
+                      contributionCount >= 70 ? "text-red-400" : "text-h2-ink-3"
+                    }`}
+                  >
+                    {contributionCount} / 80 kelime
+                  </span>
+                </div>
+                <textarea
+                  required
+                  value={form.katkisi}
+                  onChange={handleContribution}
+                  placeholder="Jüri için çalışmanın katkısını 2-3 cümlede özetleyin."
+                  rows={4}
+                  className={`${inputCls} resize-none`}
+                />
+              </div>
+            </section>
+
+            <section className="min-w-0 rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
+              <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
+                Genişletilmiş Özet Dosyası
+              </h2>
+              <p className="mt-1 text-h2-micro text-h2-ink-3">
+                Zorunlu - 2-4 sayfa PDF, şekil/grafik içermesi önerilir, max 15 MB
+              </p>
+
+              <div
+                onClick={() => fileRef.current?.click()}
+                onKeyDown={handleDropZoneKeyDown}
+                role="button"
+                tabIndex={0}
+                aria-label="Genişletilmiş özet PDF dosyası seç"
+                className={`mt-5 cursor-pointer rounded-h2-md border-2 border-dashed p-8 text-center transition-all ${
+                  pdfFile
+                    ? "border-h2-green/50 bg-h2-green/5"
+                    : "border-h2-border hover:border-h2-blue/50 hover:bg-h2-blue/5"
+                } ${fieldErrors.pdf ? "border-red-500/60" : ""}`}
+              >
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept="application/pdf"
+                  onChange={handleFile}
+                  className="hidden"
+                />
+                {pdfFile ? (
+                  <div>
+                    <p className="text-h2-small font-semibold text-h2-green">
+                      {pdfFile.name}
+                    </p>
+                    <p className="mt-1 text-h2-micro text-h2-ink-3">
+                      {(pdfFile.size / 1024 / 1024).toFixed(2)} MB
+                    </p>
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setPdfFile(null);
+                      }}
+                      className="mt-3 text-h2-micro text-h2-ink-3 transition-colors hover:text-red-400"
+                    >
+                      Kaldır
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-h2-small font-medium text-h2-ink-2">
+                      PDF dosyanızı buraya sürükleyin
+                    </p>
+                    <p className="mt-1 text-h2-micro text-h2-ink-disabled">
+                      veya tıklayarak seçin
+                    </p>
+                  </div>
+                )}
+              </div>
+              {fieldErrors.pdf && (
+                <p className="mt-2 text-h2-micro text-red-400">
+                  {fieldErrors.pdf}
+                </p>
+              )}
+            </section>
+
+            <section className="min-w-0 space-y-4 rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
+              <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
+                Uygulama ve Sergi
+              </h2>
+
+              <div>
+                <label className={labelCls}>
+                  Poster ile birlikte prototip veya ürün sergilemek istiyor musunuz? *
+                </label>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {(["Evet", "Hayır"] as const).map((answer) => (
+                    <label
+                      key={answer}
+                      className={`cursor-pointer rounded-h2-md border p-4 text-h2-small font-semibold transition-colors ${
+                        form.prototip === answer
+                          ? "border-h2-green bg-h2-green/12 text-h2-ink-1"
+                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-green/45"
+                      }`}
+                    >
+                      <input
+                        required
+                        type="radio"
+                        name="prototip"
+                        value={answer}
+                        checked={form.prototip === answer}
+                        onChange={set("prototip")}
+                        className="sr-only"
+                      />
+                      {answer}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {form.prototip === "Evet" && (
+                <div>
+                  <label className={labelCls}>Sergilenecek Ürün / Prototip</label>
+                  <textarea
+                    value={form.prototip_aciklama}
+                    onChange={set("prototip_aciklama")}
+                    placeholder="Ürün veya prototip hakkında kısa açıklama"
+                    rows={3}
+                    className={`${inputCls} resize-none`}
+                  />
                 </div>
               )}
+
+              <div>
+                <label className={labelCls}>Sergi İçin Özel İhtiyaçlar</label>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {exhibitionNeeds.map((need) => (
+                    <label
+                      key={need}
+                      className={`cursor-pointer rounded-h2-md border p-4 text-h2-small transition-colors ${
+                        form.sergi_ihtiyaclari.includes(need)
+                          ? "border-h2-cyan bg-h2-cyan/10 text-h2-ink-1"
+                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-cyan/45"
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={form.sergi_ihtiyaclari.includes(need)}
+                        onChange={() => toggleNeed(need)}
+                        className="sr-only"
+                      />
+                      {need}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className={labelCls}>Not / Açıklama</label>
+                <textarea
+                  value={form.notlar}
+                  onChange={set("notlar")}
+                  placeholder="Eklemek istediğiniz notlar"
+                  rows={3}
+                  className={`${inputCls} resize-none`}
+                />
+              </div>
+            </section>
+
+            {error && (
+              <div className="rounded-h2-md border border-red-500/30 bg-red-500/10 px-4 py-3">
+                <p className="text-h2-small text-red-400">{error}</p>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-h2-md bg-h2-green py-4 text-base font-bold text-white transition-all hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20 disabled:opacity-50"
+            >
+              {loading ? "Gönderiliyor..." : "Poster Özeti Başvurusunu Gönder"}
+            </button>
+          </form>
+        </div>
+
+        <aside className="min-w-0 space-y-5 lg:sticky lg:top-8 lg:self-start">
+          <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
+            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
+              Önemli Tarihler
+            </h2>
+            <div className="mt-5 space-y-3">
+              {[
+                ["Son Başvuru", "1 Eylül 2026"],
+                ["Kabul Bildirimi", "10 Eylül 2026"],
+                ["Poster Yükleme", "20 Eylül 2026"],
+                ["Zirve", "22-23 Ekim 2026"],
+              ].map(([label, value]) => (
+                <div
+                  key={label}
+                  className="rounded-h2-md border border-h2-border bg-h2-bg/45 p-4"
+                >
+                  <p className="text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
+                    {label}
+                  </p>
+                  <p className="mt-1 text-h2-small font-semibold text-h2-ink-1">
+                    {value}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {error && (
-            <div className="bg-red-500/10 border border-red-500/30 rounded-h2-md px-4 py-3">
-              <p className="text-red-400 text-h2-small">{error}</p>
+          <div className="rounded-h2-lg border border-h2-blue/25 bg-h2-blue/8 p-6">
+            <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
+              Şablonlar
+            </h2>
+            <p className="mt-3 text-h2-small leading-relaxed text-h2-ink-2">
+              Başvuru dosyanızı hazırlamak için genişletilmiş özet şablonunu
+              kullanın.
+            </p>
+            <div className="mt-5 space-y-3">
+              <a
+                href="/templates/poster-extended-abstract.docx"
+                className="block rounded-h2-md bg-h2-blue px-4 py-3 text-center text-h2-small font-semibold text-white transition-all hover:bg-h2-blue-bright"
+              >
+                Özet Şablonu İndir
+              </a>
+              <a
+                href="/templates/hidrojen-zirvesi-a1-poster-sablonu.pdf"
+                className="block rounded-h2-md border border-h2-border px-4 py-3 text-center text-h2-small font-semibold text-h2-ink-1 transition-all hover:border-h2-cyan/45"
+              >
+                Poster Şablonu Önizle
+              </a>
             </div>
-          )}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-h2-green hover:bg-h2-green/85 disabled:opacity-50 text-white font-bold py-4 rounded-h2-md transition-all hover:shadow-lg hover:shadow-h2-green/20 text-base"
-          >
-            {loading ? "Gönderiliyor..." : "Başvuruyu Gönder"}
-          </button>
-        </form>
-      </div>
+          </div>
+        </aside>
+      </main>
     </div>
   );
 }

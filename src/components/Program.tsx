@@ -61,7 +61,7 @@ const day1: Session[] = [
       "Sanayi ve Teknoloji Bakanlığı / TÜBİTAK",
       "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı",
       "EPDK",
-      "Dr. Paulia Seyfert – Almanya Enerji Bakanlığı",
+      "Dr. Pauline Seyfert – Adlera Group",
     ],
   },
   { time: "14:30 – 15:00", type: "break", title: "Kahve Arası" },

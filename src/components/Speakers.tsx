@@ -59,17 +59,18 @@ const speakers: Speaker[] = [
     photo: "/speakers/hasan-ozcan.jpg",
   },
   {
-    name: "Dr. Paulia Seyfert",
+    name: "Dr. Pauline Seyfert",
     role: "Panel 1 Konuşmacısı",
-    affiliation: "Almanya Enerji Bakanlığı",
+    affiliation: "Adlera Group",
     initials: "PS",
+    photo: "/speakers/pauline-seyfert.jpg",
   },
   {
     name: "Prof. Dr. Mustafa İlbaş",
     role: "Panel 2 Konuşmacısı",
     affiliation: "ASFAT",
     initials: "Mİ",
-    photo: "/speakers/mustafa-ilbas.jpg",
+    photo: "/speakers/mustafa-ilbas-x.jpg",
   },
   {
     name: "İbrahim Pamuk",

@@ -2,23 +2,33 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
-const navItems = [
-  { label: "Hakkında", href: "#about" },
-  { label: "Program", href: "#program" },
-  { label: "Konuşmacılar", href: "#speakers" },
-  { label: "Firmalar", href: "#exhibitors" },
-  { label: "Poster Çağrısı", href: "#cfp" },
-  { label: "Sponsorluk", href: "#sponsors" },
-  { label: "İletişim", href: "#contact" },
+const sectionLinks = [
+  { label: "Hakkında", hash: "#about" },
+  { label: "Program", hash: "#program" },
+  { label: "Konuşmacılar", hash: "#speakers" },
+  { label: "Firmalar", hash: "#exhibitors" },
+  { label: "Poster Çağrısı", hash: "#cfp" },
+  { label: "Sponsorluk", hash: "#sponsors" },
+  { label: "İletişim", hash: "#contact" },
+];
+
+const applicationLinks = [
+  { label: "Stand Başvurusu", href: "/stand-basvurusu" },
+  { label: "Sponsorluk Başvurusu", href: "/sponsorluk-basvurusu" },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const isHome = pathname === "/";
+  const solidNav = scrolled || !isHome;
+  const sectionHref = (hash: string) => (isHome ? hash : `/${hash}`);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -70,7 +80,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+        solidNav
           ? "bg-h2-bg/95 backdrop-blur-md shadow-lg shadow-black/30 border-b border-h2-border"
           : "bg-transparent border-b border-transparent"
       }`}
@@ -78,7 +88,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#home" className="flex items-center" aria-label="Ana sayfa">
+          <a href={isHome ? "#home" : "/"} className="flex items-center" aria-label="Ana sayfa">
             <Image
               src="/logos/header.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
@@ -90,22 +100,31 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-7" aria-label="Ana menü">
-            {navItems.map((item) => (
+          <div className="hidden md:flex items-center gap-5" aria-label="Ana menü">
+            {sectionLinks.map((item) => (
               <a
-                key={item.href}
-                href={item.href}
+                key={item.hash}
+                href={sectionHref(item.hash)}
                 className="relative text-h2-ink-2 hover:text-h2-ink-1 text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-h2-cyan after:transition-transform after:duration-300 hover:after:scale-x-100"
               >
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="rounded-h2-md bg-h2-blue px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-blue-bright hover:shadow-md hover:shadow-h2-blue/25"
-            >
-              Kayıt Ol
-            </a>
+            <div className="flex items-center gap-2">
+              {applicationLinks.map((item, index) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={
+                    index === 0
+                      ? "rounded-h2-md bg-h2-blue px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-blue-bright hover:shadow-md hover:shadow-h2-blue/25"
+                      : "rounded-h2-md border border-h2-border px-4 py-2 text-sm font-semibold text-h2-ink-1 transition-all hover:border-h2-cyan/45 hover:text-white"
+                  }
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Mobile hamburger */}
@@ -170,11 +189,11 @@ export default function Navbar() {
           </div>
 
           <div className="mt-12 flex flex-1 flex-col justify-center gap-2">
-            {navItems.map((item, index) => (
+            {sectionLinks.map((item, index) => (
               <a
-                key={item.href}
+                key={item.hash}
                 ref={index === 0 ? firstLinkRef : undefined}
-                href={item.href}
+                href={sectionHref(item.hash)}
                 onClick={closeMenu}
                 className="group flex items-baseline gap-4 border-b border-h2-border-soft py-4 font-display text-h2-h2 font-semibold text-h2-ink-1 transition-colors hover:text-h2-cyan"
               >
@@ -186,13 +205,22 @@ export default function Navbar() {
             ))}
           </div>
 
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            className="block rounded-h2-md bg-h2-blue px-4 py-3.5 text-center font-semibold text-white"
-          >
-            Kayıt Ol
-          </a>
+          <div className="grid gap-3">
+            {applicationLinks.map((item, index) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className={
+                  index === 0
+                    ? "block rounded-h2-md bg-h2-blue px-4 py-3.5 text-center font-semibold text-white"
+                    : "block rounded-h2-md border border-h2-border px-4 py-3.5 text-center font-semibold text-h2-ink-1"
+                }
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
