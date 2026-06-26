@@ -70,7 +70,7 @@ const day1: Session[] = [
       "ROKETSAN",
       "General Electric Aerospace",
       "Prof. Dr. Mustafa İlbaş | ASFAT",
-      "İbrahim Pamuk | LENTATEK",
+      "Dr. Selim Çögenli | LENTATEK",
     ],
   },
   { time: "16:00 - 16:15", type: "break", title: "Kahve Arası" },

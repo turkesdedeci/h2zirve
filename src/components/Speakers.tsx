@@ -73,11 +73,10 @@ const speakers: Speaker[] = [
     photo: "/speakers/mustafa-ilbas-x.jpg",
   },
   {
-    name: "İbrahim Pamuk",
+    name: "Dr. Selim Çögenli",
     role: "Panel 2 Konuşmacısı",
     affiliation: "LENTATEK",
-    initials: "İP",
-    photo: "/speakers/ibrahim-pamuk.jpg",
+    initials: "SÇ",
   },
   {
     name: "Prof. Dr. Bülent Yeşilata",
