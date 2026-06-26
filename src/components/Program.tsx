@@ -37,7 +37,7 @@ const day1: Session[] = [
       "Prof. Dr. Selahattin Çelik - AYBÜ H2TEAM (10 dk)",
       "Oğuzhan Akyener - TESPAM Başkanı (10 dk)",
       "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
-      "Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
+      "Enerji Bakanı (Tensipleri ile) / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
     ],
   },
   { time: "11:00 - 11:15", type: "break", title: "Kahve Arası" },
