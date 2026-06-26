@@ -333,10 +333,11 @@ export default function StandBasvurusu() {
               <div>
                 <label className={labelCls}>Web Sitesi</label>
                 <input
-                  type="url"
+                  type="text"
+                  inputMode="url"
                   value={form.web_sitesi}
                   onChange={set("web_sitesi")}
-                  placeholder="https://firma.com"
+                  placeholder="firma.com veya https://firma.com"
                   className={inputCls}
                 />
               </div>
