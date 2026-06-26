@@ -11,7 +11,6 @@ type SessionType =
   | "lunch"
   | "poster"
   | "gala"
-  | "prayer"
   | "closing"
   | "visit";
 
@@ -26,73 +25,70 @@ interface Session {
 
 const day1: Session[] = [
   {
-    time: "09:00 – 10:00",
+    time: "09:00 - 10:00",
     type: "registration",
     title: "Kayıt & Karşılama",
-    speakers: ["Kayıt işlemleri", "Yaka kartı dağıtımı", "Sergi alanı açılışı"],
   },
   {
-    time: "10:00 – 10:50",
+    time: "10:00 - 11:00",
     type: "opening",
     title: "Açılış Oturumu",
     speakers: [
-      "Prof. Dr. Selahattin Çelik – AYBÜ H2TEAM (10 dk)",
-      "Oğuzhan Akyener – TESPAM Başkanı (10 dk)",
-      "Prof. Dr. Ali Cengiz Köseoğlu – AYBÜ Rektörü (15 dk)",
-      "Enerji ve Tabii Kaynaklar Bakanı (tensipleri ile) / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
+      "Prof. Dr. Selahattin Çelik - AYBÜ H2TEAM (10 dk)",
+      "Oğuzhan Akyener - TESPAM Başkanı (10 dk)",
+      "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
+      "Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
     ],
   },
-  { time: "10:50 – 11:05", type: "break", title: "Kahve Arası" },
+  { time: "11:00 - 11:15", type: "break", title: "Kahve Arası" },
   {
-    time: "11:05 – 11:50",
+    time: "11:15 - 12:00",
     type: "keynote",
-    title: "Keynote Konuşma",
-    speakers: ["Dr. Ayfer Veziroğlu"],
+    title: "Keynote Konuşmacı: Dr. Ayfer Veziroğlu",
   },
-  { time: "12:00 – 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
+  { time: "12:00 - 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
   {
-    time: "13:15 – 14:30",
+    time: "13:15 - 14:30",
     type: "panel",
-    title: "Panel 1 — Türkiye Hidrojen Yol Haritası 2035",
-    subtitle: "Politika, Regülasyon ve Yatırım Perspektifi",
+    title: "Panel 1: Türkiye Hidrojen Yol Haritası 2035",
     moderator: "Prof. Dr. Erol Arcaklıoğlu",
     speakers: [
-      "Enerji ve Tabii Kaynaklar Bakanlığı / TENMAK",
-      "Sanayi ve Teknoloji Bakanlığı / TÜBİTAK",
+      "Enerji ve Tabii Kaynaklar Bakanlığı / TENMAK-TEMEN",
+      "Sanayi ve Teknoloji Bakanlığı / TÜBİTAK Başkanı",
       "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı",
-      "EPDK",
-      "Dr. Pauline Seyfert – Adlera Group",
+      "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
     ],
   },
-  { time: "14:30 – 15:00", type: "break", title: "Kahve Arası" },
+  { time: "14:30 - 14:45", type: "break", title: "Kahve Arası" },
   {
-    time: "15:00 – 16:15",
+    time: "14:45 - 16:00",
     type: "panel",
-    title: "Panel 2 — Savunma Sanayinde Hidrojen Teknolojileri",
+    title: "Panel 2: Savunma Sanayinde Hidrojen Teknolojileri",
     moderator: "Prof. Dr. Selahattin Çelik",
     speakers: [
       "Savunma Sanayii Başkanlığı (SSB)",
       "ROKETSAN",
-      "ASELSAN",
-      "Prof. Dr. Mustafa İlbaş – ASFAT",
-      "İbrahim Pamuk – LENTATEK",
+      "General Electric Aerospace",
+      "Prof. Dr. Mustafa İlbaş | ASFAT",
+      "Dr. Selim Çögenli | LENTATEK",
     ],
   },
+  { time: "16:00 - 16:15", type: "break", title: "Kahve Arası" },
   {
-    time: "16:15 – 17:30",
+    time: "16:15 - 17:45",
     type: "panel",
-    title: "Panel 3 — Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
+    title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
     moderator: "Prof. Dr. Hasan Özcan",
     speakers: [
       "Yeşil Hidrojen Üreticileri Derneği",
       "TÜPRAŞ",
-      "Yenilenebilir enerji firması (GES/RES)",
-      "Elektrolizör teknolojisi firması",
+      "GM Hidrojen Vadisi",
+      "Prof. Dr. Yüksel Kaplan",
       "TÜBİTAK MAM",
     ],
   },
   {
-    time: "17:30 – 18:30",
+    time: "17:45 - 18:30",
     type: "poster",
     title: "Poster Sunumları & Sergi Ziyareti",
     speakers: [
@@ -106,58 +102,56 @@ const day1: Session[] = [
 
 const day2: Session[] = [
   {
-    time: "09:00 – 09:30",
+    time: "09:00 - 09:30",
     type: "registration",
     title: "Karşılama & Sabah Kahvesi",
   },
   {
-    time: "09:30 – 10:15",
+    time: "09:30 - 10:15",
     type: "keynote",
-    title: "Keynote Konuşma",
-    speakers: ["Prof. Dr. İbrahim Dinçer"],
+    title: "Keynote Konuşmacı: Prof. Dr. İbrahim Dinçer",
   },
-  { time: "10:15 – 10:45", type: "break", title: "Kahve Arası & Sergi" },
+  { time: "10:15 - 10:45", type: "break", title: "Kahve Arası & Sergi" },
   {
-    time: "10:45 – 11:45",
+    time: "10:45 - 11:45",
     type: "panel",
-    title: "Panel 4 — Sanayide Hidrojen Kullanımı",
-    moderator: "Prof. Dr. Bülent Yeşilata",
-  },
-  { time: "11:45 – 12:45", type: "lunch", title: "Öğle Yemeği" },
-  { time: "12:45 – 13:45", type: "prayer", title: "Cuma Namazı Arası" },
-  {
-    time: "13:45 – 15:15",
-    type: "panel",
-    title: "Panel 5 — Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
+    title: "Panel 4: Sanayide Hidrojen Kullanımı",
+    moderator: "DSB",
     speakers: [
-      "Kalkınma bankası / yatırım fonu",
-      "TÜBİTAK",
-      "Üniversite temsilcisi",
-      "Sanayi Ar-Ge merkezi",
-      "Teknoloji / startup firması",
+      "Botaş",
+      "Çimento Üreticileri Derneği",
+      "Demir Çelik Üretimi Erdemir",
+      "Seramik Üreticileri",
     ],
   },
-  { time: "15:15 – 15:45", type: "break", title: "Kahve Arası" },
+  { time: "11:45 - 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
   {
-    time: "15:45 – 16:45",
+    time: "13:15 - 14:30",
+    type: "panel",
+    title: "Panel 5: Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
+    moderator: "DSB",
+    speakers: [
+      "Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım fonu",
+      "TÜBİTAK Uzmanı",
+      "Prof. Dr. İbrahim Dinçer",
+      "Sanayi Ar-Ge merkezi + Teknoloji / startup firması",
+    ],
+  },
+  { time: "14:30 - 14:45", type: "break", title: "Kahve Arası" },
+  {
+    time: "14:45 - 15:45",
     type: "poster",
     title: "Poster Sunumları & Sergi",
-    speakers: [
-      "Poster sahipleri ile birebir etkileşim",
-      "Firma standlarının aktif ziyareti",
-    ],
   },
-  { time: "16:45 – 17:15", type: "closing", title: "Poster Ödülleri & Kapanış" },
   {
-    time: "17:30 – 19:00",
+    time: "16:00 - 16:30",
+    type: "closing",
+    title: "Poster Ödülleri & Kapanış",
+  },
+  {
+    time: "17:30 - 18:30",
     type: "visit",
-    title: "Opsiyonel Teknik Ziyaret",
-    subtitle: "AYBÜ H2TEAM Laboratuvar Ziyareti",
-    speakers: [
-      "Katılım isteğe bağlıdır",
-      "Farklı lokasyonda gerçekleştirilecektir",
-      "Ulaşım organizasyonu ayrıca duyurulacaktır",
-    ],
+    title: "Teknik Ziyaret: AYBÜ H2TEAM Laboratuvar Ziyareti",
   },
 ];
 
@@ -208,7 +202,7 @@ const cfg: Record<
     bg: "bg-orange-400/[0.04]",
   },
   poster: {
-    label: "Sergi",
+    label: "Poster",
     accent: "bg-violet-400",
     badge: "text-violet-300 bg-violet-400/10 border-violet-400/20",
     border: "border-violet-400/25",
@@ -220,13 +214,6 @@ const cfg: Record<
     badge: "text-pink-300 bg-pink-400/10 border-pink-400/20",
     border: "border-pink-400/25",
     bg: "bg-pink-400/[0.05]",
-  },
-  prayer: {
-    label: "Ara",
-    accent: "bg-teal-400",
-    badge: "text-teal-300 bg-teal-400/10 border-teal-400/20",
-    border: "border-teal-400/20",
-    bg: "bg-teal-400/[0.04]",
   },
   closing: {
     label: "Kapanış",
@@ -250,7 +237,6 @@ export default function Program() {
 
   return (
     <section id="program" className="relative overflow-hidden bg-h2-bg py-16 sm:py-28">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[52rem] -translate-x-1/2 bg-h2-blue/10 blur-3xl" />
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-12 text-center">
           <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
@@ -278,7 +264,7 @@ export default function Program() {
             >
               <div className="text-h2-body font-bold">{day}. Gün</div>
               <div className="mt-1 text-h2-micro opacity-75">
-                {day === 1 ? "22 Ekim • Perşembe" : "23 Ekim • Cuma"}
+                {day === 1 ? "22 Ekim - Perşembe" : "23 Ekim - Cuma"}
               </div>
             </button>
           ))}
@@ -287,8 +273,8 @@ export default function Program() {
         <div className="mb-7 flex items-center gap-4">
           <span className="whitespace-nowrap font-display text-h2-small font-bold uppercase tracking-[0.16em] text-h2-cyan">
             {activeDay === 1
-              ? "1. GÜN — STRATEJİ & ENDÜSTRİ"
-              : "2. GÜN — TEKNOLOJİ, EKONOMİ & UYGULAMA"}
+              ? "1. Gün - Strateji & Endüstri"
+              : "2. Gün - Teknoloji, Ekonomi & Uygulama"}
           </span>
           <span className="h-px w-full bg-gradient-to-r from-h2-border to-transparent" />
         </div>
@@ -296,25 +282,36 @@ export default function Program() {
         <div className="space-y-4">
           {sessions.map((s, i) => {
             const c = cfg[s.type];
-            const compact = ["break", "lunch", "prayer"].includes(s.type);
+            const compact = ["break", "lunch"].includes(s.type);
+
             return (
               <article
-                key={i}
+                key={`${s.time}-${i}`}
                 className={`group relative overflow-hidden rounded-h2-lg border ${c.border} ${c.bg} transition-all hover:border-opacity-80 hover:shadow-lg hover:shadow-black/20`}
               >
                 <span className={`absolute inset-y-0 left-0 w-1 ${c.accent}`} />
                 <div className="grid sm:grid-cols-[10rem_1fr]">
-                  <div className={`flex items-center gap-3 border-b border-white/5 px-6 py-4 sm:block sm:border-b-0 sm:border-r sm:border-white/5 ${compact ? "sm:py-5" : "sm:py-7"}`}>
+                  <div
+                    className={`flex items-center gap-3 border-b border-white/5 px-6 py-4 sm:block sm:border-b-0 sm:border-r sm:border-white/5 ${
+                      compact ? "sm:py-5" : "sm:py-7"
+                    }`}
+                  >
                     <p className="font-mono text-base font-bold tracking-tight text-h2-ink-1 sm:text-lg">
                       {s.time}
                     </p>
-                    <span className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest sm:mt-3 ${c.badge}`}>
+                    <span
+                      className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest sm:mt-3 ${c.badge}`}
+                    >
                       {c.label}
                     </span>
                   </div>
 
                   <div className={compact ? "px-6 py-5" : "px-6 py-6 sm:px-8 sm:py-7"}>
-                    <h3 className={`font-display ${compact ? "text-base" : "text-xl sm:text-2xl"} font-bold leading-snug text-h2-ink-1`}>
+                    <h3
+                      className={`font-display ${
+                        compact ? "text-base" : "text-xl sm:text-2xl"
+                      } font-bold leading-snug text-h2-ink-1`}
+                    >
                       {s.title}
                     </h3>
                     {s.subtitle && (
@@ -324,14 +321,18 @@ export default function Program() {
                     )}
                     {s.moderator && (
                       <div className="mt-4 flex flex-wrap items-center gap-2 rounded-h2-md border border-white/8 bg-black/15 px-4 py-3 text-h2-small">
-                        <span className="font-semibold uppercase tracking-wider text-h2-cyan text-[10px]">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-h2-cyan">
                           Moderatör
                         </span>
                         <span className="font-semibold text-h2-ink-1">{s.moderator}</span>
                       </div>
                     )}
                     {s.speakers && s.speakers.length > 0 && (
-                      <ul className={`mt-5 grid gap-x-8 gap-y-3 ${s.speakers.length > 3 ? "md:grid-cols-2" : ""}`}>
+                      <ul
+                        className={`mt-5 grid gap-x-8 gap-y-3 ${
+                          s.speakers.length > 3 ? "md:grid-cols-2" : ""
+                        }`}
+                      >
                         {s.speakers.map((sp) => (
                           <li
                             key={sp}
