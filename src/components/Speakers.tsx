@@ -77,6 +77,7 @@ const speakers: Speaker[] = [
     role: "Panel 2 Konuşmacısı",
     affiliation: "LENTATEK",
     initials: "SÇ",
+    photo: "/speakers/selim-cogenli.jpg",
   },
   {
     name: "Prof. Dr. Bülent Yeşilata",
