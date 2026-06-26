@@ -4,19 +4,18 @@ import { useState } from "react";
 
 const info = [
   {
-    icon: "🏛️",
     label: "Organizasyon",
     value:
-      "TESPAM — Türkiye Enerji Stratejileri & Politikaları Araştırma Merkezi",
+      "TESPAM - Türkiye Enerji Stratejileri & Politikaları Araştırma Merkezi",
   },
   {
-    icon: "🏫",
     label: "Ev Sahibi Kurum",
-    value: "Ankara Yıldırım Beyazıt Üniversitesi — Hidrojen Araştırma Merkezi",
+    value:
+      "Ankara Yıldırım Beyazıt Üniversitesi - Hidrojen Araştırma Merkezi",
   },
-  { icon: "📍", label: "Yer", value: "Ankara, Türkiye" },
-  { icon: "📅", label: "Tarih", value: "22–23 Ekim 2026" },
-  { icon: "📧", label: "E-posta", value: "h2zirvesi@tespam.org" },
+  { label: "Yer", value: "Ankara, Türkiye" },
+  { label: "Tarih", value: "22-23 Ekim 2026" },
+  { label: "E-posta", value: "h2zirvesi@tespam.org" },
 ];
 
 const socialLinks = [
@@ -30,28 +29,57 @@ const socialLinks = [
   },
 ];
 
-export default function Contact() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [sent, setSent] = useState(false);
+const emptyForm = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
 
-  const handleSubmit = (e: React.FormEvent) => {
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
+export default function Contact() {
+  const [form, setForm] = useState(emptyForm);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    setStatus("sending");
+    setFeedback("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.error || "Mesaj gönderilemedi.");
+      }
+
+      setStatus("success");
+      setFeedback("Mesajınız alındı. Ekibimiz en kısa sürede dönüş yapacaktır.");
+      setForm(emptyForm);
+    } catch (error) {
+      setStatus("error");
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : "Mesaj gönderilemedi. Lütfen tekrar deneyin."
+      );
+    }
   };
 
   const inputCls =
     "w-full bg-h2-surface-2 border border-h2-border focus:border-h2-blue rounded-h2-md px-4 py-3 text-h2-ink-1 placeholder-h2-ink-disabled outline-none transition-colors text-h2-small";
+  const isSending = status === "sending";
 
   return (
     <section id="contact" className="bg-h2-surface-1 py-16 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Heading */}
         <div className="text-center mb-16">
           <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
             Bize Ulaşın
@@ -62,7 +90,6 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
@@ -74,6 +101,7 @@ export default function Contact() {
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
+                  disabled={isSending}
                   placeholder="Adınız Soyadınız"
                   className={inputCls}
                 />
@@ -87,6 +115,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   required
+                  disabled={isSending}
                   placeholder="ornek@email.com"
                   className={inputCls}
                 />
@@ -102,6 +131,7 @@ export default function Contact() {
                 onChange={(e) =>
                   setForm({ ...form, subject: e.target.value })
                 }
+                disabled={isSending}
                 className={inputCls}
               >
                 <option value="" className="bg-h2-surface-2">
@@ -135,36 +165,51 @@ export default function Contact() {
                   setForm({ ...form, message: e.target.value })
                 }
                 required
+                disabled={isSending}
                 rows={5}
                 placeholder="Mesajınızı buraya yazın..."
                 className={`${inputCls} resize-none`}
               />
             </div>
 
+            {feedback && (
+              <p
+                className={`rounded-h2-md border px-4 py-3 text-h2-small ${
+                  status === "success"
+                    ? "border-h2-green/30 bg-h2-green/10 text-h2-green"
+                    : "border-red-500/30 bg-red-500/10 text-red-200"
+                }`}
+              >
+                {feedback}
+              </p>
+            )}
+
             <button
               type="submit"
+              disabled={isSending}
               className={`w-full py-4 rounded-h2-md font-semibold text-base transition-all ${
-                sent
+                status === "success"
                   ? "bg-h2-green text-white"
-                  : "bg-h2-blue hover:bg-h2-blue-bright text-white hover:shadow-md hover:shadow-h2-blue/20"
+                  : "bg-h2-blue hover:bg-h2-blue-bright text-white hover:shadow-md hover:shadow-h2-blue/20 disabled:cursor-not-allowed disabled:opacity-70"
               }`}
             >
-              {sent ? "Mesajınız İletildi ✓" : "Gönder"}
+              {isSending
+                ? "Gönderiliyor..."
+                : status === "success"
+                  ? "Mesajınız İletildi"
+                  : "Gönder"}
             </button>
           </form>
 
-          {/* Info */}
           <div className="space-y-5">
             <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-7">
               <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-6">
                 İletişim Bilgileri
               </h3>
               <div className="space-y-5">
-                {info.map(({ icon, label, value }) => (
+                {info.map(({ label, value }) => (
                   <div key={label} className="flex items-start gap-4">
-                    <span className="text-xl mt-0.5 flex-shrink-0" aria-hidden="true">
-                      {icon}
-                    </span>
+                    <div className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-h2-cyan" />
                     <div>
                       <p className="text-h2-ink-disabled text-h2-micro font-semibold uppercase tracking-wider">
                         {label}
