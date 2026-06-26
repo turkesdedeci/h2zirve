@@ -84,7 +84,7 @@ const speakers: Speaker[] = [
     role: "Panel 4 Moderatörü",
     affiliation: "Sanayide Hidrojen Kullanımı",
     initials: "BY",
-    photo: "/speakers/bulent-yesilata.jpg",
+    photo: "/speakers/bulent-yesilata-researchgate.jpg",
   },
   {
     name: "Prof. Dr. Yüksel Kaplan",
