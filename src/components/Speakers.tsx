@@ -80,13 +80,6 @@ const speakers: Speaker[] = [
     photo: "/speakers/selim-cogenli-linkedin.jpg",
   },
   {
-    name: "Prof. Dr. Bülent Yeşilata",
-    role: "Panel 4 Moderatörü",
-    affiliation: "Sanayide Hidrojen Kullanımı",
-    initials: "BY",
-    photo: "/speakers/bulent-yesilata-researchgate.jpg",
-  },
-  {
     name: "Prof. Dr. Yüksel Kaplan",
     role: "Konuşmacı",
     affiliation: "Türkiye Hidrojen Zirvesi 2026",
