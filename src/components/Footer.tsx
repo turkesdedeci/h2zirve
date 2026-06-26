@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Image
-              src="/logos/tespam-tv-enerji-logo.png"
+              src="/logos/turkiye-hidrojen-zirvesi-logo-v4.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
               width={230}
               height={120}

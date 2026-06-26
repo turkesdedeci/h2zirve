@@ -90,7 +90,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href={isHome ? "#home" : "/"} className="flex items-center" aria-label="Ana sayfa">
             <Image
-              src="/logos/tespam-tv-enerji-logo.png"
+              src="/logos/turkiye-hidrojen-zirvesi-logo-v4.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
               width={126}
               height={66}
@@ -161,7 +161,7 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between">
             <Image
-              src="/logos/tespam-tv-enerji-logo.png"
+              src="/logos/turkiye-hidrojen-zirvesi-logo-v4.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
               width={116}
               height={61}
