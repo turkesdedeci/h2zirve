@@ -17,10 +17,14 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="font-display text-h2-h3 font-bold text-h2-ink-1 mb-3 leading-tight">
-              Türkiye Hidrojen <span className="text-h2-cyan">Zirvesi 2026</span>
-            </div>
-            <p className="text-h2-ink-3 text-h2-small leading-relaxed max-w-xs">
+            <Image
+              src="/logos/tespam-tv-enerji-logo.png"
+              alt="Türkiye Hidrojen Zirvesi 2026"
+              width={230}
+              height={120}
+              className="mb-5 h-auto w-56 object-contain sm:w-64"
+            />
+            <p className="text-h2-ink-3 text-h2-small leading-relaxed max-w-sm">
               Türkiye Hidrojen Zirvesi 2026 (TESPAM-H2-2026)
               <br />
               22–23 Ekim 2026 · Ankara, Türkiye

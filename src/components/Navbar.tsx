@@ -90,11 +90,11 @@ export default function Navbar() {
           {/* Logo */}
           <a href={isHome ? "#home" : "/"} className="flex items-center" aria-label="Ana sayfa">
             <Image
-              src="/logos/header.png"
+              src="/logos/tespam-tv-enerji-logo.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
-              width={200}
-              height={52}
-              className="object-contain"
+              width={126}
+              height={66}
+              className="h-12 w-auto object-contain"
               priority
             />
           </a>
@@ -161,11 +161,11 @@ export default function Navbar() {
         >
           <div className="flex items-center justify-between">
             <Image
-              src="/logos/header.png"
+              src="/logos/tespam-tv-enerji-logo.png"
               alt="Türkiye Hidrojen Zirvesi 2026"
-              width={160}
-              height={42}
-              className="object-contain"
+              width={116}
+              height={61}
+              className="h-12 w-auto object-contain"
             />
             <button
               onClick={closeMenu}
