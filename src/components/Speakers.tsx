@@ -19,7 +19,8 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. İbrahim Dinçer",
     role: "Keynote Konuşmacı — 2. Gün",
-    affiliation: "Uluslararası Enerji Araştırmacısı",
+    affiliation:
+      "Hydrogen Technologies Association Başkanı · Ontario Tech Üniversitesi · Yıldız Teknik Üniversitesi",
     initials: "İD",
     photo: "/speakers/ibrahim-dincer-2026-shoulders.png",
   },
