@@ -12,16 +12,16 @@ const speakers: Speaker[] = [
   {
     name: "Dr. Ayfer Veziroğlu",
     role: "Keynote Konuşmacı — 1. Gün",
-    affiliation: "Uluslararası Hidrojen Enerji Birliği",
+    affiliation: "International Association for Hydrogen Energy (IAHE) Başkanı",
     initials: "AV",
-    photo: "/speakers/ayfer-veziroglu.jpg",
+    photo: "/speakers/ayfer-veziroglu-iahe-2026-clear-up.png",
   },
   {
     name: "Prof. Dr. İbrahim Dinçer",
     role: "Keynote Konuşmacı — 2. Gün",
     affiliation: "Uluslararası Enerji Araştırmacısı",
     initials: "İD",
-    photo: "/speakers/ibrahim-dincer.jpg",
+    photo: "/speakers/ibrahim-dincer-2026-shoulders.png",
   },
   {
     name: "Prof. Dr. Selahattin Çelik",
