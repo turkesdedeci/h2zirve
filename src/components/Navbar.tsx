@@ -4,19 +4,29 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const sectionLinks = [
-  { label: "Hakkında", hash: "#about" },
-  { label: "Program", hash: "#program" },
-  { label: "Konuşmacılar", hash: "#speakers" },
-  { label: "Firmalar", hash: "#exhibitors" },
-  { label: "Poster Çağrısı", hash: "#cfp" },
-  { label: "Sponsorluk", hash: "#sponsors" },
-  { label: "İletişim", hash: "#contact" },
+const navGroups = [
+  {
+    label: "Zirve",
+    links: [
+      { label: "Hakkında", hash: "#about" },
+      { label: "Program", hash: "#program" },
+      { label: "Konuşmacılar", hash: "#speakers" },
+      { label: "Firmalar", hash: "#exhibitors" },
+      { label: "İletişim", hash: "#contact" },
+    ],
+  },
+  {
+    label: "Akademik",
+    links: [
+      { label: "Poster Çağrısı", hash: "#cfp" },
+      { label: "Poster Özeti Gönder", href: "/poster-basvurusu" },
+    ],
+  },
 ];
 
 const applicationLinks = [
-  { label: "Stand Başvurusu", href: "/stand-basvurusu" },
-  { label: "Sponsorluk Başvurusu", href: "/sponsorluk-basvurusu" },
+  { label: "Stand Başvurusu", href: "/stand-basvurusu", tone: "blue" },
+  { label: "Sponsorluk Başvurusu", href: "/sponsorluk-basvurusu", tone: "outline" },
 ];
 
 export default function Navbar() {
@@ -29,6 +39,8 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const solidNav = scrolled || !isHome;
   const sectionHref = (hash: string) => (isHome ? hash : `/${hash}`);
+  const navHref = (item: { href?: string; hash?: string }) =>
+    item.href ?? sectionHref(item.hash ?? "#home");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -100,30 +112,57 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-5" aria-label="Ana menü">
-            {sectionLinks.map((item) => (
-              <a
-                key={item.hash}
-                href={sectionHref(item.hash)}
-                className="relative text-h2-ink-2 hover:text-h2-ink-1 text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-h2-cyan after:transition-transform after:duration-300 hover:after:scale-x-100"
-              >
-                {item.label}
-              </a>
+          <div className="hidden md:flex items-center gap-4" aria-label="Ana menü">
+            {navGroups.map((group) => (
+              <div key={group.label} className="group relative">
+                <button
+                  type="button"
+                  className="relative text-sm font-medium text-h2-ink-2 transition-colors hover:text-h2-ink-1 after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-h2-cyan after:transition-transform after:duration-300 hover:after:scale-x-100"
+                >
+                  {group.label}
+                </button>
+                <div className="invisible absolute left-0 top-full z-50 mt-3 w-56 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  {group.links.map((item) => (
+                    <a
+                      key={item.label}
+                      href={navHref(item)}
+                      className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-cyan/10 hover:text-h2-ink-1"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             ))}
             <div className="flex items-center gap-2">
-              {applicationLinks.map((item, index) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={
-                    index === 0
-                      ? "rounded-h2-md bg-h2-blue px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-blue-bright hover:shadow-md hover:shadow-h2-blue/25"
-                      : "rounded-h2-md border border-h2-border px-4 py-2 text-sm font-semibold text-h2-ink-1 transition-all hover:border-h2-cyan/45 hover:text-white"
-                  }
+              <a
+                href="/poster-basvurusu"
+                className="rounded-h2-md bg-h2-green px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-md hover:shadow-h2-green/25"
+              >
+                Poster Özeti
+              </a>
+              <div className="group relative">
+                <button
+                  type="button"
+                  className="rounded-h2-md border border-h2-border px-4 py-2 text-sm font-semibold text-h2-ink-1 transition-all hover:border-h2-cyan/45 hover:text-white"
                 >
-                  {item.label}
-                </a>
-              ))}
+                  Başvurular
+                </button>
+                <div className="invisible absolute right-0 top-full z-50 mt-2 w-56 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <a
+                    href="/stand-basvurusu"
+                    className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-blue/15 hover:text-h2-ink-1"
+                  >
+                    Stand Başvurusu
+                  </a>
+                  <a
+                    href="/sponsorluk-basvurusu"
+                    className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-cyan/10 hover:text-h2-ink-1"
+                  >
+                    Sponsorluk Başvurusu
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -189,32 +228,41 @@ export default function Navbar() {
           </div>
 
           <div className="mt-12 flex flex-1 flex-col justify-center gap-2">
-            {sectionLinks.map((item, index) => (
-              <a
-                key={item.hash}
-                ref={index === 0 ? firstLinkRef : undefined}
-                href={sectionHref(item.hash)}
-                onClick={closeMenu}
-                className="group flex items-baseline gap-4 border-b border-h2-border-soft py-4 font-display text-h2-h2 font-semibold text-h2-ink-1 transition-colors hover:text-h2-cyan"
-              >
-                <span className="font-sans text-h2-small font-medium text-h2-ink-3">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                {item.label}
-              </a>
+            {navGroups.map((group, groupIndex) => (
+              <div key={group.label}>
+                <p className="mb-1 mt-4 text-h2-micro font-semibold uppercase tracking-[0.18em] text-h2-ink-3">
+                  {group.label}
+                </p>
+                {group.links.map((item, itemIndex) => (
+                  <a
+                    key={item.label}
+                    ref={groupIndex === 0 && itemIndex === 0 ? firstLinkRef : undefined}
+                    href={navHref(item)}
+                    onClick={closeMenu}
+                    className="group flex items-baseline gap-4 border-b border-h2-border-soft py-3 font-display text-h2-h3 font-semibold text-h2-ink-1 transition-colors hover:text-h2-cyan"
+                  >
+                    <span className="font-sans text-h2-small font-medium text-h2-ink-3">
+                      {String(groupIndex + 1)}.{String(itemIndex + 1)}
+                    </span>
+                    {item.label}
+                  </a>
+                ))}
+              </div>
             ))}
           </div>
 
           <div className="grid gap-3">
-            {applicationLinks.map((item, index) => (
+            {applicationLinks.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
                 className={
-                  index === 0
-                    ? "block rounded-h2-md bg-h2-blue px-4 py-3.5 text-center font-semibold text-white"
-                    : "block rounded-h2-md border border-h2-border px-4 py-3.5 text-center font-semibold text-h2-ink-1"
+                  item.tone === "green"
+                    ? "block rounded-h2-md bg-h2-green px-4 py-3.5 text-center font-semibold text-white"
+                    : item.tone === "blue"
+                      ? "block rounded-h2-md bg-h2-blue px-4 py-3.5 text-center font-semibold text-white"
+                      : "block rounded-h2-md border border-h2-border px-4 py-3.5 text-center font-semibold text-h2-ink-1"
                 }
               >
                 {item.label}

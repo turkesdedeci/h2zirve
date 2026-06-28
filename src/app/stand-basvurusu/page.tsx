@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { supabase } from "@/lib/supabase";
+import { backupSubmission } from "@/lib/backupSubmission";
 
 const segments = {
   Startup: {
@@ -140,26 +141,27 @@ export default function StandBasvurusu() {
     setLoading(true);
     setError("");
 
+    const submission = {
+      ...form,
+      web_sitesi: form.web_sitesi || null,
+      telefon: form.telefon || null,
+      notlar: form.notlar || null,
+    };
+
     const { error: insertError } = await supabase
       .from("stand_basvurulari")
-      .insert([
-        {
-          ...form,
-          web_sitesi: form.web_sitesi || null,
-          telefon: form.telefon || null,
-          notlar: form.notlar || null,
-        },
-      ]);
-
-    setLoading(false);
+      .insert([submission]);
 
     if (insertError) {
+      setLoading(false);
       setError(
         "Başvuru alınamadı. Lütfen tekrar deneyin veya e-posta ile iletişime geçin."
       );
       return;
     }
 
+    await backupSubmission("stand", submission);
+    setLoading(false);
     setSuccess(true);
   }
 

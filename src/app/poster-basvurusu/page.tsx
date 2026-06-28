@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabase";
+import { backupSubmission } from "@/lib/backupSubmission";
 
 const topics = [
   "Hidrojen üretim teknolojileri (elektroliz, termokimyasal vb.)",
@@ -228,28 +229,39 @@ export default function PosterBasvurusu() {
       .from("poster-dosyalari")
       .getPublicUrl(fileName);
 
+    const submission = {
+      ad_soyad: form.sorumlu_yazar,
+      kurum: form.kurum,
+      email: form.email,
+      telefon: form.telefon || null,
+      poster_basligi: form.poster_basligi,
+      konu_basligi: form.calisma_alani,
+      ozet: buildSubmissionSummary(),
+      pdf_url: data.publicUrl,
+    };
+
     const { error: insertError } = await supabase
       .from("poster_basvurulari")
-      .insert([
-        {
-          ad_soyad: form.sorumlu_yazar,
-          kurum: form.kurum,
-          email: form.email,
-          telefon: form.telefon || null,
-          poster_basligi: form.poster_basligi,
-          konu_basligi: form.calisma_alani,
-          ozet: buildSubmissionSummary(),
-          pdf_url: data.publicUrl,
-        },
-      ]);
-
-    setLoading(false);
+      .insert([submission]);
 
     if (insertError) {
+      await supabase.storage.from("poster-dosyalari").remove([fileName]);
+      setLoading(false);
       setError("Bir hata oluştu: " + insertError.message);
       return;
     }
 
+    await backupSubmission("poster", {
+      ...submission,
+      yazarlar: form.yazarlar,
+      trl: form.trl,
+      katkisi: form.katkisi,
+      prototip: form.prototip,
+      prototip_aciklama: form.prototip_aciklama,
+      sergi_ihtiyaclari: form.sergi_ihtiyaclari,
+      notlar: form.notlar,
+    });
+    setLoading(false);
     setSuccess(true);
   }
 
