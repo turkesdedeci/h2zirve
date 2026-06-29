@@ -3,12 +3,13 @@ import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-const allowedTypes = new Set(["poster", "stand", "sponsorluk"]);
+const allowedTypes = new Set(["poster", "stand", "sponsorluk", "kayit"]);
 
 const typeLabels: Record<string, string> = {
   poster: "Poster Özeti Başvurusu",
   stand: "Stand Başvurusu",
   sponsorluk: "Sponsorluk Başvurusu",
+  kayit: "Katılımcı Kaydı",
 };
 
 type BackupPayload = {
@@ -45,8 +46,11 @@ function formatLabel(key: string) {
     firma_adi: "Firma Adı",
     gorunurluk_beklentisi: "Görünürlük Beklentisi",
     katkisi: "Öne Çıkan Katkı",
+    katilim_gunu: "Katılım Günü",
+    katilimci_tipi: "Katılımcı Tipi",
     konu_basligi: "Çalışma Alanı",
     kurum: "Kurum / Şirket",
+    kvkk_onayi: "KVKK / İletişim Onayı",
     notlar: "Notlar",
     ozet: "Özet",
     ozel_ihtiyaclar: "Özel İhtiyaçlar",
@@ -116,11 +120,31 @@ async function backupToGoogleSheets(type: string, payload: Record<string, unknow
       signal: controller.signal,
     });
 
+    const text = await response.text().catch(() => "");
+
     if (!response.ok) {
-      const text = await response.text().catch(() => "");
       console.error("Google Sheets backup failed", {
         status: response.status,
         statusText: response.statusText,
+        body: text.slice(0, 500),
+      });
+
+      return { ok: false };
+    }
+
+    try {
+      const result = JSON.parse(text) as { ok?: unknown; error?: unknown };
+
+      if (result.ok !== true) {
+        console.error("Google Sheets backup returned an error", {
+          error: result.error,
+          body: text.slice(0, 500),
+        });
+
+        return { ok: false };
+      }
+    } catch {
+      console.error("Google Sheets backup returned invalid JSON", {
         body: text.slice(0, 500),
       });
 

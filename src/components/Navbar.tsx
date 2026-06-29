@@ -25,6 +25,7 @@ const navGroups = [
 ];
 
 const applicationLinks = [
+  { label: "Kayıt Ol", href: "/kayit", tone: "green" },
   { label: "Stand Başvurusu", href: "/stand-basvurusu", tone: "blue" },
   { label: "Sponsorluk Başvurusu", href: "/sponsorluk-basvurusu", tone: "outline" },
 ];
@@ -136,10 +137,10 @@ export default function Navbar() {
             ))}
             <div className="flex items-center gap-2">
               <a
-                href="/poster-basvurusu"
+                href="/kayit"
                 className="rounded-h2-md bg-h2-green px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-md hover:shadow-h2-green/25"
               >
-                Poster Özeti
+                Kayıt Ol
               </a>
               <div className="group relative">
                 <button
@@ -149,6 +150,12 @@ export default function Navbar() {
                   Başvurular
                 </button>
                 <div className="invisible absolute right-0 top-full z-50 mt-2 w-56 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <a
+                    href="/kayit"
+                    className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-green/15 hover:text-h2-ink-1"
+                  >
+                    Katılımcı Kaydı
+                  </a>
                   <a
                     href="/stand-basvurusu"
                     className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-blue/15 hover:text-h2-ink-1"

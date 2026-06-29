@@ -1,11 +1,12 @@
 // Google Apps Script webhook for H2 Zirve backup submissions.
-// 1. Create a Google Sheet with three tabs:
+// 1. Create a Google Sheet with four tabs:
 //    Poster Özeti, Stand Başvuruları, Sponsorluk Başvuruları
 // 2. Paste this file into Extensions > Apps Script.
 // 3. Set SHEET_ID and WEBHOOK_SECRET below.
 // 4. Deploy > New deployment > Web app:
 //    Execute as: Me
 //    Who has access: Anyone
+//    If you update this script later, use Deploy > Manage deployments > Edit > New version > Deploy.
 // 5. Put the deployment URL into GOOGLE_SHEETS_WEBHOOK_URL.
 // 6. Put the same WEBHOOK_SECRET into GOOGLE_SHEETS_WEBHOOK_SECRET.
 
@@ -16,6 +17,7 @@ const TAB_NAMES = {
   poster: "Poster Özeti",
   stand: "Stand Başvuruları",
   sponsorluk: "Sponsorluk Başvuruları",
+  kayit: "Katılımcı Kayıtları",
 };
 
 const HEADERS = {
@@ -61,6 +63,19 @@ const HEADERS = {
     "Sponsorluk Tipi",
     "Bütçe Aralığı",
     "Görünürlük Beklentisi",
+    "Notlar",
+  ],
+  kayit: [
+    "Yedeklenme Tarihi",
+    "Ad Soyad",
+    "E-posta",
+    "Telefon",
+    "Kurum / Şirket",
+    "Unvan / Görev",
+    "Katılımcı Tipi",
+    "Katılım Günü",
+    "İlgi Alanları",
+    "KVKK / İletişim Onayı",
     "Notlar",
   ],
 };
@@ -145,16 +160,32 @@ function buildRow(type, payload, submittedAt) {
     ];
   }
 
+  if (type === "sponsorluk") {
+    return [
+      submittedAt,
+      value(payload.firma_adi),
+      value(payload.yetkili_kisi),
+      value(payload.email),
+      value(payload.telefon),
+      value(payload.web_sitesi),
+      value(payload.sponsor_tipi),
+      value(payload.butce_araligi),
+      value(payload.gorunurluk_beklentisi),
+      value(payload.notlar),
+    ];
+  }
+
   return [
     submittedAt,
-    value(payload.firma_adi),
-    value(payload.yetkili_kisi),
+    value(payload.ad_soyad),
     value(payload.email),
     value(payload.telefon),
-    value(payload.web_sitesi),
-    value(payload.sponsor_tipi),
-    value(payload.butce_araligi),
-    value(payload.gorunurluk_beklentisi),
+    value(payload.kurum),
+    value(payload.unvan),
+    value(payload.katilimci_tipi),
+    value(payload.katilim_gunu),
+    value(payload.ilgi_alanlari),
+    value(payload.kvkk_onayi),
     value(payload.notlar),
   ];
 }

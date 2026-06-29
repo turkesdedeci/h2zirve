@@ -1,4 +1,4 @@
-type BackupType = "poster" | "stand" | "sponsorluk";
+type BackupType = "poster" | "stand" | "sponsorluk" | "kayit";
 
 export async function backupSubmission(type: BackupType, payload: Record<string, unknown>) {
   const controller = new AbortController();
