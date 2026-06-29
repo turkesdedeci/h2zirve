@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const navGroups = [
+const navSections = [
   {
     label: "Zirve",
     links: [
@@ -17,18 +17,17 @@ const navGroups = [
   },
   {
     label: "Akademik",
-    links: [
-      { label: "Poster Çağrısı", hash: "#cfp" },
-      { label: "Poster Özeti Gönder", href: "/poster-basvurusu" },
-    ],
+    links: [{ label: "Poster Çağrısı", hash: "#cfp" }],
   },
 ];
 
-const applicationLinks = [
-  { label: "Kayıt Ol", href: "/kayit", tone: "green" },
-  { label: "Stand Başvurusu", href: "/stand-basvurusu", tone: "blue" },
-  { label: "Sponsorluk Başvurusu", href: "/sponsorluk-basvurusu", tone: "outline" },
+const registrationLinks = [
+  { label: "Bireysel Kayıt", href: "/kayit", tone: "green", emphasized: true },
+  { label: "Stand Başvurusu Yap", href: "/stand-basvurusu", tone: "blue" },
+  { label: "Sponsorluk Başvurusu Yap", href: "/sponsorluk-basvurusu", tone: "outline" },
 ];
+
+const posterCta = { label: "Poster Özeti Gönder", href: "/poster-basvurusu" };
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -99,7 +98,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href={isHome ? "#home" : "/"} className="flex items-center" aria-label="Ana sayfa">
             <Image
@@ -107,70 +106,78 @@ export default function Navbar() {
               alt="Türkiye Hidrojen Zirvesi 2026"
               width={126}
               height={66}
-              className="h-12 w-auto object-contain"
+              className="h-14 w-auto object-contain"
               priority
             />
           </a>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-4" aria-label="Ana menü">
-            {navGroups.map((group) => (
-              <div key={group.label} className="group relative">
-                <button
-                  type="button"
-                  className="relative text-sm font-medium text-h2-ink-2 transition-colors hover:text-h2-ink-1 after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-h2-cyan after:transition-transform after:duration-300 hover:after:scale-x-100"
-                >
-                  {group.label}
-                </button>
-                <div className="invisible absolute left-0 top-full z-50 mt-3 w-56 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                  {group.links.map((item) => (
-                    <a
-                      key={item.label}
-                      href={navHref(item)}
-                      className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-cyan/10 hover:text-h2-ink-1"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
+            <div className="group relative">
+              <button
+                type="button"
+                className="relative text-sm font-medium text-h2-ink-2 transition-colors hover:text-h2-ink-1 after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-h2-cyan after:transition-transform after:duration-300 hover:after:scale-x-100"
+              >
+                Zirve
+              </button>
+              <div className="invisible absolute right-0 top-full z-50 mt-3 w-64 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                {navSections.map((section, sectionIndex) => (
+                  <div
+                    key={section.label}
+                    className={sectionIndex > 0 ? "mt-2 border-t border-h2-border-soft pt-2" : undefined}
+                  >
+                    {sectionIndex > 0 && (
+                      <p className="px-3 pb-1 pt-1 text-h2-micro font-semibold uppercase tracking-[0.18em] text-h2-ink-3">
+                        {section.label}
+                      </p>
+                    )}
+                    {section.links.map((item) => (
+                      <a
+                        key={item.label}
+                        href={navHref(item)}
+                        className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-cyan/10 hover:text-h2-ink-1"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                ))}
               </div>
-            ))}
-            <div className="flex items-center gap-2">
-              <a
-                href="/kayit"
+            </div>
+
+            <div className="group relative">
+              <button
+                type="button"
+                aria-haspopup="true"
                 className="rounded-h2-md bg-h2-green px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-md hover:shadow-h2-green/25"
               >
                 Kayıt Ol
-              </a>
-              <div className="group relative">
-                <button
-                  type="button"
-                  className="rounded-h2-md border border-h2-border px-4 py-2 text-sm font-semibold text-h2-ink-1 transition-all hover:border-h2-cyan/45 hover:text-white"
-                >
-                  Başvurular
-                </button>
-                <div className="invisible absolute right-0 top-full z-50 mt-2 w-56 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+              </button>
+              <div className="invisible absolute right-0 top-full z-50 mt-2 w-64 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                {registrationLinks.map((item) => (
                   <a
-                    href="/kayit"
-                    className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-green/15 hover:text-h2-ink-1"
+                    key={item.href}
+                    href={item.href}
+                    className={
+                      item.emphasized
+                        ? "block rounded-h2-md bg-h2-green/15 px-3 py-2.5 text-sm font-bold text-h2-ink-1 transition-colors hover:bg-h2-green/25"
+                        : `block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:text-h2-ink-1 ${
+                            item.tone === "blue" ? "hover:bg-h2-blue/15" : "hover:bg-h2-cyan/10"
+                          }`
+                    }
                   >
-                    Katılımcı Kaydı
+                    {item.label}
                   </a>
-                  <a
-                    href="/stand-basvurusu"
-                    className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-blue/15 hover:text-h2-ink-1"
-                  >
-                    Stand Başvurusu
-                  </a>
-                  <a
-                    href="/sponsorluk-basvurusu"
-                    className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-cyan/10 hover:text-h2-ink-1"
-                  >
-                    Sponsorluk Başvurusu
-                  </a>
-                </div>
+                ))}
               </div>
             </div>
+
+            <a
+              href={posterCta.href}
+              className="rounded-h2-md bg-h2-blue px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-blue/85 hover:shadow-md hover:shadow-h2-blue/25"
+            >
+              {posterCta.label}
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -235,7 +242,7 @@ export default function Navbar() {
           </div>
 
           <div className="mt-12 flex flex-1 flex-col justify-center gap-2">
-            {navGroups.map((group, groupIndex) => (
+            {navSections.map((group, groupIndex) => (
               <div key={group.label}>
                 <p className="mb-1 mt-4 text-h2-micro font-semibold uppercase tracking-[0.18em] text-h2-ink-3">
                   {group.label}
@@ -259,7 +266,7 @@ export default function Navbar() {
           </div>
 
           <div className="grid gap-3">
-            {applicationLinks.map((item) => (
+            {[...registrationLinks, { ...posterCta, tone: "blue" }].map((item) => (
               <a
                 key={item.href}
                 href={item.href}
