@@ -10,23 +10,22 @@ type Speaker = {
 
 const speakers: Speaker[] = [
   {
-    name: "Dr. Ayfer Veziroğlu",
-    role: "Keynote Konuşmacı — 1. Gün",
-    affiliation: "International Association for Hydrogen Energy (IAHE) Başkanı",
-    initials: "AV",
-    photo: "/speakers/ayfer-veziroglu-iahe-2026-clear-up.png",
-  },
-  {
     name: "Prof. Dr. İbrahim Dinçer",
-    role: "Keynote Konuşmacı — 2. Gün",
-    affiliation:
-      "Hydrogen Technologies Association Başkanı · Ontario Tech Üniversitesi · Yıldız Teknik Üniversitesi",
+    role: "Keynote Konuşmacı - 1. Gün",
+    affiliation: "Türkiye Hidrojen Yol Haritası 2035",
     initials: "İD",
     photo: "/speakers/ibrahim-dincer-2026-shoulders.png",
   },
   {
+    name: "Dr. Ayfer Veziroğlu",
+    role: "Keynote Konuşmacı - 1. Gün",
+    affiliation: "International Association for Hydrogen Energy (IAHE)",
+    initials: "AV",
+    photo: "/speakers/ayfer-veziroglu-iahe-2026-clear-up.png",
+  },
+  {
     name: "Prof. Dr. Selahattin Çelik",
-    role: "Açılış Konuşması · Panel 2 Moderatörü",
+    role: "Açılış Konuşması - Panel 2 Moderatörü",
     affiliation: "AYBÜ H2TEAM",
     initials: "SÇ",
     photo: "/speakers/selahattin-celik.jpg",
@@ -55,14 +54,14 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. Hasan Özcan",
     role: "Panel 3 Moderatörü",
-    affiliation: "Yeşil Hidrojen Üretimi",
+    affiliation: "Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
     initials: "HÖ",
     photo: "/speakers/hasan-ozcan.jpg",
   },
   {
-    name: "Dr. Pauline Seyfert",
+    name: "Dr. Paulina Seyfert",
     role: "Panel 1 Konuşmacısı",
-    affiliation: "Adlera Group",
+    affiliation: "Almanya Enerji Bakanlığı",
     initials: "PS",
     photo: "/speakers/pauline-seyfert.jpg",
   },
@@ -76,14 +75,14 @@ const speakers: Speaker[] = [
   {
     name: "Dr. Selim Çögenli",
     role: "Panel 2 Konuşmacısı",
-    affiliation: "LENTATEK",
+    affiliation: "LENTATEK - Ömer Erdemir ile birlikte",
     initials: "SÇ",
     photo: "/speakers/selim-cogenli-linkedin.jpg",
   },
   {
     name: "Prof. Dr. Yüksel Kaplan",
-    role: "Konuşmacı",
-    affiliation: "Türkiye Hidrojen Zirvesi 2026",
+    role: "Panel 3 Konuşmacısı",
+    affiliation: "Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
     initials: "YK",
     photo: "/speakers/yuksel-kaplan.jpg",
   },
@@ -147,7 +146,7 @@ export default function Speakers() {
         <div className="mb-14 grid items-end gap-6 lg:grid-cols-[1fr_auto]">
           <div>
             <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
-              Alanında Öncü İsimler
+              Alanında öncü isimler
             </span>
             <h2 className="mt-3 max-w-3xl font-display text-h2-h1 font-bold leading-tight text-h2-ink-1">
               Hidrojenin geleceğine yön veren konuşmacılar
@@ -155,7 +154,7 @@ export default function Speakers() {
           </div>
           <p className="max-w-md text-h2-small leading-relaxed text-h2-ink-2 lg:pb-2">
             Akademi, kamu ve sanayiden gelen konuşmacılar; keynote oturumları ve
-            tematik panellerle iki günlük programı şekillendiriyor.
+            tematik panellerle 30.06.2026 tarihli taslak programı şekillendiriyor.
           </p>
         </div>
 

@@ -37,31 +37,38 @@ const day1: Session[] = [
       "Prof. Dr. Selahattin Çelik - AYBÜ H2TEAM (10 dk)",
       "Oğuzhan Akyener - TESPAM Başkanı (10 dk)",
       "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
-      "Enerji Bakanı (Tensipleri ile) / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
+      "Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
     ],
   },
   { time: "11:00 - 11:15", type: "break", title: "Kahve Arası" },
   {
     time: "11:15 - 12:00",
     type: "keynote",
-    title: "Keynote Konuşmacı: Dr. Ayfer Veziroğlu",
+    title: "Keynote Konuşmacı: Prof. Dr. İbrahim Dinçer",
   },
   { time: "12:00 - 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
   {
-    time: "13:15 - 14:30",
+    time: "13:15 - 14:00",
+    type: "keynote",
+    title: "Keynote Konuşmacı: Dr. Ayfer Veziroğlu",
+  },
+  { time: "14:30 - 14:45", type: "break", title: "Kahve Arası" },
+  {
+    time: "14:00 - 16:00",
     type: "panel",
     title: "Panel 1: Türkiye Hidrojen Yol Haritası 2035",
     moderator: "Prof. Dr. Erol Arcaklıoğlu",
     speakers: [
+      "Prof. Dr. İbrahim Dinçer",
       "Enerji ve Tabii Kaynaklar Bakanlığı / TENMAK-TEMEN",
       "Sanayi ve Teknoloji Bakanlığı / TÜBİTAK Başkanı",
       "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı",
       "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
     ],
   },
-  { time: "14:30 - 14:45", type: "break", title: "Kahve Arası" },
+  { time: "16:00 - 16:15", type: "break", title: "Kahve Arası" },
   {
-    time: "14:45 - 16:00",
+    time: "16:15 - 17:45",
     type: "panel",
     title: "Panel 2: Savunma Sanayinde Hidrojen Teknolojileri",
     moderator: "Prof. Dr. Selahattin Çelik",
@@ -70,21 +77,7 @@ const day1: Session[] = [
       "ROKETSAN",
       "General Electric Aerospace",
       "Prof. Dr. Mustafa İlbaş | ASFAT",
-      "Dr. Selim Çögenli | LENTATEK",
-    ],
-  },
-  { time: "16:00 - 16:15", type: "break", title: "Kahve Arası" },
-  {
-    time: "16:15 - 17:45",
-    type: "panel",
-    title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
-    moderator: "Prof. Dr. Hasan Özcan",
-    speakers: [
-      "Yeşil Hidrojen Üreticileri Derneği",
-      "TÜPRAŞ",
-      "GM Hidrojen Vadisi",
-      "Prof. Dr. Yüksel Kaplan",
-      "TÜBİTAK MAM",
+      "Ömer Erdemir / Dr. Selim Çögenli | LENTATEK",
     ],
   },
   {
@@ -108,8 +101,16 @@ const day2: Session[] = [
   },
   {
     time: "09:30 - 10:15",
-    type: "keynote",
-    title: "Keynote Konuşmacı: Prof. Dr. İbrahim Dinçer",
+    type: "panel",
+    title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
+    moderator: "Prof. Dr. Hasan Özcan",
+    speakers: [
+      "Yeşil Hidrojen Üreticileri Derneği",
+      "TÜPRAŞ",
+      "GM Hidrojen Vadisi",
+      "Prof. Dr. Yüksel Kaplan",
+      "TÜBİTAK MAM",
+    ],
   },
   { time: "10:15 - 10:45", type: "break", title: "Kahve Arası & Sergi" },
   {
@@ -133,7 +134,7 @@ const day2: Session[] = [
     speakers: [
       "Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım fonu",
       "TÜBİTAK Uzmanı",
-      "Prof. Dr. İbrahim Dinçer",
+      "Akademi",
       "Sanayi Ar-Ge merkezi + Teknoloji / startup firması",
     ],
   },
@@ -246,7 +247,8 @@ export default function Program() {
             İki günlük program
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
-            Oturum saatlerini, moderatörleri ve konuşmacıları gün bazında inceleyin.
+            30.06.2026 tarihli taslak programı, oturum saatleri, moderatörler ve konuşmacılarla
+            birlikte gün bazında inceleyin.
           </p>
         </div>
 
