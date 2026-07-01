@@ -22,7 +22,7 @@ const navSections = [
 ];
 
 const registrationLinks = [
-  { label: "Bireysel Kayıt", href: "/kayit", tone: "green", emphasized: true },
+  { label: "Bireysel Kayıt (Ücretsiz)", href: "/kayit", tone: "green", emphasized: true },
   { label: "Stand Başvurusu Yap", href: "/stand-basvurusu", tone: "blue" },
   { label: "Sponsorluk Başvurusu Yap", href: "/sponsorluk-basvurusu", tone: "outline" },
 ];
