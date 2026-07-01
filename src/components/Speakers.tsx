@@ -12,7 +12,7 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. İbrahim Dinçer",
     role: "Keynote Konuşmacı - 1. Gün",
-    affiliation: "Türkiye Hidrojen Yol Haritası 2035",
+    affiliation: "Hidrojen Teknolojileri Birliği Başkanı",
     initials: "İD",
     photo: "/speakers/ibrahim-dincer-2026-shoulders.png",
   },
