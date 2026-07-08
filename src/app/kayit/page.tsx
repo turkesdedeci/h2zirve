@@ -229,8 +229,9 @@ export default function Kayit() {
               </h2>
 
               <div>
-                <label className={labelCls}>Ad Soyad *</label>
+                <label htmlFor="kayit-ad-soyad" className={labelCls}>Ad Soyad *</label>
                 <input
+                  id="kayit-ad-soyad"
                   required
                   value={form.ad_soyad}
                   onChange={set("ad_soyad")}
@@ -241,8 +242,9 @@ export default function Kayit() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>E-posta *</label>
+                  <label htmlFor="kayit-email" className={labelCls}>E-posta *</label>
                   <input
+                    id="kayit-email"
                     required
                     type="email"
                     value={form.email}
@@ -257,8 +259,9 @@ export default function Kayit() {
                   )}
                 </div>
                 <div>
-                  <label className={labelCls}>Telefon</label>
+                  <label htmlFor="kayit-telefon" className={labelCls}>Telefon</label>
                   <input
+                    id="kayit-telefon"
                     value={form.telefon}
                     onChange={handlePhone}
                     placeholder="+90 555 555 55 55"
@@ -274,8 +277,9 @@ export default function Kayit() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>Kurum / Şirket *</label>
+                  <label htmlFor="kayit-kurum" className={labelCls}>Kurum / Şirket *</label>
                   <input
+                    id="kayit-kurum"
                     required
                     value={form.kurum}
                     onChange={set("kurum")}
@@ -284,8 +288,9 @@ export default function Kayit() {
                   />
                 </div>
                 <div>
-                  <label className={labelCls}>Unvan / Görev</label>
+                  <label htmlFor="kayit-unvan" className={labelCls}>Unvan / Görev</label>
                   <input
+                    id="kayit-unvan"
                     value={form.unvan}
                     onChange={set("unvan")}
                     placeholder="Örn: Araştırmacı, Yönetici, Öğrenci"
@@ -301,8 +306,9 @@ export default function Kayit() {
               </h2>
 
               <div>
-                <label className={labelCls}>Katılımcı Tipi *</label>
+                <label htmlFor="kayit-katilimci-tipi" className={labelCls}>Katılımcı Tipi *</label>
                 <select
+                  id="kayit-katilimci-tipi"
                   required
                   value={form.katilimci_tipi}
                   onChange={set("katilimci_tipi")}
@@ -371,8 +377,9 @@ export default function Kayit() {
               </div>
 
               <div>
-                <label className={labelCls}>Not / Açıklama</label>
+                <label htmlFor="kayit-notlar" className={labelCls}>Not / Açıklama</label>
                 <textarea
+                  id="kayit-notlar"
                   value={form.notlar}
                   onChange={set("notlar")}
                   placeholder="Eklemek istediğiniz notlar"
@@ -420,7 +427,7 @@ export default function Kayit() {
           </form>
         </div>
 
-        <aside className="min-w-0 space-y-5 lg:sticky lg:top-8 lg:self-start">
+        <aside className="min-w-0 space-y-5 lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
             <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
               Etkinlik Bilgileri

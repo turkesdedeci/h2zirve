@@ -146,13 +146,13 @@ export default function Navbar() {
             </div>
 
             <div className="group relative">
-              <button
-                type="button"
+              <a
+                href="/kayit"
                 aria-haspopup="true"
-                className="rounded-h2-md bg-h2-green px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-md hover:shadow-h2-green/25"
+                className="inline-block rounded-h2-md bg-h2-green px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-md hover:shadow-h2-green/25"
               >
                 Kayıt Ol
-              </button>
+              </a>
               <div className="invisible absolute right-0 top-full z-50 mt-2 w-64 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
                 {registrationLinks.map((item) => (
                   <a

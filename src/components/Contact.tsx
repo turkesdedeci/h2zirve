@@ -93,10 +93,14 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2">
+                <label
+                  htmlFor="contact-name"
+                  className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+                >
                   Ad Soyad
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -107,10 +111,14 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2">
+                <label
+                  htmlFor="contact-email"
+                  className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+                >
                   E-posta
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -123,10 +131,14 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2">
+              <label
+                htmlFor="contact-subject"
+                className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+              >
                 Konu
               </label>
               <select
+                id="contact-subject"
                 value={form.subject}
                 onChange={(e) =>
                   setForm({ ...form, subject: e.target.value })
@@ -156,10 +168,14 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2">
+              <label
+                htmlFor="contact-message"
+                className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+              >
                 Mesaj
               </label>
               <textarea
+                id="contact-message"
                 value={form.message}
                 onChange={(e) =>
                   setForm({ ...form, message: e.target.value })

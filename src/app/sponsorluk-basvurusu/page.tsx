@@ -223,8 +223,9 @@ export default function SponsorlukBasvurusu() {
               </h2>
 
               <div>
-                <label className={labelCls}>Firma Adı *</label>
+                <label htmlFor="sponsor-firma-adi" className={labelCls}>Firma Adı *</label>
                 <input
+                  id="sponsor-firma-adi"
                   required
                   value={form.firma_adi}
                   onChange={set("firma_adi")}
@@ -235,8 +236,9 @@ export default function SponsorlukBasvurusu() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>Yetkili Kişi *</label>
+                  <label htmlFor="sponsor-yetkili-kisi" className={labelCls}>Yetkili Kişi *</label>
                   <input
+                    id="sponsor-yetkili-kisi"
                     required
                     value={form.yetkili_kisi}
                     onChange={set("yetkili_kisi")}
@@ -245,8 +247,9 @@ export default function SponsorlukBasvurusu() {
                   />
                 </div>
                 <div>
-                  <label className={labelCls}>Web Sitesi</label>
+                  <label htmlFor="sponsor-web-sitesi" className={labelCls}>Web Sitesi</label>
                   <input
+                    id="sponsor-web-sitesi"
                     type="text"
                     inputMode="url"
                     value={form.web_sitesi}
@@ -259,8 +262,9 @@ export default function SponsorlukBasvurusu() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>E-posta *</label>
+                  <label htmlFor="sponsor-email" className={labelCls}>E-posta *</label>
                   <input
+                    id="sponsor-email"
                     required
                     type="email"
                     value={form.email}
@@ -275,8 +279,9 @@ export default function SponsorlukBasvurusu() {
                   )}
                 </div>
                 <div>
-                  <label className={labelCls}>Telefon</label>
+                  <label htmlFor="sponsor-telefon" className={labelCls}>Telefon</label>
                   <input
+                    id="sponsor-telefon"
                     value={form.telefon}
                     onChange={handlePhone}
                     placeholder="+90 555 555 55 55"
@@ -297,8 +302,9 @@ export default function SponsorlukBasvurusu() {
               </h2>
 
               <div>
-                <label className={labelCls}>Sponsor Tipi *</label>
+                <label htmlFor="sponsor-tipi" className={labelCls}>Sponsor Tipi *</label>
                 <select
+                  id="sponsor-tipi"
                   required
                   value={form.sponsor_tipi}
                   onChange={set("sponsor_tipi")}
@@ -316,8 +322,9 @@ export default function SponsorlukBasvurusu() {
               </div>
 
               <div>
-                <label className={labelCls}>Bütçe Aralığı *</label>
+                <label htmlFor="sponsor-butce-araligi" className={labelCls}>Bütçe Aralığı *</label>
                 <select
+                  id="sponsor-butce-araligi"
                   required
                   value={form.butce_araligi}
                   onChange={set("butce_araligi")}
@@ -364,8 +371,9 @@ export default function SponsorlukBasvurusu() {
               </div>
 
               <div>
-                <label className={labelCls}>Not</label>
+                <label htmlFor="sponsor-notlar" className={labelCls}>Not</label>
                 <textarea
+                  id="sponsor-notlar"
                   value={form.notlar}
                   onChange={set("notlar")}
                   placeholder="Özel beklenti, sponsorluk fikri veya eklemek istediğiniz bilgiler"
@@ -391,7 +399,7 @@ export default function SponsorlukBasvurusu() {
           </form>
         </div>
 
-        <aside className="min-w-0 space-y-5 lg:sticky lg:top-8 lg:self-start">
+        <aside className="min-w-0 space-y-5 lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-h2-lg border border-h2-blue/25 bg-h2-blue/8 p-6">
             <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
               İlgi formu

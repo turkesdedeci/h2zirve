@@ -289,7 +289,7 @@ export default function Program() {
             return (
               <article
                 key={`${s.time}-${i}`}
-                className={`group relative overflow-hidden rounded-h2-lg border ${c.border} ${c.bg} transition-all hover:border-opacity-80 hover:shadow-lg hover:shadow-black/20`}
+                className={`group relative overflow-hidden rounded-h2-lg border ${c.border} ${c.bg} transition-all hover:shadow-lg hover:shadow-black/20`}
               >
                 <span className={`absolute inset-y-0 left-0 w-1 ${c.accent}`} />
                 <div className="grid sm:grid-cols-[10rem_1fr]">

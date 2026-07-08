@@ -136,9 +136,7 @@ export default function PosterBasvurusu() {
     });
   }
 
-  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  function acceptFile(file: File) {
     if (file.type !== "application/pdf") {
       setError("Yalnızca PDF dosyası yükleyebilirsiniz.");
       return;
@@ -150,6 +148,17 @@ export default function PosterBasvurusu() {
     setError("");
     setPdfFile(file);
     setFieldErrors((current) => ({ ...current, pdf: undefined }));
+  }
+
+  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) acceptFile(file);
+  }
+
+  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    const file = e.dataTransfer.files?.[0];
+    if (file) acceptFile(file);
   }
 
   function handleDropZoneKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
@@ -343,8 +352,9 @@ export default function PosterBasvurusu() {
               </h2>
 
               <div>
-                <label className={labelCls}>Poster Başlığı *</label>
+                <label htmlFor="poster-basligi" className={labelCls}>Poster Başlığı *</label>
                 <input
+                  id="poster-basligi"
                   required
                   value={form.poster_basligi}
                   onChange={set("poster_basligi")}
@@ -354,8 +364,9 @@ export default function PosterBasvurusu() {
               </div>
 
               <div>
-                <label className={labelCls}>Yazar(lar) *</label>
+                <label htmlFor="poster-yazarlar" className={labelCls}>Yazar(lar) *</label>
                 <input
+                  id="poster-yazarlar"
                   required
                   value={form.yazarlar}
                   onChange={set("yazarlar")}
@@ -366,8 +377,9 @@ export default function PosterBasvurusu() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>Sorumlu Yazar *</label>
+                  <label htmlFor="poster-sorumlu-yazar" className={labelCls}>Sorumlu Yazar *</label>
                   <input
+                    id="poster-sorumlu-yazar"
                     required
                     value={form.sorumlu_yazar}
                     onChange={handleResponsibleAuthor}
@@ -376,8 +388,9 @@ export default function PosterBasvurusu() {
                   />
                 </div>
                 <div>
-                  <label className={labelCls}>Kurum / Şirket *</label>
+                  <label htmlFor="poster-kurum" className={labelCls}>Kurum / Şirket *</label>
                   <input
+                    id="poster-kurum"
                     required
                     value={form.kurum}
                     onChange={set("kurum")}
@@ -389,8 +402,9 @@ export default function PosterBasvurusu() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>E-posta *</label>
+                  <label htmlFor="poster-email" className={labelCls}>E-posta *</label>
                   <input
+                    id="poster-email"
                     required
                     type="email"
                     value={form.email}
@@ -405,8 +419,9 @@ export default function PosterBasvurusu() {
                   )}
                 </div>
                 <div>
-                  <label className={labelCls}>Telefon</label>
+                  <label htmlFor="poster-telefon" className={labelCls}>Telefon</label>
                   <input
+                    id="poster-telefon"
                     value={form.telefon}
                     onChange={handlePhone}
                     placeholder="+90 555 555 55 55"
@@ -427,8 +442,9 @@ export default function PosterBasvurusu() {
               </h2>
 
               <div>
-                <label className={labelCls}>Çalışma Alanı *</label>
+                <label htmlFor="poster-calisma-alani" className={labelCls}>Çalışma Alanı *</label>
                 <select
+                  id="poster-calisma-alani"
                   required
                   value={form.calisma_alani}
                   onChange={set("calisma_alani")}
@@ -474,7 +490,10 @@ export default function PosterBasvurusu() {
 
               <div>
                 <div className="mb-1.5 flex items-center justify-between gap-4">
-                  <label className="text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
+                  <label
+                    htmlFor="poster-katkisi"
+                    className="text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3"
+                  >
                     Öne Çıkan Katkı *
                   </label>
                   <span
@@ -486,6 +505,7 @@ export default function PosterBasvurusu() {
                   </span>
                 </div>
                 <textarea
+                  id="poster-katkisi"
                   required
                   value={form.katkisi}
                   onChange={handleContribution}
@@ -507,6 +527,8 @@ export default function PosterBasvurusu() {
               <div
                 onClick={() => fileRef.current?.click()}
                 onKeyDown={handleDropZoneKeyDown}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={handleDrop}
                 role="button"
                 tabIndex={0}
                 aria-label="Genişletilmiş özet PDF dosyası seç"
@@ -596,8 +618,9 @@ export default function PosterBasvurusu() {
 
               {form.prototip === "Evet" && (
                 <div>
-                  <label className={labelCls}>Sergilenecek Ürün / Prototip</label>
+                  <label htmlFor="poster-prototip-aciklama" className={labelCls}>Sergilenecek Ürün / Prototip</label>
                   <textarea
+                    id="poster-prototip-aciklama"
                     value={form.prototip_aciklama}
                     onChange={set("prototip_aciklama")}
                     placeholder="Ürün veya prototip hakkında kısa açıklama"
@@ -632,8 +655,9 @@ export default function PosterBasvurusu() {
               </div>
 
               <div>
-                <label className={labelCls}>Not / Açıklama</label>
+                <label htmlFor="poster-notlar" className={labelCls}>Not / Açıklama</label>
                 <textarea
+                  id="poster-notlar"
                   value={form.notlar}
                   onChange={set("notlar")}
                   placeholder="Eklemek istediğiniz notlar"

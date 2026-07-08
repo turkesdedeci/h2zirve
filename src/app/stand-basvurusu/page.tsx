@@ -226,8 +226,9 @@ export default function StandBasvurusu() {
               </h2>
 
               <div>
-                <label className={labelCls}>Firma Adı *</label>
+                <label htmlFor="stand-firma-adi" className={labelCls}>Firma Adı *</label>
                 <input
+                  id="stand-firma-adi"
                   required
                   value={form.firma_adi}
                   onChange={set("firma_adi")}
@@ -278,8 +279,9 @@ export default function StandBasvurusu() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>Yetkili Kişi *</label>
+                  <label htmlFor="stand-yetkili-kisi" className={labelCls}>Yetkili Kişi *</label>
                   <input
+                    id="stand-yetkili-kisi"
                     required
                     value={form.yetkili_kisi}
                     onChange={set("yetkili_kisi")}
@@ -288,8 +290,9 @@ export default function StandBasvurusu() {
                   />
                 </div>
                 <div>
-                  <label className={labelCls}>Sektör *</label>
+                  <label htmlFor="stand-sektor" className={labelCls}>Sektör *</label>
                   <input
+                    id="stand-sektor"
                     required
                     value={form.sektor}
                     onChange={set("sektor")}
@@ -301,8 +304,9 @@ export default function StandBasvurusu() {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelCls}>E-posta *</label>
+                  <label htmlFor="stand-email" className={labelCls}>E-posta *</label>
                   <input
+                    id="stand-email"
                     required
                     type="email"
                     value={form.email}
@@ -317,8 +321,9 @@ export default function StandBasvurusu() {
                   )}
                 </div>
                 <div>
-                  <label className={labelCls}>Telefon</label>
+                  <label htmlFor="stand-telefon" className={labelCls}>Telefon</label>
                   <input
+                    id="stand-telefon"
                     value={form.telefon}
                     onChange={handlePhone}
                     placeholder="+90 555 555 55 55"
@@ -333,8 +338,9 @@ export default function StandBasvurusu() {
               </div>
 
               <div>
-                <label className={labelCls}>Web Sitesi</label>
+                <label htmlFor="stand-web-sitesi" className={labelCls}>Web Sitesi</label>
                 <input
+                  id="stand-web-sitesi"
                   type="text"
                   inputMode="url"
                   value={form.web_sitesi}
@@ -351,8 +357,9 @@ export default function StandBasvurusu() {
               </h2>
 
               <div>
-                <label className={labelCls}>Stand İhtiyacı *</label>
+                <label htmlFor="stand-ihtiyaci" className={labelCls}>Stand İhtiyacı *</label>
                 <select
+                  id="stand-ihtiyaci"
                   required
                   value={form.stand_ihtiyaci}
                   onChange={set("stand_ihtiyaci")}
@@ -370,8 +377,9 @@ export default function StandBasvurusu() {
               </div>
 
               <div>
-                <label className={labelCls}>Ürün / Prototip Açıklaması *</label>
+                <label htmlFor="stand-urun-aciklamasi" className={labelCls}>Ürün / Prototip Açıklaması *</label>
                 <textarea
+                  id="stand-urun-aciklamasi"
                   required
                   value={form.urun_aciklamasi}
                   onChange={set("urun_aciklamasi")}
@@ -406,8 +414,9 @@ export default function StandBasvurusu() {
               </div>
 
               <div>
-                <label className={labelCls}>Not</label>
+                <label htmlFor="stand-notlar" className={labelCls}>Not</label>
                 <textarea
+                  id="stand-notlar"
                   value={form.notlar}
                   onChange={set("notlar")}
                   placeholder="Eklemek istediğiniz bilgiler"
@@ -433,7 +442,7 @@ export default function StandBasvurusu() {
           </form>
         </div>
 
-        <aside className="min-w-0 space-y-5 lg:sticky lg:top-8 lg:self-start">
+        <aside className="min-w-0 space-y-5 lg:sticky lg:top-28 lg:self-start">
           <div className="rounded-h2-lg border border-h2-green/25 bg-h2-green/8 p-6">
             <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
               Startup ücretsiz

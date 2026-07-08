@@ -46,10 +46,10 @@ export default function Hero() {
             {/* CTAs */}
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
-                href="#contact"
+                href="/kayit"
                 className="rounded-h2-md bg-h2-blue px-8 py-3.5 text-center text-base font-semibold text-white transition-all hover:bg-h2-blue-bright hover:shadow-md hover:shadow-h2-blue/25"
               >
-                Kayıt Ol
+                Ücretsiz Kayıt Ol
               </a>
               <a
                 href="/poster-basvurusu"
