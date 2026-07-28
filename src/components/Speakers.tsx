@@ -59,11 +59,25 @@ const speakers: Speaker[] = [
     photo: "/speakers/hasan-ozcan.jpg",
   },
   {
+    name: "Dr. Canan Acar",
+    role: "Panel 4 Moderatörü",
+    affiliation: "Twente Üniversitesi",
+    initials: "CA",
+    photo: "/speakers/canan-acar.jpg",
+  },
+  {
     name: "Dr. Paulina Seyfert",
     role: "Panel 1 Konuşmacısı",
     affiliation: "Almanya Enerji Bakanlığı",
     initials: "PS",
     photo: "/speakers/pauline-seyfert.jpg",
+  },
+  {
+    name: "Dr. Uğur Kayasal",
+    role: "Panel 2 Konuşmacısı",
+    affiliation: "ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
+    initials: "UK",
+    photo: "/speakers/ugur-kayasal.jpg",
   },
   {
     name: "Prof. Dr. Mustafa İlbaş",

@@ -74,7 +74,7 @@ const day1: Session[] = [
     moderator: "Prof. Dr. Selahattin Çelik",
     speakers: [
       "Savunma Sanayii Başkanlığı (SSB)",
-      "ROKETSAN",
+      "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
       "General Electric Aerospace",
       "Prof. Dr. Mustafa İlbaş | ASFAT",
       "Ömer Erdemir / Dr. Selim Çögenli | LENTATEK",
@@ -117,7 +117,7 @@ const day2: Session[] = [
     time: "10:45 - 11:45",
     type: "panel",
     title: "Panel 4: Sanayide Hidrojen Kullanımı",
-    moderator: "DSB",
+    moderator: "Dr. Canan Acar | Twente Üniversitesi",
     speakers: [
       "Botaş",
       "Çimento Üreticileri Derneği",
