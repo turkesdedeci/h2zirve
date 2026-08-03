@@ -66,6 +66,19 @@ const speakers: Speaker[] = [
     photo: "/speakers/canan-acar.jpg",
   },
   {
+    name: "Prof. Dr. İlker Murat Ar",
+    role: "Panel 1 Konuşmacısı",
+    affiliation: "T.C. Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
+    initials: "İA",
+  },
+  {
+    name: "Gürsel Erul",
+    role: "Panel 1 Konuşmacısı",
+    affiliation:
+      "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
+    initials: "GE",
+  },
+  {
     name: "Dr. Paulina Seyfert",
     role: "Panel 1 Konuşmacısı",
     affiliation: "Almanya Enerji Bakanlığı",

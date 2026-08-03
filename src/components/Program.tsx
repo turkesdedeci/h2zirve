@@ -61,8 +61,8 @@ const day1: Session[] = [
     speakers: [
       "Prof. Dr. İbrahim Dinçer",
       "Enerji ve Tabii Kaynaklar Bakanlığı / TENMAK-TEMEN",
-      "Sanayi ve Teknoloji Bakanlığı / TÜBİTAK Başkanı",
-      "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı",
+      "Prof. Dr. İlker Murat Ar | T.C. Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
+      "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
       "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
     ],
   },
