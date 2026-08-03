@@ -123,6 +123,20 @@ const speakers: Speaker[] = [
     photo: "/speakers/selim-cogenli-linkedin.jpg",
   },
   {
+    name: "Yusuf Günay",
+    role: "Panel 3 Konuşmacısı",
+    affiliation: "Yeşil Hidrojen Üreticileri Derneği (H2DER) Başkanı",
+    initials: "YG",
+    photo: "/speakers/yusuf-gunay-h2der.jpg",
+  },
+  {
+    name: "Prof. Dr. Can Erkey",
+    role: "Panel 3 Konuşmacısı",
+    affiliation: "Koç Üniversitesi Hidrojen Teknolojileri Merkezi (KUHyTech) Direktörü",
+    initials: "CE",
+    photo: "/speakers/can-erkey-kuhytech.jpg",
+  },
+  {
     name: "Prof. Dr. Yüksel Kaplan",
     role: "Panel 3 Konuşmacısı",
     affiliation: "NOHÜ, Hidrojen Zirvesi Başkanı",

@@ -106,8 +106,8 @@ const day2: Session[] = [
     title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
     moderator: "Prof. Dr. Hasan Özcan",
     speakers: [
-      "Yeşil Hidrojen Üreticileri Derneği",
-      "TÜPRAŞ",
+      "Yusuf Günay | H2DER Başkanı",
+      "Prof. Dr. Can Erkey | Koç Üniversitesi Hidrojen Teknolojileri Merkezi (KUHyTech) Direktörü",
       "GM Hidrojen Vadisi",
       "Prof. Dr. Yüksel Kaplan",
       "TÜBİTAK MAM",
