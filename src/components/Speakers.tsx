@@ -70,6 +70,7 @@ const speakers: Speaker[] = [
     role: "Panel 1 Konuşmacısı",
     affiliation: "T.C. Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
     initials: "İA",
+    photo: "/speakers/ilker-murat-ar.jpg",
   },
   {
     name: "Gürsel Erul",
@@ -77,6 +78,7 @@ const speakers: Speaker[] = [
     affiliation:
       "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
     initials: "GE",
+    photo: "/speakers/gursel-erul.jpg",
   },
   {
     name: "Dr. Paulina Seyfert",
@@ -97,6 +99,7 @@ const speakers: Speaker[] = [
     role: "Panel 2 Konuşmacısı",
     affiliation: "Savunma Sanayii Başkanlığı (SSB)",
     initials: "BÖ",
+    photo: "/speakers/berna-sezgin-oztok.jpg",
   },
   {
     name: "Prof. Dr. Mustafa İlbaş",
