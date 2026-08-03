@@ -80,6 +80,12 @@ const speakers: Speaker[] = [
     photo: "/speakers/ugur-kayasal.jpg",
   },
   {
+    name: "Dr. Berna Sezgin Öztok",
+    role: "Panel 2 Konuşmacısı",
+    affiliation: "Savunma Sanayii Başkanlığı (SSB)",
+    initials: "BÖ",
+  },
+  {
     name: "Prof. Dr. Mustafa İlbaş",
     role: "Panel 2 Konuşmacısı",
     affiliation: "ASFAT",
