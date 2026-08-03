@@ -75,7 +75,7 @@ const day1: Session[] = [
     speakers: [
       "Dr. Berna Sezgin Öztok | Savunma Sanayii Başkanlığı (SSB)",
       "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
-      "General Electric Aerospace",
+      "Kadir Gökhan Güler | GE Aerospace Senior Engineering Manager",
       "Prof. Dr. Mustafa İlbaş | ASFAT",
       "Ömer Erdemir / Dr. Selim Çögenli | LENTATEK",
     ],

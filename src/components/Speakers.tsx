@@ -102,6 +102,13 @@ const speakers: Speaker[] = [
     photo: "/speakers/berna-sezgin-oztok.jpg",
   },
   {
+    name: "Kadir Gökhan Güler",
+    role: "Panel 2 Konuşmacısı",
+    affiliation: "GE Aerospace Senior Engineering Manager",
+    initials: "KG",
+    photo: "/speakers/kadir-gokhan-guler.jpg",
+  },
+  {
     name: "Prof. Dr. Mustafa İlbaş",
     role: "Panel 2 Konuşmacısı",
     affiliation: "ASFAT Genel Müdürü",
