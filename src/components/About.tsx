@@ -85,13 +85,13 @@ export default function About() {
           {/* Right: cards */}
           <div className="space-y-6">
             {/* Event info card */}
-            <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-7">
-              <h3 className="text-h2-h3 font-semibold text-h2-ink-1 pb-4 border-b border-h2-border mb-5">
+            <div className="border-t border-h2-cyan/40 pt-6">
+              <h3 className="mb-5 font-display text-h2-h3 font-semibold text-h2-ink-1">
                 Etkinlik Bilgileri
               </h3>
-              <div className="space-y-4">
+              <div className="divide-y divide-h2-border-soft">
                 {details.map(({ label, value }) => (
-                  <div key={label} className="flex justify-between items-start gap-4">
+                  <div key={label} className="flex items-start justify-between gap-4 py-3 first:pt-0">
                     <span className="text-h2-small font-medium text-h2-ink-3">
                       {label}
                     </span>
@@ -104,8 +104,8 @@ export default function About() {
             </div>
 
             {/* Audience card */}
-            <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-7">
-              <h3 className="text-h2-h3 font-semibold text-h2-ink-1 mb-5">
+            <div className="border-t border-h2-border pt-6">
+              <h3 className="mb-5 font-display text-h2-h3 font-semibold text-h2-ink-1">
                 Kimler Katılacak?
               </h3>
               <div className="space-y-2.5">

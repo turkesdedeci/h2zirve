@@ -36,9 +36,9 @@
   --radius-h2-xl: 28px;
 
   /* Type scale */
-  --text-h2-display:  3.5rem;
+  --text-h2-display:  clamp(2.65rem, 9vw, 3.5rem);
   --text-h2-display--line-height: 1.05;
-  --text-h2-h1:        2.75rem;
+  --text-h2-h1:        clamp(2.1rem, 6.8vw, 2.75rem);
   --text-h2-h1--line-height: 1.1;
   --text-h2-h2:         2rem;
   --text-h2-h2--line-height: 1.15;
@@ -64,12 +64,23 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
   background-color: var(--color-h2-bg);
   color: var(--color-h2-ink-1);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-h2-cyan) 28%, transparent);
+  color: var(--color-h2-ink-1);
 }
 
 @media (prefers-reduced-motion: reduce) {

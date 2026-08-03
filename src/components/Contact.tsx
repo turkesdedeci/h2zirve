@@ -78,7 +78,7 @@ export default function Contact() {
   const isSending = status === "sending";
 
   return (
-    <section id="contact" className="bg-h2-surface-1 py-16 sm:py-28">
+    <section id="contact" className="bg-h2-bg py-16 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
@@ -101,12 +101,14 @@ export default function Contact() {
                 </label>
                 <input
                   id="contact-name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
                   disabled={isSending}
-                  placeholder="Adınız Soyadınız"
+                  placeholder="Adınız Soyadınız…"
                   className={inputCls}
                 />
               </div>
@@ -119,12 +121,15 @@ export default function Contact() {
                 </label>
                 <input
                   id="contact-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
+                  spellCheck={false}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   required
                   disabled={isSending}
-                  placeholder="ornek@email.com"
+                  placeholder="ornek@email.com…"
                   className={inputCls}
                 />
               </div>
@@ -139,6 +144,8 @@ export default function Contact() {
               </label>
               <select
                 id="contact-subject"
+                name="subject"
+                autoComplete="off"
                 value={form.subject}
                 onChange={(e) =>
                   setForm({ ...form, subject: e.target.value })
@@ -147,7 +154,7 @@ export default function Contact() {
                 className={inputCls}
               >
                 <option value="" className="bg-h2-surface-2">
-                  Konu seçin...
+                  Konu seçin…
                 </option>
                 <option value="kayit" className="bg-h2-surface-2">
                   Kayıt Bilgisi
@@ -176,6 +183,8 @@ export default function Contact() {
               </label>
               <textarea
                 id="contact-message"
+                name="message"
+                autoComplete="off"
                 value={form.message}
                 onChange={(e) =>
                   setForm({ ...form, message: e.target.value })
@@ -183,13 +192,15 @@ export default function Contact() {
                 required
                 disabled={isSending}
                 rows={5}
-                placeholder="Mesajınızı buraya yazın..."
+                placeholder="Mesajınızı buraya yazın…"
                 className={`${inputCls} resize-none`}
               />
             </div>
 
             {feedback && (
               <p
+                aria-live="polite"
+                role="status"
                 className={`rounded-h2-md border px-4 py-3 text-h2-small ${
                   status === "success"
                     ? "border-h2-green/30 bg-h2-green/10 text-h2-green"
@@ -203,14 +214,14 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSending}
-              className={`w-full py-4 rounded-h2-md font-semibold text-base transition-all ${
+              className={`w-full rounded-h2-md py-4 text-base font-semibold transition-[background-color,box-shadow,opacity] ${
                 status === "success"
                   ? "bg-h2-green text-white"
                   : "bg-h2-blue hover:bg-h2-blue-bright text-white hover:shadow-md hover:shadow-h2-blue/20 disabled:cursor-not-allowed disabled:opacity-70"
               }`}
             >
               {isSending
-                ? "Gönderiliyor..."
+                ? "Gönderiliyor…"
                 : status === "success"
                   ? "Mesajınız İletildi"
                   : "Gönder"}
@@ -248,7 +259,7 @@ export default function Contact() {
                     href={p.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="bg-white/5 hover:bg-h2-blue/20 border border-white/8 hover:border-h2-blue/35 rounded-h2-md px-4 py-2.5 text-h2-ink-2 hover:text-h2-ink-1 text-h2-small font-medium transition-all"
+                    className="rounded-h2-md border border-white/8 bg-white/5 px-4 py-2.5 text-h2-small font-medium text-h2-ink-2 transition-[background-color,border-color,color] hover:border-h2-blue/35 hover:bg-h2-blue/20 hover:text-h2-ink-1"
                   >
                     {p.label}
                   </a>

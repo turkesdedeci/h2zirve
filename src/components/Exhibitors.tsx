@@ -35,7 +35,7 @@ export default function Exhibitors() {
             </p>
           </div>
 
-          <div className="rounded-h2-lg border border-h2-green/25 bg-h2-green/8 p-6">
+          <div className="border-l-2 border-h2-green/55 pl-6 lg:mb-1">
             <p className="text-h2-micro font-semibold uppercase tracking-widest text-h2-green">
               Startup Desteği
             </p>
@@ -47,11 +47,11 @@ export default function Exhibitors() {
           </div>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid border-y border-h2-border lg:grid-cols-3 lg:divide-x lg:divide-h2-border">
           {segments.map((segment) => (
             <div
               key={segment.name}
-              className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6"
+              className="border-b border-h2-border px-1 py-7 last:border-b-0 lg:border-b-0 lg:px-7 lg:first:pl-0 lg:last:pr-0"
             >
               <p
                 className={`font-display text-h2-h3 font-semibold ${segment.accent}`}
@@ -76,7 +76,7 @@ export default function Exhibitors() {
           </p>
           <a
             href="/stand-basvurusu"
-            className="mt-6 inline-block rounded-h2-md bg-h2-green px-9 py-3.5 font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20"
+            className="mt-6 inline-block rounded-h2-md bg-h2-green px-9 py-3.5 font-semibold text-white transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20"
           >
             Stand Başvurusu Yap
           </a>

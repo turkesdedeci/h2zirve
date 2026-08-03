@@ -14,14 +14,14 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <Stats />
         <About />
-        <Program />
+        <Program preview />
         <Speakers />
         <Exhibitors />
-        <CallForPapers />
+        <CallForPapers compact />
         <Sponsors />
         <Contact />
       </main>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -42,6 +42,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#06091A",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -50,6 +55,12 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-h2-sm bg-h2-cyan px-4 py-2 text-sm font-semibold text-h2-bg transition-transform focus-visible:translate-y-0"
+        >
+          Ana içeriğe geç
+        </a>
         {children}
         <SpeedInsights />
       </body>

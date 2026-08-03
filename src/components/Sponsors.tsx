@@ -30,7 +30,7 @@ const special = [
 
 export default function Sponsors() {
   return (
-    <section id="sponsors" className="bg-h2-bg py-16 sm:py-28">
+    <section id="sponsors" className="bg-h2-surface-1 py-16 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
         <div className="text-center mb-16">

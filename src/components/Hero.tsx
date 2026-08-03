@@ -16,12 +16,12 @@ export default function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
           {/* Left: event identity */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <p className="font-display text-h2-small font-semibold uppercase tracking-[0.25em] text-h2-cyan">
               22–23 Ekim 2026 · Ankara, Türkiye
             </p>
 
-            <h1 className="mt-5 font-display text-h2-display font-semibold leading-[1.05] text-h2-ink-1">
+            <h1 className="mt-5 max-w-[12ch] text-pretty font-display text-h2-display font-semibold leading-[1.05] text-h2-ink-1 sm:max-w-none">
               <span className="block">Türkiye Hidrojen</span>
               <span className="block text-h2-blue-bright">Zirvesi 2026</span>
             </h1>
@@ -47,13 +47,13 @@ export default function Hero() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href="/kayit"
-                className="rounded-h2-md bg-h2-blue px-8 py-3.5 text-center text-base font-semibold text-white transition-all hover:bg-h2-blue-bright hover:shadow-md hover:shadow-h2-blue/25"
+                className="rounded-h2-md bg-h2-blue px-8 py-3.5 text-center text-base font-semibold text-white transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-h2-blue-bright hover:shadow-md hover:shadow-h2-blue/25"
               >
                 Ücretsiz Kayıt Ol
               </a>
               <a
                 href="/poster-basvurusu"
-                className="rounded-h2-md border border-white/20 px-8 py-3.5 text-center text-base font-semibold text-h2-ink-1 transition-all hover:border-h2-cyan/50 hover:text-white"
+                className="rounded-h2-md border border-white/20 px-8 py-3.5 text-center text-base font-semibold text-h2-ink-1 transition-[border-color,color,transform] hover:-translate-y-0.5 hover:border-h2-cyan/50 hover:text-white"
               >
                 Poster Başvurusu
               </a>
@@ -96,7 +96,7 @@ export default function Hero() {
 
           {/* Right: single structured visual panel */}
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-h2-xl border border-h2-border bg-h2-surface-2 lg:aspect-[3/4]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-h2-lg border border-h2-border bg-h2-surface-2 lg:aspect-[3/4]">
               <Image
                 src="/hero-visual.png"
                 alt=""

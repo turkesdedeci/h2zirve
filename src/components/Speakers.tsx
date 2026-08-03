@@ -182,9 +182,6 @@ export default function Speakers() {
 
   return (
     <section id="speakers" className="relative overflow-hidden bg-h2-bg py-16 sm:py-28">
-      <div className="pointer-events-none absolute -left-48 top-24 h-96 w-96 rounded-full bg-h2-blue/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-52 bottom-0 h-96 w-96 rounded-full bg-h2-green/10 blur-3xl" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-14 grid items-end gap-6 lg:grid-cols-[1fr_auto]">
           <div>
@@ -205,7 +202,7 @@ export default function Speakers() {
           {featured.map((speaker, index) => (
             <article
               key={speaker.name}
-              className="group relative overflow-hidden rounded-h2-xl border border-white/10 bg-h2-surface-2 shadow-2xl shadow-black/25"
+              className="group relative overflow-hidden rounded-h2-lg border border-white/10 bg-h2-surface-2 shadow-xl shadow-black/20"
             >
               <Portrait
                 speaker={speaker}
@@ -213,7 +210,7 @@ export default function Speakers() {
                 accent={index === 0 ? "green" : "blue"}
               />
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <div className="mb-3 inline-flex rounded-full border border-white/15 bg-black/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/80 backdrop-blur-md">
+                <div className="mb-3 inline-flex rounded-full border border-white/15 bg-black/25 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white/80 backdrop-blur-md">
                   Keynote
                 </div>
                 <h3 className="font-display text-2xl font-bold text-h2-ink-1 sm:text-3xl">
@@ -235,10 +232,10 @@ export default function Speakers() {
           <span className="h-px w-full bg-gradient-to-r from-h2-border to-transparent" />
         </div>
 
-        <div className="mt-9 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {others.map((speaker, index) => (
             <article key={speaker.name} className="group text-center">
-              <div className="mx-auto w-full max-w-[190px] overflow-hidden rounded-full border border-white/10 bg-h2-surface-2 p-1 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-h2-cyan/50 group-hover:shadow-xl group-hover:shadow-h2-blue/10">
+              <div className="mx-auto w-full max-w-[170px] overflow-hidden rounded-full border border-white/10 bg-h2-surface-2 p-1 transition-[transform,border-color,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:border-h2-cyan/50 group-hover:shadow-xl group-hover:shadow-h2-blue/10 sm:max-w-[190px]">
                 <div className="overflow-hidden rounded-full">
                   <Portrait
                     speaker={speaker}
@@ -249,10 +246,10 @@ export default function Speakers() {
               <h3 className="mx-auto mt-5 max-w-[220px] text-h2-small font-bold leading-snug text-h2-ink-1">
                 {speaker.name}
               </h3>
-              <p className="mt-2 text-h2-micro font-semibold leading-relaxed text-h2-cyan">
+              <p className="mt-2 text-[13px] font-semibold leading-relaxed text-h2-cyan">
                 {speaker.role}
               </p>
-              <p className="mt-1 text-h2-micro leading-relaxed text-h2-ink-3">
+              <p className="mt-1 text-[13px] leading-relaxed text-h2-ink-2">
                 {speaker.affiliation}
               </p>
             </article>

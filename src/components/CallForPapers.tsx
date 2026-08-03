@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const topics = [
   "Hidrojen üretim teknolojileri",
   "Depolama ve taşıma teknolojileri",
@@ -37,18 +39,82 @@ const formatRules = [
   "Başlık, yazarlar, kurum, anahtar kelimeler, amaç, yöntem, sonuç ve önem bilgisi",
 ];
 
-export default function CallForPapers() {
+function CallForPapersPreview() {
   return (
-    <section id="cfp" className="bg-h2-surface-1 py-16 sm:py-28">
+    <section id="cfp" className="bg-h2-bg py-16 sm:py-24">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div>
+          <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
+            Akademik ve Endüstriyel Katkı
+          </span>
+          <h2 className="mt-3 font-display text-h2-h1 font-bold text-h2-ink-1">
+            Poster Çağrısı
+          </h2>
+          <p className="mt-5 max-w-2xl text-h2-body-lg leading-relaxed text-h2-ink-2">
+            Hidrojen teknolojileri alanındaki akademik ve endüstriyel çalışmalarınızı
+            zirvenin poster programında paylaşın.
+          </p>
+
+          <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <Link
+              href="/poster-basvurusu"
+              className="rounded-h2-md bg-h2-green px-7 py-3.5 text-center font-semibold text-white transition-[background-color,box-shadow] hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/15"
+            >
+              Poster Özeti Başvurusu Yap
+            </Link>
+            <Link
+              href="/poster-cagrisi"
+              className="border-b border-h2-border pb-1 text-h2-small font-semibold text-h2-ink-2 transition-colors hover:border-h2-cyan hover:text-h2-ink-1"
+            >
+              Ayrıntıları ve Kuralları İncele
+            </Link>
+          </div>
+        </div>
+
+        <dl className="divide-y divide-h2-border border-y border-h2-border">
+          {[
+            ["Son Başvuru", "1 Eylül 2026"],
+            ["En Yüksek Ödül", "1500 $"],
+            ["Poster Formatı", "A1 · Türkçe veya İngilizce"],
+            ["Yayın İmkânı", "Seçilen çalışmalar için özel sayı daveti"],
+          ].map(([label, value]) => (
+            <div key={label} className="grid grid-cols-[8rem_1fr] gap-5 py-4">
+              <dt className="text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
+                {label}
+              </dt>
+              <dd className="text-h2-small font-semibold leading-relaxed text-h2-ink-1">
+                {value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
+export default function CallForPapers({
+  compact = false,
+  standalone = false,
+}: {
+  compact?: boolean;
+  standalone?: boolean;
+}) {
+  if (compact) return <CallForPapersPreview />;
+
+  const Heading = standalone ? "h1" : "h2";
+
+  return (
+    <section id="cfp" className="bg-h2-bg py-16 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-14 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
             <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
               Akademik ve Endüstriyel Katkı
             </span>
-            <h2 className="mt-3 font-display text-h2-h2 font-bold text-h2-ink-1 sm:text-h2-h1">
+            <Heading className="mt-3 font-display text-h2-h2 font-bold text-h2-ink-1 sm:text-h2-h1">
               Poster Çağrısı
-            </h2>
+            </Heading>
             <p className="mt-5 max-w-3xl text-h2-body-lg leading-relaxed text-h2-ink-2">
               Hidrojen teknolojileri alanında yürüttüğünüz akademik veya
               endüstriyel çalışmaları, Türkiye&apos;nin hidrojen ekosistemini
@@ -74,14 +140,17 @@ export default function CallForPapers() {
             <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
               Kapsam
             </h3>
-            <div className="mt-5 flex flex-wrap gap-2.5">
-              {topics.map((topic) => (
-                <span
+            <div className="mt-5 grid gap-x-8 sm:grid-cols-2">
+              {topics.map((topic, index) => (
+                <div
                   key={topic}
-                  className="rounded-full border border-h2-border bg-h2-bg/40 px-4 py-2 text-h2-small text-h2-ink-2 transition-colors hover:border-h2-green/45 hover:text-h2-ink-1"
+                  className="flex items-start gap-3 border-t border-h2-border-soft py-3 text-h2-small text-h2-ink-2"
                 >
-                  {topic}
-                </span>
+                  <span className="font-display text-[11px] font-bold text-h2-green">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>{topic}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -111,14 +180,14 @@ export default function CallForPapers() {
             <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
               Önemli Tarihler
             </h3>
-            <div className="mt-5 space-y-2.5">
+            <div className="mt-5 divide-y divide-h2-border-soft border-y border-h2-border-soft">
               {dates.map(({ label, value, highlight }) => (
                 <div
                   key={label}
-                  className={`flex items-center justify-between gap-4 rounded-h2-md border p-4 ${
+                  className={`flex items-center justify-between gap-4 px-1 py-4 ${
                     highlight
-                      ? "border-h2-green/35 bg-h2-green/10"
-                      : "border-h2-border bg-h2-bg/35"
+                      ? "text-h2-green"
+                      : ""
                   }`}
                 >
                   <span className="text-h2-small text-h2-ink-2">{label}</span>
@@ -178,13 +247,13 @@ export default function CallForPapers() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/templates/poster-extended-abstract.docx"
-                className="rounded-h2-md bg-h2-blue px-5 py-3 text-center text-h2-small font-semibold text-white transition-all hover:bg-h2-blue-bright"
+                className="rounded-h2-md bg-h2-blue px-5 py-3 text-center text-h2-small font-semibold text-white transition-colors hover:bg-h2-blue-bright"
               >
                 Özet Şablonu İndir
               </a>
               <a
                 href="/templates/hidrojen-zirvesi-a1-poster-sablonu.pdf"
-                className="rounded-h2-md border border-h2-border px-5 py-3 text-center text-h2-small font-semibold text-h2-ink-1 transition-all hover:border-h2-cyan/45"
+                className="rounded-h2-md border border-h2-border px-5 py-3 text-center text-h2-small font-semibold text-h2-ink-1 transition-colors hover:border-h2-cyan/45"
               >
                 Poster Şablonu İndir
               </a>
@@ -202,7 +271,7 @@ export default function CallForPapers() {
             </p>
             <a
               href="/poster-basvurusu"
-              className="mt-6 block w-full rounded-h2-md bg-h2-green px-5 py-3.5 text-center font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20"
+              className="mt-6 block w-full rounded-h2-md bg-h2-green px-5 py-3.5 text-center font-semibold text-white transition-[background-color,box-shadow] hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20"
             >
               Poster Özeti Başvurusu Yap
             </a>

@@ -1,13 +1,13 @@
 import Image from "next/image";
 
 const links = [
-  { label: "Hakkında", href: "#about" },
-  { label: "Program", href: "#program" },
-  { label: "Konuşmacılar", href: "#speakers" },
-  { label: "Katılımcı Firmalar", href: "#exhibitors" },
-  { label: "Poster Çağrısı", href: "#cfp" },
-  { label: "Sponsorluk", href: "#sponsors" },
-  { label: "İletişim", href: "#contact" },
+  { label: "Hakkında", href: "/#about" },
+  { label: "Program", href: "/program" },
+  { label: "Konuşmacılar", href: "/#speakers" },
+  { label: "Katılımcı Firmalar", href: "/#exhibitors" },
+  { label: "Poster Çağrısı", href: "/poster-cagrisi" },
+  { label: "Sponsorluk", href: "/sponsorluk-basvurusu" },
+  { label: "İletişim", href: "/#contact" },
 ];
 
 export default function Footer() {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type SessionType =
   | "registration"
@@ -158,109 +159,174 @@ const day2: Session[] = [
 
 const cfg: Record<
   SessionType,
-  { label: string; accent: string; badge: string; border: string; bg: string }
+  { label: string; accent: string; badge: string }
 > = {
   registration: {
     label: "Karşılama",
     accent: "bg-slate-500",
     badge: "text-slate-300 bg-slate-500/10 border-slate-500/20",
-    border: "border-[#263755]",
-    bg: "bg-[#0D1530]",
   },
   opening: {
     label: "Açılış",
-    accent: "bg-[#00C8FF]",
-    badge: "text-[#75E1FF] bg-[#00C8FF]/10 border-[#00C8FF]/20",
-    border: "border-[#00C8FF]/30",
-    bg: "bg-[#0B1830]",
+    accent: "bg-h2-blue-bright",
+    badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   break: {
     label: "Ara",
-    accent: "bg-amber-400",
-    badge: "text-amber-300 bg-amber-400/10 border-amber-400/20",
-    border: "border-amber-400/20",
-    bg: "bg-amber-400/[0.04]",
+    accent: "bg-h2-amber",
+    badge: "border-h2-amber/25 bg-h2-amber/8 text-amber-200",
   },
   keynote: {
     label: "Keynote",
-    accent: "bg-[#00D084]",
-    badge: "text-[#69F0BD] bg-[#00D084]/10 border-[#00D084]/25",
-    border: "border-[#00D084]/35",
-    bg: "bg-[#09221F]",
+    accent: "bg-h2-green",
+    badge: "border-h2-green/30 bg-h2-green/10 text-emerald-200",
   },
   panel: {
     label: "Panel",
-    accent: "bg-[#3B82F6]",
-    badge: "text-[#8FC0FF] bg-[#3B82F6]/10 border-[#3B82F6]/25",
-    border: "border-[#3B82F6]/30",
-    bg: "bg-[#0B1730]",
+    accent: "bg-h2-blue-bright",
+    badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   lunch: {
     label: "Mola",
-    accent: "bg-orange-400",
-    badge: "text-orange-300 bg-orange-400/10 border-orange-400/20",
-    border: "border-orange-400/20",
-    bg: "bg-orange-400/[0.04]",
+    accent: "bg-h2-amber",
+    badge: "border-h2-amber/25 bg-h2-amber/8 text-amber-200",
   },
   poster: {
     label: "Poster",
-    accent: "bg-violet-400",
-    badge: "text-violet-300 bg-violet-400/10 border-violet-400/20",
-    border: "border-violet-400/25",
-    bg: "bg-violet-400/[0.05]",
+    accent: "bg-h2-blue-bright",
+    badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   gala: {
     label: "Sosyal Program",
-    accent: "bg-pink-400",
-    badge: "text-pink-300 bg-pink-400/10 border-pink-400/20",
-    border: "border-pink-400/25",
-    bg: "bg-pink-400/[0.05]",
+    accent: "bg-h2-amber",
+    badge: "border-h2-amber/25 bg-h2-amber/8 text-amber-200",
   },
   closing: {
     label: "Kapanış",
-    accent: "bg-[#00C8FF]",
-    badge: "text-[#75E1FF] bg-[#00C8FF]/10 border-[#00C8FF]/20",
-    border: "border-[#00C8FF]/30",
-    bg: "bg-[#0B1830]",
+    accent: "bg-h2-blue-bright",
+    badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   visit: {
     label: "Teknik Ziyaret",
-    accent: "bg-indigo-400",
-    badge: "text-indigo-300 bg-indigo-400/10 border-indigo-400/20",
-    border: "border-indigo-400/25",
-    bg: "bg-indigo-400/[0.05]",
+    accent: "bg-h2-blue-bright",
+    badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
 };
 
-export default function Program() {
+const previewDays = [
+  {
+    day: "1. Gün",
+    date: "22 Ekim · Perşembe",
+    theme: "Strateji & Endüstri",
+    sessions: day1.filter((session) => ["keynote", "panel"].includes(session.type)),
+  },
+  {
+    day: "2. Gün",
+    date: "23 Ekim · Cuma",
+    theme: "Teknoloji, Ekonomi & Uygulama",
+    sessions: day2.filter((session) => ["keynote", "panel"].includes(session.type)).slice(0, 4),
+  },
+];
+
+function ProgramPreview() {
+  return (
+    <section id="program" className="bg-h2-surface-1 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
+              Etkinlik Takvimi
+            </span>
+            <h2 className="mt-3 font-display text-h2-h1 font-bold text-h2-ink-1">
+              İki günlük programdan öne çıkanlar
+            </h2>
+            <p className="mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
+              Keynote konuşmaları ve tematik panellerle şekillenen programın öne çıkan
+              oturumlarını inceleyin.
+            </p>
+          </div>
+          <Link
+            href="/program"
+            className="w-fit border-b border-h2-cyan pb-1 text-h2-small font-semibold text-h2-ink-1 transition-colors hover:text-h2-cyan"
+          >
+            Tam Programı İncele
+          </Link>
+        </div>
+
+        <div className="grid border-y border-h2-border lg:grid-cols-2 lg:divide-x lg:divide-h2-border">
+          {previewDays.map((item) => (
+            <article
+              key={item.day}
+              className="border-b border-h2-border py-8 last:border-b-0 lg:border-b-0 lg:px-10 lg:first:pl-0 lg:last:pr-0"
+            >
+              <div className="flex items-baseline justify-between gap-5">
+                <div>
+                  <p className="font-display text-h2-h3 font-bold text-h2-ink-1">{item.day}</p>
+                  <p className="mt-1 text-h2-small text-h2-cyan">{item.theme}</p>
+                </div>
+                <p className="text-right text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
+                  {item.date}
+                </p>
+              </div>
+              <div className="mt-7 divide-y divide-h2-border-soft">
+                {item.sessions.map((session) => (
+                  <div key={`${item.day}-${session.time}-${session.title}`} className="grid grid-cols-[5.75rem_1fr] gap-4 py-4 first:pt-0">
+                    <p className="font-mono text-h2-small font-semibold text-h2-ink-3">{session.time}</p>
+                    <div>
+                      <p className="text-h2-small font-semibold leading-relaxed text-h2-ink-1">{session.title}</p>
+                      <p className={`mt-1 text-[11px] font-bold uppercase tracking-wider ${session.type === "keynote" ? "text-h2-green" : "text-h2-cyan"}`}>
+                        {cfg[session.type].label}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Program({
+  preview = false,
+  standalone = false,
+}: {
+  preview?: boolean;
+  standalone?: boolean;
+}) {
   const [activeDay, setActiveDay] = useState<1 | 2>(1);
   const sessions = activeDay === 1 ? day1 : day2;
+  const Heading = standalone ? "h1" : "h2";
+
+  if (preview) return <ProgramPreview />;
 
   return (
-    <section id="program" className="relative overflow-hidden bg-h2-bg py-16 sm:py-28">
+    <section id="program" className="relative overflow-hidden bg-h2-surface-1 py-16 sm:py-28">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-12 text-center">
           <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
             Etkinlik Takvimi
           </span>
-          <h2 className="mt-3 font-display text-h2-h1 font-bold text-h2-ink-1">
+          <Heading className="mt-3 font-display text-h2-h1 font-bold text-h2-ink-1">
             İki günlük program
-          </h2>
+          </Heading>
           <p className="mx-auto mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
             30.06.2026 tarihli taslak programı, oturum saatleri, moderatörler ve konuşmacılarla
             birlikte gün bazında inceleyin.
           </p>
         </div>
 
-        <div className="mx-auto mb-10 grid max-w-2xl grid-cols-2 gap-3 rounded-h2-lg border border-h2-border bg-h2-surface-1 p-2">
+        <div className="mx-auto mb-10 grid max-w-2xl grid-cols-2 border-b border-h2-border">
           {([1, 2] as const).map((day) => (
             <button
               key={day}
               onClick={() => setActiveDay(day)}
-              className={`rounded-h2-md px-4 py-4 text-left transition-all ${
+              className={`relative px-4 py-4 text-left transition-colors after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:origin-left after:transition-transform ${
                 activeDay === day
-                  ? "bg-h2-blue text-white shadow-md shadow-h2-blue/15"
-                  : "text-h2-ink-2 hover:bg-white/5 hover:text-h2-ink-1"
+                  ? "text-white after:scale-x-100 after:bg-h2-cyan"
+                  : "text-h2-ink-2 after:scale-x-0 after:bg-h2-border hover:text-h2-ink-1 hover:after:scale-x-100"
               }`}
               aria-pressed={activeDay === day}
             >
@@ -289,12 +355,12 @@ export default function Program() {
             return (
               <article
                 key={`${s.time}-${i}`}
-                className={`group relative overflow-hidden rounded-h2-lg border ${c.border} ${c.bg} transition-all hover:shadow-lg hover:shadow-black/20`}
+                className="group relative overflow-hidden rounded-h2-md border border-h2-border bg-h2-surface-2 transition-[border-color,box-shadow] hover:border-h2-border/80 hover:shadow-lg hover:shadow-black/20"
               >
                 <span className={`absolute inset-y-0 left-0 w-1 ${c.accent}`} />
                 <div className="grid sm:grid-cols-[10rem_1fr]">
                   <div
-                    className={`flex items-center gap-3 border-b border-white/5 px-6 py-4 sm:block sm:border-b-0 sm:border-r sm:border-white/5 ${
+                    className={`flex items-center gap-3 border-b border-white/5 px-5 py-4 sm:block sm:border-b-0 sm:border-r sm:border-white/5 sm:px-6 ${
                       compact ? "sm:py-5" : "sm:py-7"
                     }`}
                   >
@@ -302,13 +368,13 @@ export default function Program() {
                       {s.time}
                     </p>
                     <span
-                      className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest sm:mt-3 ${c.badge}`}
+                      className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider sm:mt-3 ${c.badge}`}
                     >
                       {c.label}
                     </span>
                   </div>
 
-                  <div className={compact ? "px-6 py-5" : "px-6 py-6 sm:px-8 sm:py-7"}>
+                  <div className={compact ? "px-5 py-5 sm:px-6" : "px-5 py-6 sm:px-8 sm:py-7"}>
                     <h3
                       className={`font-display ${
                         compact ? "text-base" : "text-xl sm:text-2xl"
@@ -323,7 +389,7 @@ export default function Program() {
                     )}
                     {s.moderator && (
                       <div className="mt-4 flex flex-wrap items-center gap-2 rounded-h2-md border border-white/8 bg-black/15 px-4 py-3 text-h2-small">
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-h2-cyan">
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-h2-cyan">
                           Moderatör
                         </span>
                         <span className="font-semibold text-h2-ink-1">{s.moderator}</span>

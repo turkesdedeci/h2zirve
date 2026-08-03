@@ -9,25 +9,26 @@ const navSections = [
     label: "Zirve",
     links: [
       { label: "Hakkında", hash: "#about" },
-      { label: "Program", hash: "#program" },
+      { label: "Program", href: "/program" },
       { label: "Konuşmacılar", hash: "#speakers" },
+      { label: "Poster Çağrısı", href: "/poster-cagrisi" },
       { label: "Firmalar", hash: "#exhibitors" },
       { label: "İletişim", hash: "#contact" },
     ],
   },
-  {
-    label: "Akademik",
-    links: [{ label: "Poster Çağrısı", hash: "#cfp" }],
-  },
 ];
 
-const registrationLinks = [
-  { label: "Bireysel Kayıt (Ücretsiz)", href: "/kayit", tone: "green", emphasized: true },
-  { label: "Stand Başvurusu Yap", href: "/stand-basvurusu", tone: "blue" },
-  { label: "Sponsorluk Başvurusu Yap", href: "/sponsorluk-basvurusu", tone: "outline" },
+const desktopLinks = [
+  { label: "Hakkında", hash: "#about" },
+  { label: "Program", href: "/program" },
+  { label: "Konuşmacılar", hash: "#speakers" },
+  { label: "Poster Çağrısı", href: "/poster-cagrisi" },
 ];
 
-const posterCta = { label: "Poster Özeti Gönder", href: "/poster-basvurusu" };
+const institutionalLinks = [
+  { label: "Stand Başvurusu", href: "/stand-basvurusu" },
+  { label: "Sponsorluk", href: "/sponsorluk-basvurusu" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -90,15 +91,16 @@ export default function Navbar() {
   }, [menuOpen]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        solidNav
-          ? "bg-h2-bg/95 backdrop-blur-md shadow-lg shadow-black/30 border-b border-h2-border"
-          : "bg-transparent border-b border-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <>
+      <nav
+        className={`fixed left-0 right-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300 ${
+          solidNav
+            ? "bg-h2-bg/95 backdrop-blur-md shadow-lg shadow-black/30 border-b border-h2-border"
+            : "bg-transparent border-b border-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href={isHome ? "#home" : "/"} className="flex items-center" aria-label="Ana sayfa">
             <Image
@@ -112,103 +114,64 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-4" aria-label="Ana menü">
-            <div className="group relative">
-              <button
-                type="button"
+          <div className="hidden items-center gap-5 lg:flex" aria-label="Ana menü">
+            {desktopLinks.map((item) => (
+              <a
+                key={item.label}
+                href={navHref(item)}
                 className="relative text-sm font-medium text-h2-ink-2 transition-colors hover:text-h2-ink-1 after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-h2-cyan after:transition-transform after:duration-300 hover:after:scale-x-100"
               >
-                Zirve
-              </button>
-              <div className="invisible absolute right-0 top-full z-50 mt-3 w-64 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                {navSections.map((section, sectionIndex) => (
-                  <div
-                    key={section.label}
-                    className={sectionIndex > 0 ? "mt-2 border-t border-h2-border-soft pt-2" : undefined}
-                  >
-                    {sectionIndex > 0 && (
-                      <p className="px-3 pb-1 pt-1 text-h2-micro font-semibold uppercase tracking-[0.18em] text-h2-ink-3">
-                        {section.label}
-                      </p>
-                    )}
-                    {section.links.map((item) => (
-                      <a
-                        key={item.label}
-                        href={navHref(item)}
-                        className="block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:bg-h2-cyan/10 hover:text-h2-ink-1"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="group relative">
-              <a
-                href="/kayit"
-                aria-haspopup="true"
-                className="inline-block rounded-h2-md bg-h2-green px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-green/85 hover:shadow-md hover:shadow-h2-green/25"
-              >
-                Kayıt Ol
+                {item.label}
               </a>
-              <div className="invisible absolute right-0 top-full z-50 mt-2 w-64 translate-y-1 rounded-h2-md border border-h2-border bg-h2-bg/98 p-2 opacity-0 shadow-xl shadow-black/30 backdrop-blur-md transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                {registrationLinks.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className={
-                      item.emphasized
-                        ? "block rounded-h2-md bg-h2-green/15 px-3 py-2.5 text-sm font-bold text-h2-ink-1 transition-colors hover:bg-h2-green/25"
-                        : `block rounded-h2-md px-3 py-2.5 text-sm font-semibold text-h2-ink-2 transition-colors hover:text-h2-ink-1 ${
-                            item.tone === "blue" ? "hover:bg-h2-blue/15" : "hover:bg-h2-cyan/10"
-                          }`
-                    }
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-
+            ))}
             <a
-              href={posterCta.href}
-              className="rounded-h2-md bg-h2-blue px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-h2-blue/85 hover:shadow-md hover:shadow-h2-blue/25"
+              href="/sponsorluk-basvurusu"
+              className="rounded-h2-md border border-h2-border px-4 py-2 text-sm font-semibold text-h2-ink-1 transition-[border-color,background-color] hover:border-h2-cyan/45 hover:bg-h2-cyan/8"
             >
-              {posterCta.label}
+              Sponsorluk
+            </a>
+            <a
+              href="/kayit"
+              className="rounded-h2-md bg-h2-blue px-4 py-2 text-sm font-semibold text-white transition-[background-color,box-shadow] hover:bg-h2-blue/85 hover:shadow-md hover:shadow-h2-blue/25"
+            >
+              Kayıt Ol
             </a>
           </div>
 
           {/* Mobile hamburger */}
           <button
             ref={triggerRef}
-            className="md:hidden flex flex-col justify-center gap-1.5 p-2 text-white"
+            className="flex flex-col justify-center gap-1.5 p-2 text-white lg:hidden"
             onClick={() => setMenuOpen(true)}
             aria-label="Menüyü aç"
             aria-expanded={menuOpen}
+            aria-controls="mobile-site-menu"
           >
-            <span className="block w-6 h-0.5 bg-white transition-all duration-300" />
-            <span className="block w-6 h-0.5 bg-white transition-all duration-300" />
-            <span className="block w-6 h-0.5 bg-white transition-all duration-300" />
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="block h-0.5 w-6 bg-white" />
           </button>
+          </div>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile full-screen overlay */}
       <div
+        id="mobile-site-menu"
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-label="Site menüsü"
-        className={`md:hidden fixed inset-0 z-[60] bg-h2-bg transition-opacity duration-200 ${
+        aria-hidden={!menuOpen}
+        inert={!menuOpen}
+        className={`fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-h2-bg transition-opacity duration-200 lg:hidden ${
           menuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       >
         <div
-          className={`flex h-full flex-col px-6 pt-6 pb-10 transition-transform duration-200 ${
+          className={`flex min-h-full flex-col px-6 pb-10 pt-6 transition-transform duration-200 ${
             menuOpen ? "translate-y-0" : "-translate-y-2"
           }`}
         >
@@ -227,6 +190,7 @@ export default function Navbar() {
             >
               <svg
                 className="h-6 w-6"
+                aria-hidden="true"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -266,25 +230,28 @@ export default function Navbar() {
           </div>
 
           <div className="grid gap-3">
-            {[...registrationLinks, { ...posterCta, tone: "blue" }].map((item) => (
+            <a
+              href="/kayit"
+              onClick={closeMenu}
+              className="block rounded-h2-md bg-h2-blue px-4 py-3.5 text-center font-semibold text-white"
+            >
+              Ücretsiz Kayıt Ol
+            </a>
+            <div className="grid grid-cols-2 gap-3">
+              {institutionalLinks.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className={
-                  item.tone === "green"
-                    ? "block rounded-h2-md bg-h2-green px-4 py-3.5 text-center font-semibold text-white"
-                    : item.tone === "blue"
-                      ? "block rounded-h2-md bg-h2-blue px-4 py-3.5 text-center font-semibold text-white"
-                      : "block rounded-h2-md border border-h2-border px-4 py-3.5 text-center font-semibold text-h2-ink-1"
-                }
+                className="block rounded-h2-md border border-h2-border px-3 py-3 text-center text-h2-small font-semibold text-h2-ink-2"
               >
                 {item.label}
               </a>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 }
