@@ -88,7 +88,7 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. Mustafa İlbaş",
     role: "Panel 2 Konuşmacısı",
-    affiliation: "ASFAT Başkanı",
+    affiliation: "ASFAT Genel Müdürü",
     initials: "Mİ",
     photo: "/speakers/mustafa-ilbas-x.jpg",
   },
