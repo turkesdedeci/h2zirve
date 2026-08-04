@@ -95,13 +95,6 @@ const speakers: Speaker[] = [
     photo: "/speakers/ugur-kayasal.jpg",
   },
   {
-    name: "Dr. Berna Sezgin Öztok",
-    role: "Panel 2 Konuşmacısı",
-    affiliation: "Savunma Sanayii Başkanlığı (SSB)",
-    initials: "BÖ",
-    photo: "/speakers/berna-sezgin-oztok.jpg",
-  },
-  {
     name: "Kadir Gökhan Güler",
     role: "Panel 2 Konuşmacısı",
     affiliation: "GE Aerospace Senior Engineering Manager",
@@ -116,11 +109,10 @@ const speakers: Speaker[] = [
     photo: "/speakers/mustafa-ilbas-x.jpg",
   },
   {
-    name: "Dr. Selim Çögenli",
+    name: "Ömer Erdemir",
     role: "Panel 2 Konuşmacısı",
-    affiliation: "LENTATEK Ar-Ge Mühendisi",
-    initials: "SÇ",
-    photo: "/speakers/selim-cogenli-linkedin.jpg",
+    affiliation: "LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
+    initials: "ÖE",
   },
   {
     name: "Yusuf Günay",

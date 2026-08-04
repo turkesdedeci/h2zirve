@@ -74,11 +74,11 @@ const day1: Session[] = [
     title: "Panel 2: Savunma Sanayinde Hidrojen Teknolojileri",
     moderator: "Prof. Dr. Selahattin Çelik",
     speakers: [
-      "Dr. Berna Sezgin Öztok | Savunma Sanayii Başkanlığı (SSB)",
+      "Savunma Sanayii Başkanlığı (SSB)",
       "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
       "Kadir Gökhan Güler | GE Aerospace Senior Engineering Manager",
       "Prof. Dr. Mustafa İlbaş | ASFAT",
-      "Ömer Erdemir / Dr. Selim Çögenli | LENTATEK",
+      "Ömer Erdemir | LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
     ],
   },
   {
