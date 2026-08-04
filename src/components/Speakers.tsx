@@ -59,7 +59,7 @@ const speakers: Speaker[] = [
     photo: "/speakers/hasan-ozcan.jpg",
   },
   {
-    name: "Dr. Canan Acar",
+    name: "Doç. Dr. Canan Acar",
     role: "Panel 4 Moderatörü",
     affiliation: "Twente Üniversitesi",
     initials: "CA",
@@ -81,8 +81,14 @@ const speakers: Speaker[] = [
     photo: "/speakers/gursel-erul.jpg",
   },
   {
-    name: "Dr. Paulina Seyfert",
+    name: "Dr. Betül Erdör Türk",
     role: "Panel 1 Konuşmacısı",
+    affiliation: "TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
+    initials: "BE",
+  },
+  {
+    name: "Dr. Paulina Seyfert",
+    role: "Panel 5 Moderatörü",
     affiliation: "Almanya Enerji Bakanlığı",
     initials: "PS",
     photo: "/speakers/pauline-seyfert.jpg",

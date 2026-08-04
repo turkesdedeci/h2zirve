@@ -64,7 +64,7 @@ const day1: Session[] = [
       "Enerji ve Tabii Kaynaklar Bakanlığı / TENMAK-TEMEN",
       "Prof. Dr. İlker Murat Ar | T.C. Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
       "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
-      "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
+      "Dr. Betül Erdör Türk | TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
     ],
   },
   { time: "16:00 - 16:15", type: "break", title: "Kahve Arası" },
@@ -118,7 +118,7 @@ const day2: Session[] = [
     time: "10:45 - 11:45",
     type: "panel",
     title: "Panel 4: Sanayide Hidrojen Kullanımı",
-    moderator: "Dr. Canan Acar | Twente Üniversitesi",
+    moderator: "Doç. Dr. Canan Acar | Twente Üniversitesi",
     speakers: [
       "Botaş",
       "Çimento Üreticileri Derneği",
@@ -131,7 +131,7 @@ const day2: Session[] = [
     time: "13:15 - 14:30",
     type: "panel",
     title: "Panel 5: Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
-    moderator: "DSB",
+    moderator: "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
     speakers: [
       "Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım fonu",
       "TÜBİTAK Uzmanı",
