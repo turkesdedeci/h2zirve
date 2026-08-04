@@ -113,6 +113,7 @@ const speakers: Speaker[] = [
     role: "Panel 2 Konuşmacısı",
     affiliation: "LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
     initials: "ÖE",
+    photo: "/speakers/omer-erdemir.png",
   },
   {
     name: "Yusuf Günay",
