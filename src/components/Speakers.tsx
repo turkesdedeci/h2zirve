@@ -11,8 +11,8 @@ type Speaker = {
 const speakers: Speaker[] = [
   {
     name: "Prof. Dr. İbrahim Dinçer",
-    role: "Keynote Konuşmacı - 1. Gün",
-    affiliation: "Hidrojen Teknolojileri Birliği Başkanı",
+    role: "Keynote Konuşmacı - 1. Gün / Panel 1 Konuşmacısı",
+    affiliation: "Ontario Tech University",
     initials: "İD",
     photo: "/speakers/ibrahim-dincer-2026-shoulders.png",
   },

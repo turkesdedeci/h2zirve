@@ -58,9 +58,9 @@ const day1: Session[] = [
     time: "14:00 - 16:00",
     type: "panel",
     title: "Panel 1: Türkiye Hidrojen Yol Haritası 2035",
-    moderator: "Prof. Dr. Erol Arcaklıoğlu",
+    moderator: "Prof. Dr. Erol Arcaklıoğlu | YÖK Yürütme Kurulu Üyesi",
     speakers: [
-      "Prof. Dr. İbrahim Dinçer",
+      "Prof. Dr. İbrahim Dinçer | Ontario Tech University",
       "Enerji ve Tabii Kaynaklar Bakanlığı / TENMAK-TEMEN",
       "Prof. Dr. İlker Murat Ar | T.C. Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
       "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
