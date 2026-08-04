@@ -72,7 +72,7 @@ const day1: Session[] = [
     time: "16:15 - 17:45",
     type: "panel",
     title: "Panel 2: Savunma Sanayinde Hidrojen Teknolojileri",
-    moderator: "Prof. Dr. Selahattin Çelik",
+    moderator: "Prof. Dr. Selahattin Çelik | AYBÜ H2TEAM Başkanı",
     speakers: [
       "Savunma Sanayii Başkanlığı (SSB)",
       "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
