@@ -77,7 +77,7 @@ const day1: Session[] = [
       "Savunma Sanayii Başkanlığı (SSB)",
       "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
       "Kadir Gökhan Güler | GE Aerospace Senior Engineering Manager",
-      "Prof. Dr. Mustafa İlbaş | ASFAT",
+      "Prof. Dr. Mustafa İlbaş | ASFAT Genel Müdürü",
       "Ömer Erdemir | LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
     ],
   },
