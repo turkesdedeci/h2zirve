@@ -42,14 +42,14 @@ const speakers: Speaker[] = [
     role: "Açılış Konuşması",
     affiliation: "AYBÜ Rektörü",
     initials: "AK",
-    photo: "/speakers/ali-cengiz-koseoglu.jpg",
+    photo: "/speakers/ali-cengiz-koseoglu.png",
   },
   {
     name: "Prof. Dr. Erol Arcaklıoğlu",
     role: "Panel 1 Moderatörü",
     affiliation: "YÖK Yürütme Kurulu Üyesi",
     initials: "EA",
-    photo: "/speakers/erol-arcaklioglu.webp",
+    photo: "/speakers/erol-arcaklioglu.png",
   },
   {
     name: "Prof. Dr. Hasan Özcan",
