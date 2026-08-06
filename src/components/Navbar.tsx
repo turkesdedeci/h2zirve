@@ -23,6 +23,7 @@ const desktopLinks = [
   { label: "Program", href: "/program" },
   { label: "Konuşmacılar", hash: "#speakers" },
   { label: "Poster Çağrısı", href: "/poster-cagrisi" },
+  { label: "Stand Başvurusu", href: "/stand-basvurusu" },
 ];
 
 const institutionalLinks = [
