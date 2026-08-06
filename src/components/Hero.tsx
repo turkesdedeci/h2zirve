@@ -5,18 +5,35 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-h2-bg pt-28 pb-16 sm:pt-36 sm:pb-20"
+      className="relative flex min-h-[760px] items-center overflow-hidden bg-h2-bg pt-28 pb-16 sm:pt-36 sm:pb-20"
     >
+      <Image
+        src="/hero-visual.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-[68%_center] sm:object-center"
+        priority
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(6,9,26,0.97)_0%,rgba(6,9,26,0.88)_36%,rgba(6,9,26,0.42)_66%,rgba(6,9,26,0.18)_100%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-h2-bg/40 via-transparent to-h2-bg/90"
+        aria-hidden="true"
+      />
+
       {/* Faint structural grid — the page's one quiet visual signature, not a glow effect */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05] [background-image:linear-gradient(var(--color-h2-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-h2-border)_1px,transparent_1px)] [background-size:64px_64px]"
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-12 lg:items-center">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
           {/* Left: event identity */}
-          <div className="min-w-0 lg:col-span-7">
+          <div className="min-w-0">
             <p className="font-display text-h2-small font-semibold uppercase tracking-[0.25em] text-h2-cyan">
               22–23 Ekim 2026 · Ankara, Türkiye
             </p>
@@ -94,23 +111,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right: single structured visual panel */}
-          <div className="lg:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-h2-lg border border-h2-border bg-h2-surface-2 lg:aspect-[3/4]">
-              <Image
-                src="/hero-visual.png"
-                alt=""
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover [mix-blend-mode:luminosity]"
-                priority
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-h2-blue/40 via-h2-bg/30 to-h2-bg/70"
-                aria-hidden="true"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
