@@ -38,7 +38,7 @@ const day1: Session[] = [
       "Prof. Dr. Selahattin Çelik - AYBÜ H2TEAM (10 dk)",
       "Oğuzhan Akyener - TESPAM Başkanı (10 dk)",
       "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
-      "Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
+      "TBA | Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı (15 dk)",
     ],
   },
   { time: "11:00 - 11:15", type: "break", title: "Kahve Arası" },
@@ -53,18 +53,18 @@ const day1: Session[] = [
     type: "keynote",
     title: "Keynote Konuşmacı: Dr. Ayfer Veziroğlu",
   },
-  { time: "14:30 - 14:45", type: "break", title: "Kahve Arası" },
+  { time: "14:00 - 14:15", type: "break", title: "Kahve Arası" },
   {
-    time: "14:00 - 16:00",
+    time: "14:15 - 16:00",
     type: "panel",
     title: "Panel 1: Türkiye Hidrojen Yol Haritası 2035",
     moderator: "Prof. Dr. Erol Arcaklıoğlu | YÖK Yürütme Kurulu Üyesi",
     speakers: [
       "Prof. Dr. İbrahim Dinçer | Ontario Tech University",
-      "Enerji ve Tabii Kaynaklar Bakanlığı / TENMAK-TEMEN",
-      "Prof. Dr. İlker Murat Ar | T.C. Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
-      "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
+      "Prof. Dr. İlker Murat Ar | Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
       "Dr. Betül Erdör Türk | TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
+      "Dr. Ömer Faruk Tunçbilek | TENMAK-TEMEN Başkanı",
+      "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
     ],
   },
   { time: "16:00 - 16:15", type: "break", title: "Kahve Arası" },
@@ -72,12 +72,12 @@ const day1: Session[] = [
     time: "16:15 - 17:45",
     type: "panel",
     title: "Panel 2: Savunma Sanayinde Hidrojen Teknolojileri",
-    moderator: "Prof. Dr. Selahattin Çelik | AYBÜ H2TEAM Başkanı",
+    moderator: "Prof. Dr. Selahattin Çelik | H2 TEAM Müdürü",
     speakers: [
-      "Savunma Sanayii Başkanlığı (SSB)",
-      "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
-      "Kadir Gökhan Güler | GE Aerospace Senior Engineering Manager",
       "Prof. Dr. Mustafa İlbaş | ASFAT Genel Müdürü",
+      "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
+      "Deniz Demirci | Savunma Sanayii Başkanlığı (SSB) Gelişmiş Malzemeler ve Enerji Programı Yöneticisi",
+      "Kadir Gökhan Güler | General Electric Aerospace Senior Engineering Manager",
       "Ömer Erdemir | LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
     ],
   },
@@ -104,13 +104,13 @@ const day2: Session[] = [
     time: "09:30 - 10:15",
     type: "panel",
     title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
-    moderator: "Prof. Dr. Hasan Özcan | AYBÜ Makine Mühendisliği Bölümü",
+    moderator: "Prof. Dr. Hasan Özcan | H2 TEAM Müdür Yardımcısı",
     speakers: [
-      "Yusuf Günay | H2DER Başkanı",
       "Prof. Dr. Can Erkey | Koç Üniversitesi Hidrojen Teknolojileri Merkezi (KUHyTech) Direktörü",
-      "GM Hidrojen Vadisi",
-      "Prof. Dr. Yüksel Kaplan | NOHÜ, Hidrojen Zirvesi Başkanı",
-      "TÜBİTAK MAM",
+      "Prof. Dr. Yüksel Kaplan | Niğde Ömer Halisdemir Üniversitesi",
+      "Dr. Çiğdem Karadağ | TÜBİTAK MAM",
+      "Yusuf Günay | Yeşil Hidrojen Üreticileri Derneği Başkanı",
+      "TBA | GM Hidrojen Vadisi",
     ],
   },
   { time: "10:15 - 10:45", type: "break", title: "Kahve Arası & Sergi" },
@@ -120,10 +120,11 @@ const day2: Session[] = [
     title: "Panel 4: Sanayide Hidrojen Kullanımı",
     moderator: "Doç. Dr. Canan Acar | Twente Üniversitesi",
     speakers: [
-      "Botaş",
-      "Çimento Üreticileri Derneği",
-      "Demir Çelik Üretimi Erdemir",
-      "Seramik Üreticileri",
+      "Süleyman Furkan Özdil | Ereğli Erdemir Demir Çelik",
+      "TBA | BOTAŞ",
+      "TBA | Çalık Enerji",
+      "TBA | Çimento Üreticileri Derneği",
+      "TBA | Seramik Üreticileri / Vitra Seramik",
     ],
   },
   { time: "11:45 - 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
@@ -131,12 +132,12 @@ const day2: Session[] = [
     time: "13:15 - 14:30",
     type: "panel",
     title: "Panel 5: Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
-    moderator: "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
+    moderator: "TBA",
     speakers: [
-      "Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım fonu",
-      "TÜBİTAK Uzmanı",
-      "Akademi",
-      "Sanayi Ar-Ge merkezi + Teknoloji / startup firması",
+      "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
+      "Ongun Yoldemir | Jeoloji Mühendisi - Türkiye Beyaz Hidrojen Kuyuları",
+      "TBA | Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım Fonu",
+      "TBA | Sanayi Ar-Ge Merkezi / Teknoloji ve Startup Firması",
     ],
   },
   { time: "14:30 - 14:45", type: "break", title: "Kahve Arası" },
@@ -216,13 +217,13 @@ const cfg: Record<
 const previewDays = [
   {
     day: "1. Gün",
-    date: "22 Ekim · Perşembe",
+    date: "22 Ekim 2026 · Perşembe",
     theme: "Strateji & Endüstri",
     sessions: day1.filter((session) => ["keynote", "panel"].includes(session.type)),
   },
   {
     day: "2. Gün",
-    date: "23 Ekim · Cuma",
+    date: "23 Ekim 2026 · Cuma",
     theme: "Teknoloji, Ekonomi & Uygulama",
     sessions: day2.filter((session) => ["keynote", "panel"].includes(session.type)).slice(0, 4),
   },
@@ -332,7 +333,7 @@ export default function Program({
             >
               <div className="text-h2-body font-bold">{day}. Gün</div>
               <div className="mt-1 text-h2-micro opacity-75">
-                {day === 1 ? "22 Ekim - Perşembe" : "23 Ekim - Cuma"}
+                {day === 1 ? "22 Ekim 2026 - Perşembe" : "23 Ekim 2026 - Cuma"}
               </div>
             </button>
           ))}

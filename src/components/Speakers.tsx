@@ -3,9 +3,10 @@ import Image from "next/image";
 type Speaker = {
   name: string;
   role: string;
-  affiliation: string;
+  affiliation?: string;
   initials: string;
   photo?: string;
+  photoPosition?: string;
 };
 
 const speakers: Speaker[] = [
@@ -26,7 +27,7 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. Selahattin Çelik",
     role: "Açılış Konuşması - Panel 2 Moderatörü",
-    affiliation: "AYBÜ H2TEAM Başkanı",
+    affiliation: "H2 TEAM Müdürü",
     initials: "SÇ",
     photo: "/speakers/selahattin-celik.jpg",
   },
@@ -54,7 +55,7 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. Hasan Özcan",
     role: "Panel 3 Moderatörü",
-    affiliation: "AYBÜ Makine Mühendisliği Bölümü",
+    affiliation: "H2 TEAM Müdür Yardımcısı",
     initials: "HÖ",
     photo: "/speakers/hasan-ozcan.jpg",
   },
@@ -66,9 +67,16 @@ const speakers: Speaker[] = [
     photo: "/speakers/canan-acar.jpg",
   },
   {
+    name: "Dr. Ömer Faruk Tunçbilek",
+    role: "Panel 1 Konuşmacısı",
+    affiliation: "TENMAK-TEMEN Başkanı",
+    initials: "ÖT",
+    photo: "/speakers/omer-faruk-tuncbilek.png",
+  },
+  {
     name: "Prof. Dr. İlker Murat Ar",
     role: "Panel 1 Konuşmacısı",
-    affiliation: "T.C. Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
+    affiliation: "Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
     initials: "İA",
     photo: "/speakers/ilker-murat-ar.jpg",
   },
@@ -85,13 +93,22 @@ const speakers: Speaker[] = [
     role: "Panel 1 Konuşmacısı",
     affiliation: "TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
     initials: "BE",
+    photo: "/speakers/betul-erdor-turk.jpg",
   },
   {
     name: "Dr. Paulina Seyfert",
-    role: "Panel 5 Moderatörü",
+    role: "Panel 5 Konuşmacısı",
     affiliation: "Almanya Enerji Bakanlığı",
     initials: "PS",
     photo: "/speakers/pauline-seyfert.jpg",
+  },
+  {
+    name: "Deniz Demirci",
+    role: "Panel 2 Konuşmacısı",
+    affiliation:
+      "Savunma Sanayii Başkanlığı (SSB) Gelişmiş Malzemeler ve Enerji Programı Yöneticisi",
+    initials: "DD",
+    photo: "/speakers/deniz-demirci.jpg",
   },
   {
     name: "Dr. Uğur Kayasal",
@@ -103,7 +120,7 @@ const speakers: Speaker[] = [
   {
     name: "Kadir Gökhan Güler",
     role: "Panel 2 Konuşmacısı",
-    affiliation: "GE Aerospace Senior Engineering Manager",
+    affiliation: "General Electric Aerospace Senior Engineering Manager",
     initials: "KG",
     photo: "/speakers/kadir-gokhan-guler.jpg",
   },
@@ -124,9 +141,9 @@ const speakers: Speaker[] = [
   {
     name: "Yusuf Günay",
     role: "Panel 3 Konuşmacısı",
-    affiliation: "Yeşil Hidrojen Üreticileri Derneği (H2DER) Başkanı",
+    affiliation: "Yeşil Hidrojen Üreticileri Derneği Başkanı",
     initials: "YG",
-    photo: "/speakers/yusuf-gunay-h2der.jpg",
+    photo: "/speakers/yusuf-gunay.png",
   },
   {
     name: "Prof. Dr. Can Erkey",
@@ -138,9 +155,136 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. Yüksel Kaplan",
     role: "Panel 3 Konuşmacısı",
-    affiliation: "NOHÜ, Hidrojen Zirvesi Başkanı",
+    affiliation: "Niğde Ömer Halisdemir Üniversitesi",
     initials: "YK",
     photo: "/speakers/yuksel-kaplan.jpg",
+  },
+  {
+    name: "Dr. Çiğdem Karadağ",
+    role: "Panel 3 Konuşmacısı",
+    affiliation: "TÜBİTAK MAM",
+    initials: "ÇK",
+    photo: "/speakers/cigdem-karadag.jpg",
+    photoPosition: "center bottom",
+  },
+  {
+    name: "Süleyman Furkan Özdil",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "Ereğli Erdemir Demir Çelik",
+    initials: "SÖ",
+  },
+  {
+    name: "Ongun Yoldemir",
+    role: "Panel 5 Konuşmacısı",
+    affiliation: "Jeoloji Mühendisi - Türkiye Beyaz Hidrojen Kuyuları",
+    initials: "OY",
+    photo: "/speakers/ongun-yoldemir.png",
+  },
+  {
+    name: "TBA",
+    role: "Açılış Konuşması",
+    affiliation: "Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 3 Konuşmacısı",
+    affiliation: "GM Hidrojen Vadisi",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "BOTAŞ",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "Çalık Enerji",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "Çimento Üreticileri Derneği",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "Seramik Üreticileri / Vitra Seramik",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 5 Konuşmacısı",
+    affiliation: "Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım Fonu",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 5 Konuşmacısı",
+    affiliation: "Sanayi Ar-Ge Merkezi / Teknoloji ve Startup Firması",
+    initials: "TBA",
+  },
+  {
+    name: "TBA",
+    role: "Panel 5 Moderatörü",
+    initials: "TBA",
+  },
+];
+
+const titleRank = (name: string) => {
+  if (name.startsWith("Prof. Dr.")) return 0;
+  if (name.startsWith("Doç. Dr.")) return 1;
+  if (name.startsWith("Dr.")) return 2;
+  return 3;
+};
+
+const nameWithoutTitle = (name: string) =>
+  name.replace(/^(Prof\. Dr\.|Doç\. Dr\.|Dr\.)\s*/, "");
+
+const sortSpeakers = (groupRole: string) => (a: Speaker, b: Speaker) => {
+  const moderatorDifference =
+    Number(!a.role.includes(`${groupRole} Moderatörü`)) -
+    Number(!b.role.includes(`${groupRole} Moderatörü`));
+  if (moderatorDifference !== 0) return moderatorDifference;
+
+  const rankDifference = titleRank(a.name) - titleRank(b.name);
+  if (rankDifference !== 0) return rankDifference;
+
+  return nameWithoutTitle(a.name).localeCompare(nameWithoutTitle(b.name), "tr", {
+    sensitivity: "base",
+  });
+};
+
+const speakerGroupDefinitions = [
+  { id: "opening", title: "Açılış konuşmaları", role: "Açılış Konuşması" },
+  {
+    id: "panel-1",
+    title: "Panel 1: Türkiye Hidrojen Yol Haritası 2035",
+    role: "Panel 1",
+  },
+  {
+    id: "panel-2",
+    title: "Panel 2: Savunma Sanayinde Hidrojen Teknolojileri",
+    role: "Panel 2",
+  },
+  {
+    id: "panel-3",
+    title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
+    role: "Panel 3",
+  },
+  {
+    id: "panel-4",
+    title: "Panel 4: Sanayide Hidrojen Kullanımı",
+    role: "Panel 4",
+  },
+  {
+    id: "panel-5",
+    title: "Panel 5: Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
+    role: "Panel 5",
   },
 ];
 
@@ -172,6 +316,7 @@ function Portrait({
           fill
           sizes={featured ? "(max-width: 768px) 100vw, 40vw" : "220px"}
           className="object-cover object-top"
+          style={{ objectPosition: speaker.photoPosition ?? "50% 0%" }}
         />
       ) : (
         <div className="relative flex h-full items-center justify-center">
@@ -191,7 +336,12 @@ function Portrait({
 
 export default function Speakers() {
   const featured = speakers.slice(0, 2);
-  const others = speakers.slice(2);
+  const speakerGroups = speakerGroupDefinitions.map((group) => ({
+    ...group,
+    speakers: speakers
+      .filter((speaker) => speaker.role.includes(group.role))
+      .sort(sortSpeakers(group.role)),
+  }));
 
   return (
     <section id="speakers" className="relative overflow-hidden bg-h2-bg py-16 sm:py-28">
@@ -207,7 +357,7 @@ export default function Speakers() {
           </div>
           <p className="max-w-md text-h2-small leading-relaxed text-h2-ink-2 lg:pb-2">
             Akademi, kamu ve sanayiden gelen konuşmacılar; keynote oturumları ve
-            tematik panellerle 30.06.2026 tarihli taslak programı şekillendiriyor.
+            tematik panellerde hidrojenin geleceğini birlikte ele alıyor.
           </p>
         </div>
 
@@ -232,7 +382,11 @@ export default function Speakers() {
                 <p className="mt-2 text-h2-small font-semibold text-h2-cyan">
                   {speaker.role}
                 </p>
-                <p className="mt-1 text-h2-small text-h2-ink-2">{speaker.affiliation}</p>
+                {speaker.affiliation && (
+                  <p className="mt-1 text-h2-small text-h2-ink-2">
+                    {speaker.affiliation}
+                  </p>
+                )}
               </div>
             </article>
           ))}
@@ -245,27 +399,63 @@ export default function Speakers() {
           <span className="h-px w-full bg-gradient-to-r from-h2-border to-transparent" />
         </div>
 
-        <div className="mt-9 grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {others.map((speaker, index) => (
-            <article key={speaker.name} className="group text-center">
-              <div className="mx-auto w-full max-w-[170px] overflow-hidden rounded-full border border-white/10 bg-h2-surface-2 p-1 transition-[transform,border-color,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:border-h2-cyan/50 group-hover:shadow-xl group-hover:shadow-h2-blue/10 sm:max-w-[190px]">
-                <div className="overflow-hidden rounded-full">
-                  <Portrait
-                    speaker={speaker}
-                    accent={index % 2 === 0 ? "blue" : "green"}
-                  />
-                </div>
+        <div className="mt-9 divide-y divide-h2-border border-y border-h2-border">
+          {speakerGroups.map((group, groupIndex) => (
+            <section
+              key={group.id}
+              aria-labelledby={`${group.id}-title`}
+              className="grid gap-7 py-10 sm:py-12 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10"
+            >
+              <div className="lg:pt-1">
+                <span className="font-display text-[11px] font-bold tracking-[0.2em] text-h2-cyan">
+                  {String(groupIndex + 1).padStart(2, "0")}
+                </span>
+                <h4
+                  id={`${group.id}-title`}
+                  className="mt-2 max-w-[18rem] font-display text-h2-h3 font-bold leading-tight text-h2-ink-1"
+                >
+                  {group.title}
+                </h4>
+                <p className="mt-2 text-h2-micro text-h2-ink-3">
+                  {group.speakers.length} konuşmacı
+                </p>
               </div>
-              <h3 className="mx-auto mt-5 max-w-[220px] text-h2-small font-bold leading-snug text-h2-ink-1">
-                {speaker.name}
-              </h3>
-              <p className="mt-2 text-[13px] font-semibold leading-relaxed text-h2-cyan">
-                {speaker.role}
-              </p>
-              <p className="mt-1 text-[13px] leading-relaxed text-h2-ink-2">
-                {speaker.affiliation}
-              </p>
-            </article>
+
+              <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 md:gap-x-7 lg:grid-cols-4 xl:grid-cols-6">
+                {group.speakers.map((speaker, speakerIndex) => {
+                  const isModerator = speaker.role.includes(`${group.role} Moderatörü`);
+
+                  return (
+                    <article
+                      key={`${speaker.name}-${speaker.affiliation ?? speakerIndex}`}
+                      className="group text-center"
+                    >
+                      <div className="relative mx-auto w-full max-w-[142px] overflow-hidden rounded-full border border-white/10 bg-h2-surface-2 p-1 transition-[transform,border-color,box-shadow] duration-300 group-hover:-translate-y-1 group-hover:border-h2-cyan/50 group-hover:shadow-xl group-hover:shadow-h2-blue/10">
+                        <div className="overflow-hidden rounded-full">
+                          <Portrait
+                            speaker={speaker}
+                            accent={(groupIndex + speakerIndex) % 2 === 0 ? "blue" : "green"}
+                          />
+                        </div>
+                        {isModerator && (
+                          <span className="absolute inset-x-3 bottom-2 rounded-full border border-h2-cyan/25 bg-[#07101F]/90 px-2 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-h2-cyan backdrop-blur-sm">
+                            Moderatör
+                          </span>
+                        )}
+                      </div>
+                      <h5 className="mx-auto mt-4 max-w-[190px] text-h2-small font-bold leading-snug text-h2-ink-1">
+                        {speaker.name}
+                      </h5>
+                      {speaker.affiliation && (
+                        <p className="mx-auto mt-1 max-w-[210px] text-[12px] leading-relaxed text-h2-ink-2">
+                          {speaker.affiliation}
+                        </p>
+                      )}
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
           ))}
         </div>
 
