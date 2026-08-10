@@ -245,22 +245,41 @@ const titleRank = (name: string) => {
 const nameWithoutTitle = (name: string) =>
   name.replace(/^(Prof\. Dr\.|Doç\. Dr\.|Dr\.)\s*/, "");
 
-const sortSpeakers = (groupRole: string) => (a: Speaker, b: Speaker) => {
-  const moderatorDifference =
-    Number(!a.role.includes(`${groupRole} Moderatörü`)) -
-    Number(!b.role.includes(`${groupRole} Moderatörü`));
-  if (moderatorDifference !== 0) return moderatorDifference;
+const sortSpeakers = (groupRole: string, preferredOrder: string[] = []) =>
+  (a: Speaker, b: Speaker) => {
+    const moderatorDifference =
+      Number(!a.role.includes(`${groupRole} Moderatörü`)) -
+      Number(!b.role.includes(`${groupRole} Moderatörü`));
+    if (moderatorDifference !== 0) return moderatorDifference;
 
-  const rankDifference = titleRank(a.name) - titleRank(b.name);
-  if (rankDifference !== 0) return rankDifference;
+    const aPreferredIndex = preferredOrder.indexOf(a.name);
+    const bPreferredIndex = preferredOrder.indexOf(b.name);
+    if (aPreferredIndex !== -1 || bPreferredIndex !== -1) {
+      if (aPreferredIndex === -1) return 1;
+      if (bPreferredIndex === -1) return -1;
+      return aPreferredIndex - bPreferredIndex;
+    }
 
-  return nameWithoutTitle(a.name).localeCompare(nameWithoutTitle(b.name), "tr", {
-    sensitivity: "base",
-  });
-};
+    const rankDifference = titleRank(a.name) - titleRank(b.name);
+    if (rankDifference !== 0) return rankDifference;
+
+    return nameWithoutTitle(a.name).localeCompare(nameWithoutTitle(b.name), "tr", {
+      sensitivity: "base",
+    });
+  };
 
 const speakerGroupDefinitions = [
-  { id: "opening", title: "Açılış konuşmaları", role: "Açılış Konuşması" },
+  {
+    id: "opening",
+    title: "Açılış konuşmaları",
+    role: "Açılış Konuşması",
+    preferredOrder: [
+      "Prof. Dr. Selahattin Çelik",
+      "Oğuzhan Akyener",
+      "Prof. Dr. Ali Cengiz Köseoğlu",
+      "TBA",
+    ],
+  },
   {
     id: "panel-1",
     title: "Panel 1: Türkiye Hidrojen Yol Haritası 2035",
@@ -275,6 +294,14 @@ const speakerGroupDefinitions = [
     id: "panel-3",
     title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
     role: "Panel 3",
+    preferredOrder: [
+      "Prof. Dr. Hasan Özcan",
+      "Prof. Dr. Can Erkey",
+      "Yusuf Günay",
+      "Dr. Çiğdem Karadağ",
+      "Prof. Dr. Yüksel Kaplan",
+      "TBA",
+    ],
   },
   {
     id: "panel-4",
@@ -340,7 +367,7 @@ export default function Speakers() {
     ...group,
     speakers: speakers
       .filter((speaker) => speaker.role.includes(group.role))
-      .sort(sortSpeakers(group.role)),
+      .sort(sortSpeakers(group.role, group.preferredOrder)),
   }));
 
   return (
