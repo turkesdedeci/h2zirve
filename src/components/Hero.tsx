@@ -81,20 +81,7 @@ export default function Hero() {
               <span className="text-h2-micro font-semibold uppercase tracking-widest text-h2-ink-3">
                 Düzenleyen
               </span>
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-3">
-                  <Image
-                    src="/logos/tespam.png"
-                    alt="TESPAM"
-                    width={52}
-                    height={52}
-                    className="object-contain opacity-85"
-                  />
-                  <span className="text-h2-small font-semibold text-h2-ink-2">
-                    TESPAM
-                  </span>
-                </div>
-                <span className="h-8 w-px bg-h2-border" aria-hidden="true" />
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
                 <div className="flex items-center gap-3">
                   <Image
                     src="/logos/aybu.png"
@@ -105,6 +92,32 @@ export default function Hero() {
                   />
                   <span className="text-h2-small font-semibold text-h2-ink-2">
                     AYBÜ
+                  </span>
+                </div>
+                <span className="h-8 w-px bg-h2-border" aria-hidden="true" />
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/logos/tenmak-logo-transparent.png"
+                    alt="Türkiye Enerji, Nükleer ve Maden Araştırma Kurumu"
+                    width={52}
+                    height={52}
+                    className="object-contain opacity-85"
+                  />
+                  <span className="text-h2-small font-semibold text-h2-ink-2">
+                    TENMAK
+                  </span>
+                </div>
+                <span className="h-8 w-px bg-h2-border" aria-hidden="true" />
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/logos/tespam.png"
+                    alt="TESPAM"
+                    width={52}
+                    height={52}
+                    className="object-contain opacity-85"
+                  />
+                  <span className="text-h2-small font-semibold text-h2-ink-2">
+                    TESPAM
                   </span>
                 </div>
               </div>

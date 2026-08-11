@@ -59,21 +59,6 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
                   <Image
-                    src="/logos/tespam.png"
-                    alt="TESPAM"
-                    width={44}
-                    height={44}
-                    className="object-contain opacity-60"
-                  />
-                </div>
-                <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
-                  <span className="text-h2-cyan font-semibold">Ana düzenleyici</span>
-                  <br />Türkiye Enerji Stratejileri &amp; Politikaları Araştırma Merkezi
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
-                  <Image
                     src="/logos/aybu.png"
                     alt="Ankara Yıldırım Beyazıt Üniversitesi"
                     width={44}
@@ -84,6 +69,36 @@ export default function Footer() {
                 <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
                   <span className="text-h2-ink-3 font-semibold">Ev sahibi üniversite</span>
                   <br />Ankara Yıldırım Beyazıt Üniversitesi
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src="/logos/tenmak-logo-transparent.png"
+                    alt="Türkiye Enerji, Nükleer ve Maden Araştırma Kurumu"
+                    width={44}
+                    height={44}
+                    className="object-contain opacity-60"
+                  />
+                </div>
+                <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
+                  <span className="text-h2-ink-3 font-semibold">Düzenleyen kurum</span>
+                  <br />Türkiye Enerji, Nükleer ve Maden Araştırma Kurumu
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
+                  <Image
+                    src="/logos/tespam.png"
+                    alt="TESPAM"
+                    width={44}
+                    height={44}
+                    className="object-contain opacity-60"
+                  />
+                </div>
+                <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
+                  <span className="text-h2-cyan font-semibold">Ana düzenleyici</span>
+                  <br />Türkiye Enerji Stratejileri &amp; Politikaları Araştırma Merkezi
                 </p>
               </div>
             </div>
