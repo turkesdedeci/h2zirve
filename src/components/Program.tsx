@@ -110,7 +110,7 @@ const day2: Session[] = [
       "Yusuf Günay | Yeşil Hidrojen Üreticileri Derneği Başkanı",
       "Dr. Çiğdem Karadağ | TÜBİTAK MAM",
       "Prof. Dr. Yüksel Kaplan | Niğde Ömer Halisdemir Üniversitesi",
-      "TBA | GM Hidrojen Vadisi",
+      "TBA",
     ],
   },
   { time: "10:15 - 10:45", type: "break", title: "Kahve Arası & Sergi" },
@@ -121,10 +121,10 @@ const day2: Session[] = [
     moderator: "Doç. Dr. Canan Acar | Twente Üniversitesi",
     speakers: [
       "Süleyman Furkan Özdil | Ereğli Erdemir Demir Çelik",
-      "TBA | BOTAŞ",
-      "TBA | Çalık Enerji",
-      "TBA | Çimento Üreticileri Derneği",
-      "TBA | Seramik Üreticileri / Vitra Seramik",
+      "TBA",
+      "TBA",
+      "TBA",
+      "TBA",
     ],
   },
   { time: "11:45 - 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
@@ -136,8 +136,8 @@ const day2: Session[] = [
     speakers: [
       "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
       "Ongun Yoldemir | Jeoloji Mühendisi - Türkiye Beyaz Hidrojen Kuyuları",
-      "TBA | Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım Fonu",
-      "TBA | Sanayi Ar-Ge Merkezi / Teknoloji ve Startup Firması",
+      "TBA",
+      "TBA",
     ],
   },
   { time: "14:30 - 14:45", type: "break", title: "Kahve Arası" },
@@ -402,9 +402,9 @@ export default function Program({
                           s.speakers.length > 3 ? "md:grid-cols-2" : ""
                         }`}
                       >
-                        {s.speakers.map((sp) => (
+                        {s.speakers.map((sp, spIndex) => (
                           <li
-                            key={sp}
+                            key={`${sp}-${spIndex}`}
                             className="flex items-start gap-3 text-h2-small leading-relaxed text-h2-ink-2"
                           >
                             <span className={`mt-2 h-1.5 w-1.5 flex-none rounded-full ${c.accent}`} />

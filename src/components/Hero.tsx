@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[760px] items-center overflow-hidden bg-h2-bg pt-28 pb-16 sm:pt-36 sm:pb-20"
+      className="relative flex min-h-[560px] items-center overflow-hidden bg-h2-bg pt-24 pb-14 sm:min-h-[760px] sm:pt-36 sm:pb-20"
     >
       <Image
         src="/hero-visual.png"

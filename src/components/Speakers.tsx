@@ -189,43 +189,36 @@ const speakers: Speaker[] = [
   {
     name: "TBA",
     role: "Panel 3 Konuşmacısı",
-    affiliation: "GM Hidrojen Vadisi",
     initials: "TBA",
   },
   {
     name: "TBA",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "BOTAŞ",
     initials: "TBA",
   },
   {
     name: "TBA",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Çalık Enerji",
     initials: "TBA",
   },
   {
     name: "TBA",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Çimento Üreticileri Derneği",
     initials: "TBA",
   },
   {
     name: "TBA",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Seramik Üreticileri / Vitra Seramik",
     initials: "TBA",
   },
   {
     name: "TBA",
     role: "Panel 5 Konuşmacısı",
-    affiliation: "Ankara Kalkınma Ajansı / Kalkınma Bankası / Yatırım Fonu",
     initials: "TBA",
   },
   {
     name: "TBA",
     role: "Panel 5 Konuşmacısı",
-    affiliation: "Sanayi Ar-Ge Merkezi / Teknoloji ve Startup Firması",
     initials: "TBA",
   },
   {
@@ -299,8 +292,8 @@ const speakerGroupDefinitions = [
       "Prof. Dr. Can Erkey",
       "Yusuf Günay",
       "Dr. Çiğdem Karadağ",
-      "Prof. Dr. Yüksel Kaplan",
       "TBA",
+      "Prof. Dr. Yüksel Kaplan",
     ],
   },
   {
