@@ -179,6 +179,7 @@ const speakers: Speaker[] = [
     role: "Panel 4 Konuşmacısı",
     affiliation: "Ereğli Erdemir Demir Çelik",
     initials: "SÖ",
+    photo: "/speakers/suleyman-furkan-ozdil.png",
   },
   {
     name: "Ongun Yoldemir",
