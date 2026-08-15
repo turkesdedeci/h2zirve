@@ -107,10 +107,10 @@ const day2: Session[] = [
     moderator: "Prof. Dr. Hasan Özcan | H2 TEAM Müdür Yardımcısı",
     speakers: [
       "Prof. Dr. Can Erkey | Koç Üniversitesi Hidrojen Teknolojileri Merkezi (KUHyTech) Direktörü",
+      "Prof. Dr. Selmiye Alkan Gürsel | Sabancı Üniversitesi (HYSouthMarmara)",
       "Yusuf Günay | Yeşil Hidrojen Üreticileri Derneği Başkanı",
       "Dr. Çiğdem Karadağ | TÜBİTAK MAM",
       "Prof. Dr. Yüksel Kaplan | Niğde Ömer Halisdemir Üniversitesi",
-      "TBA",
     ],
   },
   { time: "10:15 - 10:45", type: "break", title: "Kahve Arası & Sergi" },

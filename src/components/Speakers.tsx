@@ -153,6 +153,13 @@ const speakers: Speaker[] = [
     photo: "/speakers/can-erkey-kuhytech.jpg",
   },
   {
+    name: "Prof. Dr. Selmiye Alkan Gürsel",
+    role: "Panel 3 Konuşmacısı",
+    affiliation: "Sabancı Üniversitesi · HYSouthMarmara",
+    initials: "SAG",
+    photo: "/speakers/selmiye-alkan-gursel.png",
+  },
+  {
     name: "Prof. Dr. Yüksel Kaplan",
     role: "Panel 3 Konuşmacısı",
     affiliation: "Niğde Ömer Halisdemir Üniversitesi",
@@ -184,11 +191,6 @@ const speakers: Speaker[] = [
     name: "TBA",
     role: "Açılış Konuşması",
     affiliation: "Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı",
-    initials: "TBA",
-  },
-  {
-    name: "TBA",
-    role: "Panel 3 Konuşmacısı",
     initials: "TBA",
   },
   {
@@ -290,9 +292,9 @@ const speakerGroupDefinitions = [
     preferredOrder: [
       "Prof. Dr. Hasan Özcan",
       "Prof. Dr. Can Erkey",
+      "Prof. Dr. Selmiye Alkan Gürsel",
       "Yusuf Günay",
       "Dr. Çiğdem Karadağ",
-      "TBA",
       "Prof. Dr. Yüksel Kaplan",
     ],
   },
