@@ -155,7 +155,7 @@ const speakers: Speaker[] = [
   {
     name: "Prof. Dr. Selmiye Alkan Gürsel",
     role: "Panel 3 Konuşmacısı",
-    affiliation: "Sabancı Üniversitesi · HYSouthMarmara",
+    affiliation: "Sabancı Üniversitesi",
     initials: "SAG",
     photo: "/speakers/selmiye-alkan-gursel.png",
   },
