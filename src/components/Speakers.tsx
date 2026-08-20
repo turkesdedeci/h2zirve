@@ -54,14 +54,14 @@ const speakers: Speaker[] = [
   },
   {
     name: "Prof. Dr. Hasan Özcan",
-    role: "Panel 3 Moderatörü",
+    role: "Panel 5 Moderatörü",
     affiliation: "H2 TEAM Müdür Yardımcısı",
     initials: "HÖ",
     photo: "/speakers/hasan-ozcan.jpg",
   },
   {
     name: "Doç. Dr. Canan Acar",
-    role: "Panel 4 Moderatörü",
+    role: "Panel 3 Moderatörü",
     affiliation: "Twente Üniversitesi",
     initials: "CA",
     photo: "/speakers/canan-acar.jpg",
@@ -118,11 +118,9 @@ const speakers: Speaker[] = [
     photo: "/speakers/ugur-kayasal.jpg",
   },
   {
-    name: "Kadir Gökhan Güler",
+    name: "TBA",
     role: "Panel 2 Konuşmacısı",
-    affiliation: "General Electric Aerospace Senior Engineering Manager",
-    initials: "KG",
-    photo: "/speakers/kadir-gokhan-guler.jpg",
+    initials: "TBA",
   },
   {
     name: "Prof. Dr. Mustafa İlbaş",
@@ -175,16 +173,16 @@ const speakers: Speaker[] = [
     photoPosition: "center bottom",
   },
   {
-    name: "Süleyman Furkan Özdil",
+    name: "Serkan TÜRK",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Ereğli Erdemir Demir Çelik",
-    initials: "SÖ",
-    photo: "/speakers/suleyman-furkan-ozdil.png",
+    affiliation: "Türkiye Çimento Sanayicileri Birliği-AR-GE Enstitüsü Müdürü",
+    initials: "ST",
+    photo: "/speakers/serkan-turk-linkedin.jpg",
   },
   {
     name: "Ongun Yoldemir",
     role: "Panel 5 Konuşmacısı",
-    affiliation: "Jeoloji Mühendisi - Türkiye Beyaz Hidrojen Kuyuları",
+    affiliation: "Jeoloji Mühendisi-Türkiye Beyaz Hidrojen Potansiyeli ve Çalışmaları",
     initials: "OY",
     photo: "/speakers/ongun-yoldemir.png",
   },
@@ -195,9 +193,11 @@ const speakers: Speaker[] = [
     initials: "TBA",
   },
   {
-    name: "TBA",
+    name: "Göksu Akçakese",
     role: "Panel 4 Konuşmacısı",
-    initials: "TBA",
+    affiliation: "Ereğli Erdemir Demir Çelik",
+    initials: "GA",
+    photo: "/speakers/goksu-akcekese-linkedin.jpg",
   },
   {
     name: "TBA",
@@ -213,6 +213,20 @@ const speakers: Speaker[] = [
     name: "TBA",
     role: "Panel 4 Konuşmacısı",
     initials: "TBA",
+  },
+  {
+    name: "Adnan Görgülü",
+    role: "Panel 5 Konuşmacısı",
+    affiliation: "Siemens Enerji",
+    initials: "AG",
+    photo: "/speakers/adnan-gorgulu-linkedin.jpg",
+  },
+  {
+    name: "Kadir Gökhan Güler",
+    role: "Panel 5 Konuşmacısı",
+    affiliation: "General Electric Aerospace-Senior Engineering Manager",
+    initials: "KG",
+    photo: "/speakers/kadir-gokhan-guler.jpg",
   },
   {
     name: "TBA",
@@ -220,14 +234,11 @@ const speakers: Speaker[] = [
     initials: "TBA",
   },
   {
-    name: "TBA",
-    role: "Panel 5 Konuşmacısı",
-    initials: "TBA",
-  },
-  {
-    name: "TBA",
-    role: "Panel 5 Moderatörü",
-    initials: "TBA",
+    name: "Prof. Dr. Abdullah Yıldız",
+    role: "Panel 4 Moderatörü",
+    affiliation: "AYBÜ Rektör Yardımcısı",
+    initials: "AY",
+    photo: "/speakers/abdullah-yildiz.jpg",
   },
 ];
 
