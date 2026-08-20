@@ -69,7 +69,7 @@ const speakers: Speaker[] = [
   {
     name: "Dr. Ömer Faruk Tunçbilek",
     role: "Panel 1 Konuşmacısı",
-    affiliation: "TENMAK-TEMEN Başkanı",
+    affiliation: "TEMEN Başkanı",
     initials: "ÖT",
     photo: "/speakers/omer-faruk-tuncbilek.png",
   },
@@ -191,7 +191,7 @@ const speakers: Speaker[] = [
   {
     name: "TBA",
     role: "Açılış Konuşması",
-    affiliation: "Enerji Bakanı / Bakan Yardımcısı / TENMAK Başkanı",
+    affiliation: "Enerji Bakanı / Bakan Yardımcısı",
     initials: "TBA",
   },
   {
