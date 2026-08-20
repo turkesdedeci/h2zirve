@@ -55,36 +55,36 @@ export default function Footer() {
             <h4 className="text-h2-ink-1 font-semibold text-h2-small mb-4 uppercase tracking-wider">
               Organizasyon
             </h4>
-            <div className="space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
-                  <Image
-                    src="/logos/aybu.png"
-                    alt="Ankara Yıldırım Beyazıt Üniversitesi"
-                    width={44}
-                    height={44}
-                    className="object-contain opacity-60"
-                  />
-                </div>
-                <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
-                  <span className="text-h2-ink-3 font-semibold">Ev sahibi üniversite</span>
-                  <br />Ankara Yıldırım Beyazıt Üniversitesi
-                </p>
+            <div className="flex flex-wrap items-center gap-5">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/logos/aybu.png"
+                  alt="Ankara Yıldırım Beyazıt Üniversitesi"
+                  width={36}
+                  height={36}
+                  className="object-contain opacity-70"
+                />
+                <span className="text-h2-ink-3 text-h2-small font-semibold">AYBÜ</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
-                  <Image
-                    src="/logos/tespam.png"
-                    alt="TESPAM"
-                    width={44}
-                    height={44}
-                    className="object-contain opacity-60"
-                  />
-                </div>
-                <p className="text-h2-ink-disabled text-h2-micro leading-relaxed">
-                  <span className="text-h2-cyan font-semibold">Ana düzenleyici</span>
-                  <br />Türkiye Enerji Stratejileri &amp; Politikaları Araştırma Merkezi
-                </p>
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/logos/h2team.png"
+                  alt="H2TEAM"
+                  width={36}
+                  height={36}
+                  className="object-contain opacity-70"
+                />
+                <span className="text-h2-ink-3 text-h2-small font-semibold">H2TEAM</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/logos/tespam.png"
+                  alt="TESPAM"
+                  width={36}
+                  height={36}
+                  className="object-contain opacity-70"
+                />
+                <span className="text-h2-ink-3 text-h2-small font-semibold">TESPAM</span>
               </div>
             </div>
           </div>
