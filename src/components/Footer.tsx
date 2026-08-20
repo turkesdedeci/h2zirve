@@ -95,7 +95,7 @@ export default function Footer() {
             © 2026 Türkiye Hidrojen Zirvesi. Tüm hakları saklıdır.
           </p>
           <p className="text-h2-ink-disabled text-h2-micro">
-            TESPAM tarafından, AYBÜ ev sahipliğinde
+            AYBÜ ev sahipliği ve liderliğinde, H2TEAM koordinasyonunda, TESPAM iş birliğiyle
           </p>
         </div>
       </div>

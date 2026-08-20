@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const siteDescription =
-  "TESPAM tarafından Ankara Yıldırım Beyazıt Üniversitesi ev sahipliğinde düzenlenen Türkiye Hidrojen Zirvesi 2026 — 22–23 Ekim 2026, Ankara.";
+  "Ankara Yıldırım Beyazıt Üniversitesi (AYBÜ) ev sahipliği ve liderliğinde, H2TEAM koordinasyonunda ve TESPAM iş birliğiyle düzenlenen Türkiye Hidrojen Zirvesi 2026 — 22–23 Ekim 2026, Ankara.";
 
 export const metadata: Metadata = {
   title: {

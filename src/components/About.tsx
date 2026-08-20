@@ -49,8 +49,11 @@ export default function About() {
               haline gelmiştir.
             </p>
             <p>
-              TESPAM tarafından, Ankara Yıldırım Beyazıt Üniversitesi ev
-              sahipliğinde düzenlenen Türkiye Hidrojen Zirvesi 2026; araştırmacıları,
+              Türkiye Hidrojen Zirvesi, Ankara Yıldırım Beyazıt Üniversitesi
+              (AYBÜ) ev sahipliği ve liderliğinde, Hidrojen Teknolojileri ve
+              Enerji Uygulama ve Araştırma Merkezi (H2TEAM) koordinasyonunda
+              ve Türkiye Enerji Stratejileri ve Politikaları Araştırma Merkezi
+              (TESPAM) iş birliğiyle düzenlenmektedir; araştırmacıları,
               kamu kurumlarını, özel sektör temsilcilerini, yatırımcıları,
               teknoloji geliştiricileri ve politika yapıcıları Ankara&apos;da
               buluşturacaktır.
