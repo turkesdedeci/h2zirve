@@ -339,9 +339,9 @@ export default function PosterBasvurusu() {
               Türkiye Hidrojen Zirvesi 2026
             </h1>
             <p className="mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
-              Genişletilmiş özetinizi 1 Eylül 2026 tarihine kadar yükleyin.
-              Kabul edilen çalışmalar için final poster yükleme süreci 10 Eylül
-              2026 tarihinde açılacaktır.
+              Genişletilmiş özetinizi 15 Eylül 2026 tarihine kadar yükleyin.
+              Kabul edilen çalışmalar için final posterinizi 5 Ekim 2026
+              tarihine kadar yükleyin.
             </p>
           </div>
 
@@ -690,9 +690,9 @@ export default function PosterBasvurusu() {
             </h2>
             <div className="mt-5 space-y-3">
               {[
-                ["Son Başvuru", "1 Eylül 2026"],
-                ["Kabul Bildirimi", "10 Eylül 2026"],
-                ["Poster Yükleme", "20 Eylül 2026"],
+                ["Son Başvuru", "15 Eylül 2026"],
+                ["Kabul Bildirimi", "25 Eylül 2026"],
+                ["Poster Yükleme", "5 Ekim 2026"],
                 ["Zirve", "22-23 Ekim 2026"],
               ].map(([label, value]) => (
                 <div
