@@ -193,16 +193,11 @@ const speakers: Speaker[] = [
     initials: "TBA",
   },
   {
-    name: "Göksu Akçakese",
+    name: "Doç. Dr. Abdülkadir Bektaş",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Ereğli Erdemir Demir Çelik",
-    initials: "GA",
-    photo: "/speakers/goksu-akcekese-linkedin.jpg",
-  },
-  {
-    name: "TBA",
-    role: "Panel 4 Konuşmacısı",
-    initials: "TBA",
+    affiliation: "UNFCCC Kıdemli Uzmanı (ERT) – Tarım, Enerji ve IPPU | Article 6 Teknik Uzmanı",
+    initials: "AB",
+    photo: "/speakers/abdulkadir-bektas-portrait.png",
   },
   {
     name: "TBA",

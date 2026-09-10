@@ -120,9 +120,8 @@ const day2: Session[] = [
     title: "Panel 4: Sanayide Hidrojen Kullanımı",
     moderator: "Prof. Dr. Abdullah Yıldız | AYBÜ Rektör Yardımcısı",
     speakers: [
-      "TBA",
+      "Doç. Dr. Abdülkadir Bektaş | UNFCCC Kıdemli Uzmanı (ERT) – Tarım, Enerji ve IPPU | Article 6 Teknik Uzmanı",
       "Serkan TÜRK | Türkiye Çimento Sanayicileri Birliği-AR-GE Enstitüsü Müdürü",
-      "Göksu Akçakese | Ereğli Erdemir Demir Çelik",
       "TBA",
       "TBA",
     ],
