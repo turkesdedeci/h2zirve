@@ -63,7 +63,7 @@ const day1: Session[] = [
       "Prof. Dr. İbrahim Dinçer | Ontario Tech University",
       "Emrah Özdemir | Niğde Belediye Başkanı",
       "Dr. Betül Erdör Türk | TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
-      "Dr. Ömer Faruk Tunçbilek | TEMEN Başkanı",
+      "Dr. Ömer Faruk Tunçbilek | Temiz Enerji Araştırma Enstitüsü (TEMEN) Başkanı",
       "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
     ],
   },

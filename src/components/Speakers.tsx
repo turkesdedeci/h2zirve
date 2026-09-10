@@ -18,6 +18,13 @@ const speakers: Speaker[] = [
     photo: "/speakers/ibrahim-dincer-2026-shoulders.png",
   },
   {
+    name: "Emrah Özdemir",
+    role: "Panel 1 Konuşmacısı",
+    affiliation: "Niğde Belediye Başkanı",
+    initials: "EÖ",
+    photo: "/speakers/emrah-ozdemir-portrait.png",
+  },
+  {
     name: "Dr. Ayfer Veziroğlu",
     role: "Keynote Konuşmacı - 1. Gün",
     affiliation: "International Association for Hydrogen Energy (IAHE)",
@@ -69,16 +76,9 @@ const speakers: Speaker[] = [
   {
     name: "Dr. Ömer Faruk Tunçbilek",
     role: "Panel 1 Konuşmacısı",
-    affiliation: "TEMEN Başkanı",
+    affiliation: "Temiz Enerji Araştırma Enstitüsü (TEMEN) Başkanı",
     initials: "ÖT",
     photo: "/speakers/omer-faruk-tuncbilek.png",
-  },
-  {
-    name: "Emrah Özdemir",
-    role: "Panel 1 Konuşmacısı",
-    affiliation: "Niğde Belediye Başkanı",
-    initials: "EÖ",
-    photo: "/speakers/emrah-ozdemir-portrait.png",
   },
   {
     name: "Gürsel Erul",
