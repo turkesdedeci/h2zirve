@@ -74,11 +74,11 @@ const speakers: Speaker[] = [
     photo: "/speakers/omer-faruk-tuncbilek.png",
   },
   {
-    name: "Prof. Dr. İlker Murat Ar",
+    name: "Emrah Özdemir",
     role: "Panel 1 Konuşmacısı",
-    affiliation: "Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
-    initials: "İA",
-    photo: "/speakers/ilker-murat-ar.jpg",
+    affiliation: "Niğde Belediye Başkanı",
+    initials: "EÖ",
+    photo: "/speakers/emrah-ozdemir-portrait.png",
   },
   {
     name: "Gürsel Erul",

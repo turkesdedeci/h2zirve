@@ -61,7 +61,7 @@ const day1: Session[] = [
     moderator: "Prof. Dr. Erol Arcaklıoğlu | YÖK Yürütme Kurulu Üyesi",
     speakers: [
       "Prof. Dr. İbrahim Dinçer | Ontario Tech University",
-      "Prof. Dr. İlker Murat Ar | Sanayi ve Teknoloji Bakanlığı Sanayi Genel Müdürü",
+      "Emrah Özdemir | Niğde Belediye Başkanı",
       "Dr. Betül Erdör Türk | TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
       "Dr. Ömer Faruk Tunçbilek | TEMEN Başkanı",
       "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
