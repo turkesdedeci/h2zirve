@@ -193,10 +193,10 @@ const speakers: Speaker[] = [
     initials: "TBA",
   },
   {
-    name: "Doç. Dr. Abdülkadir Bektaş",
+    name: "Doç. Dr. Kadir Bektaş",
     role: "Panel 4 Konuşmacısı",
     affiliation: "UNFCCC Kıdemli Uzmanı (ERT) – Tarım, Enerji ve IPPU | Article 6 Teknik Uzmanı",
-    initials: "AB",
+    initials: "KB",
     photo: "/speakers/abdulkadir-bektas-portrait.png",
   },
   {
