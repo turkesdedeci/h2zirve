@@ -69,7 +69,7 @@ export default function Sponsors() {
                 {tier.logos.map((logo) => (
                   <div
                     key={logo.src}
-                    className={`${tier.size} flex items-center justify-center rounded-h2-md border border-h2-border bg-white p-3`}
+                    className={`${tier.size} flex items-center justify-center rounded-h2-md border border-h2-border bg-white p-1.5`}
                   >
                     <Image
                       src={logo.src}
