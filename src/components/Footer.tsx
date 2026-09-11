@@ -25,7 +25,7 @@ export default function Footer() {
               className="mb-5 h-auto w-56 object-contain sm:w-64"
             />
             <p className="text-h2-ink-3 text-h2-small leading-relaxed max-w-sm">
-              Türkiye Hidrojen Zirvesi 2026 (TESPAM-H2-2026)
+              Türkiye Hidrojen Zirvesi 2026
               <br />
               22–23 Ekim 2026 · Ankara, Türkiye
             </p>
