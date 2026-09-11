@@ -2,16 +2,43 @@ import Image from "next/image";
 
 const tiers = [
   { name: "Ana Sponsor", color: "text-h2-amber", slots: 1, size: "h-28 w-28", logos: [] as { src: string; alt: string }[] },
-  { name: "Platin Sponsor", color: "text-h2-ink-1", slots: 2, size: "h-24 w-24", logos: [] as { src: string; alt: string }[] },
-  { name: "Altın Sponsor", color: "text-h2-amber/80", slots: 3, size: "h-[5.5rem] w-[5.5rem]", logos: [] as { src: string; alt: string }[] },
+  {
+    name: "Platin Sponsor",
+    color: "text-h2-ink-1",
+    slots: 2,
+    size: "h-24 w-24",
+    logos: [{ src: "/logos/hydrogenix.png", alt: "Hydrogenix" }],
+  },
+  {
+    name: "Altın Sponsor",
+    color: "text-h2-amber/80",
+    slots: 3,
+    size: "h-[5.5rem] w-[5.5rem]",
+    logos: [
+      { src: "/logos/lentatek.png", alt: "Lentatek" },
+      { src: "/logos/debak.jpg", alt: "Debak" },
+    ],
+  },
   {
     name: "Gümüş Sponsor",
     color: "text-h2-ink-3",
     slots: 4,
     size: "h-20 w-20",
-    logos: [{ src: "/logos/hidronerji.png", alt: "Hidronerji" }],
+    logos: [
+      { src: "/logos/hidronerji.png", alt: "Hidronerji" },
+      { src: "/logos/kuhytech.png", alt: "KUHyTech" },
+    ],
   },
-  { name: "Destek Sponsoru", color: "text-h2-ink-disabled", slots: 5, size: "h-16 w-16", logos: [] as { src: string; alt: string }[] },
+  {
+    name: "Destek Sponsoru",
+    color: "text-h2-ink-disabled",
+    slots: 5,
+    size: "h-16 w-16",
+    logos: [
+      { src: "/logos/hidromek.png", alt: "Hidromek" },
+      { src: "/logos/besyapi.jpg", alt: "Bes Yapı" },
+    ],
+  },
 ];
 
 const benefits = [
