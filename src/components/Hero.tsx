@@ -43,10 +43,6 @@ export default function Hero() {
               <span className="block text-h2-blue-bright">Zirvesi 2026</span>
             </h1>
 
-            <p className="mt-4 text-h2-small font-bold uppercase tracking-[0.2em] text-h2-green">
-              TESPAM-H2-2026
-            </p>
-
             <p className="mt-6 max-w-xl text-h2-body-lg leading-relaxed text-h2-ink-2">
               Türkiye&apos;de Hidrojen Ekosisteminin İnşası:{" "}
               <span className="text-h2-ink-1">Teknoloji, Strateji ve Uygulama</span>
