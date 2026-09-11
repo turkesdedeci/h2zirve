@@ -1,17 +1,17 @@
 import Image from "next/image";
 
 const tiers = [
-  { name: "Ana Sponsor", color: "text-h2-amber", slots: 1, size: "h-20 w-52", logos: [] as { src: string; alt: string }[] },
-  { name: "Platin Sponsor", color: "text-h2-ink-1", slots: 2, size: "h-16 w-44", logos: [] as { src: string; alt: string }[] },
-  { name: "Altın Sponsor", color: "text-h2-amber/80", slots: 3, size: "h-14 w-36", logos: [] as { src: string; alt: string }[] },
+  { name: "Ana Sponsor", color: "text-h2-amber", slots: 1, size: "h-28 w-28", logos: [] as { src: string; alt: string }[] },
+  { name: "Platin Sponsor", color: "text-h2-ink-1", slots: 2, size: "h-24 w-24", logos: [] as { src: string; alt: string }[] },
+  { name: "Altın Sponsor", color: "text-h2-amber/80", slots: 3, size: "h-[5.5rem] w-[5.5rem]", logos: [] as { src: string; alt: string }[] },
   {
     name: "Gümüş Sponsor",
     color: "text-h2-ink-3",
     slots: 4,
-    size: "h-12 w-32",
+    size: "h-20 w-20",
     logos: [{ src: "/logos/hidronerji.png", alt: "Hidronerji" }],
   },
-  { name: "Destek Sponsoru", color: "text-h2-ink-disabled", slots: 5, size: "h-10 w-28", logos: [] as { src: string; alt: string }[] },
+  { name: "Destek Sponsoru", color: "text-h2-ink-disabled", slots: 5, size: "h-16 w-16", logos: [] as { src: string; alt: string }[] },
 ];
 
 const benefits = [
