@@ -1,9 +1,17 @@
+import Image from "next/image";
+
 const tiers = [
-  { name: "Ana Sponsor", color: "text-h2-amber", slots: 1, size: "h-20 w-52" },
-  { name: "Platin Sponsor", color: "text-h2-ink-1", slots: 2, size: "h-16 w-44" },
-  { name: "Altın Sponsor", color: "text-h2-amber/80", slots: 3, size: "h-14 w-36" },
-  { name: "Gümüş Sponsor", color: "text-h2-ink-3", slots: 4, size: "h-12 w-32" },
-  { name: "Destek Sponsoru", color: "text-h2-ink-disabled", slots: 5, size: "h-10 w-28" },
+  { name: "Ana Sponsor", color: "text-h2-amber", slots: 1, size: "h-20 w-52", logos: [] as { src: string; alt: string }[] },
+  { name: "Platin Sponsor", color: "text-h2-ink-1", slots: 2, size: "h-16 w-44", logos: [] as { src: string; alt: string }[] },
+  { name: "Altın Sponsor", color: "text-h2-amber/80", slots: 3, size: "h-14 w-36", logos: [] as { src: string; alt: string }[] },
+  {
+    name: "Gümüş Sponsor",
+    color: "text-h2-ink-3",
+    slots: 4,
+    size: "h-12 w-32",
+    logos: [{ src: "/logos/hidronerji.png", alt: "Hidronerji" }],
+  },
+  { name: "Destek Sponsoru", color: "text-h2-ink-disabled", slots: 5, size: "h-10 w-28", logos: [] as { src: string; alt: string }[] },
 ];
 
 const benefits = [
@@ -58,7 +66,21 @@ export default function Sponsors() {
                 <span className="h-px w-full bg-h2-border" />
               </div>
               <div className="flex flex-wrap gap-4">
-                {Array.from({ length: tier.slots }).map((_, i) => (
+                {tier.logos.map((logo) => (
+                  <div
+                    key={logo.src}
+                    className={`${tier.size} flex items-center justify-center rounded-h2-md border border-h2-border bg-white p-3`}
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={160}
+                      height={80}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                ))}
+                {Array.from({ length: tier.slots - tier.logos.length }).map((_, i) => (
                   <div
                     key={i}
                     className={`${tier.size} flex items-center justify-center rounded-h2-md border border-dashed border-h2-border text-center text-h2-micro font-medium leading-tight text-h2-ink-disabled px-2`}
