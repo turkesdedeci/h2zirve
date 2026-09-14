@@ -15,7 +15,6 @@ const info = [
   },
   { label: "Yer", value: "Ankara, Türkiye" },
   { label: "Tarih", value: "22-23 Ekim 2026" },
-  { label: "E-posta", value: "h2zirvesi@tespam.org" },
 ];
 
 const socialLinks = [
@@ -74,28 +73,68 @@ export default function Contact() {
   };
 
   const inputCls =
-    "w-full bg-h2-surface-2 border border-h2-border focus:border-h2-blue rounded-h2-md px-4 py-3 text-h2-ink-1 placeholder-h2-ink-disabled outline-none transition-colors text-h2-small";
+    "w-full rounded-h2-sm border border-h2-border bg-h2-bg/60 px-4 py-3.5 text-base text-h2-ink-1 placeholder:text-h2-ink-3 transition-colors hover:border-h2-ink-3/60 focus-visible:border-h2-cyan disabled:opacity-60";
+  const labelCls = "mb-2 block text-sm font-medium text-h2-ink-2";
   const isSending = status === "sending";
 
   return (
-    <section id="contact" className="bg-h2-bg py-16 sm:py-28">
+    <section id="contact" aria-labelledby="contact-heading" className="border-t border-h2-border bg-h2-bg py-16 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
-            Bize Ulaşın
-          </span>
-          <h2 className="font-display text-h2-h1 font-bold text-h2-ink-1 mt-3">
-            İletişim
-          </h2>
-        </div>
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+          <div className="min-w-0">
+            <span className="text-sm font-medium text-h2-cyan">İletişim</span>
+            <h2 id="contact-heading" className="mt-4 font-display text-4xl font-semibold leading-[1.1] tracking-tight text-h2-ink-1 sm:text-5xl">
+              Zirve ekibine<br />ulaşın.
+            </h2>
+            <p className="mt-5 max-w-md text-base leading-7 text-h2-ink-2">
+              Katılım, bildiriler ve iş birliğiyle ilgili sorularınızı organizasyon ekibimize iletebilirsiniz.
+            </p>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <form onSubmit={handleSubmit} className="space-y-5">
+            <a
+              href="mailto:h2zirvesi@tespam.org"
+              className="mt-8 inline-flex max-w-full items-center gap-3 border-b border-h2-cyan/40 pb-2 text-xl font-medium tracking-tight text-h2-ink-1 transition-colors hover:border-h2-cyan hover:text-h2-cyan sm:text-2xl"
+            >
+              <span className="break-all">h2zirvesi@tespam.org</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5 shrink-0">
+                <path d="M5 19 19 5M5 5h14v14" />
+              </svg>
+            </a>
+
+            <dl className="mt-10 grid grid-cols-2 gap-x-6 border-t border-h2-border">
+              {info.map(({ label, value }, index) => (
+                <div key={label} className={`border-b border-h2-border py-5 ${index < 2 ? "col-span-2" : ""}`}>
+                  <dt className="text-sm text-h2-ink-3">{label}</dt>
+                  <dd className="mt-2 max-w-md text-base leading-relaxed text-h2-ink-2">{value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <nav aria-label="Zirvenin sosyal medya hesapları" className="mt-7 flex flex-wrap gap-x-7 gap-y-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-h2-ink-2 transition-colors hover:text-h2-cyan"
+                >
+                  {link.label}<span aria-hidden="true">↗</span>
+                  <span className="sr-only"> (yeni sekmede açılır)</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <form onSubmit={handleSubmit} aria-labelledby="contact-form-heading" aria-busy={isSending} className="min-w-0 space-y-6 rounded-h2-lg border border-h2-border bg-h2-surface-1 p-6 sm:p-9">
+            <div className="border-b border-h2-border pb-6">
+              <h3 id="contact-form-heading" className="font-display text-2xl font-semibold tracking-tight text-h2-ink-1">Mesajınızı bırakın</h3>
+              <p className="mt-2 text-sm leading-relaxed text-h2-ink-2">Konu dışındaki tüm alanlar zorunludur.</p>
+            </div>
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label
                   htmlFor="contact-name"
-                  className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+                  className={labelCls}
                 >
                   Ad Soyad
                 </label>
@@ -108,14 +147,14 @@ export default function Contact() {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   required
                   disabled={isSending}
-                  placeholder="Adınız Soyadınız…"
+                  placeholder="Adınız ve soyadınız"
                   className={inputCls}
                 />
               </div>
               <div>
                 <label
                   htmlFor="contact-email"
-                  className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+                  className={labelCls}
                 >
                   E-posta
                 </label>
@@ -129,7 +168,7 @@ export default function Contact() {
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   required
                   disabled={isSending}
-                  placeholder="ornek@email.com…"
+                  placeholder="ornek@kurum.com"
                   className={inputCls}
                 />
               </div>
@@ -138,9 +177,9 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="contact-subject"
-                className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+                className={labelCls}
               >
-                Konu
+                Konu <span className="font-normal text-h2-ink-3">(isteğe bağlı)</span>
               </label>
               <select
                 id="contact-subject"
@@ -177,7 +216,7 @@ export default function Contact() {
             <div>
               <label
                 htmlFor="contact-message"
-                className="block text-h2-ink-3 text-h2-micro font-semibold uppercase tracking-wider mb-2"
+                className={labelCls}
               >
                 Mesaj
               </label>
@@ -191,9 +230,9 @@ export default function Contact() {
                 }
                 required
                 disabled={isSending}
-                rows={5}
-                placeholder="Mesajınızı buraya yazın…"
-                className={`${inputCls} resize-none`}
+                rows={6}
+                placeholder="Size nasıl yardımcı olabiliriz?"
+                className={`${inputCls} min-h-40 resize-y`}
               />
             </div>
 
@@ -214,62 +253,20 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSending}
-              className={`w-full rounded-h2-md py-4 text-base font-semibold transition-[background-color,box-shadow,opacity] ${
+              className={`flex w-full items-center justify-between gap-4 rounded-h2-sm px-5 py-4 text-base font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-70 ${
                 status === "success"
                   ? "bg-h2-green text-white"
-                  : "bg-h2-blue hover:bg-h2-blue-bright text-white hover:shadow-md hover:shadow-h2-blue/20 disabled:cursor-not-allowed disabled:opacity-70"
+                  : "bg-h2-blue hover:bg-h2-blue-bright text-white"
               }`}
             >
               {isSending
                 ? "Gönderiliyor…"
                 : status === "success"
                   ? "Mesajınız İletildi"
-                  : "Gönder"}
+                  : "Mesajı gönder"}
+              <span aria-hidden="true">{status === "success" ? "✓" : "→"}</span>
             </button>
           </form>
-
-          <div className="space-y-5">
-            <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-7">
-              <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-6">
-                İletişim Bilgileri
-              </h3>
-              <div className="space-y-5">
-                {info.map(({ label, value }) => (
-                  <div key={label} className="flex items-start gap-4">
-                    <div className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-h2-cyan" />
-                    <div>
-                      <p className="text-h2-ink-disabled text-h2-micro font-semibold uppercase tracking-wider">
-                        {label}
-                      </p>
-                      <p className="text-h2-ink-2 text-h2-small mt-1">{value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-h2-lg border border-h2-border bg-h2-surface-2 p-7">
-              <h3 className="font-display text-h2-h3 font-semibold text-h2-ink-1 mb-4">
-                Sosyal Medya
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {socialLinks.map((p) => (
-                  <a
-                    key={p.label}
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-h2-md border border-white/8 bg-white/5 px-4 py-2.5 text-h2-small font-medium text-h2-ink-2 transition-[background-color,border-color,color] hover:border-h2-blue/35 hover:bg-h2-blue/20 hover:text-h2-ink-1"
-                  >
-                    {p.label}
-                  </a>
-                ))}
-              </div>
-              <p className="text-h2-ink-disabled text-h2-micro mt-4">
-                #TESPAMH2 &nbsp;#Hidrojen &nbsp;#EnerjiDönüşümü
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
