@@ -83,6 +83,7 @@ export default function TrialSpeakerDirectory() {
                   <SpeakerCard
                     key={`${speaker.name}-${speaker.affiliation ?? index}`}
                     speaker={speaker}
+                    tagOverride={group.id === "opening" ? "Açılış" : undefined}
                   />
                 )
               )}
