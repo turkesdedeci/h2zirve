@@ -20,9 +20,11 @@ const SIZES = "(max-width: 600px) 160px, 192px";
 export default function SpeakerCard({
   speaker,
   priority = false,
+  tagOverride,
 }: {
   speaker: Speaker;
   priority?: boolean;
+  tagOverride?: string;
 }) {
   const { photo, name, affiliation, initials, role } = speaker;
   const nativeWidth = photo ? LOW_RES_PORTRAITS[photo] : undefined;
@@ -72,7 +74,7 @@ export default function SpeakerCard({
           </span>
         )}
         <span className={styles.portraitGrid} aria-hidden="true" />
-        <span className={styles.speakerTag}>{speakerTag(role)}</span>
+        <span className={styles.speakerTag}>{tagOverride ?? speakerTag(role)}</span>
       </div>
       <h3 className={styles.speakerName}>{name}</h3>
       {affiliation && <p className={styles.speakerAffiliation}>{affiliation}</p>}
