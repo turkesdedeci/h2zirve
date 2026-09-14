@@ -7,11 +7,10 @@ import styles from "./preview.module.css";
 
 const speakerGroupRank = (speaker: Speaker) => {
   if (speaker.role.includes("Keynote")) return 0;
+  if (speaker.role.includes("Açılış")) return 1;
 
   const panelMatch = speaker.role.match(/Panel\s+([1-5])/);
-  if (panelMatch) return Number(panelMatch[1]);
-
-  if (speaker.role.includes("Açılış")) return 6;
+  if (panelMatch) return Number(panelMatch[1]) + 1;
 
   return 99;
 };
