@@ -3,212 +3,47 @@
 import { useState } from "react";
 import Link from "next/link";
 
-type SessionType =
-  | "registration"
-  | "opening"
-  | "break"
-  | "keynote"
-  | "panel"
-  | "lunch"
-  | "poster"
-  | "gala"
-  | "closing"
-  | "visit";
+import { type SessionType, day1, day2, sessionLabels } from "@/data/program";
 
-interface Session {
-  time: string;
-  type: SessionType;
-  title: string;
-  subtitle?: string;
-  moderator?: string;
-  speakers?: string[];
-}
-
-const day1: Session[] = [
-  {
-    time: "09:00 - 10:00",
-    type: "registration",
-    title: "Kayıt & Karşılama",
-  },
-  {
-    time: "10:00 - 11:00",
-    type: "opening",
-    title: "Açılış Oturumu",
-    speakers: [
-      "Prof. Dr. Selahattin Çelik - AYBÜ H2TEAM (10 dk)",
-      "Oğuzhan Akyener - TESPAM Başkanı (10 dk)",
-      "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
-      "TBA | Enerji Bakanı / Bakan Yardımcısı (15 dk)",
-    ],
-  },
-  { time: "11:00 - 11:15", type: "break", title: "Kahve Arası" },
-  {
-    time: "11:15 - 12:00",
-    type: "keynote",
-    title: "Keynote Konuşmacı: Prof. Dr. İbrahim Dinçer",
-  },
-  { time: "12:00 - 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
-  {
-    time: "13:15 - 14:00",
-    type: "keynote",
-    title: "Keynote Konuşmacı: Dr. Ayfer Veziroğlu",
-  },
-  { time: "14:00 - 14:15", type: "break", title: "Kahve Arası" },
-  {
-    time: "14:15 - 16:00",
-    type: "panel",
-    title: "Panel 1: Türkiye Hidrojen Yol Haritası 2035",
-    moderator: "Prof. Dr. Erol Arcaklıoğlu | YÖK Yürütme Kurulu Üyesi",
-    speakers: [
-      "Prof. Dr. İbrahim Dinçer | Ontario Tech University",
-      "Emrah Özdemir | Niğde Belediye Başkanı",
-      "Dr. Betül Erdör Türk | TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
-      "Dr. Ömer Faruk Tunçbilek | Temiz Enerji Araştırma Enstitüsü (TEMEN) Başkanı",
-      "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
-    ],
-  },
-  { time: "16:00 - 16:15", type: "break", title: "Kahve Arası" },
-  {
-    time: "16:15 - 17:45",
-    type: "panel",
-    title: "Panel 2: Savunma Sanayinde Hidrojen Teknolojileri",
-    moderator: "Prof. Dr. Selahattin Çelik | H2 TEAM Müdürü",
-    speakers: [
-      "Prof. Dr. Mustafa İlbaş | ASFAT Genel Müdürü",
-      "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
-      "Deniz Demirci | Savunma Sanayii Başkanlığı (SSB) Gelişmiş Malzemeler ve Enerji Programı Yöneticisi",
-      "TBA",
-      "Ömer Erdemir | LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
-    ],
-  },
-  {
-    time: "17:45 - 18:30",
-    type: "poster",
-    title: "Poster Sunumları & Sergi Ziyareti",
-    speakers: [
-      "Poster sahipleri ile birebir etkileşim",
-      "Firma standlarının aktif ziyareti",
-      "Networking",
-    ],
-  },
-  { time: "19:00", type: "gala", title: "Gala Yemeği & Networking" },
-];
-
-const day2: Session[] = [
-  {
-    time: "09:00 - 09:30",
-    type: "registration",
-    title: "Karşılama & Sabah Kahvesi",
-  },
-  {
-    time: "09:30 - 10:45",
-    type: "panel",
-    title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
-    moderator: "Prof. Dr. Canan Acar | Twente Üniversitesi",
-    speakers: [
-      "Yusuf Günay | Yeşil Hidrojen Üreticileri Derneği Başkanı",
-      "Prof. Dr. Can Erkey | Koç Üniversitesi Hidrojen Teknolojileri Merkezi Direktörü",
-      "Prof. Dr. Selmiye Alkan Gürsel | Sabancı Üniversitesi",
-      "Prof. Dr. Yüksel Kaplan | Niğde Ömer Halisdemir Üniversitesi",
-      "Dr. Çiğdem Karadağ | TÜBİTAK MAM",
-    ],
-  },
-  { time: "10:45 - 11:00", type: "break", title: "Kahve Arası & Sergi" },
-  {
-    time: "11:00 - 12:15",
-    type: "panel",
-    title: "Panel 4: Sanayide Hidrojen Kullanımı",
-    moderator: "Prof. Dr. Abdullah Yıldız | AYBÜ Rektör Yardımcısı",
-    speakers: [
-      "Doç. Dr. Kadir Bektaş | UNFCCC Kıdemli Uzmanı (ERT) – Tarım, Enerji ve IPPU | Article 6 Teknik Uzmanı",
-      "Serkan TÜRK | Türkiye Çimento Sanayicileri Birliği-AR-GE Enstitüsü Müdürü",
-      "TBA",
-      "TBA",
-    ],
-  },
-  { time: "12:15 - 14:00", type: "lunch", title: "Öğle Yemeği & Sergi" },
-  {
-    time: "14:00 - 15:15",
-    type: "panel",
-    title: "Panel 5: Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
-    moderator: "Prof. Dr. Hasan Özcan | H2 TEAM Müdür Yardımcısı",
-    speakers: [
-      "TBA",
-      "Ongun Yoldemir | Jeoloji Mühendisi-Türkiye Beyaz Hidrojen Potansiyeli ve Çalışmaları",
-      "Adnan Görgülü | Siemens Enerji",
-      "Kadir Gökhan Güler | General Electric Aerospace-Senior Engineering Manager",
-      "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
-    ],
-  },
-  { time: "15:15 - 15:30", type: "break", title: "Kahve Arası" },
-  {
-    time: "15:30 - 16:00",
-    type: "poster",
-    title: "Poster Sunumları & Sergi",
-  },
-  {
-    time: "16:00 - 16:30",
-    type: "closing",
-    title: "Poster Ödülleri & Kapanış",
-  },
-  {
-    time: "17:30 - 18:30",
-    type: "visit",
-    title: "Teknik Ziyaret: AYBÜ H2TEAM Laboratuvar Ziyareti",
-  },
-];
-
-const cfg: Record<
-  SessionType,
-  { label: string; accent: string; badge: string }
-> = {
+/** Yalnızca Tailwind sınıfları. Türkçe etiketler `sessionLabels`'tan gelir. */
+const cfg: Record<SessionType, { accent: string; badge: string }> = {
   registration: {
-    label: "Karşılama",
     accent: "bg-slate-500",
     badge: "text-slate-300 bg-slate-500/10 border-slate-500/20",
   },
   opening: {
-    label: "Açılış",
     accent: "bg-h2-blue-bright",
     badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   break: {
-    label: "Ara",
     accent: "bg-h2-amber",
     badge: "border-h2-amber/25 bg-h2-amber/8 text-amber-200",
   },
   keynote: {
-    label: "Keynote",
     accent: "bg-h2-green",
     badge: "border-h2-green/30 bg-h2-green/10 text-emerald-200",
   },
   panel: {
-    label: "Panel",
     accent: "bg-h2-blue-bright",
     badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   lunch: {
-    label: "Mola",
     accent: "bg-h2-amber",
     badge: "border-h2-amber/25 bg-h2-amber/8 text-amber-200",
   },
   poster: {
-    label: "Poster",
     accent: "bg-h2-blue-bright",
     badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   gala: {
-    label: "Sosyal Program",
     accent: "bg-h2-amber",
     badge: "border-h2-amber/25 bg-h2-amber/8 text-amber-200",
   },
   closing: {
-    label: "Kapanış",
     accent: "bg-h2-blue-bright",
     badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
   visit: {
-    label: "Teknik Ziyaret",
     accent: "bg-h2-blue-bright",
     badge: "border-h2-blue/30 bg-h2-blue/10 text-blue-200",
   },
@@ -276,7 +111,7 @@ function ProgramPreview() {
                     <div>
                       <p className="text-h2-small font-semibold leading-relaxed text-h2-ink-1">{session.title}</p>
                       <p className={`mt-1 text-[11px] font-bold uppercase tracking-wider ${session.type === "keynote" ? "text-h2-green" : "text-h2-cyan"}`}>
-                        {cfg[session.type].label}
+                        {sessionLabels[session.type]}
                       </p>
                     </div>
                   </div>
@@ -371,7 +206,7 @@ export default function Program({
                     <span
                       className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider sm:mt-3 ${c.badge}`}
                     >
-                      {c.label}
+                      {sessionLabels[s.type]}
                     </span>
                   </div>
 
