@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="297mm" height="420mm" viewBox="0 0 2970 4200">
+  <defs>
+    <linearGradient id="veil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#03091b" stop-opacity=".97"/>
+      <stop offset=".52" stop-color="#061b43" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#03122c" stop-opacity=".40"/>
+    </linearGradient>
+    <linearGradient id="date" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#08b9dc"/><stop offset="1" stop-color="#1970d6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000" flood-opacity=".38"/></filter>
+  </defs>
+  <image x="0" y="0" width="2970" height="4200" xlink:href="h2-zirve-2026-afis-arka-plan.png" preserveAspectRatio="xMidYMid slice"/>
+  <rect width="2970" height="4200" fill="url(#veil)"/>
+  <rect x="120" y="120" width="2730" height="3960" fill="none" stroke="#68dff3" stroke-opacity=".45" stroke-width="4"/>
+  <line x1="220" x2="1100" y1="375" y2="375" stroke="#20d0d8" stroke-width="8"/>
+  <text x="220" y="285" fill="#73e2ef" font-family="Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="12">TESPAM-H2-2026</text>
+  <text x="220" y="690" fill="white" font-family="Arial, sans-serif" font-size="242" font-weight="800" letter-spacing="-8">TÜRKİYE</text>
+  <text x="220" y="930" fill="white" font-family="Arial, sans-serif" font-size="242" font-weight="800" letter-spacing="-8">HİDROJEN</text>
+  <text x="220" y="1170" fill="#43cffa" font-family="Arial, sans-serif" font-size="242" font-weight="800" letter-spacing="-8">ZİRVESİ 2026</text>
+  <text x="228" y="1325" fill="#dceafa" font-family="Arial, sans-serif" font-size="68" font-weight="400">Türkiye'de Hidrojen Ekosisteminin İnşası:</text>
+  <text x="228" y="1415" fill="#dceafa" font-family="Arial, sans-serif" font-size="68" font-weight="400">Teknoloji, Strateji ve Uygulama</text>
+  <rect x="220" y="1650" width="1850" height="490" rx="28" fill="url(#date)" filter="url(#shadow)"/>
+  <text x="312" y="1815" fill="white" font-family="Arial, sans-serif" font-size="70" font-weight="700" letter-spacing="5">22–23 EKİM 2026</text>
+  <text x="312" y="1995" fill="white" font-family="Arial, sans-serif" font-size="122" font-weight="800">ANKARA</text>
+  <text x="226" y="2325" fill="#eaf5ff" font-family="Arial, sans-serif" font-size="68" font-weight="700">AYBÜ ETLİK KONGRE SALONU</text>
+  <text x="226" y="2420" fill="#c6d9ec" font-family="Arial, sans-serif" font-size="53">Akademi · Kamu · Sanayi · Girişimler</text>
+  <rect x="220" y="2670" width="1510" height="250" rx="20" fill="#06142d" fill-opacity=".84" stroke="#34d1e6" stroke-width="4"/>
+  <text x="300" y="2775" fill="#7ae8ee" font-family="Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="5">KATILIM ÜCRETSİZDİR</text>
+  <text x="300" y="2865" fill="white" font-family="Arial, sans-serif" font-size="58" font-weight="700">Kayıt için: hidrojenzirvesi.com/kayit</text>
+  <rect x="220" y="3560" width="2530" height="300" rx="20" fill="#fff" fill-opacity=".95"/>
+  <image x="300" y="3620" width="260" height="180" xlink:href="../logos/turkiye-hidrojen-zirvesi-logo-v4.png" preserveAspectRatio="xMidYMid meet"/>
+  <line x1="650" y1="3620" x2="650" y2="3800" stroke="#b6c3d0" stroke-width="3"/>
+  <image x="735" y="3630" width="180" height="160" xlink:href="../logos/aybu.png" preserveAspectRatio="xMidYMid meet"/>
+  <image x="980" y="3630" width="190" height="160" xlink:href="../logos/h2team.png" preserveAspectRatio="xMidYMid meet"/>
+  <image x="1240" y="3630" width="190" height="160" xlink:href="../logos/tespam.png" preserveAspectRatio="xMidYMid meet"/>
+  <text x="1525" y="3710" fill="#0b2854" font-family="Arial, sans-serif" font-size="48" font-weight="700">Hidrojenin geleceğini birlikte konuşalım.</text>
+  <text x="1525" y="3790" fill="#195b94" font-family="Arial, sans-serif" font-size="42">hidrojenzirvesi.com  ·  h2zirvesi@tespam.org</text>
+  <text x="220" y="4025" fill="#b8d7ea" font-family="Arial, sans-serif" font-size="38" letter-spacing="3">BİLGİ · TEKNOLOJİ · İŞ BİRLİĞİ</text>
+</svg>
