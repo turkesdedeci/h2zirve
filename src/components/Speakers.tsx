@@ -9,7 +9,7 @@ type Speaker = {
   photoPosition?: string;
 };
 
-const speakers: Speaker[] = [
+export const speakers: Speaker[] = [
   {
     name: "Prof. Dr. İbrahim Dinçer",
     role: "Keynote Konuşmacı - 1. Gün / Panel 1 Konuşmacısı",
