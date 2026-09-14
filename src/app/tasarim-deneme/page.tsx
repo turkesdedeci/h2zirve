@@ -1,26 +1,30 @@
 import Image from "next/image";
-import Program from "@/components/Program";
 import Sponsors from "@/components/Sponsors";
 import Contact from "@/components/Contact";
-import { speakers } from "@/components/Speakers";
+import { type Speaker, speakers } from "@/data/speakers";
+import SpeakerMarquee from "./SpeakerMarquee";
+import TrialHero from "./TrialHero";
+import TrialStats from "./TrialStats";
+import TrialProgram from "./TrialProgram";
+import TrialLogoBand from "./TrialLogoBand";
+import TrialFooter from "./TrialFooter";
 import PreviewHeader from "./PreviewHeader";
 import styles from "./preview.module.css";
 
-const selectedNames = [
-  "Prof. Dr. İbrahim Dinçer",
-  "Dr. Ayfer Veziroğlu",
-  "Prof. Dr. Selahattin Çelik",
-  "Doç. Dr. Canan Acar",
-  "Prof. Dr. Can Erkey",
-  "Prof. Dr. Selmiye Alkan Gürsel",
-  "Prof. Dr. Yüksel Kaplan",
-  "Yusuf Günay",
-];
+/** Once keynote'lar, sonra moderatorler, sonra kaynak sirasi. sort kararli. */
+const speakerRank = (speaker: Speaker) => {
+  if (speaker.role.includes("Keynote")) return 0;
+  if (speaker.role.includes("Moderatörü")) return 1;
+  return 2;
+};
 
-const selectedSpeakers = selectedNames.flatMap((name) => {
-  const speaker = speakers.find((item) => item.name === name);
-  return speaker ? [speaker] : [];
-});
+// Seride yalnizca fotografli isimler girer: gradyan uzerine "TBA" bas harfleri
+// parlak bir seritte yuklenmemis gorsel gibi okunur. TBA'lar dizin sayfasinda.
+const marqueeSpeakers = speakers
+  .filter((speaker) => speaker.photo)
+  .sort((a, b) => speakerRank(a) - speakerRank(b));
+
+const pendingCount = speakers.filter((speaker) => speaker.name === "TBA").length;
 
 const organizers = [
   { name: "AYBÜ", role: "Ev sahipliği ve liderliği", logo: "/logos/aybu.png" },
@@ -38,31 +42,16 @@ const questions = [
 export default function TrialHome() {
   return (
     <div className={styles.page}>
+      <div className={styles.previewStrip}>
+        <div className={`${styles.container} ${styles.previewBar}`}>
+          <span>Tasarım denemesi</span>
+          <a href="/">Mevcut ana sayfayla karşılaştır <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
       <PreviewHeader />
       <main id="main-content">
-        <section id="home" className={styles.hero}>
-          <div className={styles.container}>
-            <div className={styles.previewBar}>
-              <span>Tasarım denemesi</span>
-              <a href="/">Mevcut ana sayfayla karşılaştır <span aria-hidden="true">↗</span></a>
-            </div>
-            <div className={styles.heroGrid}>
-              <div className={styles.heroCopy}>
-                <p className={styles.eyebrow}>22–23 Ekim 2026 · Ankara</p>
-                <h1>Türkiye<br />Hidrojen Zirvesi<span className={styles.heroYear}>2026</span></h1>
-              </div>
-              <div className={styles.heroDetails}>
-                <p className={styles.heroTheme}>Türkiye&apos;de Hidrojen Ekosisteminin İnşası:<br />Teknoloji, Strateji ve Uygulama</p>
-                <p className={styles.heroDescription}>Akademi, kamu ve sanayi; hidrojenin üretiminden kullanımına, teknolojiden politikaya uzanan iki günlük programda buluşuyor.</p>
-                <div className={styles.actions}>
-                  <a className={styles.primary} href="/kayit">Ücretsiz kayıt ol <span aria-hidden="true">↗</span></a>
-                  <a className={styles.textLink} href="#program">Programı incele <span aria-hidden="true">↓</span></a>
-                </div>
-                <p className={styles.heroVenue}>AYBÜ Etlik Kongre Salonu · Ankara</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <TrialHero />
+        <TrialStats />
 
         <section className={styles.organizers} aria-label="Düzenleyen kurumlar">
           <div className={`${styles.container} ${styles.organizerGrid}`}>
@@ -87,26 +76,38 @@ export default function TrialHome() {
           </div>
         </section>
 
+        <TrialLogoBand />
+
         <section id="speakers" className={styles.speakers}>
           <div className={styles.container}>
             <div className={styles.sectionHeading}>
-              <div><p className={styles.eyebrow}>Konuşmacılardan bir seçki</p><h2 className={styles.sectionTitle}>Gündemi birlikte<br />konuşacağımız isimler.</h2></div>
-              <a href="/tasarim-deneme/konusmacilar" className={styles.textLink}>Tüm konuşmacılar <span aria-hidden="true">↗</span></a>
+              <div>
+                <p className={styles.eyebrow}>Konuşmacılar</p>
+                <h2 className={styles.sectionTitle}>Gündemi birlikte<br />konuşacağımız isimler.</h2>
+                <p className={styles.speakersCount}>
+                  {speakers.length} konuşmacı · {pendingCount} isim açıklanacak
+                </p>
+              </div>
+              <a href="/tasarim-deneme/konusmacilar" className={styles.textLink}>
+                Tüm konuşmacılar <span aria-hidden="true">↗</span>
+              </a>
             </div>
-            <div className={styles.speakerGrid}>
-              {selectedSpeakers.map((speaker, index) => <article key={speaker.name} className={styles.speakerCard}>
-                <div className={styles.portrait}>
-                  {speaker.photo && <Image src={speaker.photo} alt={speaker.name} fill sizes="(max-width: 600px) 45vw, (max-width: 900px) 42vw, 23vw" className={styles.cover} style={{ objectPosition: speaker.photoPosition ?? "center top" }} />}
-                  <span className={styles.speakerTag}>{index < 2 ? "Keynote" : speaker.role.match(/Panel \d/)?.[0] ?? "Konuşmacı"}</span>
-                </div>
-                <h3>{speaker.name}</h3>
-                <p>{speaker.affiliation}</p>
-              </article>)}
-            </div>
+          </div>
+          <div className={styles.marqueeBleed}>
+            <SpeakerMarquee
+              speakers={marqueeSpeakers}
+              label="Konuşmacılar — yatay kaydırılabilir liste"
+            />
+          </div>
+          <div className={styles.container}>
+            <p className={styles.marqueeHint}>
+              Şerit kendiliğinden ilerler; üzerine geldiğinizde, odaklandığınızda
+              veya dokunduğunuzda durur.
+            </p>
           </div>
         </section>
 
-        <Program preview />
+        <TrialProgram />
 
         <section id="participate" className={styles.participate}>
           <div className={styles.container}>
@@ -151,7 +152,7 @@ export default function TrialHome() {
 
         <Contact />
       </main>
-      <footer className={styles.footer}><div className={styles.container}><Image src="/logos/turkiye-hidrojen-zirvesi-logo-v4.png" alt="Türkiye Hidrojen Zirvesi 2026" width={170} height={89} /><div><p>AYBÜ ev sahipliği ve liderliğinde,<br />H2TEAM koordinasyonunda, TESPAM iş birliğiyle.</p><nav aria-label="Alt menü"><a href="/komite">Komite</a><a href="/program">Program</a><a href="/sponsorluk-basvurusu">Sponsorluk</a><a href="#contact">İletişim</a></nav><p className={styles.copyright}>© 2026 Türkiye Hidrojen Zirvesi</p></div></div></footer>
+      <TrialFooter />
     </div>
   );
 }

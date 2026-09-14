@@ -1,17 +1,22 @@
-import Speakers from "@/components/Speakers";
+import type { Metadata } from "next";
 import PreviewHeader from "../PreviewHeader";
+import TrialFooter from "../TrialFooter";
+import TrialSpeakerDirectory from "../TrialSpeakerDirectory";
+import styles from "../preview.module.css";
 
-export default function TrialSpeakers() {
+// robots: { index: false, follow: false } ust layout'tan miras gelir.
+export const metadata: Metadata = {
+  title: "Konuşmacılar — Tasarım Denemesi",
+};
+
+export default function TrialSpeakersPage() {
   return (
-    <>
+    <div className={styles.page}>
       <PreviewHeader />
       <main id="main-content">
-        <div className="mx-auto max-w-7xl px-6 pt-8">
-          <a href="/tasarim-deneme#speakers" className="text-sm text-h2-cyan underline underline-offset-4">← Deneme ana sayfasına dön</a>
-          <h1 className="mt-8 text-3xl font-semibold">Zirve konuşmacıları</h1>
-        </div>
-        <Speakers />
+        <TrialSpeakerDirectory />
       </main>
-    </>
+      <TrialFooter />
+    </div>
   );
 }
