@@ -177,12 +177,14 @@ export const speakers: Speaker[] = [
     role: "Panel 4 Konuşmacısı",
     affiliation: "Linde Gaz",
     initials: "İE",
+    photo: "/speakers/ismail-erilhan.webp",
   },
   {
     name: "Ali Rıza Arslan",
     role: "Panel 4 Konuşmacısı",
     affiliation: "Hydrogenix",
     initials: "AA",
+    photo: "/speakers/ali-riza-arslan.webp",
   },
   {
     name: "BOTAŞ",
