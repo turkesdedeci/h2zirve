@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 const links = [
+  { label: "Komite", href: "/komite" },
   { label: "Hakkında", href: "/#about" },
   { label: "Program", href: "/program" },
   { label: "Konuşmacılar", href: "/#speakers" },
