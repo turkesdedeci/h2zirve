@@ -208,6 +208,12 @@
 .logoViewport::-webkit-scrollbar { display: none; }
 .logoTrack { display: flex; flex: 1 1 auto; align-items: center; justify-content: space-between; gap: 28px; margin: 0; padding: 0; list-style: none; }
 .logoTrackScrolling { flex: 0 0 auto; justify-content: flex-start; }
+/* Otomatik kaymayan bant dar ekranda kaydirilmaz, satir atlar: logo seridi
+   sirali icerik degil ve gizli kaydirma cubugu kesik gorunume yol aciyordu. */
+@media (max-width: 1150px) {
+  .logoViewportStatic { display: block; overflow-x: visible; }
+  .logoViewportStatic .logoTrack { flex-wrap: wrap; justify-content: center; gap: 22px 30px; }
+}
 .logoItem { flex: 0 0 auto; }
 .logoBox { position: relative; width: calc(120px * var(--logo-scale, 1)); height: calc(48px * var(--logo-scale, 1)); }
 /* multiply: debak.jpg ve besyapi.jpg opak beyaz zeminli JPEG; acik bantta

@@ -81,7 +81,7 @@ function LogoRow({ title, logos }: { title: string; logos: Logo[] }) {
       </div>
       <div
         ref={viewportRef}
-        className={styles.logoViewport}
+        className={`${styles.logoViewport} ${autoScroll ? "" : styles.logoViewportStatic}`}
         role="group"
         aria-label={title}
         {...viewportHandlers}
