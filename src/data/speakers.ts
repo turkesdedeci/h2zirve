@@ -116,11 +116,6 @@ export const speakers: Speaker[] = [
     photo: "/speakers/ugur-kayasal.jpg",
   },
   {
-    name: "TBA",
-    role: "Panel 2 Konuşmacısı",
-    initials: "TBA",
-  },
-  {
     name: "Prof. Dr. Mustafa İlbaş",
     role: "Panel 2 Konuşmacısı",
     affiliation: "ASFAT Genel Müdürü",
