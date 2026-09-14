@@ -171,11 +171,40 @@ export const speakers: Speaker[] = [
     photoPosition: "center bottom",
   },
   {
-    name: "Serkan TÜRK",
+    name: "Serkan Türk",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Türkiye Çimento Sanayicileri Birliği-AR-GE Enstitüsü Müdürü",
+    affiliation: "Türk Çimento",
     initials: "ST",
     photo: "/speakers/serkan-turk-linkedin.jpg",
+  },
+  {
+    name: "İsmail Erilhan",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "Linde Gaz",
+    initials: "İE",
+  },
+  {
+    name: "Ali Rıza Arslan",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "Hydrogenix",
+    initials: "AA",
+  },
+  {
+    name: "BOTAŞ",
+    role: "Panel 4 Konuşmacısı",
+    initials: "B",
+  },
+  {
+    name: "Demir Çelik",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "TBA",
+    initials: "DÇ",
+  },
+  {
+    name: "Seramik Üreticileri",
+    role: "Panel 4 Konuşmacısı",
+    affiliation: "TBA",
+    initials: "SÜ",
   },
   {
     name: "Ongun Yoldemir",
@@ -188,23 +217,6 @@ export const speakers: Speaker[] = [
     name: "TBA",
     role: "Açılış Konuşması",
     affiliation: "Enerji Bakanı / Bakan Yardımcısı",
-    initials: "TBA",
-  },
-  {
-    name: "Doç. Dr. Kadir Bektaş",
-    role: "Panel 4 Konuşmacısı",
-    affiliation: "UNFCCC Kıdemli Uzmanı (ERT) – Tarım, Enerji ve IPPU | Article 6 Teknik Uzmanı",
-    initials: "KB",
-    photo: "/speakers/abdulkadir-bektas-portrait.png",
-  },
-  {
-    name: "TBA",
-    role: "Panel 4 Konuşmacısı",
-    initials: "TBA",
-  },
-  {
-    name: "TBA",
-    role: "Panel 4 Konuşmacısı",
     initials: "TBA",
   },
   {
@@ -314,6 +326,15 @@ export const speakerGroupDefinitions = [
     id: "panel-4",
     title: "Panel 4: Sanayide Hidrojen Kullanımı",
     role: "Panel 4",
+    preferredOrder: [
+      "Prof. Dr. Abdullah Yıldız",
+      "Serkan Türk",
+      "İsmail Erilhan",
+      "Ali Rıza Arslan",
+      "BOTAŞ",
+      "Demir Çelik",
+      "Seramik Üreticileri",
+    ],
   },
   {
     id: "panel-5",
