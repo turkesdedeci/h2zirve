@@ -72,7 +72,6 @@ export const day1: Session[] = [
       "Prof. Dr. Mustafa İlbaş | ASFAT Genel Müdürü",
       "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
       "Deniz Demirci | Savunma Sanayii Başkanlığı (SSB) Gelişmiş Malzemeler ve Enerji Programı Yöneticisi",
-      "TBA",
       "Ömer Erdemir | LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
     ],
   },
