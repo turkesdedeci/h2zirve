@@ -55,13 +55,18 @@ export default function TrialHero() {
           yarismayacagi bir yere koyar. */}
       <div className={styles.eventBar}>
         <div className={`${styles.container} ${styles.eventBarInner}`}>
+          {/* Tarih ve sehir hero eyebrow'unda zaten var; dar ekranda tekrar
+              etmesin diye ayri span'lerde. */}
           <p className={styles.eventBarWhere}>
-            22–23 Ekim 2026 · AYBÜ Etlik Kongre Salonu, Ankara
+            <span className={styles.eventBarDate}>22–23 Ekim 2026 · </span>
+            AYBÜ Etlik Kongre Salonu<span className={styles.eventBarDate}>, Ankara</span>
           </p>
           <div className={styles.eventBarCountdown}>
             <span className={styles.eventBarLabel}>Zirveye kalan</span>
             <CountdownTimer />
           </div>
+          {/* Dar ekranda gizli: sticky header'da zaten kalici bir kayit
+              dugmesi var ve hero'da bir tane daha. */}
           <a className={styles.eventBarCta} href="/kayit">
             Ücretsiz kayıt <span aria-hidden="true">↗</span>
           </a>

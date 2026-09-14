@@ -57,6 +57,8 @@
 .eventBarCta:hover { background: var(--t-accent-strong); }
 .previewStrip { border-bottom: 1px solid var(--t-border); background: var(--t-surface-1); }
 .previewStrip .previewBar { margin: 0; padding-block: 11px; }
+.previewBarShort { display: none; }
+.previewBar a { white-space: nowrap; }
 
 /* --- Istatistik bandi --- */
 .stats { border-bottom: 1px solid var(--t-border); background: var(--t-surface-1); }
@@ -265,8 +267,17 @@
   .headerActions { gap: 12px; }
   .headerRegister { padding: 9px 12px; font-size: 11px; gap: 10px; }
   .menuToggle { font-size: 11px; }
-  .previewBar { font-size: 10px; align-items: start; }
-  .previewBar a { max-width: 150px; text-align: right; }
+  .previewBar { font-size: 10px; align-items: center; }
+  .previewBarLong { display: none; }
+  .previewBarShort { display: inline; }
+  .eventBarDate { display: none; }
+  .eventBarLabel { display: none; }
+  .eventBarCta { display: none; }
+  .eventBarInner { gap: 9px; padding-block: 14px; }
+  /* Sabit satir sonu dar ekranda "Insasi:" kelimesini yalniz birakiyor */
+  .heroTheme br { display: none; }
+  .heroDescription { margin-top: 15px; }
+  .actions { margin-top: 24px; gap: 16px; }
   .hero { min-height: min(84svh, 620px); }
   .heroContent { padding-block: 56px 30px; }
   .heroTitle { font-size: 44px; }

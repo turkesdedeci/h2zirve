@@ -45,7 +45,11 @@ export default function TrialHome() {
       <div className={styles.previewStrip}>
         <div className={`${styles.container} ${styles.previewBar}`}>
           <span>Tasarım denemesi</span>
-          <a href="/">Mevcut ana sayfayla karşılaştır <span aria-hidden="true">↗</span></a>
+          <a href="/">
+            <span className={styles.previewBarLong}>Mevcut ana sayfayla karşılaştır</span>
+            <span className={styles.previewBarShort}>Ana sayfa</span>
+            <span aria-hidden="true"> ↗</span>
+          </a>
         </div>
       </div>
       <PreviewHeader />
