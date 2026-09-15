@@ -11,7 +11,7 @@ export default function TrialParticipation() {
           <div className={s.paper}><span className={s.paperBrand}>H₂ / 2026</span><b>Bilimden<br />uygulamaya.</b><div className={s.paperRule} /><div className={s.paperChart}><i /><i /><i /><i /><i /></div><div className={s.paperText}><span /><span /><span /><span /></div></div>
           <div className={s.award}><span>En yüksek ödül</span><strong>1500 <small>$</small></strong></div>
         </div>
-        <div className={s.content}><p className={s.audience}>Araştırmacılar için</p><h3>Poster sunun.</h3><p>Akademik ve endüstriyel çalışmalarınızı paylaşın. Seçilen çalışmalar için özel sayı daveti imkânı.</p><div className={s.fact}><span>Özet son başvuru</span><strong>15 Eylül 2026</strong></div><div className={s.actions}><a className={s.primary} href="/poster-basvurusu">Poster başvurusu <span aria-hidden="true">↗</span></a><a href="/poster-cagrisi">Takvim ve koşullar <span aria-hidden="true">↗</span></a></div></div>
+        <div className={s.content}><p className={s.audience}>Araştırmacılar için</p><h3>Poster sunun.</h3><p>Akademik ve endüstriyel çalışmalarınızı paylaşın. Seçilen çalışmalar için özel sayı daveti imkânı.</p><div className={s.fact}><span>Özet son başvuru</span><strong>22 Eylül 2026</strong></div><div className={s.actions}><a className={s.primary} href="/poster-basvurusu">Poster başvurusu <span aria-hidden="true">↗</span></a><a href="/poster-cagrisi">Takvim ve koşullar <span aria-hidden="true">↗</span></a></div></div>
       </article>
       <article id="exhibitors" className={s.standCard}>
         <div className={s.visual} aria-hidden="true">

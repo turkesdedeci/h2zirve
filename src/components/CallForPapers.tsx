@@ -14,9 +14,9 @@ const topics = [
 ];
 
 const dates = [
-  { label: "Son Başvuru (Özet)", value: "15 Eylül 2026", highlight: true },
-  { label: "Kabul Bildirimi", value: "25 Eylül 2026" },
-  { label: "Poster Yükleme", value: "5 Ekim 2026" },
+  { label: "Son Başvuru (Özet)", value: "22 Eylül 2026", highlight: true },
+  { label: "Kabul Bildirimi", value: "2 Ekim 2026" },
+  { label: "Poster Yükleme", value: "12 Ekim 2026" },
   { label: "Zirve Tarihleri", value: "22-23 Ekim 2026" },
 ];
 
@@ -73,7 +73,7 @@ function CallForPapersPreview() {
 
         <dl className="divide-y divide-h2-border border-y border-h2-border">
           {[
-            ["Son Başvuru", "15 Eylül 2026"],
+            ["Son Başvuru", "22 Eylül 2026"],
             ["En Yüksek Ödül", "1500 $"],
             ["Poster Formatı", "A1 · Türkçe veya İngilizce"],
             ["Yayın İmkânı", "Seçilen çalışmalar için özel sayı daveti"],
@@ -265,7 +265,7 @@ export default function CallForPapers({
               Başvuru
             </h3>
             <p className="mt-3 text-h2-small leading-relaxed text-h2-ink-2">
-              Poster özeti başvuruları 15 Eylül 2026 tarihine kadar alınacaktır.
+              Poster özeti başvuruları 22 Eylül 2026 tarihine kadar alınacaktır.
               Poster dosyası yükleme süreci kabul bildirimi sonrasında aktif
               olacaktır.
             </p>
