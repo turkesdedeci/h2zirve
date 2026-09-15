@@ -43,12 +43,9 @@ export default function SpeakerMarquee({
   const {
     viewportRef,
     firstListRef,
-    isPaused,
-    togglePause,
-    nudge,
     wrapperHandlers,
     viewportHandlers,
-  } = useAutoScroll({ speed: 42 });
+  } = useAutoScroll({ speed: 42, hoverSpeed: 2.5 });
 
   return (
     <div className={styles.marquee} {...wrapperHandlers}>
@@ -88,34 +85,7 @@ export default function SpeakerMarquee({
         </ul>
       </div>
 
-      {/* WCAG 2.2.2: 5 sn'den uzun otomatik hareket için açık bir durdurma
-          mekanizması zorunlu — hover/odak duraklatması yeterli sayılmıyor. */}
-      <div className={styles.marqueeControls}>
-        <button
-          type="button"
-          className={styles.marqueeButton}
-          onClick={() => nudge(-1)}
-          aria-label="Önceki konuşmacılar"
-        >
-          <span aria-hidden="true">←</span>
-        </button>
-        <button
-          type="button"
-          className={styles.marqueePause}
-          onClick={togglePause}
-          aria-pressed={isPaused}
-        >
-          {isPaused ? "Devam ettir" : "Duraklat"}
-        </button>
-        <button
-          type="button"
-          className={styles.marqueeButton}
-          onClick={() => nudge(1)}
-          aria-label="Sonraki konuşmacılar"
-        >
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
+
     </div>
   );
 }

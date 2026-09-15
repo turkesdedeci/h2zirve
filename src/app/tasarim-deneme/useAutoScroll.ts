@@ -6,6 +6,7 @@ type Options = {
   /** px/sn. Negatif değer ters yöne akıtır. */
   speed?: number;
   enabled?: boolean;
+  hoverSpeed?: number;
   /** Kartlar arası boşluk yedeği; gerçek değer computed style'dan okunur. */
   fallbackGap?: number;
 };
@@ -23,6 +24,7 @@ type Options = {
 export function useAutoScroll({
   speed = 42,
   enabled = true,
+  hoverSpeed = 0,
   fallbackGap = 20,
 }: Options = {}) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -89,7 +91,7 @@ export function useAutoScroll({
       if (
         reduceRef.current ||
         pausedRef.current ||
-        hoverRef.current ||
+        (hoverRef.current && hoverSpeed === 0) ||
         focusRef.current ||
         pointerRef.current
       ) {
@@ -107,7 +109,7 @@ export function useAutoScroll({
       const half = halfRef.current;
       if (half <= 0) return;
 
-      position += (speed * delta) / 1000;
+      position += (speed * (hoverRef.current ? hoverSpeed : 1) * delta) / 1000;
       if (position >= half) position -= half;
       else if (position < 0) position += half;
       viewport.scrollLeft = position;
@@ -121,7 +123,7 @@ export function useAutoScroll({
       mq.removeEventListener("change", handleMotionChange);
       if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     };
-  }, [speed, enabled, fallbackGap]);
+  }, [speed, enabled, fallbackGap, hoverSpeed]);
 
   const togglePause = useCallback(() => {
     setIsPaused((previous) => {

@@ -323,3 +323,42 @@
   .marqueeTrack { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 30px 20px; }
   .marqueeClone, .marqueeControls { display: none; }
 }
+
+/* Exhibition direction: scoped to the preview route. */
+.page { --t-accent: #00c8ff; --t-accent-strong: #42d7ff; }
+.previewStrip .previewBar { margin-inline: auto; }
+.header { background: #0a0f24; border-color: #1a2845; }
+.headerRegister, .primary { background: var(--color-h2-blue); color: #f2f5fa; }
+.headerRegister:hover, .primary:hover { background: var(--color-h2-blue-bright); }
+.organizers { background: #eef3fa; color: #0d1530; padding-block: 32px; border-color: #b7c2d6; }
+.organizer { border-color: #b7c2d6; gap: 25px; }
+.orgLogo { width: 88px; height: 78px; border-radius: 0; background: white; padding: 9px; }
+.organizer p { color: #536480; }.organizer strong { font-size: 25px; }
+.sectionTitle { font-family: var(--font-display), sans-serif; font-size: clamp(42px, 5vw, 68px); line-height: 1.03; }
+.speakers { background: #06091a; padding-block: 85px; }.speakers .eyebrow { color: #00c8ff; }
+.speakersCount { color: #b7c2d6; }
+.program { background: #eef3fa; color: #0d1530; }
+.program .eyebrow { color: #536480; }.programDayHead { background: #0d1530; padding: 25px; }
+.programDayName { font-family: var(--font-display), sans-serif; font-size: 60px; color: #00c8ff; }
+.programDayTheme, .programDayDate { color: #f2f5fa; }
+.programTitle { color: #0d1530; }.programTime, .programMeta { color: #536480; }
+.programRowMuted { color: #536480; }.programType { color: #0d1530; background: #cddff0; }
+.programRow, .programRowMuted { border-color: #b7c2d6; }
+.participate { background: #e4eff8; }.participationGrid h3 { font-family: var(--font-display), sans-serif; font-size: 46px; }
+.venue { background: #06091a; }.registration { background: #111b3c; }
+.page :is(a, button, summary):focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.page :is(section, article)[id] { scroll-margin-top: 100px; }
+.page button, .page a { touch-action: manipulation; }
+@media (max-width: 600px) {
+ .organizerGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+ .organizer, .organizer:first-child { flex-direction: column; align-items: start; padding: 0; gap: 12px; }
+ .organizer + .organizer { border: 0; }.orgLogo { width: 78px; height: 66px; }
+ .organizer strong { font-size: 17px; }.organizer p { font-size: 10px; min-height: 30px; }
+ .speakers { padding-block: 55px; }.sectionTitle { font-size: 44px; }
+ .participationGrid h3 { font-size: 36px; }
+}
+.header { background: #0a0f24; }
+.programRowMuted .programTitle { color: #536480; }
+.speakers .speakerAffiliation { color: #b7c2d6; }
+.sectionTitle { font-size: clamp(34px, 3.6vw, 50px); font-weight: 650; line-height: 1.14; letter-spacing: -.04em; }.eyebrow { font-size: 12px; letter-spacing: .08em; }
+@media(max-width:600px) { .sectionTitle { font-size: 33px; } }
