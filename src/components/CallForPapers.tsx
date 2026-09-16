@@ -33,7 +33,7 @@ const journals = [
 ];
 
 const formatRules = [
-  "A1 dikey poster formatı",
+  "A2 dikey poster formatı",
   "Türkçe veya İngilizce sunum",
   "Minimum 28 pt okunabilir yazı boyutu",
   "Başlık, yazarlar, kurum, anahtar kelimeler, amaç, yöntem, sonuç ve önem bilgisi",
@@ -75,7 +75,7 @@ function CallForPapersPreview() {
           {[
             ["Son Başvuru", "22 Eylül 2026"],
             ["En Yüksek Ödül", "1500 $"],
-            ["Poster Formatı", "A1 · Türkçe veya İngilizce"],
+            ["Poster Formatı", "A2 · Türkçe veya İngilizce"],
             ["Yayın İmkânı", "Seçilen çalışmalar için özel sayı daveti"],
           ].map(([label, value]) => (
             <div key={label} className="grid grid-cols-[8rem_1fr] gap-5 py-4">
@@ -242,7 +242,7 @@ export default function CallForPapers({
             </h3>
             <p className="mt-3 text-h2-small leading-relaxed text-h2-ink-2">
               Başvuru öncesinde genişletilmiş özet şablonunu, kabul sonrası
-              poster hazırlığı için A1 poster şablonunu kullanabilirsiniz.
+              poster hazırlığı için A2 poster şablonunu kullanabilirsiniz.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
