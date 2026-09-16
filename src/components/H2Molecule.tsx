@@ -21,15 +21,37 @@ const keywords = [
 const TRAIL = 82;
 const CLOUD = 16000;
 
-function radialTex(stops: Array<[number, string]>) {
-  const cv = document.createElement('canvas');
-  cv.width = cv.height = 256;
-  const g = cv.getContext('2d')!;
-  const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
-  stops.forEach(([o, c]) => gr.addColorStop(o, c));
-  g.fillStyle = gr;
-  g.fillRect(0, 0, 256, 256);
-  return new THREE.CanvasTexture(cv);
+// Glows are drawn as camera-facing quads shaded in the fragment stage rather
+// than as textured Sprites: mobile GPUs smeared the canvas-backed texture into
+// vertical streaks at the poles.
+const glowVert = `
+  uniform float uSize;varying vec2 vUv;
+  void main(){
+    vUv=uv;
+    vec4 mv=modelViewMatrix*vec4(0.,0.,0.,1.);
+    mv.xy+=position.xy*uSize;
+    gl_Position=projectionMatrix*mv;
+  }`;
+
+function glowMesh(quad: THREE.PlaneGeometry, falloff: number, coreCut: number, tint: string) {
+  const material = new THREE.ShaderMaterial({
+    uniforms: { uSize: { value: 1 }, uOpa: { value: 0 } },
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    vertexShader: glowVert,
+    fragmentShader: `
+      uniform float uOpa;varying vec2 vUv;
+      void main(){
+        float d=length(vUv-.5)*2.;
+        float core=smoothstep(${coreCut.toFixed(2)},0.,d);
+        vec3 col=mix(${tint},vec3(.78,.94,1.),core);
+        col=mix(col,vec3(1.),smoothstep(${(coreCut * 0.4).toFixed(2)},0.,d));
+        float a=pow(smoothstep(1.,0.,d),${falloff.toFixed(2)});
+        gl_FragColor=vec4(col,a*uOpa);
+      }`,
+  });
+  return new THREE.Mesh(quad, material);
 }
 
 function buildCloud(n: number, R: number, A: number) {
@@ -140,45 +162,16 @@ export default function H2Molecule() {
     });
     mol.add(new THREE.Points(cloudGeo, cloudMat));
 
-    const nucTex = radialTex([
-      [0, 'rgba(255,255,255,1)'],
-      [0.1, 'rgba(195,238,255,1)'],
-      [0.28, 'rgba(45,175,255,.5)'],
-      [0.56, 'rgba(12,75,215,.08)'],
-      [1, 'rgba(0,0,0,0)'],
-    ]);
+    const quad = new THREE.PlaneGeometry(1, 1);
     const nuclei = [new THREE.Vector3(-R / 2, 0, 0), new THREE.Vector3(R / 2, 0, 0)].map((p) => {
-      const sprite = new THREE.Sprite(
-        new THREE.SpriteMaterial({
-          map: nucTex,
-          blending: THREE.AdditiveBlending,
-          depthWrite: false,
-          transparent: true,
-          opacity: 0,
-        })
-      );
-      sprite.position.copy(p);
-      sprite.scale.setScalar(1.75);
-      mol.add(sprite);
-      return sprite;
+      const mesh = glowMesh(quad, 2.2, 0.3, 'vec3(.05,.29,.84)');
+      mesh.position.copy(p);
+      mol.add(mesh);
+      return mesh;
     });
-
-    const eTex = radialTex([
-      [0, 'rgba(255,255,255,1)'],
-      [0.2, 'rgba(140,220,255,.88)'],
-      [0.55, 'rgba(25,135,255,.15)'],
-      [1, 'rgba(0,0,0,0)'],
-    ]);
     const electrons = [0, 1].map((k) => {
-      const head = new THREE.Sprite(
-        new THREE.SpriteMaterial({
-          map: eTex,
-          blending: THREE.AdditiveBlending,
-          depthWrite: false,
-          transparent: true,
-        })
-      );
-      head.scale.setScalar(0.28);
+      const head = glowMesh(quad, 3, 0.5, 'vec3(.10,.53,1.)');
+      head.material.uniforms.uSize.value = 0.34;
       mol.add(head);
 
       const geo = new THREE.BufferGeometry();
@@ -285,8 +278,8 @@ export default function H2Molecule() {
 
       const pulse = 1.5 + Math.sin(time * 2.15) * 0.12;
       nuclei.forEach((n, i) => {
-        n.scale.setScalar(pulse + (i ? 0.04 : 0));
-        n.material.opacity = uniforms.uOpa.value;
+        n.material.uniforms.uSize.value = pulse + (i ? 0.04 : 0);
+        n.material.uniforms.uOpa.value = uniforms.uOpa.value;
       });
 
       electrons.forEach((e) => {
@@ -307,7 +300,7 @@ export default function H2Molecule() {
           arr[i * 3 + 2] = p.z;
         }
         e.line.geometry.attributes.position.needsUpdate = true;
-        e.head.material.opacity = uniforms.uOpa.value;
+        e.head.material.uniforms.uOpa.value = uniforms.uOpa.value;
       });
 
       renderer.render(scene, camera);
@@ -325,8 +318,6 @@ export default function H2Molecule() {
         if (Array.isArray(mat)) mat.forEach((m) => m.dispose());
         else mat?.dispose();
       });
-      nucTex.dispose();
-      eTex.dispose();
       renderer.dispose();
       canvas.remove();
     };
