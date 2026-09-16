@@ -2,13 +2,13 @@ import Image from "next/image";
 import styles from "./preview.module.css";
 
 const navLinks = [
-  { label: "Hakkında", href: "#about" },
-  { label: "Program", href: "#program" },
-  { label: "Konuşmacılar", href: "#speakers" },
-  { label: "Katılım", href: "#participate" },
-  { label: "Katılımcı Firmalar", href: "#exhibitors" },
-  { label: "Ulaşım", href: "#venue" },
-  { label: "İletişim", href: "#contact" },
+  { label: "Hakkında", href: "/#about" },
+  { label: "Program", href: "/#program" },
+  { label: "Konuşmacılar", href: "/konusmacilar" },
+  { label: "Katılım", href: "/#participate" },
+  { label: "Katılımcı Firmalar", href: "/#exhibitors" },
+  { label: "Ulaşım", href: "/#venue" },
+  { label: "İletişim", href: "/#contact" },
 ];
 
 const applyLinks = [

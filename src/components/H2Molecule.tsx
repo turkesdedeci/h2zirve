@@ -237,8 +237,15 @@ export default function H2Molecule() {
       uniforms.uMouse.value.set(99, 99, 0);
       pointer.tx = pointer.ty = 0;
     };
-    window.addEventListener('pointermove', onMove, { passive: true });
-    window.addEventListener('pointerleave', onLeave);
+    // Cursor tracking only makes sense with a real pointer. On touch there is
+    // no event until a finger lands, and a scroll gesture leaves the cloud
+    // pushed aside at the spot it was touched; those devices get the drift
+    // applied in the frame loop instead.
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (fine) {
+      window.addEventListener('pointermove', onMove, { passive: true });
+      window.addEventListener('pointerleave', onLeave);
+    }
 
     // Checked every frame: a one-shot measurement is lost on browsers that
     // report the host as 0x0 until after first paint, leaving the drawing
@@ -269,6 +276,13 @@ export default function H2Molecule() {
       time += dt;
       uniforms.uTime.value = time;
       uniforms.uOpa.value = Math.min(1, uniforms.uOpa.value + dt * 0.55);
+
+      if (!fine) {
+        const drift = time * 0.23;
+        uniforms.uMouse.value.set(Math.sin(drift) * 2.1, Math.cos(drift * 0.81) * 1.25, 0);
+        pointer.tx = Math.sin(drift * 0.57) * 0.55;
+        pointer.ty = Math.cos(drift * 0.43) * 0.3;
+      }
 
       pointer.x += (pointer.tx - pointer.x) * 0.045;
       pointer.y += (pointer.ty - pointer.y) * 0.045;

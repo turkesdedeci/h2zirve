@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/tasarim-deneme/"],
+      disallow: ["/api/", "/eski-tasarim"],
     },
     sitemap: "https://www.hidrojenzirvesi.com/sitemap.xml",
   };

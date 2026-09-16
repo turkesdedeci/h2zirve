@@ -5,6 +5,7 @@ const siteUrl = "https://www.hidrojenzirvesi.com";
 const routes = [
   "",
   "/program",
+  "/konusmacilar",
   "/poster-cagrisi",
   "/kayit",
   "/poster-basvurusu",
