@@ -252,7 +252,7 @@ export default function CallForPapers({
                 Özet Şablonu İndir
               </a>
               <a
-                href="/templates/hidrojen-zirvesi-a1-poster-sablonu.pdf"
+                href="/templates/hidrojen-zirvesi-a2-poster-sablonu.pdf"
                 className="rounded-h2-md border border-h2-border px-5 py-3 text-center text-h2-small font-semibold text-h2-ink-1 transition-colors hover:border-h2-cyan/45"
               >
                 Poster Şablonu İndir
