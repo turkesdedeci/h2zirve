@@ -155,11 +155,20 @@
 .registration > div > p:first-child { color: #b9cbd5; font-size: 12px; }
 .registration h3 { margin-top: 12px; font-size: 29px; letter-spacing: -.025em; font-weight: 500; line-height: 1.25; }
 .registrationNote { margin-top: 13px; max-width: 290px; color: #bdcbd4; font-size: 11px; line-height: 1.7; }
-.footer { padding-block: 42px; border-top: 1px solid #263341; background: #060c14; }
-.footer > div { display: flex; justify-content: space-between; align-items: start; gap: 35px; }
-.footer p { color: #adbdca; font-size: 12px; line-height: 1.8; }
-.footer nav { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px; font-size: 12px; }
-.footer .copyright { margin-top: 22px; color: #8b9eaf; font-size: 11px; }
+.footer { padding-block: 64px 30px; border-top: 1px solid #263341; background: #060c14; }
+.footerGrid { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 44px; align-items: start; }
+.footerBrand img { width: 200px; height: auto; object-fit: contain; }
+.footerBrand p { margin-top: 18px; color: #adbdca; font-size: 12px; line-height: 1.8; }
+.footerCol h3 { margin-bottom: 16px; color: #f2f5fa; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.footerCol nav { display: flex; flex-direction: column; gap: 11px; }
+.footerCol nav a { color: #adbdca; font-size: 13px; transition: color .2s; }
+.footerCol nav a:hover { color: #00c8ff; }
+.footerOrgs { display: flex; flex-direction: column; gap: 14px; }
+.footerOrg { display: flex; align-items: center; gap: 10px; }
+.footerOrg img { object-fit: contain; opacity: .92; }
+.footerOrg span { color: #adbdca; font-size: 12px; font-weight: 600; }
+.footerBottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #1a2430; }
+.footerBottom p { color: #8b9eaf; font-size: 11px; line-height: 1.7; }
 
 /* --- Program --- */
 .program { padding-block: 70px; border-top: 1px solid var(--t-border); background: var(--t-surface-1); }
@@ -244,6 +253,7 @@
 @media (min-width: 1151px) { .mobileNav { display: none; } }
 @media (max-width: 1150px) { .desktopNav { display: none; } .menuToggle { display: inline-block; } }
 @media (max-width: 900px) {
+  .footerGrid { grid-template-columns: 1fr 1fr; gap: 36px; }
   .aboutGrid, .venueGrid { grid-template-columns: 1fr; gap: 38px; }
   .heroTitle { font-size: clamp(44px, 8vw, 70px); }
   .programGrid { grid-template-columns: 1fr; gap: 34px; }
@@ -311,7 +321,9 @@
   .participationGrid h3 { font-size: 27px; }
   .registration { flex-direction: column; padding: 27px 22px; margin-top: 40px; }
   .registration h3 { font-size: 25px; }
-  .footer > div { flex-direction: column; }
+  .footerGrid { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .footerBrand { grid-column: 1 / -1; }
+  .footerBrand img { width: 168px; }
 }
 
 /* Modul duzeyinde acik geri donus: globals.css icindeki genel reduced-motion
