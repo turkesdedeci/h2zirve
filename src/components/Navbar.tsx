@@ -8,7 +8,6 @@ const navSections = [
   {
     label: "Zirve",
     links: [
-      { label: "Komite", href: "/komite" },
       { label: "Hakkında", hash: "#about" },
       { label: "Program", href: "/program" },
       { label: "Konuşmacılar", hash: "#speakers" },
@@ -20,7 +19,6 @@ const navSections = [
 ];
 
 const desktopLinks = [
-  { label: "Komite", href: "/komite" },
   { label: "Hakkında", hash: "#about" },
   { label: "Program", href: "/program" },
   { label: "Konuşmacılar", hash: "#speakers" },
