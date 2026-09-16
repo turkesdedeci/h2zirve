@@ -187,11 +187,6 @@ export const speakers: Speaker[] = [
     photo: "/speakers/ali-riza-arslan.webp",
   },
   {
-    name: "BOTAŞ",
-    role: "Panel 4 Konuşmacısı",
-    initials: "B",
-  },
-  {
     name: "Demir Çelik",
     role: "Panel 4 Konuşmacısı",
     affiliation: "TBA",
@@ -328,7 +323,6 @@ export const speakerGroupDefinitions = [
       "Serkan Türk",
       "İsmail Erilhan",
       "Ali Rıza Arslan",
-      "BOTAŞ",
       "Demir Çelik",
       "Seramik Üreticileri",
     ],

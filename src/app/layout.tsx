@@ -21,24 +21,36 @@ const siteDescription =
   "Ankara Yıldırım Beyazıt Üniversitesi (AYBÜ) ev sahipliği ve liderliğinde, H2TEAM koordinasyonunda ve TESPAM iş birliğiyle düzenlenen Türkiye Hidrojen Zirvesi 2026 — 22–23 Ekim 2026, Ankara.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.hidrojenzirvesi.com"),
   title: {
     default: "Türkiye Hidrojen Zirvesi 2026 | 22–23 Ekim · Ankara",
     template: "%s | Türkiye Hidrojen Zirvesi 2026",
   },
   description: siteDescription,
+  alternates: { canonical: "/" },
   icons: { icon: "/logos/turkiye-hidrojen-zirvesi-logo-v4.png" },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Türkiye Hidrojen Zirvesi 2026",
     description: siteDescription,
     type: "website",
     locale: "tr_TR",
     siteName: "Türkiye Hidrojen Zirvesi 2026",
-    images: [{ url: "/logos/turkiye-hidrojen-zirvesi-logo-v4.png" }],
+    url: "/",
+    images: [
+      {
+        url: "/hero-visual.png",
+        width: 1543,
+        height: 842,
+        alt: "Türkiye Hidrojen Zirvesi 2026",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Türkiye Hidrojen Zirvesi 2026",
     description: siteDescription,
+    images: ["/hero-visual.png"],
   },
 };
 

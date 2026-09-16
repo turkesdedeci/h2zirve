@@ -117,7 +117,6 @@ export const day2: Session[] = [
       "Serkan Türk | Türk Çimento",
       "İsmail Erilhan | Linde Gaz",
       "Ali Rıza Arslan | Hydrogenix",
-      "BOTAŞ",
       "Demir Çelik | TBA",
       "Seramik Üreticileri | TBA",
     ],
