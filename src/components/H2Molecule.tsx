@@ -193,10 +193,10 @@ export default function H2Molecule() {
         line.frustumCulled = false;
         mol.add(line);
 
-        return { head, line, phase: k * Math.PI, tilt: k ? 0.82 : -0.82, hist: [] as THREE.Vector3[] };
+        return { head, line, phase: k * Math.PI, tilt: k ? 0.82 : -0.82, hist: [] as any[] };
       });
 
-      function ePos(e: any, t: number, out: THREE.Vector3) {
+      function ePos(e: any, t: number, out: any) {
         const a = t * 1.28 + e.phase;
         const x = Math.sin(a) * 1.58;
         const y = Math.sin(2 * a) * 0.76;
