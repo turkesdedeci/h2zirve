@@ -154,6 +154,11 @@ export const day2: Session[] = [
 ];
 
 /** Oturum tipinin Türkçe etiketi. Tailwind sınıfları Program.tsx'te kalır. */
+export const programDays = [
+  { date: "22", weekday: "Perşembe", theme: "Strateji ve endüstri", sessions: day1 },
+  { date: "23", weekday: "Cuma", theme: "Teknoloji ve uygulama", sessions: day2 },
+];
+
 export const sessionLabels: Record<SessionType, string> = {
   registration: "Karşılama",
   opening: "Açılış",
