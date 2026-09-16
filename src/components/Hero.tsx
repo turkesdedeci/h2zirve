@@ -1,28 +1,39 @@
 import Image from "next/image";
 import CountdownTimer from "./CountdownTimer";
-import H2Molecule from "./H2Molecule";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[560px] overflow-hidden bg-h2-bg pt-24 pb-14 sm:min-h-[760px] sm:pt-36 sm:pb-20"
+      className="relative flex min-h-[560px] items-center overflow-hidden bg-h2-bg pt-24 pb-14 sm:min-h-[760px] sm:pt-36 sm:pb-20"
     >
+      <Image
+        src="/hero-visual.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-[68%_center] sm:object-center"
+        priority
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(6,9,26,0.97)_0%,rgba(6,9,26,0.88)_36%,rgba(6,9,26,0.42)_66%,rgba(6,9,26,0.18)_100%)]"
+        aria-hidden="true"
+      />
       <div
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-h2-bg/40 via-transparent to-h2-bg/90"
         aria-hidden="true"
       />
 
-      {/* Faint structural grid */}
+      {/* Faint structural grid — the page's one quiet visual signature, not a glow effect */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05] [background-image:linear-gradient(var(--color-h2-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-h2-border)_1px,transparent_1px)] [background-size:64px_64px]"
         aria-hidden="true"
       />
 
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left: content */}
-          <div className="max-w-3xl min-w-0">
+        <div className="max-w-3xl">
+          {/* Left: event identity */}
+          <div className="min-w-0">
             <p className="font-display text-h2-small font-semibold uppercase tracking-[0.25em] text-h2-cyan">
               22–23 Ekim 2026 · Ankara, Türkiye
             </p>
@@ -37,7 +48,7 @@ export default function Hero() {
               <span className="text-h2-ink-1">Teknoloji, Strateji ve Uygulama</span>
             </p>
 
-            {/* Countdown */}
+            {/* Countdown — quiet, supporting detail, not the focal point */}
             <div className="mt-8 flex flex-wrap items-baseline gap-3">
               <span className="text-h2-micro font-semibold uppercase tracking-widest text-h2-ink-3">
                 Kongreye kalan süre
@@ -93,13 +104,6 @@ export default function Hero() {
                   </span>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Right: H₂ Molecule Animation */}
-          <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] hidden lg:flex items-center justify-center">
-            <div className="w-full h-full rounded-h2-lg border border-h2-border-soft overflow-hidden">
-              <H2Molecule />
             </div>
           </div>
         </div>
