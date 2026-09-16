@@ -1,191 +1,57 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import CountdownTimer from "@/components/CountdownTimer";
 import s from "./experience.module.css";
-import field from "./heroField.module.css";
+
+const HERO_VIDEO = "data:video/webm;base64,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";
 
 export default function TrialHero() {
-  const root = useRef<HTMLElement>(null);
-  const scene = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const node = scene.current;
-    if (!node) return;
-
-    const media = matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-
-    const reset = () => {
-      cancelAnimationFrame(frame);
-      node.style.setProperty("--field-x", "0deg");
-      node.style.setProperty("--field-y", "0deg");
-    };
-
-    const move = (event: PointerEvent) => {
-      if (media.matches || event.pointerType === "touch") return;
-      const rect = node.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        node.style.setProperty("--field-x", `${-y * 9}deg`);
-        node.style.setProperty("--field-y", `${x * 12}deg`);
-      });
-    };
-
-    node.addEventListener("pointermove", move, { passive: true });
-    node.addEventListener("pointerleave", reset);
-    media.addEventListener("change", reset);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      node.removeEventListener("pointermove", move);
-      node.removeEventListener("pointerleave", reset);
-      media.removeEventListener("change", reset);
-    };
-  }, []);
-
-  useEffect(() => {
-    const node = root.current;
-    if (!node) return;
-
-    const media = matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-
-    const update = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const rect = node.getBoundingClientRect();
-        const progress = Math.max(0, Math.min(1, -rect.top / rect.height));
-        node.style.setProperty("--drift", media.matches ? "0px" : `${progress * 34}px`);
-      });
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      node.dataset.visible = String(entry.isIntersecting);
-    });
-
-    observer.observe(node);
-    window.addEventListener("scroll", update, { passive: true });
-    media.addEventListener("change", update);
-    update();
-
-    return () => {
-      observer.disconnect();
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", update);
-      media.removeEventListener("change", update);
-    };
-  }, []);
-
   return (
-    <section ref={root} id="home" className={s.hero}>
+    <section id="home" className={s.hero}>
       <div className={s.heroLayout}>
         <div className={s.heroCopy}>
-          <p className={s.eventDate}>
-            22–23 Ekim <span>2026 · Ankara</span>
-          </p>
-          <h1 className={s.title}>
-            <span>Türkiye</span>
-            <em>Hidrojen</em>
-            <span>Zirvesi</span>
-          </h1>
-          <p className={s.heroSubtitle}>
-            Türkiye’de hidrojen ekosisteminin inşası.<br />
-            Teknoloji, strateji ve uygulama.
-          </p>
+          <p className={s.eventDate}>22–23 Ekim <span>2026 · Ankara</span></p>
+          <h1 className={s.title}><span>Türkiye</span><em>Hidrojen</em><span>Zirvesi</span></h1>
+          <p className={s.heroSubtitle}>Türkiye’de hidrojen ekosisteminin inşası.<br />Teknoloji, strateji ve uygulama.</p>
           <div className={s.heroActions}>
-            <a href="/kayit" className={s.button}>
-              Ücretsiz kayıt ol <span aria-hidden="true">↗</span>
-            </a>
-            <a href="#program" className={s.explore}>
-              Programı keşfet <span aria-hidden="true">↓</span>
-            </a>
+            <a href="/kayit" className={s.button}>Ücretsiz kayıt ol <span aria-hidden="true">↗</span></a>
+            <a href="#program" className={s.explore}>Programı keşfet <span aria-hidden="true">↓</span></a>
           </div>
-          <div className={s.countdown}>
-            <p>Zirveye kalan</p>
-            <CountdownTimer />
-          </div>
+          <div className={s.countdown}><p>Zirveye kalan</p><CountdownTimer /></div>
         </div>
 
-        <div ref={scene} className={s.moleculeScene}>
-          <div className={`${s.moleculeArt} ${field.visual}`} aria-hidden="true">
-            <div className={field.stage}>
-              <div className={field.aura} />
-              <div className={field.coreHalo} />
-
-              <svg className={field.fieldSvg} viewBox="0 0 640 640" fill="none">
-                <defs>
-                  <linearGradient id="hydrogen-field-gradient" x1="112" y1="126" x2="540" y2="510" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#e6fbff" />
-                    <stop offset=".2" stopColor="#79e8ff" />
-                    <stop offset=".47" stopColor="#00c8ff" />
-                    <stop offset=".76" stopColor="#1478d8" />
-                    <stop offset="1" stopColor="#8adfff" />
-                  </linearGradient>
-                  <radialGradient id="particle-glow">
-                    <stop stopColor="#ffffff" />
-                    <stop offset=".38" stopColor="#b8f5ff" />
-                    <stop offset="1" stopColor="#00c8ff" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-
-                <ellipse className={`${field.guide} ${field.guideOne}`} cx="320" cy="320" rx="259" ry="222" />
-                <ellipse className={`${field.guide} ${field.guideTwo}`} cx="320" cy="320" rx="230" ry="265" transform="rotate(24 320 320)" />
-                <ellipse className={`${field.guide} ${field.guideThree}`} cx="320" cy="320" rx="282" ry="157" transform="rotate(-18 320 320)" />
-
-                <g className={field.arcsOuter}>
-                  <path className={`${field.arc} ${field.arcStrong}`} d="M107 246C137 158 226 101 320 101" />
-                  <path className={`${field.arc} ${field.arcMid}`} d="M371 106C453 125 516 184 540 258" />
-                  <path className={`${field.arc} ${field.arcStrong}`} d="M548 307C553 393 505 471 431 514" />
-                  <path className={`${field.arc} ${field.arcMid}`} d="M372 542C283 562 198 526 142 463" />
-                  <path className={`${field.arc} ${field.arcStrong}`} d="M111 420C79 351 82 293 107 246" />
-                </g>
-
-                <g className={field.arcsInner}>
-                  <path className={`${field.arc} ${field.arcSoft}`} d="M177 210C226 151 315 132 385 157" />
-                  <path className={`${field.arc} ${field.arcSoft}`} d="M432 187C484 231 505 307 484 370" />
-                  <path className={`${field.arc} ${field.arcSoft}`} d="M452 416C398 480 302 497 232 462" />
-                  <path className={`${field.arc} ${field.arcSoft}`} d="M187 431C137 384 123 308 150 248" />
-                </g>
-
-                <g className={field.flowLines}>
-                  <path d="M126 338C174 433 281 480 375 456C444 439 493 395 520 327" />
-                  <path d="M116 286C141 183 242 119 344 128C429 135 493 187 520 267" />
-                  <path d="M163 419C251 490 394 481 475 386" />
-                  <path d="M146 235C214 151 347 120 445 177" />
-                  <path d="M203 490C275 526 385 517 452 458" />
-                </g>
-
-                <g className={field.ticks}>
-                  <path d="M318 71V87" />
-                  <path d="M503 151L492 164" />
-                  <path d="M566 326H550" />
-                  <path d="M493 501L481 489" />
-                  <path d="M302 568V552" />
-                  <path d="M129 479L141 467" />
-                  <path d="M75 303H91" />
-                  <path d="M151 129L163 141" />
-                </g>
-
-                <g className={field.particles}>
-                  <circle cx="124" cy="238" r="13" fill="url(#particle-glow)" opacity=".6" />
-                  <circle cx="124" cy="238" r="3.7" className={field.particleBright} />
-                  <circle cx="495" cy="186" r="2.7" className={field.particle} />
-                  <circle cx="554" cy="321" r="3.4" className={field.particle} />
-                  <circle cx="430" cy="503" r="2.4" className={field.particleDim} />
-                  <circle cx="185" cy="483" r="3" className={field.particle} />
-                  <circle cx="94" cy="382" r="2.2" className={field.particleDim} />
-                </g>
-              </svg>
-
-              <div className={field.core}>
-                <div className={field.coreTexture} />
-                <span className={field.symbol}>H<sub>2</sub></span>
-              </div>
-            </div>
+        <div className={s.moleculeScene} style={{ position: "relative", overflow: "hidden" }}>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            src={HERO_VIDEO}
+            style={{
+              position: "absolute",
+              inset: "0",
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              mixBlendMode: "screen",
+              opacity: 0.95,
+              transform: "scale(1.12)",
+            }}
+          />
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#f5fbff",
+            fontSize: "clamp(92px, 9vw, 150px)",
+            fontWeight: 600,
+            letterSpacing: "-0.06em",
+            textShadow: "0 0 36px rgba(0,200,255,.18)",
+            pointerEvents: "none",
+          }}>
+            H<span style={{ fontSize: ".36em", alignSelf: "center", transform: "translateY(.55em)", marginLeft: ".04em" }}>2</span>
           </div>
         </div>
       </div>
