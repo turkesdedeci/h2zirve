@@ -247,17 +247,22 @@ export default function H2Molecule() {
     window.addEventListener('pointermove', onMove, { passive: true });
     window.addEventListener('pointerleave', onLeave);
 
-    const resize = () => {
+    // Checked every frame: a one-shot measurement is lost on browsers that
+    // report the host as 0x0 until after first paint, leaving the drawing
+    // buffer at its 300x150 default and stretching it to fit.
+    const syncSize = () => {
       const w = host.clientWidth;
       const h = host.clientHeight;
       if (!w || !h) return;
+      const pr = Math.min(window.devicePixelRatio, 2);
+      if (canvas.width === Math.floor(w * pr) && canvas.height === Math.floor(h * pr)) return;
+      renderer.setPixelRatio(pr);
       renderer.setSize(w, h, false);
+      uniforms.uPR.value = pr;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
     };
-    const observer = new ResizeObserver(resize);
-    observer.observe(host);
-    resize();
+    syncSize();
 
     const clock = new THREE.Clock();
     const tmp = new THREE.Vector3();
@@ -266,6 +271,7 @@ export default function H2Molecule() {
 
     const tick = () => {
       frame = requestAnimationFrame(tick);
+      syncSize();
       const dt = Math.min(clock.getDelta(), 0.05);
       time += dt;
       uniforms.uTime.value = time;
@@ -310,7 +316,6 @@ export default function H2Molecule() {
 
     return () => {
       cancelAnimationFrame(frame);
-      observer.disconnect();
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerleave', onLeave);
       scene.traverse((obj) => {
