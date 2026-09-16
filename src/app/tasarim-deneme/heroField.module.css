@@ -1,23 +1,37 @@
 .visual {
   pointer-events: none;
+  transform: translateY(var(--drift, 0px));
 }
 
 .stage {
   position: absolute;
-  inset: 10% 5% 8%;
+  inset: 7% 2% 7%;
   display: grid;
   place-items: center;
   isolation: isolate;
+  transform: rotateX(var(--field-x, 0deg)) rotateY(var(--field-y, 0deg));
+  transform-style: preserve-3d;
+  transition: transform .32s cubic-bezier(.2,.7,.2,1);
 }
 
-.stage::before {
-  content: "";
+.aura {
   position: absolute;
-  width: 62%;
+  width: 86%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 200, 255, .13) 0%, rgba(0, 102, 204, .06) 40%, transparent 72%);
-  filter: blur(6px);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 200, 255, .08) 0%, rgba(0, 134, 220, .07) 32%, rgba(0, 61, 140, .03) 52%, transparent 71%);
+  filter: blur(8px);
+}
+
+.coreHalo {
+  position: absolute;
+  width: 49%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 200, 255, .18), rgba(0, 102, 204, .075) 42%, transparent 71%);
+  filter: blur(12px);
+  animation: haloBreath 7s ease-in-out infinite;
 }
 
 .fieldSvg {
@@ -26,149 +40,236 @@
   width: 100%;
   height: 100%;
   overflow: visible;
-  filter: drop-shadow(0 0 7px rgba(0, 180, 255, .18));
+  filter: drop-shadow(0 0 8px rgba(0, 176, 255, .14));
 }
 
 .guide {
   fill: none;
-  stroke: rgba(93, 176, 232, .12);
-  stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
 
-.orbit {
+.guideOne {
+  stroke: rgba(116, 207, 255, .12);
+  stroke-width: .9;
+}
+
+.guideTwo {
+  stroke: rgba(0, 200, 255, .08);
+  stroke-width: .85;
+}
+
+.guideThree {
+  stroke: rgba(75, 143, 220, .08);
+  stroke-width: .8;
+}
+
+.arc {
   fill: none;
   stroke: url(#hydrogen-field-gradient);
-  stroke-width: 1.15;
   stroke-linecap: round;
-  stroke-dasharray: 3 7 1 12;
   vector-effect: non-scaling-stroke;
-  animation: fieldFlow 28s linear infinite;
 }
 
-.orbitOne {
-  opacity: .68;
-  animation-duration: 24s;
+.arcStrong {
+  stroke-width: 1.65;
+  opacity: .72;
 }
 
-.orbitTwo {
-  opacity: .38;
-  animation-duration: 34s;
-  animation-direction: reverse;
+.arcMid {
+  stroke-width: 1.15;
+  opacity: .42;
 }
 
-.orbitThree {
-  opacity: .25;
-  animation-duration: 42s;
+.arcSoft {
+  stroke-width: 1;
+  opacity: .28;
 }
 
-.node {
-  fill: #dffaff;
-  filter: drop-shadow(0 0 7px #00c8ff);
-  animation: nodePulse 4.8s ease-in-out infinite;
+.arcsOuter {
+  transform-origin: 320px 320px;
+  animation: outerTurn 54s linear infinite;
 }
 
-.nodeTwo { animation-delay: -1.6s; }
-.nodeThree { animation-delay: -3.1s; }
-.nodeDim { opacity: .45; animation-delay: -2.2s; }
+.arcsInner {
+  transform-origin: 320px 320px;
+  animation: innerTurn 68s linear infinite reverse;
+}
+
+.flowLines path {
+  fill: none;
+  stroke: url(#hydrogen-field-gradient);
+  stroke-width: .9;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  opacity: .17;
+  stroke-dasharray: 42 18 7 14;
+  animation: fieldFlow 22s linear infinite;
+}
+
+.flowLines path:nth-child(2) { opacity: .12; animation-duration: 29s; animation-direction: reverse; }
+.flowLines path:nth-child(3) { opacity: .21; animation-duration: 34s; }
+.flowLines path:nth-child(4) { opacity: .1; animation-duration: 38s; }
+.flowLines path:nth-child(5) { opacity: .13; animation-duration: 31s; animation-direction: reverse; }
+
+.ticks {
+  stroke: rgba(111, 220, 255, .28);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  animation: tickFade 8s ease-in-out infinite;
+}
+
+.particles {
+  transform-origin: 320px 320px;
+  animation: particleTurn 42s linear infinite;
+}
+
+.particleBright,
+.particle,
+.particleDim {
+  fill: #c8f8ff;
+  filter: drop-shadow(0 0 7px rgba(0, 200, 255, .9));
+}
+
+.particle { opacity: .78; }
+.particleDim { opacity: .35; }
 
 .core {
   position: relative;
-  z-index: 2;
-  width: clamp(164px, 17vw, 224px);
+  z-index: 3;
+  width: clamp(176px, 17.5vw, 232px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 1px solid rgba(134, 228, 255, .22);
+  overflow: hidden;
+  border: 1px solid rgba(144, 232, 255, .18);
   background:
-    radial-gradient(circle at 46% 42%, rgba(25, 148, 214, .34), rgba(4, 44, 86, .32) 42%, rgba(3, 15, 40, .82) 72%),
-    rgba(5, 18, 43, .76);
+    radial-gradient(circle at 36% 27%, rgba(255,255,255,.065), transparent 14%),
+    radial-gradient(circle at 50% 44%, rgba(16, 96, 151, .38), rgba(5, 42, 82, .56) 42%, rgba(3, 16, 42, .93) 72%, rgba(2, 9, 26, .98) 100%);
   box-shadow:
-    inset 0 0 45px rgba(0, 200, 255, .08),
-    0 0 85px rgba(0, 137, 220, .16);
-  animation: coreBreath 6.5s ease-in-out infinite;
+    inset 0 0 0 1px rgba(255,255,255,.018),
+    inset 0 -28px 50px rgba(0,0,0,.2),
+    inset 0 0 55px rgba(0,200,255,.065),
+    0 0 82px rgba(0,130,220,.14);
+  animation: coreBreath 7s ease-in-out infinite;
 }
 
-.core::before,
+.core::before {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  border: 1px solid rgba(121, 222, 255, .1);
+  box-shadow: inset 0 0 24px rgba(0, 200, 255, .035);
+}
+
 .core::after {
   content: "";
   position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 200, 255, .11);
+  width: 132%;
+  height: 36%;
+  top: 11%;
+  left: -16%;
+  transform: rotate(-17deg);
+  background: linear-gradient(90deg, transparent, rgba(175, 241, 255, .055), transparent);
+  filter: blur(1px);
 }
 
-.core::before { inset: -18%; }
-.core::after { inset: -42%; border-color: rgba(0, 102, 204, .08); }
+.coreTexture {
+  position: absolute;
+  inset: 0;
+  opacity: .22;
+  background:
+    repeating-radial-gradient(circle at 50% 50%, transparent 0 23px, rgba(0, 200, 255, .07) 24px, transparent 25px 39px),
+    repeating-linear-gradient(110deg, transparent 0 17px, rgba(255,255,255,.018) 18px, transparent 19px 34px);
+  mix-blend-mode: screen;
+}
 
 .symbol {
+  position: relative;
+  z-index: 2;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(78px, 8.2vw, 112px);
-  font-weight: 560;
+  font-size: clamp(82px, 8.4vw, 116px);
+  font-weight: 590;
   line-height: 1;
-  letter-spacing: -.055em;
-  color: #f1fbff;
-  text-shadow: 0 0 28px rgba(0, 200, 255, .24);
+  letter-spacing: -.058em;
+  color: #f5fcff;
+  text-shadow: 0 0 30px rgba(0, 200, 255, .18);
 }
 
 .symbol sub {
-  font-size: .43em;
-  vertical-align: -.26em;
-  margin-left: .04em;
+  font-size: .38em;
+  vertical-align: -.29em;
+  margin-left: .035em;
 }
 
-.marker {
-  position: absolute;
-  z-index: 3;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #bcf2ff;
-  box-shadow: 0 0 12px #00c8ff;
-  animation: markerPulse 3.8s ease-in-out infinite;
+@keyframes outerTurn {
+  to { transform: rotate(360deg); }
 }
 
-.markerOne { left: 18%; top: 31%; }
-.markerTwo { right: 16%; top: 42%; animation-delay: -1.3s; }
-.markerThree { left: 34%; bottom: 14%; animation-delay: -2.4s; }
+@keyframes innerTurn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes particleTurn {
+  to { transform: rotate(360deg); }
+}
 
 @keyframes fieldFlow {
-  to { stroke-dashoffset: -92; }
+  to { stroke-dashoffset: -125; }
+}
+
+@keyframes haloBreath {
+  0%, 100% { transform: scale(.97); opacity: .66; }
+  50% { transform: scale(1.04); opacity: 1; }
 }
 
 @keyframes coreBreath {
-  0%, 100% { transform: scale(.985); box-shadow: inset 0 0 45px rgba(0, 200, 255, .07), 0 0 72px rgba(0, 137, 220, .12); }
-  50% { transform: scale(1.018); box-shadow: inset 0 0 48px rgba(0, 200, 255, .1), 0 0 94px rgba(0, 137, 220, .19); }
+  0%, 100% {
+    transform: scale(.99);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.018), inset 0 -28px 50px rgba(0,0,0,.2), inset 0 0 48px rgba(0,200,255,.055), 0 0 72px rgba(0,130,220,.11);
+  }
+  50% {
+    transform: scale(1.018);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), inset 0 -28px 50px rgba(0,0,0,.2), inset 0 0 61px rgba(0,200,255,.08), 0 0 96px rgba(0,130,220,.18);
+  }
 }
 
-@keyframes nodePulse {
-  0%, 100% { opacity: .32; }
-  50% { opacity: .95; }
-}
-
-@keyframes markerPulse {
-  0%, 100% { opacity: .35; transform: scale(.8); }
-  50% { opacity: 1; transform: scale(1.25); }
+@keyframes tickFade {
+  0%, 100% { opacity: .45; }
+  50% { opacity: .9; }
 }
 
 @media (max-width: 900px) {
-  .stage { inset: 13% 0 10%; }
+  .stage { inset: 10% -1% 9%; }
+  .core { width: 170px; }
 }
 
 @media (max-width: 600px) {
-  .stage { inset: 3% 2% 5%; }
-  .core { width: 148px; }
-  .symbol { font-size: 76px; }
-  .orbit { stroke-width: 1; }
-  .markerOne { left: 14%; }
-  .markerTwo { right: 12%; }
+  .visual { transform: translateY(0); }
+  .stage {
+    inset: 2% 1% 4%;
+    transform: none;
+  }
+  .aura { width: 91%; }
+  .coreHalo { width: 53%; }
+  .core { width: 154px; }
+  .symbol { font-size: 80px; }
+  .guideThree { opacity: .7; }
+  .ticks { opacity: .72; }
+  .flowLines path { stroke-width: .82; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orbit,
-  .node,
+  .stage { transform: none; transition: none; }
+  .arcsOuter,
+  .arcsInner,
+  .flowLines path,
+  .particles,
   .core,
-  .marker {
+  .coreHalo,
+  .ticks {
     animation: none !important;
   }
 }
