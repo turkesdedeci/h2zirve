@@ -1,6 +1,6 @@
 .hero { --acid: #00c8ff; position: relative; overflow: clip; background: #06091a; color: #f2f5fa; padding: 0 max(24px, calc((100vw - 1320px) / 2)); }
 .heroTop { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0; border-bottom: 1px solid #ffffff26; font-size: 12px; letter-spacing: .06em; }
-.heroLayout { display: grid; grid-template-columns: 1fr 1.3fr; align-items: center; min-height: 620px; }
+.heroLayout { display: grid; grid-template-columns: 1fr 1.3fr; align-items: center; min-height: 720px; }
 .heroCopy { position: relative; z-index: 2; padding: 50px 0 60px; }
 .kicker { font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 .title { font-family: var(--font-display), sans-serif; font-weight: 500; font-size: clamp(78px, 8.5vw, 132px); letter-spacing: -.035em; line-height: .91; margin: 28px 0; }
@@ -13,8 +13,8 @@
 .button span { font-size: 22px; line-height: 1; }
 .explore { font-size: 13px; display: inline-flex; min-height: 44px; align-items: center; gap: 20px; }
 .explore:hover { color: #00c8ff; }
-.moleculeScene { position: relative; align-self: stretch; min-width: 0; height: 100%; min-height: 400px; }
-.moleculeArt { position: absolute; inset: 0; width: 100%; height: 100%; transform: translateY(var(--drift, 0px)); }
+.moleculeScene { position: relative; align-self: stretch; min-width: 0; height: 100%; min-height: 620px; }
+.moleculeArt { position: absolute; inset: 0 -12%; width: auto; height: 100%; transform: translateY(var(--drift, 0px)); }
 .moleculeArt::before { content: ''; position: absolute; inset: 10%; border-radius: 50%; background: radial-gradient(ellipse, #0066cc30, transparent 68%); }
 .orbitPlane { position: absolute; width: 96%; aspect-ratio: 1; top: 6%; left: 2%; transform: rotate(-26deg); }
 .orbit, .orbitTwo, .orbitThree { position: absolute; inset: 4%; border: 1px solid #00c8ff55; border-radius: 50%; }
@@ -68,10 +68,10 @@
 @keyframes molecularFloat { from { transform: translateY(-8px) rotate(-7deg); } to { transform: translateY(14px) rotate(6deg); } }
 @keyframes panelEnter { from { opacity: .35; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
 @media (max-width: 900px) {
- .heroLayout { min-height: 550px; }.title { font-size: 85px; }.heroActions { gap: 16px; flex-wrap: wrap; }.moleculeArt { inset: 12% -20% 6% -15%; }.formula { font-size: 56px; }.artCaption { flex-direction: column; align-items: end; }.panelButtons button { padding: 12px 9px; gap: 8px; font-size: 14px; }.panelCopy { padding: 30px; }.keynoteImage { height: 310px; }
+ .heroLayout { min-height: 550px; }.title { font-size: 85px; }.heroActions { gap: 16px; flex-wrap: wrap; }.moleculeArt { inset: 0 -14%; }.formula { font-size: 56px; }.artCaption { flex-direction: column; align-items: end; }.panelButtons button { padding: 12px 9px; gap: 8px; font-size: 14px; }.panelCopy { padding: 30px; }.keynoteImage { height: 310px; }
 }
 @media (max-width: 600px) {
- .hero { padding-inline: 20px; }.heroTop { padding: 18px 0; font-size: 10px; gap: 14px; }.heroTop span:last-child { max-width: 150px; text-align: right; }.heroLayout { display: flex; flex-direction: column; min-height: 0; }.heroCopy { padding: 35px 0 0; align-self: stretch; }.title { font-size: clamp(75px, 20vw, 108px); margin: 20px 0; }.title span { font-size: .66em; }.heroSubtitle { font-size: 15px; }.heroActions { margin-top: 25px; gap: 24px; }.button { padding: 14px 17px; font-size: 13px; }.moleculeScene { height: 350px; width: 100%; margin-top: 2px; }.moleculeArt { inset: -1% 0 5%; max-width: 360px; margin: auto; }.orbitPlane { width: 84%; left: 8%; top: 0; }.molecule { inset: 13% 16% 21%; }.formula { font-size: 48px; right: 8%; top: 8%; }.artCaption { bottom: 8px; left: 0; flex-direction: row; align-items: center; font-size: 9px; }.heroBottom { gap: 12px; padding: 18px 0; flex-wrap: wrap; }.heroBottom p { font-size: 10px; }.heroBottom a { font-size: 22px; }.heroBottom a span { margin-inline: 4px; }.year { display: none; }
+ .hero { padding-inline: 20px; }.heroTop { padding: 18px 0; font-size: 10px; gap: 14px; }.heroTop span:last-child { max-width: 150px; text-align: right; }.heroLayout { display: flex; flex-direction: column; min-height: 0; }.heroCopy { padding: 35px 0 0; align-self: stretch; }.title { font-size: clamp(75px, 20vw, 108px); margin: 20px 0; }.title span { font-size: .66em; }.heroSubtitle { font-size: 15px; }.heroActions { margin-top: 25px; gap: 24px; }.button { padding: 14px 17px; font-size: 13px; }.moleculeScene { height: 440px; min-height: 440px; width: 100%; margin-top: 2px; }.moleculeArt { inset: 0 -6%; width: auto; max-width: none; margin: 0; }.orbitPlane { width: 84%; left: 8%; top: 0; }.molecule { inset: 13% 16% 21%; }.formula { font-size: 48px; right: 8%; top: 8%; }.artCaption { bottom: 8px; left: 0; flex-direction: row; align-items: center; font-size: 9px; }.heroBottom { gap: 12px; padding: 18px 0; flex-wrap: wrap; }.heroBottom p { font-size: 10px; }.heroBottom a { font-size: 22px; }.heroBottom a span { margin-inline: 4px; }.year { display: none; }
  .agenda { padding: 55px 20px 20px; }.agendaHeading { flex-direction: column; align-items: start; gap: 24px; margin-bottom: 28px; }.agendaHeading h2 { font-size: 51px; }.agendaHeading > p { font-size: 14px; }.panelButtons { grid-template-columns: repeat(3, 1fr); border-bottom: 0; }.panelButtons button { border-bottom: 1px solid #a9b8cd; min-height: 55px; font-size: 12px; }.panelButtons button:nth-child(3) { border-right: 0; }.panelStage { grid-template-columns: 1fr; margin-top: 20px; }.panelGraphic { min-height: 245px; }.diagram { inset: 8% 24%; }.panelNumber { font-size: 95px; }.panelCopy { min-height: 350px; padding: 28px 24px; }.panelCopy h3 { font-size: 37px; }.agendaFoot { grid-template-columns: 1fr; gap: 0; padding-top: 20px; }.agendaFoot a { min-height: 57px; }.keynotes { grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; }.keynoteImage { height: 330px; }.keynoteInfo { padding: 24px; }.keynoteInfo h3 { font-size: 33px; }
 }
 @media (prefers-reduced-motion: reduce) {
