@@ -35,6 +35,8 @@
 .headerActions { display: flex; align-items: center; gap: 14px; }
 .headerRegister { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 44px; padding: 11px 17px; background: #b9eaed; color: #10202b; font-size: 13px; font-weight: 700; border-radius: 4px; }
 .headerRegister:hover { background: #daf6f7; }
+.headerSponsor { display: inline-flex; align-items: center; min-height: 44px; padding: 11px 17px; border: 1px solid #ffffff33; border-radius: 4px; color: #e6edf5; font-size: 13px; font-weight: 600; transition: border-color .2s, color .2s; }
+.headerSponsor:hover { border-color: #a9e7ed; color: #fff; }
 .menuToggle { display: none; min-height: 44px; font-size: 13px; }
 .mobileNav { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; padding: 0 24px 20px; }
 .mobileNav a { border-bottom: 1px solid #263341; padding: 13px 0; font-size: 14px; }
@@ -275,6 +277,7 @@
   .headerInner { min-height: 76px; gap: 12px; }
   .brand { width: 102px; }
   .headerActions { gap: 12px; }
+  .headerSponsor { display: none; }
   .headerRegister { padding: 9px 12px; font-size: 11px; gap: 10px; }
   .menuToggle { font-size: 11px; }
   .previewBar { font-size: 10px; align-items: center; }
