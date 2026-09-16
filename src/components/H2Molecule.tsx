@@ -1,9 +1,30 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const keywords = [
+  'Hidrojen',
+  'Enerji',
+  'Teknoloji',
+  'İnovasyon',
+  'Strateji',
+  'Ekosistem',
+  'Sürdürülebilirlik',
+  'Uygulama',
+  'Dönüşüm',
+  'Gelecek',
+];
 
 export default function H2Molecule() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentKeyword, setCurrentKeyword] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentKeyword((prev) => (prev + 1) % keywords.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -324,8 +345,33 @@ export default function H2Molecule() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-full min-h-[400px] sm:min-h-[500px]"
+      className="relative w-full h-full min-h-[400px] sm:min-h-[500px]"
       style={{ background: 'transparent' }}
-    />
+    >
+      {/* Keywords overlay */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <div className="relative w-full h-full flex items-center justify-center">
+          {keywords.map((keyword, idx) => (
+            <div
+              key={keyword}
+              className="absolute text-center transition-all duration-1000"
+              style={{
+                opacity: idx === currentKeyword ? 1 : 0,
+                transform: idx === currentKeyword ? 'scale(1)' : 'scale(0.8)',
+                fontSize: 'clamp(20px, 5vw, 52px)',
+                fontWeight: '700',
+                letterSpacing: '0.05em',
+                background: 'linear-gradient(135deg, #00c8ff, #79e8ff)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {keyword}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 .hero { --acid: #00c8ff; position: relative; overflow: clip; background: #06091a; color: #f2f5fa; padding: 0 max(24px, calc((100vw - 1320px) / 2)); }
 .heroTop { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0; border-bottom: 1px solid #ffffff26; font-size: 12px; letter-spacing: .06em; }
-.heroLayout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 620px; }
+.heroLayout { display: grid; grid-template-columns: 1fr 1.3fr; align-items: center; min-height: 620px; }
 .heroCopy { position: relative; z-index: 2; padding: 50px 0 60px; }
 .kicker { font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 .title { font-family: var(--font-display), sans-serif; font-weight: 500; font-size: clamp(78px, 8.5vw, 132px); letter-spacing: -.035em; line-height: .91; margin: 28px 0; }
