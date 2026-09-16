@@ -1,5 +1,3 @@
-import H2Molecule from "./H2Molecule";
-
 const objectives = [
   "Hidrojen alanındaki güncel akademik ve teknik bilgiyi paylaşmak",
   "Kamu-sanayi-akademi iş birliğini güçlendirmek",
@@ -87,9 +85,41 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right: H₂ Molecule Animation */}
-          <div className="flex justify-center items-center rounded-h2-lg border border-h2-border-soft overflow-hidden">
-            <H2Molecule />
+          {/* Right: cards */}
+          <div className="space-y-6">
+            {/* Event info card */}
+            <div className="border-t border-h2-cyan/40 pt-6">
+              <h3 className="mb-5 font-display text-h2-h3 font-semibold text-h2-ink-1">
+                Etkinlik Bilgileri
+              </h3>
+              <div className="divide-y divide-h2-border-soft">
+                {details.map(({ label, value }) => (
+                  <div key={label} className="flex items-start justify-between gap-4 py-3 first:pt-0">
+                    <span className="text-h2-small font-medium text-h2-ink-3">
+                      {label}
+                    </span>
+                    <span className="text-h2-small font-semibold text-h2-ink-1 text-right">
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Audience card */}
+            <div className="border-t border-h2-border pt-6">
+              <h3 className="mb-5 font-display text-h2-h3 font-semibold text-h2-ink-1">
+                Kimler Katılacak?
+              </h3>
+              <div className="space-y-2.5">
+                {audience.map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <span className="text-h2-small font-bold text-h2-green">✓</span>
+                    <span className="text-h2-small text-h2-ink-2">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
