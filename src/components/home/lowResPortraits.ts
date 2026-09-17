@@ -1,25 +1,20 @@
 /**
- * En kısa kenarı 384 px'in (kartın 2x render hedefi) altında kalan portreler.
- * Değer, dosyanın gerçek piksel genişliği: kart bu genişliğin üzerine
- * hiçbir zaman büyütmez, portreyi kendi bulanık kopyasının içinde ortalar.
+ * Portreler 3:4 kadraja oturtulurken kartin 2x render hedefi olan 384 px'e
+ * tamamlaniyor, bu yuzden kartin "kendi cozunurlugunun uzerine buyutme"
+ * istisnasina giren portre kalmadi.
  *
- * Kalıcı çözüm CSS değil: bu dokuz kişiden >=1000 px vesikalık istenmeli.
- * Bkz. docs/homepage-design-trial.md — yayın öncesi görevler.
+ * Asagidaki isimlerin kaynagi hala zayif; hedefe buyutuldukleri icin kart
+ * bosluksuz doluyor ama detay kazanmis degiller. Bu kisilerden >=1000 px
+ * vesikalik istenmeli:
+ *   Selahattin Celik, Mustafa Ilbas, Cigdem Karadag, Erol Arcaklioglu,
+ *   Deniz Demirci, Selmiye Alkan Gursel, Ali Cengiz Koseoglu, Ugur Kayasal,
+ *   Ismail Erilhan, Omer Faruk Tuncbilek
+ * Bkz. docs/homepage-design-trial.md — yayin oncesi gorevler.
  */
-export const LOW_RES_PORTRAITS: Record<string, number> = {
-  "/speakers/yuksel-kaplan.jpg": 135,
-  "/speakers/cigdem-karadag.jpg": 150,
-  "/speakers/deniz-demirci.jpg": 200,
-  "/speakers/erol-arcaklioglu.png": 211,
-  "/speakers/selahattin-celik.jpg": 227,
-  "/speakers/hasan-ozcan.jpg": 295,
-  "/speakers/abdullah-yildiz.jpg": 339,
-  "/speakers/ali-cengiz-koseoglu.png": 344,
-  "/speakers/serkan-turk-linkedin.jpg": 361,
-};
+export const LOW_RES_PORTRAITS: Record<string, number> = {};
 
-/** Yatay kaynaklar için denemeye özel kırpım noktası (paylaşılan veriye dokunmaz). */
-export const PORTRAIT_FOCUS: Record<string, string> = {
-  // 1280x854, tek yatay kaynak — 3:4 kutuda yüzü ortada tutar.
-  "/speakers/canan-acar.jpg": "38% 32%",
-};
+/**
+ * Portreler goz hizasi ve yuz olcegi esitlenerek kirpildigi icin kart
+ * tarafinda odak noktasi ayarina gerek kalmadi.
+ */
+export const PORTRAIT_FOCUS: Record<string, string> = {};

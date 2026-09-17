@@ -35,7 +35,7 @@ export default function TrialSpeakerDirectory() {
       <section className={styles.directoryIntro}>
         <div className={styles.container}>
           <a href="/#speakers" className={styles.textLink}>
-            <span aria-hidden="true">←</span> Deneme ana sayfasına dön
+            <span aria-hidden="true">←</span> Ana sayfaya dön
           </a>
           <p className={`${styles.eyebrow} ${styles.directoryEyebrow}`}>Tüm konuşmacılar</p>
           <h1 className={styles.sectionTitle}>
