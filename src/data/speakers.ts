@@ -130,13 +130,6 @@ export const speakers: Speaker[] = [
     photo: "/speakers/omer-erdemir.png",
   },
   {
-    name: "Yusuf Günay",
-    role: "Panel 3 Konuşmacısı",
-    affiliation: "Yeşil Hidrojen Üreticileri Derneği Başkanı",
-    initials: "YG",
-    photo: "/speakers/yusuf-gunay.png",
-  },
-  {
     name: "Prof. Dr. Can Erkey",
     role: "Panel 3 Konuşmacısı",
     affiliation: "Koç Üniversitesi Hidrojen Teknolojileri Merkezi (KUHyTech) Direktörü",
@@ -193,10 +186,10 @@ export const speakers: Speaker[] = [
     initials: "DÇ",
   },
   {
-    name: "Seramik Üreticileri",
+    name: "Doç. Dr. Kağan Kayacı",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "TBA",
-    initials: "SÜ",
+    affiliation: "Kale Seramik",
+    initials: "KK",
   },
   {
     name: "Ongun Yoldemir",
@@ -309,7 +302,6 @@ export const speakerGroupDefinitions = [
       "Prof. Dr. Hasan Özcan",
       "Prof. Dr. Can Erkey",
       "Prof. Dr. Selmiye Alkan Gürsel",
-      "Yusuf Günay",
       "Dr. Çiğdem Karadağ",
       "Prof. Dr. Yüksel Kaplan",
     ],
@@ -324,7 +316,7 @@ export const speakerGroupDefinitions = [
       "İsmail Erilhan",
       "Ali Rıza Arslan",
       "Demir Çelik",
-      "Seramik Üreticileri",
+      "Doç. Dr. Kağan Kayacı",
     ],
   },
   {

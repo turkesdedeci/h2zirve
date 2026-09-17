@@ -100,7 +100,6 @@ export const day2: Session[] = [
     title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
     moderator: "Prof. Dr. Canan Acar | Twente Üniversitesi",
     speakers: [
-      "Yusuf Günay | Yeşil Hidrojen Üreticileri Derneği Başkanı",
       "Prof. Dr. Can Erkey | Koç Üniversitesi Hidrojen Teknolojileri Merkezi Direktörü",
       "Prof. Dr. Selmiye Alkan Gürsel | Sabancı Üniversitesi",
       "Prof. Dr. Yüksel Kaplan | Niğde Ömer Halisdemir Üniversitesi",
@@ -118,7 +117,7 @@ export const day2: Session[] = [
       "İsmail Erilhan | Linde Gaz",
       "Ali Rıza Arslan | Hydrogenix",
       "Demir Çelik | TBA",
-      "Seramik Üreticileri | TBA",
+      "Doç. Dr. Kağan Kayacı | Kale Seramik",
     ],
   },
   { time: "12:15 - 14:00", type: "lunch", title: "Öğle Yemeği & Sergi" },
