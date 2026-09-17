@@ -19,8 +19,15 @@ export default function PreviewHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <a href="/" aria-label="Türkiye Hidrojen Zirvesi ana sayfası">
-          <Image src="/logos/h2-zirvesi-alev.png" alt="Türkiye Hidrojen Zirvesi 2026" width={125} height={174} priority className={styles.brand} />
+        {/* Alev işareti + adın sitenin kendi fontuyla dizilmiş hâli. Yazı
+            metin olduğu için her ekranda net; büyük harfler doğrudan
+            yazıldı, text-transform Türkçe i/İ'de dil ayarına bağlı. */}
+        <a href="/" className={styles.brandLink} aria-label="Türkiye Hidrojen Zirvesi 2026 ana sayfası">
+          <Image src="/logos/h2-zirvesi-alev.png" alt="" aria-hidden="true" width={125} height={174} priority className={styles.brand} />
+          <span className={styles.brandText}>
+            <span className={styles.brandTop}>TÜRKİYE HİDROJEN</span>
+            <span className={styles.brandBottom}>ZİRVESİ 2026</span>
+          </span>
         </a>
         <nav className={styles.desktopNav} aria-label="Ana menü">
           {links.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
