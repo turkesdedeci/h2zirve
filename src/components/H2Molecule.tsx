@@ -21,7 +21,6 @@ const keywords = [
   'Sıfır Emisyon',
   'Yerli Üretim',
   'Hidrojen Depolama',
-  'Türkiye Yüzyılı',
   'Hidrojen Ekonomisi',
   'Temiz Enerji',
 ];
