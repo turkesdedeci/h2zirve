@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
+import PreviewHeader from "@/components/home/PreviewHeader";
+import TrialFooter from "@/components/home/TrialFooter";
 import { backupSubmission } from "@/lib/backupSubmission";
 import { supabase } from "@/lib/supabase";
 
@@ -170,21 +171,21 @@ export default function Kayit() {
   }
 
   const inputCls =
-    "min-w-0 w-full rounded-h2-md border border-h2-border bg-h2-bg px-4 py-3 text-h2-small text-h2-ink-1 outline-none transition-colors placeholder:text-h2-ink-disabled focus:border-h2-green";
+    "min-w-0 w-full rounded-h2-md border border-h2-border bg-h2-bg px-4 py-3 text-h2-small text-h2-ink-1 outline-none transition-colors placeholder:text-h2-ink-disabled focus:border-h2-cyan";
   const labelCls =
     "mb-1.5 block text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3";
 
   if (success) {
     return (
       <>
-        <Navbar />
+        <PreviewHeader />
         <div className="flex min-h-screen items-center justify-center bg-h2-bg px-4 pt-20">
           <div className="max-w-md text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-green/30 bg-h2-green/15 text-3xl text-h2-green">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-cyan/30 bg-h2-cyan/15 text-3xl text-h2-cyan">
               ✓
             </div>
-            <h1 className="font-display text-h2-h2 font-bold text-h2-ink-1">
-              Kaydınız Alındı
+            <h1 className="font-display text-[clamp(28px,3.4vw,42px)] font-bold leading-tight tracking-[-0.03em] text-h2-ink-1">
+              Kaydınız alındı<span className="text-h2-cyan">.</span>
             </h1>
             <p className="mt-4 leading-relaxed text-h2-ink-2">
               Türkiye Hidrojen Zirvesi 2026 katılımcı kaydınız ekibimize iletildi.
@@ -192,7 +193,7 @@ export default function Kayit() {
             </p>
             <a
               href="/"
-              className="mt-8 inline-block rounded-h2-md bg-h2-green px-8 py-3 font-semibold text-white transition-all hover:bg-h2-green/85"
+              className="mt-8 inline-block rounded-h2-md bg-h2-blue px-8 py-3 font-semibold text-white transition-all hover:bg-h2-blue-bright"
             >
               Ana Sayfaya Dön
             </a>
@@ -204,21 +205,21 @@ export default function Kayit() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-h2-bg">
-      <Navbar />
+      <PreviewHeader />
 
       <main className="mx-auto grid max-w-5xl gap-10 px-4 pb-12 pt-28 lg:grid-cols-[1fr_20rem] lg:pb-16 lg:pt-32">
         <div className="min-w-0">
           <div className="mb-10">
-            <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
-              Katılımcı Kaydı
+            <span className="text-h2-micro font-semibold uppercase tracking-[0.13em] text-h2-ink-3">
+              22–23 Ekim 2026 · AYBÜ Etlik Kongre Salonu
             </span>
-            <h1 className="mt-3 font-display text-h2-h2 font-bold text-h2-ink-1 sm:text-h2-h1">
-              Türkiye Hidrojen Zirvesi 2026 Kayıt Formu
+            <h1 className="mt-4 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.06] tracking-[-0.04em] text-h2-ink-1">
+              Katılımcı kaydı<span className="text-h2-cyan">.</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
-              22-23 Ekim 2026 tarihlerinde Ankara Yıldırım Beyazıt Üniversitesi
-              Etlik Kongre Salonu&apos;nda gerçekleşecek zirveye katılım için
-              bilgilerinizi paylaşın.
+            <p className="mt-5 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
+              Katılım ücretsizdir. Aşağıdaki formu doldurarak ön kaydınızı
+              oluşturabilirsiniz; etkinlik bilgilendirmeleri paylaştığınız e-posta
+              adresine iletilir.
             </p>
           </div>
 
@@ -333,8 +334,8 @@ export default function Kayit() {
                       key={day}
                       className={`cursor-pointer rounded-h2-md border p-4 text-h2-small font-semibold transition-colors ${
                         form.katilim_gunu === day
-                          ? "border-h2-green bg-h2-green/12 text-h2-ink-1"
-                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-green/45"
+                          ? "border-h2-cyan bg-h2-cyan/12 text-h2-ink-1"
+                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-cyan/45"
                       }`}
                     >
                       <input
@@ -396,7 +397,7 @@ export default function Kayit() {
                   type="checkbox"
                   checked={form.kvkk_onayi}
                   onChange={set("kvkk_onayi")}
-                  className="mt-1 h-4 w-4 rounded border-h2-border accent-h2-green"
+                  className="mt-1 h-4 w-4 rounded border-h2-border accent-h2-cyan"
                 />
                 <span>
                   Paylaştığım bilgilerin Türkiye Hidrojen Zirvesi 2026 katılım
@@ -420,7 +421,7 @@ export default function Kayit() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-h2-md bg-h2-green py-4 text-base font-bold text-white transition-all hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20 disabled:opacity-50"
+              className="w-full rounded-h2-md bg-h2-blue py-4 text-base font-bold text-white transition-all hover:bg-h2-blue-bright hover:shadow-lg hover:shadow-h2-blue/25 disabled:opacity-50"
             >
               {loading ? "Kaydediliyor..." : "Kaydımı Tamamla"}
             </button>
@@ -455,6 +456,7 @@ export default function Kayit() {
           </div>
         </aside>
       </main>
+      <TrialFooter />
     </div>
   );
 }
