@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
+import PreviewHeader from "@/components/home/PreviewHeader";
+import TrialFooter from "@/components/home/TrialFooter";
 import { supabase } from "@/lib/supabase";
 import { backupSubmission } from "@/lib/backupSubmission";
 
@@ -9,7 +10,7 @@ const segments = {
   Startup: {
     title: "Startup stand başvurusu ücretsizdir",
     body: "Erken aşama girişimler, hidrojen ekosistemine katkı sunan ürün ve prototiplerini ücretsiz stand başvurusu ile sergilemek için değerlendirmeye alınır.",
-    accent: "border-h2-green/35 bg-h2-green/10 text-h2-green",
+    accent: "border-h2-cyan/35 bg-h2-cyan/10 text-h2-cyan",
   },
   KOBİ: {
     title: "KOBİ başvuruları ekip tarafından tekliflendirilir",
@@ -167,17 +168,17 @@ export default function StandBasvurusu() {
 
   const selectedSegment = form.segment ? segments[form.segment] : null;
   const inputCls =
-    "min-w-0 w-full rounded-h2-md border border-h2-border bg-h2-bg px-4 py-3 text-h2-small text-h2-ink-1 outline-none transition-colors placeholder:text-h2-ink-disabled focus:border-h2-green";
+    "min-w-0 w-full rounded-h2-md border border-h2-border bg-h2-bg px-4 py-3 text-h2-small text-h2-ink-1 outline-none transition-colors placeholder:text-h2-ink-disabled focus:border-h2-cyan";
   const labelCls =
     "mb-1.5 block text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3";
 
   if (success) {
     return (
       <>
-        <Navbar />
+        <PreviewHeader />
         <div className="flex min-h-screen items-center justify-center bg-h2-bg px-4 pt-20">
           <div className="max-w-md text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-green/30 bg-h2-green/15 text-3xl text-h2-green">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-cyan/30 bg-h2-cyan/15 text-3xl text-h2-cyan">
               ✓
             </div>
             <h1 className="font-display text-h2-h2 font-bold text-h2-ink-1">
@@ -189,7 +190,7 @@ export default function StandBasvurusu() {
             </p>
             <a
               href="/"
-              className="mt-8 inline-block rounded-h2-md bg-h2-green px-8 py-3 font-semibold text-white transition-all hover:bg-h2-green/85"
+              className="mt-8 inline-block rounded-h2-md bg-h2-blue px-8 py-3 font-semibold text-white transition-all hover:bg-h2-blue-bright"
             >
               Ana Sayfaya Dön
             </a>
@@ -201,18 +202,18 @@ export default function StandBasvurusu() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-h2-bg">
-      <Navbar />
+      <PreviewHeader />
 
       <main className="mx-auto grid max-w-5xl gap-10 px-4 pb-12 pt-28 lg:grid-cols-[1fr_20rem] lg:pb-16 lg:pt-32">
         <div className="min-w-0">
           <div className="mb-10">
-            <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
-              Stand Başvurusu
+            <span className="text-h2-micro font-semibold uppercase tracking-[0.13em] text-h2-ink-3">
+              22–23 Ekim 2026 · AYBÜ Etlik Kongre Salonu
             </span>
-            <h1 className="mt-3 font-display text-h2-h2 font-bold text-h2-ink-1 sm:text-h2-h1">
-              Fuar Alanında Yer Alın
+            <h1 className="mt-4 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.06] tracking-[-0.04em] text-h2-ink-1">
+              Stand başvurusu<span className="text-h2-cyan">.</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
+            <p className="mt-5 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
               Firma büyüklüğünüzü seçin, sergilemek istediğiniz ürün veya
               prototipi paylaşın. Startup başvuruları ücretsiz olarak
               değerlendirilir.
@@ -245,8 +246,8 @@ export default function StandBasvurusu() {
                       key={segment}
                       className={`cursor-pointer rounded-h2-md border p-4 text-h2-small font-semibold transition-colors ${
                         form.segment === segment
-                          ? "border-h2-green bg-h2-green/12 text-h2-ink-1"
-                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-green/45"
+                          ? "border-h2-cyan bg-h2-cyan/12 text-h2-ink-1"
+                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-cyan/45"
                       }`}
                     >
                       <input
@@ -435,7 +436,7 @@ export default function StandBasvurusu() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-h2-md bg-h2-green py-4 text-base font-bold text-white transition-all hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20 disabled:opacity-50"
+              className="w-full rounded-h2-md bg-h2-blue py-4 text-base font-bold text-white transition-all hover:bg-h2-blue-bright hover:shadow-lg hover:shadow-h2-blue/25 disabled:opacity-50"
             >
               {loading ? "Gönderiliyor..." : "Stand Başvurusunu Gönder"}
             </button>
@@ -443,7 +444,7 @@ export default function StandBasvurusu() {
         </div>
 
         <aside className="min-w-0 space-y-5 lg:sticky lg:top-28 lg:self-start">
-          <div className="rounded-h2-lg border border-h2-green/25 bg-h2-green/8 p-6">
+          <div className="rounded-h2-lg border border-h2-cyan/25 bg-h2-blue/8 p-6">
             <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
               Startup ücretsiz
             </h2>
@@ -464,7 +465,7 @@ export default function StandBasvurusu() {
                     key={step}
                     className="flex items-center gap-3 rounded-h2-md border border-h2-border bg-h2-bg/45 p-4"
                   >
-                    <span className="font-display text-h2-small font-bold text-h2-green">
+                    <span className="font-display text-h2-small font-bold text-h2-cyan">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="text-h2-small text-h2-ink-2">{step}</span>
@@ -475,6 +476,7 @@ export default function StandBasvurusu() {
           </div>
         </aside>
       </main>
+      <TrialFooter />
     </div>
   );
 }

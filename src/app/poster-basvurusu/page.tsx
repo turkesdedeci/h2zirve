@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
+import PreviewHeader from "@/components/home/PreviewHeader";
+import TrialFooter from "@/components/home/TrialFooter";
 import { supabase } from "@/lib/supabase";
 import { backupSubmission } from "@/lib/backupSubmission";
 
@@ -284,7 +285,7 @@ export default function PosterBasvurusu() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-h2-bg px-4">
         <div className="max-w-md text-center">
-          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-green/30 bg-h2-green/15 text-3xl text-h2-green">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-cyan/30 bg-h2-cyan/15 text-3xl text-h2-cyan">
             ✓
           </div>
           <h2 className="mb-3 font-display text-h2-h2 font-bold text-h2-ink-1">
@@ -298,7 +299,7 @@ export default function PosterBasvurusu() {
           </p>
           <a
             href="/"
-            className="inline-block rounded-h2-md bg-h2-green px-8 py-3 font-semibold text-white transition-all hover:bg-h2-green/85"
+            className="inline-block rounded-h2-md bg-h2-blue px-8 py-3 font-semibold text-white transition-all hover:bg-h2-blue-bright"
           >
             Ana Sayfaya Dön
           </a>
@@ -309,39 +310,21 @@ export default function PosterBasvurusu() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-h2-bg">
-      <div className="border-b border-h2-border bg-h2-bg/95 px-4 py-4">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <a href="/" aria-label="Ana sayfa">
-            <Image
-              src="/logos/header.png"
-              alt="Türkiye Hidrojen Zirvesi 2026"
-              width={160}
-              height={44}
-              className="object-contain"
-            />
-          </a>
-          <a
-            href="/#cfp"
-            className="text-h2-small text-h2-ink-2 transition-colors hover:text-h2-ink-1"
-          >
-            Geri
-          </a>
-        </div>
-      </div>
+      <PreviewHeader />
 
-      <main className="mx-auto grid max-w-5xl gap-10 px-4 py-12 lg:grid-cols-[1fr_20rem] lg:py-16">
+      <main className="mx-auto grid max-w-5xl gap-10 px-4 pb-12 pt-28 lg:grid-cols-[1fr_20rem] lg:pb-16 lg:pt-32">
         <div className="min-w-0">
           <div className="mb-10">
-            <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-green">
-              Poster Özeti Başvurusu
+            <span className="text-h2-micro font-semibold uppercase tracking-[0.13em] text-h2-ink-3">
+              Son başvuru · 22 Eylül 2026
             </span>
-            <h1 className="mt-3 font-display text-h2-h2 font-bold text-h2-ink-1 sm:text-h2-h1">
-              Türkiye Hidrojen Zirvesi 2026
+            <h1 className="mt-4 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.06] tracking-[-0.04em] text-h2-ink-1">
+              Poster özeti başvurusu<span className="text-h2-cyan">.</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
+            <p className="mt-5 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
               Genişletilmiş özetinizi 22 Eylül 2026 tarihine kadar yükleyin.
-              Kabul edilen çalışmalar için final posterinizi 12 Ekim 2026
-              tarihine kadar yükleyin.
+              Kabul edilen çalışmalar için final poster dosyası 12 Ekim 2026
+              tarihine kadar alınır.
             </p>
           </div>
 
@@ -534,7 +517,7 @@ export default function PosterBasvurusu() {
                 aria-label="Genişletilmiş özet PDF dosyası seç"
                 className={`mt-5 cursor-pointer rounded-h2-md border-2 border-dashed p-8 text-center transition-all ${
                   pdfFile
-                    ? "border-h2-green/50 bg-h2-green/5"
+                    ? "border-h2-cyan/50 bg-h2-blue/5"
                     : "border-h2-border hover:border-h2-blue/50 hover:bg-h2-blue/5"
                 } ${fieldErrors.pdf ? "border-red-500/60" : ""}`}
               >
@@ -547,7 +530,7 @@ export default function PosterBasvurusu() {
                 />
                 {pdfFile ? (
                   <div>
-                    <p className="text-h2-small font-semibold text-h2-green">
+                    <p className="text-h2-small font-semibold text-h2-cyan">
                       {pdfFile.name}
                     </p>
                     <p className="mt-1 text-h2-micro text-h2-ink-3">
@@ -597,8 +580,8 @@ export default function PosterBasvurusu() {
                       key={answer}
                       className={`cursor-pointer rounded-h2-md border p-4 text-h2-small font-semibold transition-colors ${
                         form.prototip === answer
-                          ? "border-h2-green bg-h2-green/12 text-h2-ink-1"
-                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-green/45"
+                          ? "border-h2-cyan bg-h2-blue/12 text-h2-ink-1"
+                          : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-cyan/45"
                       }`}
                     >
                       <input
@@ -676,7 +659,7 @@ export default function PosterBasvurusu() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-h2-md bg-h2-green py-4 text-base font-bold text-white transition-all hover:bg-h2-green/85 hover:shadow-lg hover:shadow-h2-green/20 disabled:opacity-50"
+              className="w-full rounded-h2-md bg-h2-blue py-4 text-base font-bold text-white transition-all hover:bg-h2-blue/85 hover:shadow-lg hover:shadow-h2-blue/20 disabled:opacity-50"
             >
               {loading ? "Gönderiliyor..." : "Poster Özeti Başvurusunu Gönder"}
             </button>
@@ -735,6 +718,7 @@ export default function PosterBasvurusu() {
           </div>
         </aside>
       </main>
+      <TrialFooter />
     </div>
   );
 }

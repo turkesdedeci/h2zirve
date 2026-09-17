@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
+import PreviewHeader from "@/components/home/PreviewHeader";
+import TrialFooter from "@/components/home/TrialFooter";
 import { supabase } from "@/lib/supabase";
 import { backupSubmission } from "@/lib/backupSubmission";
 
@@ -171,10 +172,10 @@ export default function SponsorlukBasvurusu() {
   if (success) {
     return (
       <>
-        <Navbar />
+        <PreviewHeader />
         <div className="flex min-h-screen items-center justify-center bg-h2-bg px-4 pt-20">
           <div className="max-w-md text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-green/30 bg-h2-green/15 text-3xl text-h2-green">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-h2-cyan/30 bg-h2-cyan/15 text-3xl text-h2-cyan">
               ✓
             </div>
             <h1 className="font-display text-h2-h2 font-bold text-h2-ink-1">
@@ -198,18 +199,18 @@ export default function SponsorlukBasvurusu() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-h2-bg">
-      <Navbar />
+      <PreviewHeader />
 
       <main className="mx-auto grid max-w-5xl gap-10 px-4 pb-12 pt-28 lg:grid-cols-[1fr_20rem] lg:pb-16 lg:pt-32">
         <div className="min-w-0">
           <div className="mb-10">
-            <span className="font-display text-h2-small font-semibold uppercase tracking-[0.22em] text-h2-cyan">
-              Sponsorluk Başvurusu
+            <span className="text-h2-micro font-semibold uppercase tracking-[0.13em] text-h2-ink-3">
+              22–23 Ekim 2026 · AYBÜ Etlik Kongre Salonu
             </span>
-            <h1 className="mt-3 font-display text-h2-h2 font-bold text-h2-ink-1 sm:text-h2-h1">
-              Zirvenin Kurumsal Destekçileri Arasında Yer Alın
+            <h1 className="mt-4 font-display text-[clamp(34px,4.6vw,58px)] font-bold leading-[1.06] tracking-[-0.04em] text-h2-ink-1">
+              Sponsorluk başvurusu<span className="text-h2-cyan">.</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
+            <p className="mt-5 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
               Sponsor tipi, bütçe aralığı ve görünürlük beklentinizi paylaşın.
               Ekip, başvurunuz sonrası en uygun paket ve kapsam için dönüş
               yapacaktır.
@@ -429,6 +430,7 @@ export default function SponsorlukBasvurusu() {
           </div>
         </aside>
       </main>
+      <TrialFooter />
     </div>
   );
 }
