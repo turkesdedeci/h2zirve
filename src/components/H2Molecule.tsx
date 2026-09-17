@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import s from './h2molecule.module.css';
 
 const keywords = [
   'Hidrojen',
@@ -76,10 +77,23 @@ function buildCloud(n: number, R: number, A: number) {
 export default function H2Molecule() {
   const hostRef = useRef<HTMLDivElement>(null);
   const [keyword, setKeyword] = useState(0);
+  const [leaving, setLeaving] = useState(false);
 
+  // Two steps per cycle so the outgoing word gets an exit: swapping on a single
+  // timer would unmount it mid-animation and it would vanish on the spot.
   useEffect(() => {
-    const id = setInterval(() => setKeyword((k) => (k + 1) % keywords.length), 3200);
-    return () => clearInterval(id);
+    let swap: ReturnType<typeof setTimeout>;
+    const cycle = setInterval(() => {
+      setLeaving(true);
+      swap = setTimeout(() => {
+        setKeyword((k) => (k + 1) % keywords.length);
+        setLeaving(false);
+      }, 460);
+    }, 3600);
+    return () => {
+      clearInterval(cycle);
+      clearTimeout(swap);
+    };
   }, []);
 
   useEffect(() => {
@@ -337,27 +351,31 @@ export default function H2Molecule() {
     };
   }, []);
 
+  const word = keywords[keyword];
+  let charIndex = 0;
+
   return (
     <div ref={hostRef} className="relative h-full w-full">
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-        {keywords.map((word, i) => (
-          <span
-            key={word}
-            className="absolute text-center transition-all duration-500"
-            style={{
-              opacity: i === keyword ? 1 : 0,
-              transform: i === keyword ? 'scale(1)' : 'scale(0.86)',
-              fontSize: 'clamp(26px, 3.4vw, 56px)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              maxWidth: '86%',
-              color: '#e9fbff',
-              textShadow: '0 0 30px rgba(0,110,210,.95), 0 0 70px rgba(4,10,30,.95)',
-            }}
-          >
-            {word}
-          </span>
-        ))}
+      <div className={s.stage}>
+        <p
+          key={word}
+          className={`${s.word} ${leaving ? s.leaving : ''}`}
+          aria-hidden="true"
+        >
+          {word.split(' ').map((part) => (
+            <span key={part} className={s.part}>
+              {[...part].map((char, i) => (
+                <span
+                  key={`${part}-${i}`}
+                  className={s.char}
+                  style={{ animationDelay: `${charIndex++ * 42}ms` }}
+                >
+                  {char}
+                </span>
+              ))}
+            </span>
+          ))}
+        </p>
       </div>
     </div>
   );
