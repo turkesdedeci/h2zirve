@@ -1,35 +1,27 @@
 "use client";
 
 import type { Speaker } from "@/data/speakers";
-import SpeakerCard from "./SpeakerCard";
+import SpeakerCard, { speakerRoleSlots } from "./SpeakerCard";
 import { useAutoScroll } from "./useAutoScroll";
 import styles from "./preview.module.css";
 
-const speakerGroupRank = (speaker: Speaker) => {
-  if (speaker.role.includes("Keynote")) return 0;
-  if (speaker.role.includes("Açılış")) return 1;
-
-  const panelMatch = speaker.role.match(/Panel\s+([1-5])/);
-  if (panelMatch) return Number(panelMatch[1]) + 1;
-
-  return 99;
-};
-
-const orderMarqueeSpeakers = (speakers: Speaker[]) =>
+/** İki görevi olan isim seride iki kez geçer: her kart durduğu yerin
+ *  görevini taşır. Şerit zaten kendini tekrarladığı için aynı yüzün ikinci
+ *  kez görünmesi sırayı bozmuyor, görevi gizlemek bozuyordu. */
+const orderMarqueeCards = (speakers: Speaker[]) =>
   speakers
-    .map((speaker, originalIndex) => ({ speaker, originalIndex }))
+    .flatMap((speaker, originalIndex) =>
+      speakerRoleSlots(speaker.role).map((slot) => ({ speaker, slot, originalIndex }))
+    )
     .sort((a, b) => {
-      const groupDifference = speakerGroupRank(a.speaker) - speakerGroupRank(b.speaker);
+      const groupDifference = a.slot.rank - b.slot.rank;
       if (groupDifference !== 0) return groupDifference;
 
-      const moderatorDifference =
-        Number(!a.speaker.role.includes("Moderatörü")) -
-        Number(!b.speaker.role.includes("Moderatörü"));
+      const moderatorDifference = Number(!a.slot.moderator) - Number(!b.slot.moderator);
       if (moderatorDifference !== 0) return moderatorDifference;
 
       return a.originalIndex - b.originalIndex;
-    })
-    .map(({ speaker }) => speaker);
+    });
 
 export default function SpeakerMarquee({
   speakers,
@@ -38,7 +30,7 @@ export default function SpeakerMarquee({
   speakers: Speaker[];
   label: string;
 }) {
-  const orderedSpeakers = orderMarqueeSpeakers(speakers);
+  const cards = orderMarqueeCards(speakers);
 
   const {
     viewportRef,
@@ -58,13 +50,13 @@ export default function SpeakerMarquee({
         {...viewportHandlers}
       >
         <ul ref={firstListRef} className={styles.marqueeTrack}>
-          {orderedSpeakers.map((speaker, index) => (
+          {cards.map(({ speaker, slot }, index) => (
             <li
-              key={`${speaker.name}-${index}`}
+              key={`${speaker.name}-${slot.tag}`}
               className={styles.marqueeItem}
               data-marquee-item
             >
-              <SpeakerCard speaker={speaker} priority={index < 6} />
+              <SpeakerCard speaker={speaker} tagOverride={slot.tag} priority={index < 6} />
             </li>
           ))}
         </ul>
@@ -77,9 +69,9 @@ export default function SpeakerMarquee({
           aria-hidden="true"
           inert
         >
-          {orderedSpeakers.map((speaker, index) => (
-            <li key={`clone-${speaker.name}-${index}`} className={styles.marqueeItem}>
-              <SpeakerCard speaker={speaker} />
+          {cards.map(({ speaker, slot }) => (
+            <li key={`clone-${speaker.name}-${slot.tag}`} className={styles.marqueeItem}>
+              <SpeakerCard speaker={speaker} tagOverride={slot.tag} />
             </li>
           ))}
         </ul>

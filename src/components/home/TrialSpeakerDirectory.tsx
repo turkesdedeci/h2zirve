@@ -3,7 +3,7 @@ import {
   speakerGroupDefinitions,
   sortSpeakers,
 } from "@/data/speakers";
-import SpeakerCard from "./SpeakerCard";
+import SpeakerCard, { speakerTagInGroup } from "./SpeakerCard";
 import styles from "./preview.module.css";
 
 // Gruplama ve siralama Speakers.tsx ile birebir ayni: mantik kopyalanmadi,
@@ -83,7 +83,7 @@ export default function TrialSpeakerDirectory() {
                   <SpeakerCard
                     key={`${speaker.name}-${speaker.affiliation ?? index}`}
                     speaker={speaker}
-                    tagOverride={group.id === "opening" ? "Açılış" : undefined}
+                    tagOverride={speakerTagInGroup(speaker.role, group.role)}
                   />
                 )
               )}

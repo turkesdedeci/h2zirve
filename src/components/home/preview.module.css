@@ -29,7 +29,8 @@
 .container { width: min(100% - 48px, 1232px); margin-inline: auto; }
 .header { position: sticky; top: 0; z-index: 50; background: #080f1bf5; border-bottom: 1px solid #263341; }
 .headerInner { width: min(100% - 48px, 1232px); min-height: 88px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.brand { width: 134px; height: auto; }
+/* Artik yalnizca alev isareti: genislik yerine yukseklik sabitlenir. */
+.brand { width: auto; height: 54px; display: block; }
 .desktopNav { display: flex; align-items: center; gap: 23px; font-size: 13px; color: #c1cbd7; }
 .desktopNav a:hover, .mobileNav a:hover { color: #a9e7ed; }
 .headerActions { display: flex; align-items: center; gap: 14px; }
@@ -275,7 +276,7 @@
 @media (max-width: 600px) {
   .container, .headerInner { width: calc(100% - 36px); }
   .headerInner { min-height: 76px; gap: 12px; }
-  .brand { width: 102px; }
+  .brand { height: 44px; }
   .headerActions { gap: 12px; }
   .headerSponsor { display: none; }
   .headerRegister { padding: 9px 12px; font-size: 11px; gap: 10px; }

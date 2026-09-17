@@ -27,6 +27,7 @@ const sponsorTiers = [
     accent: "text-h2-ink-3",
     logos: [
       { name: "Hidromek", src: "/logos/hidromek.png" },
+      { name: "HORIBA", src: "/logos/horiba.svg" },
       { name: "Baş Yapı", src: "/logos/besyapi.jpg" },
     ],
   },
@@ -127,6 +128,7 @@ export default function Sponsors({ compact = false }: { compact?: boolean }) {
                       alt={logo.name}
                       width={280}
                       height={128}
+                      unoptimized={logo.src.endsWith(".svg")}
                       className="h-full w-full max-w-[280px] object-contain"
                     />
                   </div>
