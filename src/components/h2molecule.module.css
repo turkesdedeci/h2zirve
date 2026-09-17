@@ -1,0 +1,72 @@
+.stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Glow lives on the wrapper so it does not fight the per-character blur. */
+.word {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 .36em;
+  max-width: 88%;
+  text-align: center;
+  /* 2.92s is one period of the nuclei pulse in the shader (2pi / 2.15), so
+     the word breathes with the molecule instead of on its own clock. */
+  animation: aura 2.92s ease-in-out infinite;
+}
+
+.part { display: inline-flex; white-space: nowrap; }
+
+.char {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(26px, 3.4vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -.015em;
+  background: linear-gradient(166deg, #fff 0%, #eafaff 30%, #9ce6ff 70%, #4fc0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: charIn .62s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.leaving .char {
+  animation: charOut .46s ease both;
+}
+
+@keyframes charIn {
+  from { opacity: 0; transform: translateY(18px) scale(.9); filter: blur(12px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes charOut {
+  to { opacity: 0; transform: translateY(-14px) scale(1.05); filter: blur(10px); }
+}
+
+/* Second shadow is a dark plate: the glow alone leaves the word competing
+   with the cloud behind it. */
+@keyframes aura {
+  0%, 100% {
+    filter: drop-shadow(0 0 16px rgba(0, 132, 255, .5))
+            drop-shadow(0 2px 18px rgba(2, 8, 24, .85));
+  }
+  50% {
+    filter: drop-shadow(0 0 38px rgba(120, 214, 255, .85))
+            drop-shadow(0 2px 18px rgba(2, 8, 24, .85));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    animation: none;
+    filter: drop-shadow(0 0 20px rgba(0, 132, 255, .5))
+            drop-shadow(0 2px 18px rgba(2, 8, 24, .85));
+  }
+  .char, .leaving .char { animation: none; opacity: 1; transform: none; filter: none; }
+}
