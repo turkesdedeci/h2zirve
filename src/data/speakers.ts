@@ -155,6 +155,7 @@ export const speakers: Speaker[] = [
     role: "Panel 3 Konuşmacısı",
     affiliation: "UNFCCC Kıdemli Uzmanı (ERT) — Article 6 Teknik Uzmanı",
     initials: "KB",
+    photo: "/speakers/kadir-bektas.webp",
   },
   {
     name: "Dr. Çiğdem Karadağ",
