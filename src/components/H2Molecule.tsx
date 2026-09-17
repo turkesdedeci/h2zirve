@@ -4,19 +4,26 @@ import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import s from './h2molecule.module.css';
 
+// Zirvenin kendi gündemi ile milli vurgu dönüşümlü ilerler: teknik başlıklar
+// programdaki oturumlardan geliyor (yeşil ve beyaz hidrojen, elektroliz, yakıt
+// pili, amonyak, depolama, hidrojen vadileri), aralarına ülke vurgusu giriyor.
 const keywords = [
   'Hidrojen',
+  'Yeşil Hidrojen',
+  'Elektroliz',
   'Milli Teknoloji',
+  'Yakıt Pili',
+  'Beyaz Hidrojen',
   'Enerji Bağımsızlığı',
-  'Yerli Üretim',
+  'Hidrojen Vadisi',
   'Savunma Sanayi',
+  'Yeşil Amonyak',
+  'Sıfır Emisyon',
+  'Yerli Üretim',
+  'Hidrojen Depolama',
   'Türkiye Yüzyılı',
-  'Stratejik Güç',
+  'Hidrojen Ekonomisi',
   'Temiz Enerji',
-  'İnovasyon',
-  'Ar-Ge',
-  'Sürdürülebilirlik',
-  'Gelecek',
 ];
 
 const TRAIL = 82;

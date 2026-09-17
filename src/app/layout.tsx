@@ -28,7 +28,8 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   alternates: { canonical: "/" },
-  icons: { icon: "/logos/turkiye-hidrojen-zirvesi-logo-v4.png" },
+  // Sekme simgesi kare alev: yazılı logo 16 pikselde okunmuyordu.
+  icons: { icon: "/logos/h2-zirvesi-alev-kare.png", apple: "/logos/h2-zirvesi-alev-kare.png" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Türkiye Hidrojen Zirvesi 2026",

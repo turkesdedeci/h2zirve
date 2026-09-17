@@ -20,7 +20,7 @@ export default function PreviewHeader() {
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <a href="/" aria-label="Türkiye Hidrojen Zirvesi ana sayfası">
-          <Image src="/logos/turkiye-hidrojen-zirvesi-logo-v4.png" alt="Türkiye Hidrojen Zirvesi 2026" width={145} height={76} className={styles.brand} />
+          <Image src="/logos/h2-zirvesi-alev.png" alt="Türkiye Hidrojen Zirvesi 2026" width={125} height={174} priority className={styles.brand} />
         </a>
         <nav className={styles.desktopNav} aria-label="Ana menü">
           {links.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
