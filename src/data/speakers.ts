@@ -67,7 +67,7 @@ export const speakers: Speaker[] = [
   {
     name: "Dr. Ömer Faruk Tunçbilek",
     role: "Panel 1 Konuşmacısı",
-    affiliation: "Temiz Enerji Araştırma Enstitüsü (TEMEN) Başkanı",
+    affiliation: "TENMAK-TEMEN Başkanı",
     initials: "ÖT",
     photo: "/speakers/omer-faruk-tuncbilek.webp",
   },
@@ -151,6 +151,12 @@ export const speakers: Speaker[] = [
     photo: "/speakers/yuksel-kaplan.webp",
   },
   {
+    name: "Doç. Dr. Kadir Bektaş",
+    role: "Panel 3 Konuşmacısı",
+    affiliation: "UNFCCC Kıdemli Uzmanı (ERT) — Article 6 Teknik Uzmanı",
+    initials: "KB",
+  },
+  {
     name: "Dr. Çiğdem Karadağ",
     role: "Panel 3 Konuşmacısı",
     affiliation: "TÜBİTAK MAM",
@@ -161,7 +167,7 @@ export const speakers: Speaker[] = [
   {
     name: "Serkan Türk",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Türk Çimento",
+    affiliation: "Türkiye Çimento Sanayicileri Birliği AR-GE Enstitüsü Müdürü",
     initials: "ST",
     photo: "/speakers/serkan-turk-linkedin.webp",
   },
@@ -217,11 +223,6 @@ export const speakers: Speaker[] = [
     affiliation: "General Electric Aerospace-Senior Engineering Manager",
     initials: "KG",
     photo: "/speakers/kadir-gokhan-guler.webp",
-  },
-  {
-    name: "TBA",
-    role: "Panel 5 Konuşmacısı",
-    initials: "TBA",
   },
   {
     name: "Prof. Dr. Abdullah Yıldız",
@@ -283,10 +284,10 @@ export const speakerGroupDefinitions = [
     role: "Panel 1",
     preferredOrder: [
       "Prof. Dr. İbrahim Dinçer",
-      "Emrah Özdemir",
-      "Dr. Betül Erdör Türk",
       "Dr. Ömer Faruk Tunçbilek",
+      "Emrah Özdemir",
       "Gürsel Erul",
+      "Dr. Betül Erdör Türk",
     ],
   },
   {
@@ -299,11 +300,12 @@ export const speakerGroupDefinitions = [
     title: "Panel 3: Yeşil Hidrojen Üretimi ve Endüstriyel Uygulamalar",
     role: "Panel 3",
     preferredOrder: [
-      "Prof. Dr. Hasan Özcan",
+      "Doç. Dr. Canan Acar",
       "Prof. Dr. Can Erkey",
       "Prof. Dr. Selmiye Alkan Gürsel",
-      "Dr. Çiğdem Karadağ",
       "Prof. Dr. Yüksel Kaplan",
+      "Doç. Dr. Kadir Bektaş",
+      "Dr. Çiğdem Karadağ",
     ],
   },
   {
@@ -312,16 +314,23 @@ export const speakerGroupDefinitions = [
     role: "Panel 4",
     preferredOrder: [
       "Prof. Dr. Abdullah Yıldız",
-      "Serkan Türk",
-      "İsmail Erilhan",
-      "Ali Rıza Arslan",
-      "Demir Çelik",
       "Doç. Dr. Kağan Kayacı",
+      "Ali Rıza Arslan",
+      "İsmail Erilhan",
+      "Serkan Türk",
+      "Demir Çelik",
     ],
   },
   {
     id: "panel-5",
     title: "Panel 5: Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
     role: "Panel 5",
+    preferredOrder: [
+      "Prof. Dr. Hasan Özcan",
+      "Adnan Görgülü",
+      "Ongun Yoldemir",
+      "Kadir Gökhan Güler",
+      "Dr. Paulina Seyfert",
+    ],
   },
 ];
