@@ -5,6 +5,7 @@ import {
   kayitOnaySubject,
   kayitOnayText,
 } from "@/lib/kayitOnayMaili";
+import { mailFrom, mailReplyTo } from "@/lib/mailer";
 
 export const runtime = "nodejs";
 
@@ -138,9 +139,9 @@ export async function POST(request: Request) {
 
   try {
     await transporter.sendMail({
-      from: `"Türkiye Hidrojen Zirvesi 2026" <${user}>`,
+      from: mailFrom("Türkiye Hidrojen Zirvesi 2026"),
       to: email,
-      replyTo: user,
+      replyTo: mailReplyTo(),
       subject: kayitOnaySubject,
       text: kayitOnayText,
       html: kayitOnayHtml,

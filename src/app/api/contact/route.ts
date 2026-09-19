@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { mailFrom } from "@/lib/mailer";
 
 export const runtime = "nodejs";
 
@@ -91,7 +92,7 @@ export async function POST(request: Request) {
 
   try {
     await transporter.sendMail({
-      from: `"Türkiye Hidrojen Zirvesi" <${user}>`,
+      from: mailFrom("Türkiye Hidrojen Zirvesi"),
       to,
       replyTo: email,
       subject: `İletişim Formu: ${subject}`,
