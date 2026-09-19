@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { mailFrom } from "@/lib/mailer";
 
 export const runtime = "nodejs";
 
@@ -191,7 +192,7 @@ async function sendNotificationEmail(type: string, payload: Record<string, unkno
 
   try {
     await transporter.sendMail({
-      from: `"Türkiye Hidrojen Zirvesi" <${user}>`,
+      from: mailFrom("Türkiye Hidrojen Zirvesi"),
       to,
       replyTo: applicantEmail,
       subject: `Yeni ${label}`,

@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
+import { mailFrom } from "@/lib/mailer";
 
 export const runtime = "nodejs";
 
@@ -31,6 +32,57 @@ function escapeHtml(value: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+/**
+ * Mesajı Supabase'e yazar. İletişim formunun tek çıktısı e-posta olduğu için,
+ * mail gönderilemediğinde mesaj tamamen kayboluyordu; bu kayıt onu önler.
+ * Yazma başarısız olursa akışı durdurmaz, false döner.
+ */
+async function mesajiKaydet(
+  mesaj: {
+    ad_soyad: string;
+    email: string;
+    konu: string;
+    mesaj: string;
+  },
+  mailGonderildi: boolean
+) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !anonKey) {
+    console.warn("Supabase ayarları eksik, iletişim mesajı kaydedilemedi.");
+    return false;
+  }
+
+  try {
+    const response = await fetch(`${url}/rest/v1/iletisim_mesajlari`, {
+      method: "POST",
+      headers: {
+        apikey: anonKey,
+        Authorization: `Bearer ${anonKey}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({ ...mesaj, mail_gonderildi: mailGonderildi }),
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      console.error(
+        "İletişim mesajı kaydedilemedi",
+        response.status,
+        await response.text()
+      );
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("İletişim mesajı kaydedilemedi", error);
+    return false;
+  }
 }
 
 export async function POST(request: Request) {
@@ -72,14 +124,20 @@ export async function POST(request: Request) {
   const pass = process.env.SMTP_PASS;
   const to = process.env.CONTACT_TO ?? "h2zirvesi@tespam.org";
 
+  const mesaj = { ad_soyad: name, email, konu: subject, mesaj: message };
+
   if (!pass) {
-    return NextResponse.json(
-      {
-        error:
-          "Mesaj gönderilemedi. Lütfen tekrar deneyin veya h2zirvesi@tespam.org adresine e-posta gönderin.",
-      },
-      { status: 503 }
-    );
+    const kaydedildi = await mesajiKaydet(mesaj, false);
+
+    return kaydedildi
+      ? NextResponse.json({ ok: true, mailSent: false })
+      : NextResponse.json(
+          {
+            error:
+              "Mesaj gönderilemedi. Lütfen tekrar deneyin veya h2zirvesi@tespam.org adresine e-posta gönderin.",
+          },
+          { status: 503 }
+        );
   }
 
   const transporter = nodemailer.createTransport({
@@ -87,11 +145,16 @@ export async function POST(request: Request) {
     port,
     secure,
     auth: { user, pass },
+    // Mail sunucusu yanıt vermezse istek asılı kalmasın; mesajı veritabanına
+    // yazabilmek için zamanında hataya düşmesi gerekiyor.
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 
   try {
     await transporter.sendMail({
-      from: `"Türkiye Hidrojen Zirvesi" <${user}>`,
+      from: mailFrom("Türkiye Hidrojen Zirvesi"),
       to,
       replyTo: email,
       subject: `İletişim Formu: ${subject}`,
@@ -117,9 +180,19 @@ export async function POST(request: Request) {
       `,
     });
 
-    return NextResponse.json({ ok: true });
+    await mesajiKaydet(mesaj, true);
+
+    return NextResponse.json({ ok: true, mailSent: true });
   } catch (error) {
     console.error("Contact mail send failed", error);
+
+    // Güvenlik sibobu: mail gidemedi, mesaj kaybolmasın.
+    const kaydedildi = await mesajiKaydet(mesaj, false);
+
+    if (kaydedildi) {
+      return NextResponse.json({ ok: true, mailSent: false });
+    }
+
     return NextResponse.json(
       {
         error:

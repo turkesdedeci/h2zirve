@@ -4,6 +4,7 @@ import { useState } from "react";
 import PreviewHeader from "@/components/home/PreviewHeader";
 import TrialFooter from "@/components/home/TrialFooter";
 import { backupSubmission } from "@/lib/backupSubmission";
+import { kayitOnayGonder } from "@/lib/kayitOnayGonder";
 import { supabase } from "@/lib/supabase";
 
 const participantTypes = [
@@ -166,6 +167,7 @@ export default function Kayit() {
     }
 
     await backupSubmission("kayit", submission);
+    await kayitOnayGonder(form.email);
     setLoading(false);
     setSuccess(true);
   }
@@ -189,11 +191,23 @@ export default function Kayit() {
             </h1>
             <p className="mt-4 leading-relaxed text-h2-ink-2">
               Türkiye Hidrojen Zirvesi 2026 katılımcı kaydınız ekibimize iletildi.
-              Etkinlik bilgilendirmeleri için e-posta adresinizi takip edebilirsiniz.
+              Onay e-postası adresinize gönderildi.
+            </p>
+            <p className="mt-4 leading-relaxed text-h2-ink-2">
+              Zirveye ilişkin tüm duyuruları WhatsApp kanalımızdan paylaşacağız.
+              Programı takip edebilmek için kanala katılmanızı rica ederiz.
             </p>
             <a
-              href="/"
+              href="https://whatsapp.com/channel/0029VbDtjhnInlqIHuZUOp2H"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-block rounded-h2-md bg-h2-blue px-8 py-3 font-semibold text-white transition-all hover:bg-h2-blue-bright"
+            >
+              Duyuru Kanalına Katıl
+            </a>
+            <a
+              href="/"
+              className="mt-4 block text-h2-small font-semibold text-h2-cyan transition-opacity hover:opacity-80"
             >
               Ana Sayfaya Dön
             </a>
