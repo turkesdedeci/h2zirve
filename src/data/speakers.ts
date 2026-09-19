@@ -55,7 +55,7 @@ export const speakers: Speaker[] = [
     role: "Panel 5 Moderatörü",
     affiliation: "H2 TEAM Müdür Yardımcısı",
     initials: "HÖ",
-    photo: "/speakers/hasan-ozcan.webp",
+    photo: "/speakers/hasan-ozcan.png",
   },
   {
     name: "Doç. Dr. Canan Acar",
