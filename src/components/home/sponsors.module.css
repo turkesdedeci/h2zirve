@@ -5,3 +5,4 @@
 @media(prefers-reduced-motion:reduce) { .section * { transition: none !important; } }
 .heading h2 { font-size: clamp(36px,4vw,54px); font-weight: 650; line-height: 1.12; letter-spacing: -.04em; }.mainCopy h3 { font-size: clamp(28px,3vw,41px); font-weight: 650; line-height: 1.15; letter-spacing: -.04em; }.tier h3 { font-size: 14px; font-weight: 600; }.eyebrow,.mainLabel { font-size: 12px; letter-spacing: .08em; }.logo > span { font-size: 12px; letter-spacing: 0; }.logo > span > span { margin-left: 8px; color: #0066cc; }.logo:hover { background: #f4f8fd; }.join h3 { font-size: 25px; font-weight: 600; }.wordmark { font-size: 150px; }
 @media(max-width:600px) { .heading h2 { font-size: 35px; }.mainCopy h3 { font-size: 28px; }.join h3 { font-size: 24px; } }
+@media(min-width:901px) { .tier[data-tone=support] .logos { grid-template-columns: repeat(2,minmax(0,1fr)); } }
