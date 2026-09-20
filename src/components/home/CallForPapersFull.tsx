@@ -15,15 +15,15 @@ const topics = [
 
 const facts = [
   { label: "Son Başvuru", value: "22 Eylül 2026", accent: true },
-  { label: "En Yüksek Ödül", value: "1500 $" },
+  { label: "En Yüksek Ödül", value: "75.000 TL" },
   { label: "Poster Formatı", value: "A2 dikey" },
   { label: "Sunum Dili", value: "TR / EN" },
 ];
 
 const awards = [
-  { title: "Prof. Dr. T. Nejat Veziroğlu Özel Ödülü", amount: "1500 $", top: true },
-  { title: "İkincilik Ödülü", amount: "1000 $" },
-  { title: "Üçüncülük Ödülü", amount: "500 $" },
+  { title: "Prof. Dr. T. Nejat Veziroğlu Özel Ödülü", amount: "75.000 TL", top: true },
+  { title: "İkincilik Ödülü", amount: "50.000 TL" },
+  { title: "Üçüncülük Ödülü", amount: "25.000 TL" },
 ];
 
 const dates = [

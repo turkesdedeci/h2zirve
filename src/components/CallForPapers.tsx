@@ -21,9 +21,9 @@ const dates = [
 ];
 
 const awards = [
-  { title: "Prof. Dr. T. Nejat Veziroğlu Özel Ödülü", amount: "1500 $" },
-  { title: "İkincilik Ödülü", amount: "1000 $" },
-  { title: "Üçüncülük Ödülü", amount: "500 $" },
+  { title: "Prof. Dr. T. Nejat Veziroğlu Özel Ödülü", amount: "75.000 TL" },
+  { title: "İkincilik Ödülü", amount: "50.000 TL" },
+  { title: "Üçüncülük Ödülü", amount: "25.000 TL" },
 ];
 
 const journals = [
@@ -74,7 +74,7 @@ function CallForPapersPreview() {
         <dl className="divide-y divide-h2-border border-y border-h2-border">
           {[
             ["Son Başvuru", "22 Eylül 2026"],
-            ["En Yüksek Ödül", "1500 $"],
+            ["En Yüksek Ödül", "75.000 TL"],
             ["Poster Formatı", "A2 · Türkçe veya İngilizce"],
             ["Yayın İmkânı", "Seçilen çalışmalar için özel sayı daveti"],
           ].map(([label, value]) => (
