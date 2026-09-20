@@ -27,9 +27,7 @@ export default function TrialParticipation() {
             <path d="M205 220 285 186 354 218 274 255Z" fill="#1c75aa" stroke="#68d7ff"/>
             <path d="M205 220V259L274 294V255Z" fill="#0b3e70" stroke="#2782b8"/>
             <path d="M274 255 354 218V258L274 294Z" fill="#0a254d" stroke="#2782b8"/>
-            <path d="M313 98 423 145M313 109 395 145M313 121 375 148" stroke="#2878ae"/>
             <text x="324" y="192" fill="#cef4ff" fontSize="47" fontWeight="500">H₂</text>
-            <path d="M55 251 282 329M76 217 76 261M481 214 481 262" stroke="#00c8ff" strokeOpacity=".3" strokeDasharray="3 6"/>
           </svg>
           <div className={s.startup}><span>Startup başvuruları</span><strong>Ücretsiz değerlendirme</strong></div>
         </div>
