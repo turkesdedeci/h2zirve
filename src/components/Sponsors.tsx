@@ -29,6 +29,7 @@ const sponsorTiers = [
       { name: "Hidromek", src: "/logos/hidromek.png" },
       { name: "HORIBA", src: "/logos/horiba.svg" },
       { name: "Baş Yapı", src: "/logos/besyapi.jpg" },
+      { name: "Magnum Mühendislik", src: "/logos/magnum.png" },
     ],
   },
 ];
