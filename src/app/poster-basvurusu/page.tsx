@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PreviewHeader from "@/components/home/PreviewHeader";
 import TrialFooter from "@/components/home/TrialFooter";
 import { supabase } from "@/lib/supabase";
 import { backupSubmission } from "@/lib/backupSubmission";
+import { POSTER_SUBMISSION_DEADLINE as SUBMISSION_DEADLINE } from "@/lib/posterDeadline";
 
 const topics = [
   "Hidrojen üretim teknolojileri (elektroliz, termokimyasal vb.)",
@@ -79,7 +80,17 @@ export default function PosterBasvurusu() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [deadlinePassed, setDeadlinePassed] = useState(
+    () => Date.now() > SUBMISSION_DEADLINE.getTime()
+  );
   const fileRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (deadlinePassed) return;
+    const remaining = SUBMISSION_DEADLINE.getTime() - Date.now();
+    const timer = setTimeout(() => setDeadlinePassed(true), Math.max(remaining, 0));
+    return () => clearTimeout(timer);
+  }, [deadlinePassed]);
 
   const set = (key: keyof FormData) =>
     (
@@ -196,6 +207,12 @@ export default function PosterBasvurusu() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    if (Date.now() > SUBMISSION_DEADLINE.getTime()) {
+      setDeadlinePassed(true);
+      setError("Poster özeti başvuru süresi sona ermiştir.");
+      return;
+    }
 
     if (!EMAIL_RE.test(form.email)) {
       setFieldErrors((current) => ({
@@ -656,12 +673,24 @@ export default function PosterBasvurusu() {
               </div>
             )}
 
+            {deadlinePassed && (
+              <div className="rounded-h2-md border border-red-500/30 bg-red-500/10 px-4 py-3">
+                <p className="text-h2-small text-red-400">
+                  Poster özeti başvuru süresi sona ermiştir.
+                </p>
+              </div>
+            )}
+
             <button
               type="submit"
-              disabled={loading}
-              className="w-full rounded-h2-md bg-h2-blue py-4 text-base font-bold text-white transition-all hover:bg-h2-blue/85 hover:shadow-lg hover:shadow-h2-blue/20 disabled:opacity-50"
+              disabled={loading || deadlinePassed}
+              className="w-full rounded-h2-md bg-h2-blue py-4 text-base font-bold text-white transition-all hover:bg-h2-blue/85 hover:shadow-lg hover:shadow-h2-blue/20 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Gönderiliyor..." : "Poster Özeti Başvurusunu Gönder"}
+              {deadlinePassed
+                ? "Başvuru Süresi Doldu"
+                : loading
+                ? "Gönderiliyor..."
+                : "Poster Özeti Başvurusunu Gönder"}
             </button>
           </form>
         </div>
