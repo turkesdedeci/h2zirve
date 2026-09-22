@@ -2,9 +2,9 @@ import Image from "next/image";
 import s from "./sponsors.module.css";
 
 const tiers = [
-  { name: "Platin sponsor", tone: "platinum", logos: [{ name: "Hydrogenix", src: "/logos/hydrogenix.png", href: "https://www.hydrogenix.com.tr/", wide: true }] },
-  { name: "Altın sponsor", tone: "gold", logos: [{ name: "Lentatek", src: "/logos/lentatek.png", href: "https://www.lentatek.com/tr", wide: true }, { name: "Debak", src: "/logos/debak.jpg", href: "https://debak.com.tr/", wide: true }] },
-  { name: "Gümüş sponsor", tone: "silver", logos: [{ name: "Hidronerji", src: "/logos/hidronerji.png", href: "http://www.hidronerji.com.tr/", wide: false }, { name: "KUHyTech", src: "/logos/kuhytech.png", href: "https://kuhytech.ku.edu.tr/", wide: true }] },
+  { name: "Platin sponsor", tone: "platinum", logos: [{ name: "Hydrogenix", src: "/logos/hydrogenix.png", href: "https://www.hydrogenix.com.tr/", wide: true }, { name: "Roketsan", src: "/logos/roketsan.png", href: "https://www.roketsan.com.tr/", wide: true }] },
+  { name: "Altın sponsor", tone: "gold", logos: [{ name: "Lentatek", src: "/logos/lentatek.png", href: "https://www.lentatek.com/tr", wide: true }] },
+  { name: "Gümüş sponsor", tone: "silver", logos: [{ name: "Hidronerji", src: "/logos/hidronerji.png", href: "http://www.hidronerji.com.tr/", wide: false }, { name: "KUHyTech", src: "/logos/kuhytech.png", href: "https://kuhytech.ku.edu.tr/", wide: true }, { name: "Debak", src: "/logos/debak.jpg", href: "https://debak.com.tr/", wide: true }] },
   { name: "Destek sponsoru", tone: "support", logos: [{ name: "Hidromek", src: "/logos/hidromek.png", href: "https://www.hidromek.com/", wide: true }, { name: "HORIBA", src: "/logos/horiba.svg", href: "https://www.horiba.com/", wide: true }, { name: "Baş Yapı", src: "/logos/besyapi.jpg", href: "https://besyapi.com/", wide: false }, { name: "HaikuTech", src: "/logos/hakutech.png", href: "https://www.haikutech.com/", wide: true }, { name: "Magnum Mühendislik", src: "/logos/magnum.png", href: "", wide: true }] },
 ];
 

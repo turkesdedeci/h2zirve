@@ -18,6 +18,7 @@ type Logo = { src: string; name: string; scale: number };
 
 const SPONSORS: Logo[] = [
   { src: "/logos/hydrogenix.png", name: "Hydrogenix", scale: 1 },
+  { src: "/logos/roketsan.png", name: "Roketsan", scale: 1 },
   { src: "/logos/lentatek.png", name: "Lentatek", scale: 1 },
   { src: "/logos/debak.jpg", name: "Debak", scale: 1 },
   { src: "/logos/hidronerji.png", name: "Hidronerji", scale: 1.2 },

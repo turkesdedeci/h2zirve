@@ -4,15 +4,15 @@ const sponsorTiers = [
   {
     name: "Platin Sponsor",
     accent: "text-h2-ink-1",
-    logos: [{ name: "Hydrogenix", src: "/logos/hydrogenix.png" }],
+    logos: [
+      { name: "Hydrogenix", src: "/logos/hydrogenix.png" },
+      { name: "Roketsan", src: "/logos/roketsan.png" },
+    ],
   },
   {
     name: "Altın Sponsor",
     accent: "text-h2-amber",
-    logos: [
-      { name: "Lentatek", src: "/logos/lentatek.png" },
-      { name: "Debak", src: "/logos/debak.jpg" },
-    ],
+    logos: [{ name: "Lentatek", src: "/logos/lentatek.png" }],
   },
   {
     name: "Gümüş Sponsor",
@@ -20,6 +20,7 @@ const sponsorTiers = [
     logos: [
       { name: "Hidronerji", src: "/logos/hidronerji.png" },
       { name: "KUHyTech", src: "/logos/kuhytech.png" },
+      { name: "Debak", src: "/logos/debak.jpg" },
     ],
   },
   {
