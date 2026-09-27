@@ -20,7 +20,6 @@ const sponsorTiers = [
     logos: [
       { name: "Hidronerji", src: "/logos/hidronerji.png" },
       { name: "KUHyTech", src: "/logos/kuhytech.png" },
-      { name: "Debak", src: "/logos/debak.jpg" },
     ],
   },
   {
@@ -29,6 +28,7 @@ const sponsorTiers = [
     logos: [
       { name: "HORIBA", src: "/logos/horiba.svg" },
       { name: "Magnum Mühendislik", src: "/logos/magnum.png" },
+      { name: "Debak", src: "/logos/debak.jpg" },
     ],
   },
 ];
