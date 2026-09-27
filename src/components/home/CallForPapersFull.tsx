@@ -1,4 +1,5 @@
 import s from "./cfp.module.css";
+import PosterApplyLink from "@/components/PosterApplyLink";
 
 const topics = [
   "Hidrojen üretim teknolojileri",
@@ -61,9 +62,9 @@ export default function CallForPapersFull() {
           dergi özel sayılarına davet edilir.
         </p>
         <div className={s.headActions}>
-          <a className={s.primary} href="/poster-basvurusu">
+          <PosterApplyLink className={s.primary}>
             Poster özeti başvurusu yap <span aria-hidden="true">↗</span>
-          </a>
+          </PosterApplyLink>
           <a className={s.ghost} href="/templates/poster-extended-abstract.docx">
             Özet şablonunu indir <span aria-hidden="true">↓</span>
           </a>
@@ -169,9 +170,9 @@ export default function CallForPapersFull() {
             dosyası yükleme süreci, kabul bildirimi sonrasında açılır.
           </p>
         </div>
-        <a className={s.primary} href="/poster-basvurusu">
+        <PosterApplyLink className={s.primary}>
           Poster özeti başvurusu yap <span aria-hidden="true">↗</span>
-        </a>
+        </PosterApplyLink>
       </div>
     </section>
   );
