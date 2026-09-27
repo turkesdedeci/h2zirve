@@ -28,8 +28,9 @@ export default async function JuriPage({
   const { data: posters } = await supabaseAdmin
     .from("poster_basvurulari")
     .select("id, ad_soyad, kurum, poster_basligi, konu_basligi, pdf_url")
-    .neq("durum", "reddedildi")
-    .order("poster_basligi", { ascending: true });
+    .neq("durum", "reddedildi");
+
+  posters?.sort((a, b) => a.ad_soyad.localeCompare(b.ad_soyad, "tr"));
 
   const { data: mevcutDegerlendirmeler } = await supabaseAdmin
     .from("poster_degerlendirmeleri")
