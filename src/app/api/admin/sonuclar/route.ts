@@ -16,7 +16,8 @@ export async function GET(request: Request) {
 
   const { data: posterler, error: posterError } = await supabaseAdmin
     .from("poster_basvurulari")
-    .select("id, poster_basligi, ad_soyad, kurum, konu_basligi");
+    .select("id, poster_basligi, ad_soyad, kurum, konu_basligi")
+    .neq("durum", "reddedildi");
 
   if (posterError) {
     return NextResponse.json({ error: posterError.message }, { status: 500 });
