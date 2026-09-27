@@ -23,8 +23,6 @@ const SPONSORS: Logo[] = [
   { src: "/logos/debak.jpg", name: "Debak", scale: 1 },
   { src: "/logos/hidronerji.png", name: "Hidronerji", scale: 1.2 },
   { src: "/logos/kuhytech.png", name: "KUHyTech", scale: 1 },
-  { src: "/logos/hidromek.png", name: "Hidromek", scale: 1 },
-  { src: "/logos/besyapi.jpg", name: "Baş Yapı", scale: 1.15 },
 ];
 
 /**
