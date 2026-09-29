@@ -8,6 +8,21 @@ const tiers = [
   { name: "Destek sponsoru", tone: "support", logos: [{ name: "HORIBA", src: "/logos/horiba.svg", href: "https://www.horiba.com/", wide: true }, { name: "HaikuTech", src: "/logos/hakutech.png", href: "https://www.haikutech.com/", wide: true }, { name: "Magnum Mühendislik", src: "/logos/magnum.png", href: "", wide: true }, { name: "Debak", src: "/logos/debak.jpg", href: "https://debak.com.tr/", wide: true }] },
 ];
 
+const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
+  { name: "Bataryasan Enerji San. ve Tic. A.Ş.", logo: "/logos/bataryasan.png" },
+  { name: "AYBÜ Yenilenebilir Enerji Topluluğu", logo: "/logos/aybu-yenilenebilir-enerji.png" },
+  { name: "TÜBİTAK MAM", logo: "/logos/tubitak.png" },
+  { name: "Horiba", logo: "/logos/horiba.svg" },
+  { name: "Hidronerji Ltd. Şti.", logo: "/logos/hidronerji.png" },
+  { name: "BSR Proje", logo: "/logos/bsr-proje.png", dark: true },
+  { name: "Eskişehir Shell Eco-Marathon Takımı", logo: "/logos/hidroana.png", dark: true },
+  { name: "Hydrolyx Enerji", logo: "/logos/hydrolyx.png" },
+  { name: "AYBÜ HEZARFEN", logo: "/logos/aybu.png" },
+  { name: "Koç Üniversitesi (KUHyTech)", logo: "/logos/kuhytech.png" },
+  { name: "Armador Enerji & Yazılım", logo: "/logos/armador.png" },
+  { name: "Phoenix Enerji A.Ş.", logo: "/logos/phoenix.png" },
+];
+
 export default function TrialSponsors() {
   return <section id="sponsors" className={s.section}>
     <header className={s.heading}><div><p className={s.eyebrow}>Kurumsal destek</p><h2>Zirvenin arkasındaki<br /><span>güçlü destek.</span></h2></div><a href="/sponsorluk-basvurusu">Sponsor olarak yer alın <span aria-hidden="true">↗</span></a></header>
@@ -19,6 +34,7 @@ export default function TrialSponsors() {
       <h3><i aria-hidden="true" />{tier.name}</h3>
       <div className={s.logos}>{tier.logos.map(logo => logo.href ? <a className={s.logo} key={logo.name} href={logo.href} target="_blank" rel="noopener noreferrer" aria-label={`${logo.name} resmi sitesi (yeni sekme)`}><Image src={logo.src} alt={logo.name} width={280} height={120} unoptimized={logo.src.endsWith(".svg")} className={logo.wide ? s.wide : s.tall} /><span>{logo.name} <span aria-hidden="true">↗</span></span></a> : <div className={s.logo} key={logo.name} aria-label={logo.name}><Image src={logo.src} alt={logo.name} width={280} height={120} unoptimized={logo.src.endsWith(".svg")} className={logo.wide ? s.wide : s.tall} /><span>{logo.name}</span></div>)}</div>
     </div>)}</div>
+    <div className={s.exhibitors}><h3><i aria-hidden="true" />Stand katılımcıları</h3><ul>{exhibitors.map(ex => <li key={ex.name} data-dark={ex.dark || undefined}>{ex.logo && <Image src={ex.logo} alt="" width={96} height={28} unoptimized={ex.logo.endsWith(".svg")} />}{ex.name}</li>)}</ul></div>
     <div className={s.join}><div><p>Türkiye Hidrojen Zirvesi 2026</p><h3>Markanız da burada yer alsın.</h3></div><a href="/sponsorluk-basvurusu">Sponsorluk başvurusu <span aria-hidden="true">↗</span></a></div>
   </section>;
 }

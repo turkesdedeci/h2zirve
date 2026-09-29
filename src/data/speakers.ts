@@ -207,12 +207,6 @@ export const speakers: Speaker[] = [
     photo: "/speakers/ongun-yoldemir.webp",
   },
   {
-    name: "TBA",
-    role: "Açılış Konuşması",
-    affiliation: "Enerji Bakanı / Bakan Yardımcısı",
-    initials: "TBA",
-  },
-  {
     name: "Adnan Görgülü",
     role: "Panel 5 Konuşmacısı",
     affiliation: "Siemens Enerji",
@@ -277,7 +271,6 @@ export const speakerGroupDefinitions = [
       "Prof. Dr. Selahattin Çelik",
       "Oğuzhan Akyener",
       "Prof. Dr. Ali Cengiz Köseoğlu",
-      "TBA",
     ],
   },
   {
