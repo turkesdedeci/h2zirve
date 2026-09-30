@@ -123,7 +123,6 @@ export const day2: Session[] = [
       "Ali Rıza Arslan | Hydrogenix Yönetim Kurulu Başkanı",
       "İsmail Erilhan | Linde Gaz İş Geliştirme Direktörü",
       "Serkan Türk | Türkiye Çimento Sanayicileri Birliği AR-GE Enstitüsü Müdürü",
-      "Demir Çelik | TBA",
     ],
   },
   { time: "15:15 - 15:30", type: "break", title: "Kahve Arası" },
