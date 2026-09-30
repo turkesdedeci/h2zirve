@@ -23,6 +23,8 @@ const SPONSORS: Logo[] = [
   { src: "/logos/debak.jpg", name: "Debak", scale: 1 },
   { src: "/logos/hidronerji.png", name: "Hidronerji", scale: 1.2 },
   { src: "/logos/kuhytech.png", name: "KUHyTech", scale: 1 },
+  { src: "/logos/iahe.png", name: "IAHE", scale: 1 },
+  { src: "/logos/ijhe.png", name: "International Journal of Hydrogen Energy", scale: 1 },
 ];
 
 /**

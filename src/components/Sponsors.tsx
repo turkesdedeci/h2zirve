@@ -20,6 +20,8 @@ const sponsorTiers = [
     logos: [
       { name: "Hidronerji", src: "/logos/hidronerji.png" },
       { name: "KUHyTech", src: "/logos/kuhytech.png" },
+      { name: "IAHE", src: "/logos/iahe.png" },
+      { name: "International Journal of Hydrogen Energy", src: "/logos/ijhe.png" },
     ],
   },
   {
