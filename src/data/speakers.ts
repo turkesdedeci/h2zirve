@@ -96,7 +96,7 @@ export const speakers: Speaker[] = [
   {
     name: "Dr. Paulina Seyfert",
     role: "Panel 5 Konuşmacısı",
-    affiliation: "Almanya Enerji Bakanlığı",
+    affiliation: "Türk-Alman Enerji Ortaklığı Enerji Sekreterliği",
     initials: "PS",
     photo: "/speakers/pauline-seyfert.webp",
   },
@@ -104,7 +104,7 @@ export const speakers: Speaker[] = [
     name: "Deniz Demirci",
     role: "Panel 2 Konuşmacısı",
     affiliation:
-      "Savunma Sanayii Başkanlığı (SSB) Gelişmiş Malzemeler ve Enerji Programı Yöneticisi",
+      "Savunma Sanayii Başkanlığı (SSB) İleri Malzeme ve İmalat Teknolojileri Müdürü",
     initials: "DD",
     photo: "/speakers/deniz-demirci.webp",
   },

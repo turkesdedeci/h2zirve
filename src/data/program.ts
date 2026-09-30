@@ -70,7 +70,7 @@ export const day1: Session[] = [
     speakers: [
       "Prof. Dr. Mustafa İlbaş | ASFAT Genel Müdürü",
       "Dr. Uğur Kayasal | ROKETSAN Yeni Nesil Güç Sistemleri Müdürü",
-      "Deniz Demirci | Savunma Sanayii Başkanlığı (SSB) Gelişmiş Malzemeler ve Enerji Programı Yöneticisi",
+      "Deniz Demirci | Savunma Sanayii Başkanlığı (SSB) İleri Malzeme ve İmalat Teknolojileri Müdürü",
       "Ömer Erdemir | LENTATEK A.Ş. Hidrojen ve Yakıt Pili Teknolojileri Teknik Lideri",
     ],
   },
@@ -136,7 +136,7 @@ export const day2: Session[] = [
       "Adnan Görgülü | Siemens Enerji",
       "Ongun Yoldemir | Jeoloji Mühendisi-Türkiye Beyaz Hidrojen Potansiyeli ve Çalışmaları",
       "Kadir Gökhan Güler | General Electric Aerospace-Senior Engineering Manager",
-      "Dr. Paulina Seyfert | Almanya Enerji Bakanlığı",
+      "Dr. Paulina Seyfert | Türk-Alman Enerji Ortaklığı Enerji Sekreterliği",
     ],
   },
   {
