@@ -120,8 +120,8 @@ export const day2: Session[] = [
     moderator: "Prof. Dr. Abdullah Yıldız | AYBÜ Rektör Yardımcısı",
     speakers: [
       "Doç. Dr. Kağan Kayacı | Kale Seramik",
-      "Ali Rıza Arslan | Hydrogenix",
-      "İsmail Erilhan | Linde Gaz",
+      "Ali Rıza Arslan | Hydrogenix Yönetim Kurulu Başkanı",
+      "İsmail Erilhan | Linde Gaz İş Geliştirme Direktörü",
       "Serkan Türk | Türkiye Çimento Sanayicileri Birliği AR-GE Enstitüsü Müdürü",
       "Demir Çelik | TBA",
     ],
