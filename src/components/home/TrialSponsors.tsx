@@ -13,6 +13,7 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
   { name: "AYBÜ Yenilenebilir Enerji Topluluğu", logo: "/logos/aybu-yenilenebilir-enerji.png" },
   { name: "TÜBİTAK MAM", logo: "/logos/tubitak.png" },
   { name: "Horiba", logo: "/logos/horiba.svg" },
+  { name: "Hydrogenix", logo: "/logos/hydrogenix.png" },
   { name: "Hidronerji Ltd. Şti.", logo: "/logos/hidronerji.png" },
   { name: "BSR Proje", logo: "/logos/bsr-proje.png", dark: true },
   { name: "Eskişehir Shell Eco-Marathon Takımı", logo: "/logos/hidroana.png", dark: true },
