@@ -22,6 +22,7 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
   { name: "Koç Üniversitesi (KUHyTech)", logo: "/logos/kuhytech.png" },
   { name: "Armador Enerji & Yazılım", logo: "/logos/armador.png" },
   { name: "Phoenix Enerji A.Ş.", logo: "/logos/phoenix.png" },
+  { name: "ICET Enerji A.Ş.", logo: "/logos/icet-enerji.png" },
 ];
 
 export default function TrialSponsors() {
