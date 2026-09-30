@@ -195,7 +195,7 @@ export const speakers: Speaker[] = [
   {
     name: "Doç. Dr. Kağan Kayacı",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Kale Seramik",
+    affiliation: "Kaleseramik Ar-Ge Merkezi Direktörü",
     initials: "KK",
     photo: "/speakers/kagan-kayaci.webp",
   },

@@ -119,7 +119,7 @@ export const day2: Session[] = [
     title: "Panel 4: Sanayide Hidrojen Kullanımı",
     moderator: "Prof. Dr. Abdullah Yıldız | AYBÜ Rektör Yardımcısı",
     speakers: [
-      "Doç. Dr. Kağan Kayacı | Kale Seramik",
+      "Doç. Dr. Kağan Kayacı | Kaleseramik Ar-Ge Merkezi Direktörü",
       "Ali Rıza Arslan | Hydrogenix Yönetim Kurulu Başkanı",
       "İsmail Erilhan | Linde Gaz İş Geliştirme Direktörü",
       "Serkan Türk | Türkiye Çimento Sanayicileri Birliği AR-GE Enstitüsü Müdürü",
