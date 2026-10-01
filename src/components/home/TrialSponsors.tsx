@@ -22,7 +22,7 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
   { name: "Koç Üniversitesi (KUHyTech)", logo: "/logos/kuhytech.png" },
   { name: "Armador Enerji & Yazılım", logo: "/logos/armador.png" },
   { name: "Phoenix Enerji A.Ş.", logo: "/logos/phoenix.png" },
-  { name: "Furnex Enerji A.Ş." },
+  { name: "Furnex Enerji A.Ş.", logo: "/logos/furnex.png" },
   { name: "ICET Enerji A.Ş.", logo: "/logos/icet-enerji.png" },
   { name: "DEBAK", logo: "/logos/debak.jpg" },
 ];
