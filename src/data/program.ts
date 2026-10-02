@@ -132,7 +132,7 @@ export const day2: Session[] = [
     title: "Panel 5: Hidrojen Ekonomisi, Ar-Ge ve Ticarileşme",
     moderator: "Prof. Dr. Hasan Özcan | H2 TEAM Müdür Yardımcısı",
     speakers: [
-      "Adnan Görgülü | Siemens Enerji",
+      "Adnan Görgülü | Siemens Enerji-Director Hydrogen Compression",
       "Ongun Yoldemir | Jeoloji Mühendisi-Türkiye Beyaz Hidrojen Potansiyeli ve Çalışmaları",
       "Kadir Gökhan Güler | General Electric Aerospace-Senior Engineering Manager",
       "Dr. Paulina Seyfert | Türk-Alman Enerji Ortaklığı Enerji Sekreterliği",

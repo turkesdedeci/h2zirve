@@ -25,6 +25,7 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
   { name: "Furnex Enerji A.Ş.", logo: "/logos/furnex.png" },
   { name: "ICET Enerji A.Ş.", logo: "/logos/icet-enerji.png" },
   { name: "DEBAK", logo: "/logos/debak.jpg" },
+  { name: "Arıtaş Enerji A.Ş." },
 ];
 
 export default function TrialSponsors() {

@@ -203,7 +203,7 @@ export const speakers: Speaker[] = [
   {
     name: "Adnan Görgülü",
     role: "Panel 5 Konuşmacısı",
-    affiliation: "Siemens Enerji",
+    affiliation: "Siemens Enerji-Director Hydrogen Compression",
     initials: "AG",
     photo: "/speakers/adnan-gorgulu-linkedin.webp",
   },
