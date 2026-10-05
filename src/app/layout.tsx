@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/hero-visual.png",
-        width: 1543,
-        height: 842,
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
         alt: "Türkiye Hidrojen Zirvesi 2026",
       },
     ],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Türkiye Hidrojen Zirvesi 2026",
     description: siteDescription,
-    images: ["/hero-visual.png"],
+    images: ["/og-image.png"],
   },
 };
 
