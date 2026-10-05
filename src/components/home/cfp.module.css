@@ -53,6 +53,15 @@
 .apply h2 { font-family: var(--font-display), sans-serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 650; letter-spacing: -.03em; line-height: 1.15; }
 .apply p { margin-top: 10px; max-width: 520px; color: #bcd3e8; font-size: 14px; line-height: 1.7; }
 
+.pGroup { margin-top: 36px; }
+.pGroup h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; font-family: var(--font-display), sans-serif; font-size: 20px; font-weight: 650; letter-spacing: -.02em; color: #f2f5fa; }
+.pGroup h3 span { font-family: inherit; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #00c8ff; }
+.pList { margin-top: 14px; border-top: 1px solid #1c2c46; }
+.pItem { display: grid; grid-template-columns: 56px minmax(0, 1fr) 200px; gap: 20px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid #1c2c46; }
+.pNo { font-family: var(--font-display), sans-serif; font-size: 13px; font-weight: 650; color: #00c8ff; }
+.pTitle { font-size: 14.5px; line-height: 1.55; color: #d3dfec; }
+.pAuthor { font-size: 13px; color: #91a8c8; letter-spacing: .02em; text-align: right; }
+
 .cfp :is(a):focus-visible { outline: 2px solid #00c8ff; outline-offset: 5px; }
 
 @media (max-width: 900px) {
@@ -61,6 +70,11 @@
   .awards { grid-template-columns: 1fr; }
   .twoCol { grid-template-columns: 1fr; }
   .topics { grid-template-columns: 1fr; gap: 0; }
+}
+
+@media (max-width: 760px) {
+  .pItem { grid-template-columns: 44px minmax(0, 1fr); gap: 4px 14px; }
+  .pAuthor { grid-column: 2; text-align: left; }
 }
 
 @media (max-width: 600px) {

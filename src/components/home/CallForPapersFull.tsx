@@ -1,5 +1,6 @@
 import s from "./cfp.module.css";
 import PosterApplyLink from "@/components/PosterApplyLink";
+import { posterGroups } from "@/data/accepted-posters";
 
 const topics = [
   "Hidrojen üretim teknolojileri",
@@ -46,6 +47,8 @@ const journals = [
   "Energy Studies (TR Dizin)",
   "International Journal of Energy Horizon (DergiPark)",
 ];
+
+const posterTotal = posterGroups.reduce((n, g) => n + g.posters.length, 0);
 
 export default function CallForPapersFull() {
   return (
@@ -96,6 +99,32 @@ export default function CallForPapersFull() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className={s.section} id="kabul-edilen-posterler">
+        <div className={s.sectionHead}>
+          <h2>Kabul edilen posterler</h2>
+          <p>
+            Değerlendirme sonucunda poster sunumuna kabul edilen {posterTotal} çalışma, konu
+            gruplarına göre listelenmiştir. Sorumlu yazar adları kısmen gizlenmiştir.
+          </p>
+        </div>
+        {posterGroups.map((group) => (
+          <div key={group.id} className={s.pGroup}>
+            <h3>
+              {group.name} <span>{group.posters.length} poster</span>
+            </h3>
+            <ul className={s.pList}>
+              {group.posters.map((poster) => (
+                <li key={poster.no} className={s.pItem}>
+                  <span className={s.pNo}>{poster.no}</span>
+                  <span className={s.pTitle}>{poster.title}</span>
+                  <span className={s.pAuthor}>{poster.author}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
 
       <div className={s.section}>
