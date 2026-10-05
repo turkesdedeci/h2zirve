@@ -35,7 +35,7 @@ const journals = [
 const formatRules = [
   "A2 dikey poster formatı",
   "Türkçe veya İngilizce sunum",
-  "Minimum 28 pt okunabilir yazı boyutu",
+  "Okunabilir yazı boyutu (gövde metni için en az 16 pt önerilir)",
   "Başlık, yazarlar, kurum, anahtar kelimeler, amaç, yöntem, sonuç ve önem bilgisi",
 ];
 
