@@ -9,23 +9,27 @@ const tiers = [
 ];
 
 const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
-  { name: "Bataryasan Enerji San. ve Tic. A.Ş.", logo: "/logos/bataryasan.png" },
-  { name: "AYBÜ Yenilenebilir Enerji Topluluğu", logo: "/logos/aybu-yenilenebilir-enerji.png" },
   { name: "TÜBİTAK MAM", logo: "/logos/tubitak.png" },
+  { name: "ASFAT", logo: "/logos/asfat.png" },
+  { name: "Hidrojen Teknolojileri Derneği", logo: "/logos/hidrojen-teknolojileri-dernegi.png" },
+  { name: "YTÜ Temiz Enerji Enstitüsü", logo: "/logos/ytu.svg" },
   { name: "Horiba", logo: "/logos/horiba.svg" },
   { name: "Hydrogenix", logo: "/logos/hydrogenix.png" },
-  { name: "Hidronerji Ltd. Şti.", logo: "/logos/hidronerji.png" },
-  { name: "BSR Proje", logo: "/logos/bsr-proje.png", dark: true },
-  { name: "Eskişehir Shell Eco-Marathon Takımı", logo: "/logos/hidroana.png", dark: true },
-  { name: "Hydrolyx Enerji", logo: "/logos/hydrolyx.png" },
-  { name: "AYBÜ HEZARFEN", logo: "/logos/aybu.png" },
   { name: "Koç Üniversitesi (KUHyTech)", logo: "/logos/kuhytech.png" },
-  { name: "Armador Enerji & Yazılım", logo: "/logos/armador.png" },
+  { name: "Hidronerji Ltd. Şti.", logo: "/logos/hidronerji.png" },
   { name: "Phoenix Enerji A.Ş.", logo: "/logos/phoenix.png" },
   { name: "Furnex Enerji A.Ş.", logo: "/logos/furnex.png" },
+  { name: "Armador Enerji & Yazılım", logo: "/logos/armador.png" },
   { name: "ICET Enerji A.Ş.", logo: "/logos/icet-enerji.png" },
+  { name: "Bataryasan Enerji San. ve Tic. A.Ş.", logo: "/logos/bataryasan.png" },
+  { name: "Hydrolyx Enerji", logo: "/logos/hydrolyx.png" },
+  { name: "BSR Proje", logo: "/logos/bsr-proje.png", dark: true },
+  { name: "Arıtaş Enerji A.Ş.", logo: "/logos/aritas.png" },
   { name: "DEBAK", logo: "/logos/debak.jpg" },
-  { name: "Arıtaş Enerji A.Ş." },
+  { name: "H2TEAM", logo: "/logos/h2team.png" },
+  { name: "Eskişehir Shell Eco-Marathon Takımı", logo: "/logos/hidroana.png", dark: true },
+  { name: "AYBÜ HEZARFEN", logo: "/logos/aybu.png" },
+  { name: "AYBÜ Yenilenebilir Enerji Topluluğu", logo: "/logos/aybu-yenilenebilir-enerji.png" },
 ];
 
 export default function TrialSponsors() {
