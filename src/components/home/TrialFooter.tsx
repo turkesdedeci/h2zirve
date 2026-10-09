@@ -80,7 +80,10 @@ export default function TrialFooter() {
         </div>
 
         <div className={styles.footerBottom}>
-          <p>© 2026 Türkiye Hidrojen Zirvesi. Tüm hakları saklıdır.</p>
+          <p>
+            © 2026 Türkiye Hidrojen Zirvesi. Tüm hakları saklıdır. ·{" "}
+            <a href="/komiteler">Komiteler</a>
+          </p>
           <p>
             AYBÜ ev sahipliği ve liderliğinde, H2TEAM koordinasyonunda, TESPAM iş
             birliğiyle.

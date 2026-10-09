@@ -28,9 +28,10 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
   { name: "Hydrolyx Enerji", logo: "/logos/hydrolyx.png" },
   { name: "BSR Proje", logo: "/logos/bsr-proje.png", dark: true },
   { name: "Arıtaş Enerji A.Ş.", logo: "/logos/aritas.png" },
+  { name: "HyVise", logo: "/logos/hyvise.png" },
   { name: "DEBAK", logo: "/logos/debak.jpg" },
   { name: "H2TEAM", logo: "/logos/h2team.png" },
-  { name: "Eskişehir Shell Eco-Marathon Takımı", logo: "/logos/hidroana.png", dark: true },
+  { name: "ESTÜ HİDROANA", logo: "/logos/hidroana.png", dark: true },
   { name: "AYBÜ HEZARFEN", logo: "/logos/aybu.png" },
   { name: "AYBÜ Yenilenebilir Enerji Topluluğu", logo: "/logos/aybu-yenilenebilir-enerji.png" },
 ];

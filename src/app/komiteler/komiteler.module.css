@@ -1,0 +1,23 @@
+.wrap { width: min(100% - 32px, 960px); margin-inline: auto; padding: 72px 0 96px; }
+.eyebrow { color: var(--t-accent); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.title { margin: 12px 0 8px; font-family: var(--font-display), system-ui, sans-serif; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; color: var(--t-ink-1); }
+.lead { margin: 0 0 48px; color: var(--t-ink-2); font-size: 16px; line-height: 1.7; max-width: 62ch; }
+.group { margin-bottom: 56px; }
+.group h2 { margin: 0 0 16px; font-family: var(--font-display), system-ui, sans-serif; font-size: 20px; color: var(--t-ink-1); }
+.table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.table th, .table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--t-border); vertical-align: top; }
+.table th { color: var(--t-ink-3); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border-bottom-color: var(--t-border-soft); }
+.table td { color: var(--t-ink-1); }
+.table td:last-child { color: var(--t-ink-2); }
+.num { width: 48px; color: var(--t-ink-3); font-variant-numeric: tabular-nums; }
+.note { margin-top: 12px; color: var(--t-ink-3); font-size: 13px; }
+
+@media (max-width: 640px) {
+  .wrap { padding: 48px 0 72px; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table thead { display: none; }
+  .table tr { padding: 12px 0; border-bottom: 1px solid var(--t-border); }
+  .table td { padding: 2px 0; border: 0; }
+  .num { display: none !important; }
+  .table td:last-child { font-size: 14px; }
+}
