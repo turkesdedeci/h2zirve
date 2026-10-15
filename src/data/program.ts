@@ -122,7 +122,7 @@ export const day2: Session[] = [
       "Doç. Dr. Kağan Kayacı | Kaleseramik Ar-Ge Merkezi Direktörü",
       "Ali Rıza Arslan | Hydrogenix Yönetim Kurulu Başkanı",
       "İsmail Erilhan | Linde Gaz İş Geliştirme Direktörü",
-      "Serkan Türk | Türkiye Çimento Sanayicileri Birliği AR-GE Enstitüsü Müdürü",
+      "Serkan Türk | TÜRKÇİMENTO AR-GE Müdürü",
     ],
   },
   { time: "15:15 - 15:30", type: "break", title: "Kahve Arası" },

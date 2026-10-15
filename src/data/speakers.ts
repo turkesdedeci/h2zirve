@@ -168,7 +168,7 @@ export const speakers: Speaker[] = [
   {
     name: "Serkan Türk",
     role: "Panel 4 Konuşmacısı",
-    affiliation: "Türkiye Çimento Sanayicileri Birliği AR-GE Enstitüsü Müdürü",
+    affiliation: "TÜRKÇİMENTO AR-GE Müdürü",
     initials: "ST",
     photo: "/speakers/serkan-turk-linkedin.webp",
   },
