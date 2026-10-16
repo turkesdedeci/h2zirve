@@ -54,7 +54,7 @@ export const komiteler: Komite[] = [
       { name: "Prof. Dr. Mustafa İlbaş", org: "ASFAT / Gazi Üniversitesi" },
       { name: "Ongun Yoldemir", org: "Jeoloji Mühendisi" },
       { name: "Ömer Erdemir", org: "LENTATEK A.Ş." },
-      { name: "Dr. Paulina Seyfert", org: "Almanya Enerji Bakanlığı" },
+      { name: "Dr. Paulina Seyfert", org: "Türk-Alman Enerji Ortaklığı" },
       { name: "Prof. Dr. Ramazan Solmaz", org: "Bingöl Üniversitesi" },
       { name: "Prof. Dr. Selmiye Alkan Gürsel", org: "Sabancı Üniversitesi" },
       { name: "Prof. Dr. Serhat Karyeyen", org: "Gazi Üniversitesi" },

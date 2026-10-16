@@ -73,7 +73,7 @@ export const speakers: Speaker[] = [
   },
   {
     name: "Emrah Özdemir",
-    role: "Panel 1 Konuşmacısı",
+    role: "Panel 5 Konuşmacısı",
     affiliation: "Niğde Belediye Başkanı",
     initials: "EÖ",
     photo: "/speakers/emrah-ozdemir-portrait.webp",
@@ -274,7 +274,6 @@ export const speakerGroupDefinitions = [
     preferredOrder: [
       "Prof. Dr. İbrahim Dinçer",
       "Dr. Ömer Faruk Tunçbilek",
-      "Emrah Özdemir",
       "Gürsel Erul",
       "Dr. Betül Erdör Türk",
     ],
@@ -319,6 +318,7 @@ export const speakerGroupDefinitions = [
       "Ongun Yoldemir",
       "Kadir Gökhan Güler",
       "Dr. Paulina Seyfert",
+      "Emrah Özdemir",
     ],
   },
 ];

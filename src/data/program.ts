@@ -56,7 +56,6 @@ export const day1: Session[] = [
     speakers: [
       "Prof. Dr. İbrahim Dinçer | Ontario Tech University",
       "Dr. Ömer Faruk Tunçbilek | TENMAK-TEMEN Başkanı",
-      "Emrah Özdemir | Niğde Belediye Başkanı",
       "Gürsel Erul | Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Çevre Yönetimi Genel Müdür Yardımcısı",
       "Dr. Betül Erdör Türk | TÜBİTAK Hidrojen ve Yakıt Pili Teknolojileri Araştırma Grubu Lideri",
     ],
@@ -136,6 +135,7 @@ export const day2: Session[] = [
       "Ongun Yoldemir | Jeoloji Mühendisi-Türkiye Beyaz Hidrojen Potansiyeli ve Çalışmaları",
       "Kadir Gökhan Güler | General Electric Aerospace-Senior Engineering Manager",
       "Dr. Paulina Seyfert | Türk-Alman Enerji Ortaklığı Enerji Sekreterliği",
+      "Emrah Özdemir | Niğde Belediye Başkanı",
     ],
   },
   {
