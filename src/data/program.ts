@@ -35,13 +35,12 @@ export const day1: Session[] = [
       "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
     ],
   },
-  { time: "11:00 - 11:15", type: "break", title: "Kahve Arası" },
   {
     time: "11:15 - 12:00",
     type: "keynote",
     title: "Keynote Konuşmacı: Prof. Dr. İbrahim Dinçer",
   },
-  { time: "12:00 - 13:15", type: "lunch", title: "Öğle Yemeği & Sergi" },
+  { time: "12:00 - 13:15", type: "lunch", title: "Öğle Arası & Sergi" },
   {
     time: "13:30 - 14:15",
     type: "keynote",
@@ -111,7 +110,7 @@ export const day2: Session[] = [
     type: "poster",
     title: "Poster Sunumları Jüri Puanlama",
   },
-  { time: "12:45 - 13:45", type: "lunch", title: "Öğle Yemeği & Cuma Namazı" },
+  { time: "12:45 - 13:45", type: "lunch", title: "Öğle Arası & Cuma Namazı" },
   {
     time: "14:00 - 15:15",
     type: "panel",
