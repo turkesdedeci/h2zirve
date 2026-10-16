@@ -8,7 +8,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 const TOKEN_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export const JURI_SON_TARIH = "21 Ekim 2026 Çarşamba, 23:59";
+export const JURI_SON_TARIH = "23 Ekim 2026 Cuma, 13:00";
 
 export function isValidToken(token: unknown): token is string {
   return typeof token === "string" && TOKEN_RE.test(token);
