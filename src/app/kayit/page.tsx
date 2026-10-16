@@ -76,6 +76,7 @@ export default function Kayit() {
           ? event.target.checked
           : event.target.value;
       setForm((current) => ({ ...current, [key]: value }));
+      setFieldErrors((current) => ({ ...current, [key]: undefined }));
     };
 
   function handleEmail(event: React.ChangeEvent<HTMLInputElement>) {
@@ -114,27 +115,33 @@ export default function Kayit() {
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
 
-    if (!EMAIL_RE.test(form.email)) {
-      setFieldErrors((current) => ({
-        ...current,
-        email: "Geçerli bir e-posta adresi girin",
-      }));
-      return;
-    }
-
+    // Tarayıcının görünmeyen "required" balonu yerine alan altında açık uyarı gösterilir.
+    const errors: Partial<Record<keyof FormData, string>> = {};
+    if (!form.ad_soyad.trim()) errors.ad_soyad = "Ad soyad girin";
+    if (!form.email.trim()) errors.email = "E-posta adresi girin";
+    else if (!EMAIL_RE.test(form.email)) errors.email = "Geçerli bir e-posta adresi girin";
     if (form.telefon && !PHONE_RE.test(form.telefon)) {
-      setFieldErrors((current) => ({
-        ...current,
-        telefon: "Telefon numarasını 10-20 karakter arasında girin",
-      }));
-      return;
+      errors.telefon = "Telefon numarasını 10-20 karakter arasında girin";
     }
+    if (!form.kurum.trim()) errors.kurum = "Kurum veya şirket adınızı girin";
+    if (!form.katilimci_tipi) errors.katilimci_tipi = "Katılımcı tipini seçin";
+    if (!form.katilim_gunu) errors.katilim_gunu = "Katılım gününü seçin (22 Ekim, 23 Ekim veya her iki gün)";
+    if (!form.kvkk_onayi) errors.kvkk_onayi = "Devam etmek için onay vermeniz gerekiyor";
 
-    if (!form.kvkk_onayi) {
-      setFieldErrors((current) => ({
-        ...current,
-        kvkk_onayi: "Devam etmek için onay vermeniz gerekiyor",
-      }));
+    setFieldErrors(errors);
+    const ids: Record<string, string> = {
+      ad_soyad: "kayit-ad-soyad",
+      email: "kayit-email",
+      telefon: "kayit-telefon",
+      kurum: "kayit-kurum",
+      katilimci_tipi: "kayit-katilimci-tipi",
+      katilim_gunu: "kayit-katilim-gunu",
+      kvkk_onayi: "kayit-kvkk",
+    };
+    const first = Object.keys(ids).find((key) => errors[key as keyof FormData]);
+    if (first) {
+      document.getElementById(ids[first])?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setError("Lütfen kırmızı ile işaretli alanları doldurup tekrar deneyin.");
       return;
     }
 
@@ -237,7 +244,7 @@ export default function Kayit() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} noValidate className="space-y-6">
             <section className="min-w-0 space-y-4 rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
               <h2 className="font-display text-h2-h3 font-semibold text-h2-ink-1">
                 Katılımcı Bilgileri
@@ -251,8 +258,11 @@ export default function Kayit() {
                   value={form.ad_soyad}
                   onChange={set("ad_soyad")}
                   placeholder="Adınız ve soyadınız"
-                  className={inputCls}
+                  className={`${inputCls} ${fieldErrors.ad_soyad ? "border-red-500/60" : ""}`}
                 />
+                {fieldErrors.ad_soyad && (
+                  <p className="mt-1 text-h2-micro text-red-400">{fieldErrors.ad_soyad}</p>
+                )}
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -299,8 +309,11 @@ export default function Kayit() {
                     value={form.kurum}
                     onChange={set("kurum")}
                     placeholder="Kurum veya şirket adınız"
-                    className={inputCls}
+                    className={`${inputCls} ${fieldErrors.kurum ? "border-red-500/60" : ""}`}
                   />
+                  {fieldErrors.kurum && (
+                    <p className="mt-1 text-h2-micro text-red-400">{fieldErrors.kurum}</p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="kayit-unvan" className={labelCls}>Unvan / Görev</label>
@@ -327,7 +340,7 @@ export default function Kayit() {
                   required
                   value={form.katilimci_tipi}
                   onChange={set("katilimci_tipi")}
-                  className={inputCls}
+                  className={`${inputCls} ${fieldErrors.katilimci_tipi ? "border-red-500/60" : ""}`}
                 >
                   <option value="" disabled>
                     Seçin
@@ -338,9 +351,12 @@ export default function Kayit() {
                     </option>
                   ))}
                 </select>
+                {fieldErrors.katilimci_tipi && (
+                  <p className="mt-1 text-h2-micro text-red-400">{fieldErrors.katilimci_tipi}</p>
+                )}
               </div>
 
-              <div>
+              <div id="kayit-katilim-gunu">
                 <label className={labelCls}>Katılım Günü *</label>
                 <div className="grid gap-3 sm:grid-cols-3">
                   {attendanceDays.map((day) => (
@@ -365,6 +381,9 @@ export default function Kayit() {
                     </label>
                   ))}
                 </div>
+                {fieldErrors.katilim_gunu && (
+                  <p className="mt-2 text-h2-micro text-red-400">{fieldErrors.katilim_gunu}</p>
+                )}
               </div>
 
               <div>
@@ -404,7 +423,7 @@ export default function Kayit() {
               </div>
             </section>
 
-            <section className="min-w-0 rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
+            <section id="kayit-kvkk" className="min-w-0 rounded-h2-lg border border-h2-border bg-h2-surface-2 p-6">
               <label className="flex cursor-pointer gap-3 text-h2-small leading-relaxed text-h2-ink-2">
                 <input
                   required
