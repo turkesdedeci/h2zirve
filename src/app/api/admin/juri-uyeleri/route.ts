@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { pinFor } from "@/lib/juriAuth";
 
 export const runtime = "nodejs";
 
@@ -23,7 +24,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json({ juriler: data });
+  return NextResponse.json({ juriler: (data ?? []).map((j) => ({ ...j, pin: pinFor(j.token) })) });
 }
 
 export async function POST(request: Request) {
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json({ juri: data });
+  return NextResponse.json({ juri: { ...data, pin: pinFor(data.token) } });
 }
 
 export async function PATCH(request: Request) {

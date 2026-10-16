@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { sessionFromCookieHeader } from "@/lib/juriAuth";
 
 export const runtime = "nodejs";
 
@@ -35,6 +36,13 @@ export async function POST(request: Request) {
 
   if (!TOKEN_RE.test(token) || !TOKEN_RE.test(posterId)) {
     return NextResponse.json({ error: "Geçersiz token veya poster." }, { status: 400 });
+  }
+
+  if (!sessionFromCookieHeader(request.headers.get("cookie"), token)) {
+    return NextResponse.json(
+      { error: "Oturum süresi dolmuş. Sayfayı yenileyip PIN'i tekrar girin." },
+      { status: 401 },
+    );
   }
 
   const scores = {

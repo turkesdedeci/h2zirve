@@ -9,6 +9,7 @@ interface Juri {
   ad_soyad: string;
   email: string | null;
   token: string;
+  pin?: string;
   aktif: boolean;
   created_at: string;
 }
@@ -231,6 +232,7 @@ export default function AdminJuriPage() {
               <div>
                 <p className="font-semibold text-h2-ink-1">{juri.ad_soyad}</p>
                 {juri.email && <p className="text-h2-micro text-h2-ink-3">{juri.email}</p>}
+                {juri.pin && <p className="text-h2-micro text-h2-ink-3">PIN: <span className="font-mono text-h2-ink-1">{juri.pin}</span></p>}
               </div>
               <div className="flex items-center gap-3">
                 <button

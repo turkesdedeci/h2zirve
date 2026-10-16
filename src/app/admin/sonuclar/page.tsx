@@ -4,8 +4,19 @@ import { useEffect, useState } from "react";
 import PreviewHeader from "@/components/home/PreviewHeader";
 import TrialFooter from "@/components/home/TrialFooter";
 
+interface JuriIlerleme {
+  juri_id: string;
+  ad_soyad: string;
+  email: string | null;
+  aktif: boolean;
+  puanlanan: number;
+  toplam: number;
+  son_guncelleme: string | null;
+}
+
 interface Sonuc {
   poster_id: string;
+  poster_no?: string;
   poster_basligi: string;
   ad_soyad: string;
   kurum: string;
@@ -32,6 +43,7 @@ export default function AdminSonuclarPage() {
   const [girisHata, setGirisHata] = useState("");
 
   const [sonuclar, setSonuclar] = useState<Sonuc[]>([]);
+  const [juriIlerleme, setJuriIlerleme] = useState<JuriIlerleme[]>([]);
   const [yukleniyor, setYukleniyor] = useState(false);
   const [hata, setHata] = useState("");
 
@@ -48,6 +60,7 @@ export default function AdminSonuclarPage() {
         return false;
       }
       setSonuclar(data.sonuclar);
+      setJuriIlerleme(data.juriIlerleme ?? []);
       return true;
     } catch {
       setHata("Bağlantı hatası.");
@@ -162,7 +175,10 @@ export default function AdminSonuclarPage() {
                 >
                   <td className="px-4 py-3 text-h2-ink-3">{i + 1}</td>
                   <td className="px-4 py-3">
-                    <p className="font-semibold text-h2-ink-1">{s.poster_basligi}</p>
+                    <p className="font-semibold text-h2-ink-1">
+                      {s.poster_no ? `${s.poster_no} · ` : ""}
+                      {s.poster_basligi}
+                    </p>
                     <p className="mt-1 text-h2-micro text-h2-ink-3">{s.konu_basligi}</p>
                   </td>
                   <td className="px-4 py-3 text-h2-ink-2">
@@ -198,6 +214,34 @@ export default function AdminSonuclarPage() {
                   </td>
                 </tr>
               )}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="mb-3 mt-10 font-display text-h2-h3 font-semibold text-h2-ink-1">Jüri ilerlemesi</h2>
+        <div className="overflow-x-auto rounded-h2-lg border border-h2-border">
+          <table className="w-full min-w-[600px] border-collapse text-left text-h2-small">
+            <thead>
+              <tr className="border-b border-h2-border bg-h2-surface-2 text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
+                <th className="px-4 py-3">Jüri</th>
+                <th className="px-4 py-3">E-posta</th>
+                <th className="px-4 py-3 text-center">Puanlanan</th>
+                <th className="px-4 py-3">Son hareket</th>
+              </tr>
+            </thead>
+            <tbody>
+              {juriIlerleme.map((j) => (
+                <tr key={j.juri_id} className="border-b border-h2-border/60 bg-h2-bg/40">
+                  <td className="px-4 py-3 text-h2-ink-1">{j.ad_soyad}</td>
+                  <td className="px-4 py-3 text-h2-ink-2">{j.email ?? "-"}</td>
+                  <td className={`px-4 py-3 text-center font-semibold ${j.puanlanan === j.toplam ? "text-h2-cyan" : j.puanlanan === 0 ? "text-red-400" : "text-h2-ink-1"}`}>
+                    {j.puanlanan} / {j.toplam}
+                  </td>
+                  <td className="px-4 py-3 text-h2-ink-3">
+                    {j.son_guncelleme ? new Date(j.son_guncelleme).toLocaleString("tr-TR") : "Henüz başlamadı"}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

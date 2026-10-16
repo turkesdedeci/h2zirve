@@ -1,7 +1,10 @@
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { posterGroups } from "@/data/accepted-posters";
 import eslesme from "@/data/juri-poster-eslesme.json";
+import { JURI_SON_TARIH, cookieName, hasSession } from "@/lib/juriAuth";
+import JuriPinForm from "./JuriPinForm";
 import JuriDegerlendirmeForm, { type Poster, type MevcutDegerlendirme } from "./JuriDegerlendirmeForm";
 
 const TOKEN_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -27,6 +30,11 @@ export default async function JuriPage({
     notFound();
   }
 
+  const jar = await cookies();
+  if (!hasSession(jar.get(cookieName(token))?.value, token)) {
+    return <JuriPinForm token={token} juriAdi={juror.ad_soyad} />;
+  }
+
   // Jüri yalnızca kabul edilen ve final A2 PDF'i alınmış posterleri görür.
   const links = eslesme as Record<string, { id: string; pdf: string }>;
   const posters: Poster[] = posterGroups.flatMap((g) =>
@@ -45,6 +53,7 @@ export default async function JuriPage({
   return (
     <JuriDegerlendirmeForm
       token={token}
+      sonTarih={JURI_SON_TARIH}
       juriAdi={juror.ad_soyad}
       posterler={posters}
       mevcutDegerlendirmeler={(mevcutDegerlendirmeler ?? []) as MevcutDegerlendirme[]}
