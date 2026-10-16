@@ -6,10 +6,9 @@ import TrialFooter from "@/components/home/TrialFooter";
 
 export interface Poster {
   id: string;
-  ad_soyad: string;
-  kurum: string;
-  poster_basligi: string;
-  konu_basligi: string;
+  no: string;
+  title: string;
+  konu: string;
   pdf_url: string;
 }
 
@@ -28,8 +27,8 @@ const kriterler = [
   { key: "bilimsel_icerik", label: "Bilimsel İçerik / Özgünlük" },
   { key: "metodoloji", label: "Metodoloji / Veri Kalitesi" },
   { key: "gorsel_tasarim", label: "Görsel Tasarım ve Düzen" },
-  { key: "sunum_netligi", label: "Sunum Netliği" },
-  { key: "soru_cevap", label: "Soru-Cevap Performansı" },
+  { key: "sunum_netligi", label: "Sunum Netliği ve Anlaşılırlık" },
+  { key: "soru_cevap", label: "Özgün Katkı ve Uygulanabilirlik" },
 ] as const;
 
 type KriterKey = (typeof kriterler)[number]["key"];
@@ -75,11 +74,15 @@ function PosterCard({
   );
   const [hata, setHata] = useState("");
 
-  const tamamlandi = kriterler.every((k) => puan[k.key] > 0) && puan.genel_puan > 0;
+  const tamamlandi = kriterler.every((k) => puan[k.key] > 0);
+  // Genel puan (1-10): kriter ortalamasının 2 katı; jüri yalnızca 5 kriteri 1-5 ile puanlar.
+  const genelPuan = tamamlandi
+    ? Math.min(10, Math.max(1, Math.round((kriterler.reduce((t, k) => t + puan[k.key], 0) / kriterler.length) * 2)))
+    : 0;
 
   async function kaydet() {
     if (!tamamlandi) {
-      setHata("Tüm kriterleri ve genel puanı doldurun.");
+      setHata("Tüm kriterleri puanlayın.");
       setDurum("error");
       return;
     }
@@ -95,6 +98,7 @@ function PosterCard({
           token,
           poster_id: poster.id,
           ...puan,
+          genel_puan: genelPuan,
         }),
       });
 
@@ -122,14 +126,11 @@ function PosterCard({
       >
         <div>
           <p className="text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
-            {poster.konu_basligi || "Konu belirtilmemiş"}
+            {poster.no} · {poster.konu}
           </p>
           <h3 className="mt-1 font-display text-h2-h4 font-semibold text-h2-ink-1">
-            {poster.poster_basligi}
+            {poster.title}
           </h3>
-          <p className="mt-1 text-h2-small text-h2-ink-2">
-            {poster.ad_soyad} · {poster.kurum}
-          </p>
         </div>
         <span className="flex shrink-0 items-center gap-2">
           {durum === "saved" && (
@@ -149,7 +150,7 @@ function PosterCard({
             rel="noreferrer"
             className="inline-block text-h2-small font-semibold text-h2-blue hover:text-h2-blue-bright"
           >
-            Genişletilmiş Özet PDF&apos;ini Görüntüle →
+            Posteri Görüntüle (A2 PDF) →
           </a>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -178,27 +179,9 @@ function PosterCard({
             ))}
           </div>
 
-          <div>
-            <label className="mb-1.5 block text-h2-micro font-semibold uppercase tracking-wider text-h2-ink-3">
-              Genel Puan: {puan.genel_puan || "-"} / 10
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {Array.from({ length: 10 }, (_, i) => i + 1).map((v) => (
-                <button
-                  key={v}
-                  type="button"
-                  onClick={() => setPuan((p) => ({ ...p, genel_puan: v }))}
-                  className={`h-10 w-10 rounded-h2-md border text-h2-small font-semibold transition-colors ${
-                    puan.genel_puan === v
-                      ? "border-h2-cyan bg-h2-cyan/20 text-h2-ink-1"
-                      : "border-h2-border bg-h2-bg/45 text-h2-ink-2 hover:border-h2-cyan/45"
-                  }`}
-                >
-                  {v}
-                </button>
-              ))}
-            </div>
-          </div>
+          <p className="text-h2-small text-h2-ink-2">
+            Genel puan (otomatik): <span className="font-semibold text-h2-ink-1">{genelPuan || "-"} / 10</span>
+          </p>
 
           <div>
             <label
@@ -268,8 +251,9 @@ export default function JuriDegerlendirmeForm({
           </h1>
           <p className="mt-5 max-w-2xl text-h2-body leading-relaxed text-h2-ink-2">
             {tamamlananSayi} / {posterler.length} poster değerlendirildi. Her posteri
-            açıp puanladıktan sonra &quot;Puanları Kaydet&quot; butonuna basın; istediğiniz
-            zaman dönüp güncelleyebilirsiniz.
+            açıp PDF&apos;ini inceleyin, beş kriteri 1 (zayıf) ile 5 (çok iyi) arasında puanlayın ve
+            &quot;Puanları Kaydet&quot; butonuna basın; istediğiniz zaman dönüp güncelleyebilirsiniz.
+            Kendi öğrencinizin veya kurumunuzun posterini puanlamayın.
           </p>
         </div>
 

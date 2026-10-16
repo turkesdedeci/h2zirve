@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { posterGroups } from "@/data/accepted-posters";
+import eslesme from "@/data/juri-poster-eslesme.json";
 import JuriDegerlendirmeForm, { type Poster, type MevcutDegerlendirme } from "./JuriDegerlendirmeForm";
 
 const TOKEN_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -25,12 +27,13 @@ export default async function JuriPage({
     notFound();
   }
 
-  const { data: posters } = await supabaseAdmin
-    .from("poster_basvurulari")
-    .select("id, ad_soyad, kurum, poster_basligi, konu_basligi, pdf_url")
-    .neq("durum", "reddedildi");
-
-  posters?.sort((a, b) => a.ad_soyad.localeCompare(b.ad_soyad, "tr"));
+  // Jüri yalnızca kabul edilen ve final A2 PDF'i alınmış posterleri görür.
+  const links = eslesme as Record<string, { id: string; pdf: string }>;
+  const posters: Poster[] = posterGroups.flatMap((g) =>
+    g.posters
+      .filter((p) => links[p.no])
+      .map((p) => ({ id: links[p.no].id, no: p.no, title: p.title, konu: g.name, pdf_url: links[p.no].pdf })),
+  );
 
   const { data: mevcutDegerlendirmeler } = await supabaseAdmin
     .from("poster_degerlendirmeleri")
@@ -43,7 +46,7 @@ export default async function JuriPage({
     <JuriDegerlendirmeForm
       token={token}
       juriAdi={juror.ad_soyad}
-      posterler={(posters ?? []) as Poster[]}
+      posterler={posters}
       mevcutDegerlendirmeler={(mevcutDegerlendirmeler ?? []) as MevcutDegerlendirme[]}
     />
   );
