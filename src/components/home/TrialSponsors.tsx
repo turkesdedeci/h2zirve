@@ -34,6 +34,7 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
   { name: "ESTÜ HİDROANA", logo: "/logos/hidroana.png", dark: true },
   { name: "AYBÜ HEZARFEN", logo: "/logos/aybu.png" },
   { name: "AYBÜ Yenilenebilir Enerji Topluluğu", logo: "/logos/aybu-yenilenebilir-enerji.png" },
+  { name: "AEROQOREX" },
 ];
 
 export default function TrialSponsors() {
