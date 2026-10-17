@@ -26,10 +26,11 @@ const awards = [
   { title: "Üçüncülük Ödülü", amount: "10.000 TL" },
 ];
 
-const journals = [
-  "International Journal of Hydrogen Energy (SCI)",
-  "Energy Studies (TR Dizin)",
-  "International Journal of Energy Horizon (DergiPark)",
+const journals: { name: string; href?: string }[] = [
+  { name: "International Journal of Hydrogen Energy (SCI)" },
+  { name: "Energies (MDPI) Special Issue: Advances in Hydrogen Technologies: Production, Fuel Cells, Systems and Applications (son tarih: 20 Nisan 2027)", href: "https://www.mdpi.com/si/291850" },
+  { name: "Energy Studies (TR Dizin)" },
+  { name: "International Journal of Energy Horizon (DergiPark)" },
 ];
 
 const formatRules = [
@@ -228,9 +229,15 @@ export default function CallForPapers({
             </p>
             <ul className="mt-5 space-y-3">
               {journals.map((journal) => (
-                <li key={journal} className="flex gap-3 text-h2-small text-h2-ink-2">
+                <li key={journal.name} className="flex gap-3 text-h2-small text-h2-ink-2">
                   <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-h2-blue-bright" />
-                  <span>{journal}</span>
+                  {journal.href ? (
+                    <a href={journal.href} target="_blank" rel="noopener noreferrer" className="underline decoration-h2-blue-bright/50 underline-offset-2 hover:text-h2-ink-1">
+                      {journal.name}
+                    </a>
+                  ) : (
+                    <span>{journal.name}</span>
+                  )}
                 </li>
               ))}
             </ul>

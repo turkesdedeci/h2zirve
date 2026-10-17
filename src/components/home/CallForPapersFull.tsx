@@ -42,10 +42,11 @@ const formatRules = [
   "Başlık, yazarlar, kurum, anahtar kelimeler, amaç, yöntem, sonuç ve önem bilgisi",
 ];
 
-const journals = [
-  "International Journal of Hydrogen Energy (SCI)",
-  "Energy Studies (TR Dizin)",
-  "International Journal of Energy Horizon (DergiPark)",
+const journals: { name: string; href?: string }[] = [
+  { name: "International Journal of Hydrogen Energy (SCI)" },
+  { name: "Energies (MDPI) Special Issue: Advances in Hydrogen Technologies: Production, Fuel Cells, Systems and Applications (son tarih: 20 Nisan 2027)", href: "https://www.mdpi.com/si/291850" },
+  { name: "Energy Studies (TR Dizin)" },
+  { name: "International Journal of Energy Horizon (DergiPark)" },
 ];
 
 const posterTotal = posterGroups.reduce((n, g) => n + g.posters.length, 0);
@@ -184,7 +185,15 @@ export default function CallForPapersFull() {
             </p>
             <ul>
               {journals.map((journal) => (
-                <li key={journal}>{journal}</li>
+                <li key={journal.name}>
+                  {journal.href ? (
+                    <a href={journal.href} target="_blank" rel="noopener noreferrer">
+                      {journal.name}
+                    </a>
+                  ) : (
+                    journal.name
+                  )}
+                </li>
               ))}
             </ul>
           </div>

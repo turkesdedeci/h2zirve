@@ -9,6 +9,7 @@ import TrialFooter from "@/components/home/TrialFooter";
 import TrialHero from "@/components/home/TrialHero";
 import TrialParticipation from "@/components/home/TrialParticipation";
 import TrialProgram from "@/components/home/TrialProgram";
+import TrialSpecialIssues from "@/components/home/TrialSpecialIssues";
 import TrialSponsors from "@/components/home/TrialSponsors";
 import TrialVenue from "@/components/home/TrialVenue";
 import styles from "@/components/home/preview.module.css";
@@ -156,6 +157,8 @@ export default function Home() {
         <TrialProgram />
 
         <TrialParticipation />
+
+        <TrialSpecialIssues />
 
         <TrialSponsors />
 
