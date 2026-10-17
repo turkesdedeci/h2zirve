@@ -48,6 +48,7 @@ export const speakers: Speaker[] = [
     role: "Açılış Konuşması",
     affiliation: "TENMAK Başkanı",
     initials: "AK",
+    photo: "/speakers/bugrahan.png",
   },
   {
     name: "Prof. Dr. Erol Arcaklıoğlu",
