@@ -44,6 +44,12 @@ export const speakers: Speaker[] = [
     photo: "/speakers/ali-cengiz-koseoglu.webp",
   },
   {
+    name: "Dr. Abdullah Buğrahan Karaveli",
+    role: "Açılış Konuşması",
+    affiliation: "TENMAK Başkanı",
+    initials: "AK",
+  },
+  {
     name: "Prof. Dr. Erol Arcaklıoğlu",
     role: "Panel 1 Moderatörü",
     affiliation: "YÖK Yürütme Kurulu Üyesi",
@@ -265,6 +271,7 @@ export const speakerGroupDefinitions = [
       "Prof. Dr. Selahattin Çelik",
       "Oğuzhan Akyener",
       "Prof. Dr. Ali Cengiz Köseoğlu",
+      "Dr. Abdullah Buğrahan Karaveli",
     ],
   },
   {

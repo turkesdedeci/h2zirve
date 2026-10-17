@@ -33,6 +33,7 @@ export const day1: Session[] = [
       "Prof. Dr. Selahattin Çelik - AYBÜ H2TEAM (10 dk)",
       "Oğuzhan Akyener - TESPAM Başkanı (10 dk)",
       "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
+      "Dr. Abdullah Buğrahan Karaveli - TENMAK Başkanı",
     ],
   },
   {
