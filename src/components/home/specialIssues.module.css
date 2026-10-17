@@ -17,12 +17,17 @@
 .cta:hover { background: #1c7fe0; }
 .others { display: flex; flex-direction: column; gap: 14px; }
 .others > p { font-size: 15px; line-height: 1.6; color: #acbdd5; }
-.card { display: flex; flex-direction: column; gap: 6px; padding: 22px 26px; background: #0e1d3a; border: 1px solid #294569; border-left: 4px solid #00c8ff; }
-.card b { font-family: var(--font-display), sans-serif; font-size: 19px; font-weight: 600; line-height: 1.25; }
-.card span { font-size: 13px; color: #8da7c8; }
+.card { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 20px; padding: 16px 22px 16px 16px; background: #0e1d3a; border: 1px solid #294569; border-left: 4px solid #00c8ff; transition: background .2s, border-color .2s; }
+.card:hover { background: #12264a; border-color: #3a5f8f; border-left-color: #00c8ff; }
+.cover { display: block; width: 96px; aspect-ratio: 3 / 4; background: #fff; overflow: hidden; box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
+.cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cardCopy { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.cardCopy b { font-family: var(--font-display), sans-serif; font-size: 19px; font-weight: 600; line-height: 1.25; }
+.cardCopy span { font-size: 13px; color: #8da7c8; }
+.cardCopy em { margin-top: 4px; font-style: normal; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #00c8ff; }
 .more { margin-top: auto; display: inline-flex; align-items: center; min-height: 44px; gap: 24px; border-bottom: 1px solid #49617e; font-size: 14px; align-self: flex-start; }
 .section a:focus-visible { outline: 2px solid #00c8ff; outline-offset: 5px; }
 @media (hover: hover) { .banner:hover img { transform: scale(1.03); } }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .section { padding: 48px 18px; } .copy { padding: 22px 20px 26px; } .meta { grid-template-columns: 1fr; } .cta { align-self: stretch; justify-content: space-between; } }
+@media (max-width: 600px) { .section { padding: 48px 18px; } .card { grid-template-columns: 76px 1fr; gap: 16px; } .cover { width: 76px; } .copy { padding: 22px 20px 26px; } .meta { grid-template-columns: 1fr; } .cta { align-self: stretch; justify-content: space-between; } }
 @media (prefers-reduced-motion: reduce) { .section * { transition: none !important; } }

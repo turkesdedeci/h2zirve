@@ -4,9 +4,24 @@ import s from "./specialIssues.module.css";
 const ENERGIES_URL = "https://www.mdpi.com/si/291850";
 
 const others = [
-  { name: "International Journal of Hydrogen Energy", note: "SCI" },
-  { name: "Energy Studies", note: "TR Dizin" },
-  { name: "International Journal of Energy Horizon", note: "DergiPark" },
+  {
+    name: "International Journal of Hydrogen Energy",
+    note: "Elsevier · SCI",
+    cover: "/logos/ijhe.png",
+    href: "https://www.sciencedirect.com/journal/international-journal-of-hydrogen-energy",
+  },
+  {
+    name: "Energy Studies",
+    note: "TESPAM · TR Dizin",
+    cover: "/special-issues/ijes-cover.png",
+    href: "https://dergipark.org.tr/tr/pub/ijes",
+  },
+  {
+    name: "International Journal of Energy Horizon",
+    note: "AYBÜ H2TEAM · DergiPark",
+    cover: "/special-issues/ijeh-cover.png",
+    href: "https://dergipark.org.tr/tr/pub/ijeh",
+  },
 ];
 
 export default function TrialSpecialIssues() {
@@ -50,10 +65,16 @@ export default function TrialSpecialIssues() {
             değerlendirilmek üzere davet edilir.
           </p>
           {others.map((journal) => (
-            <div className={s.card} key={journal.name}>
-              <b>{journal.name}</b>
-              <span>{journal.note}</span>
-            </div>
+            <a className={s.card} key={journal.name} href={journal.href} target="_blank" rel="noopener noreferrer" aria-label={`${journal.name} dergi sayfası (yeni sekme)`}>
+              <span className={s.cover}>
+                <Image src={journal.cover} alt="" width={160} height={213} sizes="96px" />
+              </span>
+              <span className={s.cardCopy}>
+                <b>{journal.name}</b>
+                <span>{journal.note}</span>
+                <em aria-hidden="true">Dergi sayfası ↗</em>
+              </span>
+            </a>
           ))}
           <a className={s.more} href="/poster-cagrisi">
             Poster çağrısı ve şablonlar <span aria-hidden="true">→</span>
