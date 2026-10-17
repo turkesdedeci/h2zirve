@@ -30,8 +30,8 @@ export default function TrialSpecialIssues() {
       <header className={s.heading}>
         <p className={s.eyebrow}>Özel sayılar</p>
         <h2 id="ozel-sayilar-baslik">
-          Seçilen çalışmalar<br />
-          <span>özel sayılara davet edilir.</span>
+          Çalışmalarınız için<br />
+          <span>özel sayı fırsatları.</span>
         </h2>
       </header>
 
@@ -49,6 +49,10 @@ export default function TrialSpecialIssues() {
           <div className={s.copy}>
             <p className={s.label}><span aria-hidden="true">◆</span> Energies (MDPI) özel sayısı</p>
             <h3>Advances in Hydrogen Technologies: Production, Fuel Cells, Systems and Applications</h3>
+            <p className={s.open}>
+              Özel sayı yalnızca zirve posterlerine değil, <strong>tüm yayınlara açıktır</strong>; makaleler
+              20 Nisan 2027&apos;ye kadar gönderilebilir.
+            </p>
             <dl className={s.meta}>
               <div><dt>Konuk editörler</dt><dd>Prof. Dr. Selahattin Çelik<br />Prof. Dr. Kamil Arslan</dd></div>
               <div><dt>Son gönderim tarihi</dt><dd>20 Nisan 2027</dd></div>
@@ -62,7 +66,7 @@ export default function TrialSpecialIssues() {
         <div className={s.others}>
           <p>
             Zirvede sunulan posterlerden seçilenler, genişletilmiş makale olarak aşağıdaki dergilerin özel sayılarında
-            değerlendirilmek üzere davet edilir.
+            da değerlendirilmek üzere davet edilir.
           </p>
           {others.map((journal) => (
             <a className={s.card} key={journal.name} href={journal.href} target="_blank" rel="noopener noreferrer" aria-label={`${journal.name} dergi sayfası (yeni sekme)`}>

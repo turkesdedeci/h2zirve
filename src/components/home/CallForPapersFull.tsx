@@ -44,7 +44,7 @@ const formatRules = [
 
 const journals: { name: string; href?: string }[] = [
   { name: "International Journal of Hydrogen Energy (SCI)" },
-  { name: "Energies (MDPI) Special Issue: Advances in Hydrogen Technologies: Production, Fuel Cells, Systems and Applications (son tarih: 20 Nisan 2027)", href: "https://www.mdpi.com/si/291850" },
+  { name: "Energies (MDPI) Special Issue: Advances in Hydrogen Technologies: Production, Fuel Cells, Systems and Applications (tüm yayınlara açık, son tarih: 20 Nisan 2027)", href: "https://www.mdpi.com/si/291850" },
   { name: "Energy Studies (TR Dizin)" },
   { name: "International Journal of Energy Horizon (DergiPark)" },
 ];

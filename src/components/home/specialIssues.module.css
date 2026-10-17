@@ -10,6 +10,8 @@
 .copy { padding: 28px 32px 32px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .label { display: flex; align-items: center; gap: 10px; color: #e8a33d; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; }
 .copy h3 { font-family: var(--font-display), sans-serif; font-weight: 600; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.2; letter-spacing: -.02em; }
+.open { font-size: 15px; line-height: 1.6; color: #cfdcf0; padding: 12px 16px; background: rgba(0, 200, 255, .08); border-left: 3px solid #00c8ff; }
+.open strong { color: #fff; }
 .meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; margin-top: 4px; }
 .meta dt { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #8da7c8; }
 .meta dd { margin: 4px 0 0; font-size: 15px; color: #e4ebf7; }
