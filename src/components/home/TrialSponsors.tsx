@@ -35,6 +35,8 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
   { name: "AYBÜ HEZARFEN", logo: "/logos/aybu.png" },
   { name: "AYBÜ Yenilenebilir Enerji Topluluğu", logo: "/logos/aybu-yenilenebilir-enerji.png" },
   { name: "AEROQOREX" },
+  { name: "Ion Membran A.Ş." },
+  { name: "TESPAM", logo: "/logos/tespam.png" },
 ];
 
 export default function TrialSponsors() {
