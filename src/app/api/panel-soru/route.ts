@@ -7,9 +7,21 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   let body: { oturum?: unknown; ad_soyad?: unknown; soru?: unknown; kime?: unknown; website?: unknown };
+  let raw: string;
   try {
-    body = await request.json();
+    raw = await request.text();
   } catch {
+    return NextResponse.json({ error: "İstek okunamadı." }, { status: 400 });
+  }
+  if (raw.length > 4096) {
+    return NextResponse.json({ error: "İstek çok büyük." }, { status: 413 });
+  }
+  try {
+    body = JSON.parse(raw);
+  } catch {
+    return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
     return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });
   }
 
@@ -37,7 +49,9 @@ export async function POST(request: Request) {
   const ad = typeof body.ad_soyad === "string" ? body.ad_soyad.trim().slice(0, 80) : "";
 
   // Salonda herkes aynı kampüs ağından gelebilir; sınır bilerek yüksek tutuldu.
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
+  const ip = request.headers.get("x-real-ip")?.trim()
+    || request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
+    || "unknown";
   if (tooManyAttempts(`soru:${ip}`, 200, 10 * 60 * 1000)) {
     return NextResponse.json({ error: "Çok fazla istek. Lütfen biraz sonra tekrar deneyin." }, { status: 429 });
   }
