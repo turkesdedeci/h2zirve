@@ -232,12 +232,13 @@ function PosterCard({
       </button>
 
       {acik && (
-        <div className="mt-5 space-y-5 border-t border-h2-border pt-5">
+        <div className="mt-5 grid gap-6 border-t border-h2-border pt-5 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="space-y-5">
           <a
             href={poster.pdf_url}
             target="_blank"
             rel="noreferrer"
-            className="inline-block text-h2-small font-semibold text-h2-blue hover:text-h2-blue-bright"
+            className="inline-block text-h2-small font-semibold text-white underline underline-offset-4 hover:text-h2-cyan"
           >
             Posteri Görüntüle (A2 PDF) →
           </a>
@@ -300,6 +301,18 @@ function PosterCard({
           >
             {durum === "loading" ? "Kaydediliyor..." : "Puanları Kaydet"}
           </button>
+          </div>
+
+          <div className="hidden lg:block">
+            <div className="sticky top-24 overflow-hidden rounded-h2-md border border-h2-border bg-h2-bg">
+              <iframe
+                src={`${poster.pdf_url}#toolbar=0&navpanes=0&view=Fit`}
+                title={`${poster.no} poster önizleme`}
+                loading="lazy"
+                className="block aspect-[420/594] w-full"
+              />
+            </div>
+          </div>
         </div>
       )}
     </div>
@@ -464,7 +477,7 @@ export default function JuriDegerlendirmeForm({
     <div className="min-h-screen overflow-x-hidden bg-h2-bg">
       <PreviewHeader />
 
-      <main className="mx-auto max-w-4xl px-4 pb-12 pt-28 lg:pb-16 lg:pt-32">
+      <main className="mx-auto max-w-6xl px-4 pb-12 pt-28 lg:pb-16 lg:pt-32">
         <div className="mb-8">
           <span className="text-h2-micro font-semibold uppercase tracking-[0.13em] text-h2-ink-3">
             Jüri Değerlendirme Paneli
