@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { soruOturumu } from "@/data/soru-oturumlari";
+import { oturumKonusmacilari, soruOturumu } from "@/data/soru-oturumlari";
 import SoruFormu from "./SoruFormu";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default async function SoruSayfasi({ params }: { params: Promise<{ oturum
           Sorunuzu yazın; moderatör uygun anda konuşmacılara iletecektir.
         </p>
       </div>
-      <SoruFormu oturum={o.slug} />
+      <SoruFormu oturum={o.slug} konusmacilar={oturumKonusmacilari(o.slug)} />
     </main>
   );
 }

@@ -5,9 +5,10 @@ import { useState } from "react";
 const inputCls =
   "w-full rounded-h2-md border border-h2-border bg-h2-bg px-4 py-3 text-base text-h2-ink-1 outline-none transition-colors placeholder:text-h2-ink-disabled focus:border-h2-blue";
 
-export default function SoruFormu({ oturum }: { oturum: string }) {
+export default function SoruFormu({ oturum, konusmacilar }: { oturum: string; konusmacilar: string[] }) {
   const [soru, setSoru] = useState("");
   const [ad, setAd] = useState("");
+  const [kime, setKime] = useState("");
   const [website, setWebsite] = useState("");
   const [durum, setDurum] = useState<"hazir" | "gonderiliyor" | "tamam">("hazir");
   const [hata, setHata] = useState("");
@@ -20,7 +21,7 @@ export default function SoruFormu({ oturum }: { oturum: string }) {
       const res = await fetch("/api/panel-soru", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ oturum, soru, ad_soyad: ad, website }),
+        body: JSON.stringify({ oturum, soru, ad_soyad: ad, kime, website }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
@@ -55,18 +56,31 @@ export default function SoruFormu({ oturum }: { oturum: string }) {
 
   return (
     <form onSubmit={gonder} className="flex flex-col gap-3">
+      {konusmacilar.length > 0 && (
+        <label className="flex flex-col gap-1.5 text-h2-small font-medium">
+          Soruyu kime soruyorsunuz? (isteğe bağlı)
+          <select value={kime} onChange={(e) => setKime(e.target.value)} className={inputCls}>
+            <option value="">Tüm panelistler</option>
+            {konusmacilar.map((k) => (
+              <option key={k} value={k}>
+                {k}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
       <label className="flex flex-col gap-1.5 text-h2-small font-medium">
         Sorunuz
         <textarea
           required
           rows={5}
-          maxLength={400}
+          maxLength={konusmacilar.length > 0 ? 350 : 400}
           value={soru}
           onChange={(e) => setSoru(e.target.value)}
           placeholder="Sorunuzu buraya yazın"
           className={inputCls}
         />
-        <span className="self-end text-xs text-h2-ink-disabled">{soru.length}/400</span>
+        <span className="self-end text-xs text-h2-ink-disabled">{soru.length}/{konusmacilar.length > 0 ? 350 : 400}</span>
       </label>
       <label className="flex flex-col gap-1.5 text-h2-small font-medium">
         Adınız (isteğe bağlı)

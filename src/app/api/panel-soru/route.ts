@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { tooManyAttempts } from "@/lib/juriAuth";
-import { soruOturumu } from "@/data/soru-oturumlari";
+import { oturumKonusmacilari, soruOturumu } from "@/data/soru-oturumlari";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  let body: { oturum?: unknown; ad_soyad?: unknown; soru?: unknown; website?: unknown };
+  let body: { oturum?: unknown; ad_soyad?: unknown; soru?: unknown; kime?: unknown; website?: unknown };
   try {
     body = await request.json();
   } catch {
@@ -22,9 +22,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Oturum bulunamadı." }, { status: 404 });
   }
 
-  const soru = typeof body.soru === "string" ? body.soru.trim().replace(/\s+/g, " ") : "";
-  if (soru.length < 3 || soru.length > 400) {
-    return NextResponse.json({ error: "Soru 3–400 karakter arasında olmalı." }, { status: 400 });
+  // Kime: yalnızca o oturumun konuşmacılarından biri kabul edilir; veritabanı değişikliği
+  // gerektirmesin diye sorunun başına eklenir ("→ Ad Soyad: soru").
+  const kime =
+    typeof body.kime === "string" && oturumKonusmacilari(body.oturum).includes(body.kime) ? body.kime : "";
+  const metin = typeof body.soru === "string" ? body.soru.trim().replace(/\s+/g, " ") : "";
+  const soru = kime ? `→ ${kime}: ${metin}` : metin;
+  if (metin.length < 3 || soru.length > 400) {
+    return NextResponse.json(
+      { error: `Soru 3–${kime ? 400 - kime.length - 4 : 400} karakter arasında olmalı.` },
+      { status: 400 },
+    );
   }
   const ad = typeof body.ad_soyad === "string" ? body.ad_soyad.trim().slice(0, 80) : "";
 

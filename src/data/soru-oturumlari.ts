@@ -1,3 +1,5 @@
+import { day1, day2 } from "@/data/program";
+
 export interface SoruOturumu {
   slug: string;
   baslik: string;
@@ -18,4 +20,12 @@ export const soruOturumlari: SoruOturumu[] = [
 
 export function soruOturumu(slug: string) {
   return soruOturumlari.find((o) => o.slug === slug);
+}
+
+/** Panel oturumlarında sorunun yöneltilebileceği konuşmacılar (program.ts'ten; keynote'ta boş). */
+export function oturumKonusmacilari(slug: string): string[] {
+  const o = soruOturumu(slug);
+  if (!o) return [];
+  const oturum = [...day1, ...day2].find((s) => s.type === "panel" && s.title === o.baslik);
+  return (oturum?.speakers ?? []).map((s) => s.split(" | ")[0].trim());
 }
