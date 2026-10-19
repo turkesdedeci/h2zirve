@@ -12,6 +12,7 @@ export default function SoruFormu({ oturum, konusmacilar }: { oturum: string; ko
   const [website, setWebsite] = useState("");
   const [durum, setDurum] = useState<"hazir" | "gonderiliyor" | "tamam">("hazir");
   const [hata, setHata] = useState("");
+  const maxSoruLength = kime ? 400 - `→ ${kime}: `.length : 400;
 
   async function gonder(e: React.FormEvent) {
     e.preventDefault();
@@ -74,13 +75,13 @@ export default function SoruFormu({ oturum, konusmacilar }: { oturum: string; ko
         <textarea
           required
           rows={5}
-          maxLength={konusmacilar.length > 0 ? 350 : 400}
+          maxLength={maxSoruLength}
           value={soru}
           onChange={(e) => setSoru(e.target.value)}
           placeholder="Sorunuzu buraya yazın"
           className={inputCls}
         />
-        <span className="self-end text-xs text-h2-ink-disabled">{soru.length}/{konusmacilar.length > 0 ? 350 : 400}</span>
+        <span className="self-end text-xs text-h2-ink-disabled">{soru.length}/{maxSoruLength}</span>
       </label>
       <label className="flex flex-col gap-1.5 text-h2-small font-medium">
         Adınız (isteğe bağlı)
@@ -102,10 +103,11 @@ export default function SoruFormu({ oturum, konusmacilar }: { oturum: string; ko
         className="absolute left-[-9999px] h-0 w-0 opacity-0"
         name="website"
       />
+      {soru.length > maxSoruLength && <p className="text-h2-small text-red-500">Konuşmacı adını dahil etmek için soruyu kısaltın.</p>}
       {hata && <p className="text-h2-small text-red-500">{hata}</p>}
       <button
         type="submit"
-        disabled={durum === "gonderiliyor" || soru.trim().length < 3}
+        disabled={durum === "gonderiliyor" || soru.trim().length < 3 || soru.length > maxSoruLength}
         className="rounded-h2-md bg-h2-blue px-4 py-3 text-base font-semibold text-white disabled:opacity-50"
       >
         {durum === "gonderiliyor" ? "Gönderiliyor…" : "Soruyu gönder"}
