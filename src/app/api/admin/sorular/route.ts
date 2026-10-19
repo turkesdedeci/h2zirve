@@ -47,7 +47,10 @@ export async function PATCH(request: Request) {
   } catch {
     return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });
   }
-  if (typeof body.id !== "string" || !/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(body.id) || !["bekliyor", "soruldu", "gizli"].includes(String(body.durum))) {
+  if (!body || typeof body !== "object" || Array.isArray(body) ||
+    typeof body.id !== "string" ||
+    !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(body.id) ||
+    !["bekliyor", "soruldu", "gizli"].includes(String(body.durum))) {
     return NextResponse.json({ error: "Geçersiz istek." }, { status: 400 });
   }
   const { data, error } = await supabaseAdmin.from("panel_sorulari")
