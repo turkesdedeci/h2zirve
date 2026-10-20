@@ -40,13 +40,15 @@ export const day1: Session[] = [
     time: "11:15 - 12:00",
     type: "keynote",
     title: "Keynote Konuşmacı: Prof. Dr. İbrahim Dinçer",
-    subtitle: "Innovative H2 Ecosystem Development: Global Perspectives and Future Directions",
+    subtitle: "Sunum başlığı: Innovative H2 Ecosystem Development: Global Perspectives and Future Directions",
   },
   { time: "12:00 - 13:15", type: "lunch", title: "Öğle Arası & Sergi" },
   {
     time: "13:30 - 14:15",
     type: "keynote",
     title: "Keynote Konuşmacı: Dr. Ayfer Veziroğlu",
+    subtitle:
+      "Sunum başlığı: Hidrojende Yeni Dönem Küresel Dönüşüm, Enerji Güvenliği ve Türkiye'nin Fırsatları",
   },
   { time: "14:15 - 14:30", type: "break", title: "Kahve Arası" },
   {

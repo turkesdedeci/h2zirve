@@ -62,6 +62,7 @@
 .keynotes { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 44px 0 65px; }.keynote { position: relative; background: #0d1530; }
 .keynoteImage { position: relative; height: 390px; overflow: hidden; background: radial-gradient(ellipse at 60% 60%, #274779, #111b3c 70%); }.keynoteImage img { object-fit: contain; object-position: center bottom; filter: grayscale(1); transition: transform .6s, filter .6s; }.keynote:hover img { transform: scale(1.035); filter: grayscale(0); }.keynoteImage > span { position: absolute; left: 24px; top: 0; font-family: var(--font-display), sans-serif; font-size: 120px; color: #00c8ff66; }
 .keynoteInfo { position: relative; padding: 28px; border-top: 1px solid #1a2845; }.keynoteInfo .kicker { color: #00c8ff; }.keynoteInfo h3 { font-family: var(--font-display), sans-serif; font-size: 35px; margin: 13px 0 8px; line-height: 1.1; }.keynoteInfo > p:not(.kicker) { font-size: 13px; color: #b7c2d6; }.keynoteRole { display: block; margin-top: 16px; font-size: 11px; color: #b7c2d6; }
+.keynoteInfo > p.talkTitle { font-size: 14px; line-height: 1.5; color: #e6ecf7; margin-bottom: 6px; }.talkTitle > span { display: block; margin-bottom: 2px; font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #00c8ff; }
 .hero :focus-visible, .agenda :focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
 .hero[data-paused=true] *, .hero[data-visible=false] * { animation-play-state: paused; }
 @keyframes orbitSpin { to { transform: rotate(360deg); } }

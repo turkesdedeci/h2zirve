@@ -22,6 +22,7 @@ export const speakers: Speaker[] = [
     role: "Keynote Konuşmacı - 1. Gün",
     affiliation: "International Association for Hydrogen Energy (IAHE)",
     initials: "AV",
+    talkTitle: "Hidrojende Yeni Dönem Küresel Dönüşüm, Enerji Güvenliği ve Türkiye'nin Fırsatları",
     photo: "/speakers/ayfer-veziroglu-iahe-2026-clear-up.webp",
   },
   {
