@@ -124,6 +124,9 @@ export default function SpeakerCard({
         <span className={styles.speakerTag}>{tagOverride ?? speakerTag(role)}</span>
       </div>
       <h3 className={styles.speakerName}>{name}</h3>
+      {speaker.talkTitle && (tagOverride ?? speakerTag(role)) === "Keynote" && (
+        <p className={styles.speakerAffiliation}>{speaker.talkTitle}</p>
+      )}
       {affiliation && <p className={styles.speakerAffiliation}>{affiliation}</p>}
     </article>
   );

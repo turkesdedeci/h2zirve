@@ -1,6 +1,7 @@
 export type Speaker = {
   name: string;
   role: string;
+  talkTitle?: string;
   affiliation?: string;
   initials: string;
   photo?: string;
@@ -10,6 +11,7 @@ export type Speaker = {
 export const speakers: Speaker[] = [
   {
     name: "Prof. Dr. İbrahim Dinçer",
+    talkTitle: "Innovative H2 Ecosystem Development: Global Perspectives and Future Directions",
     role: "Keynote Konuşmacı - 1. Gün / Panel 1 Konuşmacısı",
     affiliation: "Ontario Tech University",
     initials: "İD",
@@ -271,8 +273,8 @@ export const speakerGroupDefinitions = [
     preferredOrder: [
       "Prof. Dr. Selahattin Çelik",
       "Oğuzhan Akyener",
-      "Prof. Dr. Ali Cengiz Köseoğlu",
       "Dr. Abdullah Buğrahan Karaveli",
+      "Prof. Dr. Ali Cengiz Köseoğlu",
     ],
   },
   {

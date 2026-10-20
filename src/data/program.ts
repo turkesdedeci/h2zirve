@@ -32,14 +32,15 @@ export const day1: Session[] = [
     speakers: [
       "Prof. Dr. Selahattin Çelik - AYBÜ H2TEAM (10 dk)",
       "Oğuzhan Akyener - TESPAM Başkanı (10 dk)",
-      "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
       "Dr. Abdullah Buğrahan Karaveli - TENMAK Başkanı",
+      "Prof. Dr. Ali Cengiz Köseoğlu - AYBÜ Rektörü (15 dk)",
     ],
   },
   {
     time: "11:15 - 12:00",
     type: "keynote",
     title: "Keynote Konuşmacı: Prof. Dr. İbrahim Dinçer",
+    subtitle: "Innovative H2 Ecosystem Development: Global Perspectives and Future Directions",
   },
   { time: "12:00 - 13:15", type: "lunch", title: "Öğle Arası & Sergi" },
   {

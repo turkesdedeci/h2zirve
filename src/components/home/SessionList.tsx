@@ -21,6 +21,7 @@ export default function SessionList({ sessions }: { sessions: Session[] }) {
               {session.type === "panel" ? ` / ${session.title.match(/Panel (\d)/)?.[1]}` : ""}
             </span>
             <h4>{title}</h4>
+            {session.subtitle && <p className={s.moderator}>{session.subtitle}</p>}
             {session.moderator && (
               <p className={s.moderator}>
                 Moderatör · {session.moderator.split("|")[0].trim()}
