@@ -5,6 +5,8 @@ import { oturumKonusmacilari, soruOturumu } from "@/data/soru-oturumlari";
 
 export const runtime = "nodejs";
 
+const MAX_SORU = 5;
+
 export async function POST(request: Request) {
   let body: { oturum?: unknown; ad_soyad?: unknown; soru?: unknown; kime?: unknown; website?: unknown };
   let raw: string;
@@ -46,7 +48,10 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  const ad = typeof body.ad_soyad === "string" ? body.ad_soyad.trim().slice(0, 80) : "";
+  const ad = typeof body.ad_soyad === "string" ? body.ad_soyad.trim().replace(/\s+/g, " ").slice(0, 80) : "";
+  if (ad.length < 3 || !ad.includes(" ")) {
+    return NextResponse.json({ error: "Lütfen adınızı ve soyadınızı yazın." }, { status: 400 });
+  }
 
   // Salonda herkes aynı kampüs ağından gelebilir; sınır bilerek yüksek tutuldu.
   const ip = request.headers.get("x-real-ip")?.trim()
@@ -56,9 +61,25 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Çok fazla istek. Lütfen biraz sonra tekrar deneyin." }, { status: 429 });
   }
 
+  // Kişi başı (oturum + ad soyad) en fazla MAX_SORU soru.
+  const { count, error: sayimHata } = await supabaseAdmin
+    .from("panel_sorulari")
+    .select("id", { count: "exact", head: true })
+    .eq("oturum", body.oturum)
+    .ilike("ad_soyad", ad.replace(/[\\%_]/g, "\\$&"));
+  if (sayimHata) {
+    return NextResponse.json({ error: "Soru kaydedilemedi, lütfen tekrar deneyin." }, { status: 500 });
+  }
+  if ((count ?? 0) >= MAX_SORU) {
+    return NextResponse.json(
+      { error: `Bir kişi en fazla ${MAX_SORU} soru sorabilir. Hakkınızı doldurdunuz.` },
+      { status: 429 },
+    );
+  }
+
   const { error } = await supabaseAdmin
     .from("panel_sorulari")
-    .insert({ oturum: body.oturum, ad_soyad: ad || null, soru });
+    .insert({ oturum: body.oturum, ad_soyad: ad, soru });
   if (error) {
     return NextResponse.json({ error: "Soru kaydedilemedi, lütfen tekrar deneyin." }, { status: 500 });
   }

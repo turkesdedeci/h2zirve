@@ -84,14 +84,16 @@ export default function SoruFormu({ oturum, konusmacilar }: { oturum: string; ko
         <span className="self-end text-xs text-h2-ink-disabled">{soru.length}/{maxSoruLength}</span>
       </label>
       <label className="flex flex-col gap-1.5 text-h2-small font-medium">
-        Adınız (isteğe bağlı)
+        Adınız Soyadınız
         <input
+          required
           value={ad}
           maxLength={80}
           onChange={(e) => setAd(e.target.value)}
           className={inputCls}
-          placeholder="Boş bırakabilirsiniz"
+          placeholder="Ad Soyad"
         />
+        <span className="text-xs font-normal text-h2-ink-disabled">Anonim soru kabul edilmez. Kişi başı en fazla 5 soru sorulabilir.</span>
       </label>
       {/* Bot tuzağı */}
       <input
@@ -107,7 +109,7 @@ export default function SoruFormu({ oturum, konusmacilar }: { oturum: string; ko
       {hata && <p className="text-h2-small text-red-500">{hata}</p>}
       <button
         type="submit"
-        disabled={durum === "gonderiliyor" || soru.trim().length < 3 || soru.length > maxSoruLength}
+        disabled={durum === "gonderiliyor" || soru.trim().length < 3 || ad.trim().length < 3 || soru.length > maxSoruLength}
         className="rounded-h2-md bg-h2-blue px-4 py-3 text-base font-semibold text-white disabled:opacity-50"
       >
         {durum === "gonderiliyor" ? "Gönderiliyor…" : "Soruyu gönder"}
