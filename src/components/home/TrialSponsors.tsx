@@ -41,7 +41,7 @@ const exhibitors: { name: string; logo?: string; dark?: boolean }[] = [
 
 export default function TrialSponsors() {
   return <section id="sponsors" className={s.section}>
-    <header className={s.heading}><div><p className={s.eyebrow}>Kurumsal destek</p><h2>Zirvenin arkasındaki<br /><span>güçlü destek.</span></h2></div><a href="/sponsorluk-basvurusu">Sponsor olarak yer alın <span aria-hidden="true">↗</span></a></header>
+    <header className={s.heading}><div><p className={s.eyebrow}>Kurumsal destek</p><h2>Zirvenin arkasındaki<br /><span>güçlü destek.</span></h2></div></header>
     <article className={s.mainSponsor}>
       <a className={s.emblem} href="https://aybu.edu.tr/" target="_blank" rel="noopener noreferrer" aria-label="AYBÜ resmi sitesi (yeni sekme)"><span className={s.emblemRing} aria-hidden="true" /><Image src="/logos/aybu.png" alt="Ankara Yıldırım Beyazıt Üniversitesi amblemi" width={240} height={240} /></a>
       <div className={s.mainCopy}><p className={s.mainLabel}><span aria-hidden="true">◆</span> Ana sponsor</p><h3>Ankara Yıldırım<br />Beyazıt Üniversitesi</h3><p className={s.role}>Zirvenin ev sahipliği ve liderliği</p><span className={s.wordmark} aria-hidden="true">AYBÜ</span></div>
@@ -51,6 +51,5 @@ export default function TrialSponsors() {
       <div className={s.logos}>{tier.logos.map(logo => logo.href ? <a className={s.logo} key={logo.name} href={logo.href} target="_blank" rel="noopener noreferrer" aria-label={`${logo.name} resmi sitesi (yeni sekme)`}><Image src={logo.src} alt={logo.name} width={280} height={120} unoptimized={logo.src.endsWith(".svg")} className={logo.wide ? s.wide : s.tall} /><span>{logo.name} <span aria-hidden="true">↗</span></span></a> : <div className={s.logo} key={logo.name} aria-label={logo.name}><Image src={logo.src} alt={logo.name} width={280} height={120} unoptimized={logo.src.endsWith(".svg")} className={logo.wide ? s.wide : s.tall} /><span>{logo.name}</span></div>)}</div>
     </div>)}</div>
     <div className={s.exhibitors}><h3><i aria-hidden="true" />Stand katılımcıları</h3><ul>{exhibitors.map(ex => <li key={ex.name} data-dark={ex.dark || undefined}>{ex.logo && <Image src={ex.logo} alt="" width={96} height={28} unoptimized={ex.logo.endsWith(".svg")} />}{ex.name}</li>)}</ul></div>
-    <div className={s.join}><div><p>Türkiye Hidrojen Zirvesi 2026</p><h3>Markanız da burada yer alsın.</h3></div><a href="/sponsorluk-basvurusu">Sponsorluk başvurusu <span aria-hidden="true">↗</span></a></div>
   </section>;
 }

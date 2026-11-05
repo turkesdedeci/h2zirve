@@ -52,9 +52,6 @@ export default function ProgramFull() {
 
       <div className={s.pageFoot}>
         <p>Program güncellenebilir; kesinleşen değişiklikler bu sayfada yayımlanır.</p>
-        <a href="/kayit">
-          Ücretsiz kayıt ol <span aria-hidden="true">↗</span>
-        </a>
       </div>
     </section>
   );

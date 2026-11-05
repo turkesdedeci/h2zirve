@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import CountdownTimer from "@/components/CountdownTimer";
 import H2Molecule from "@/components/H2Molecule";
 import s from "./experience.module.css";
 import field from "./heroField.module.css";
@@ -95,19 +94,13 @@ export default function TrialHero() {
           </h1>
           <p className={s.heroSubtitle}>
             Türkiye’de hidrojen ekosisteminin inşası.<br />
-            Teknoloji, strateji ve uygulama.
+            Teknoloji, strateji ve uygulama.<br />
+            Zirve, 22–23 Ekim 2026’da Ankara’da gerçekleştirildi.
           </p>
           <div className={s.heroActions}>
-            <a href="/kayit" className={s.button}>
-              Ücretsiz kayıt ol <span aria-hidden="true">↗</span>
-            </a>
             <a href="#program" className={s.explore}>
-              Programı keşfet <span aria-hidden="true">↓</span>
+              Programı incele <span aria-hidden="true">↓</span>
             </a>
-          </div>
-          <div className={s.countdown}>
-            <p>Zirveye kalan</p>
-            <CountdownTimer />
           </div>
         </div>
 

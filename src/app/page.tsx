@@ -7,7 +7,6 @@ import SpeakerMarquee from "@/components/home/SpeakerMarquee";
 import TrialContact from "@/components/home/TrialContact";
 import TrialFooter from "@/components/home/TrialFooter";
 import TrialHero from "@/components/home/TrialHero";
-import TrialParticipation from "@/components/home/TrialParticipation";
 import TrialProgram from "@/components/home/TrialProgram";
 import TrialSpecialIssues from "@/components/home/TrialSpecialIssues";
 import TrialSponsors from "@/components/home/TrialSponsors";
@@ -42,13 +41,6 @@ const organizers = [
   { name: "AYBÜ", role: "Ev sahipliği ve liderliği", logo: "/logos/aybu.png" },
   { name: "H2TEAM", role: "Koordinasyon", logo: "/logos/h2team.png" },
   { name: "TESPAM", role: "İş birliği", logo: "/logos/tespam.png" },
-];
-
-const questions = [
-  { question: "Zirveye katılım ücretli mi?", answer: "Katılımcı kaydı ücretsizdir. Katılım için kayıt formunu doldurarak ön kayıt oluşturmanız gerekir." },
-  { question: "Tek gün katılabilir miyim?", answer: "Kayıt formunda 22 Ekim, 23 Ekim veya her iki gün seçeneğini işaretleyebilirsiniz." },
-  { question: "Poster sunumu için ayrıca başvuru gerekiyor mu?", answer: "Evet. Poster özeti başvurusu katılımcı kaydından ayrıdır. Başvuru takvimi, şablon ve değerlendirme bilgileri Poster Çağrısı sayfasında yer alır." },
-  { question: "Firmamla nasıl yer alabilirim?", answer: "Ürün ve prototiplerinizi sergilemek için stand başvurusu yapabilirsiniz. Startup başvuruları ücretsiz olarak değerlendirilir; diğer firmalar için kapsam ve ücretlendirme ekip tarafından belirlenir." },
 ];
 
 const structuredData = {
@@ -96,14 +88,6 @@ const structuredData = {
         },
       },
       organizer: { "@id": `${siteUrl}/#organization` },
-      offers: {
-        "@type": "Offer",
-        url: `${siteUrl}/kayit`,
-        price: "0",
-        priceCurrency: "TRY",
-        availability: "https://schema.org/InStock",
-        validFrom: "2026-09-16",
-      },
     },
   ],
 };
@@ -135,9 +119,9 @@ export default function Home() {
             <div className={styles.sectionHeading}>
               <div>
                 <p className={styles.eyebrow}>Konuşmacılar</p>
-                <h2 className={styles.sectionTitle}>Gündemi birlikte<br />konuşacağımız isimler.</h2>
+                <h2 className={styles.sectionTitle}>Gündemi birlikte<br />konuştuğumuz isimler.</h2>
                 <p className={styles.speakersCount}>
-                  {speakers.length} konuşmacı · {pendingCount} isim açıklanacak
+                  {speakers.length - pendingCount} konuşmacı
                 </p>
               </div>
               <a href="/konusmacilar" className={styles.textLink}>
@@ -156,13 +140,11 @@ export default function Home() {
 
         <TrialProgram />
 
-        <TrialParticipation />
-
         <TrialSpecialIssues />
 
         <TrialSponsors />
 
-        <TrialVenue questions={questions} />
+        <TrialVenue />
 
         <TrialContact />
       </main>

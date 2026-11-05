@@ -9,8 +9,7 @@ const links = [
   { label: "Program", href: "/#program" },
   { label: "Konuşmacılar", href: "/#speakers" },
   { label: "Poster Çağrısı", href: "/poster-cagrisi" },
-  { label: "Stand Başvurusu", href: "/stand-basvurusu" },
-  { label: "Ulaşım", href: "/#venue" },
+  { label: "Mekân", href: "/#venue" },
 ];
 
 export default function PreviewHeader() {
@@ -33,8 +32,6 @@ export default function PreviewHeader() {
           {links.map((link) => <a key={link.label} href={link.href}>{link.label}</a>)}
         </nav>
         <div className={styles.headerActions}>
-          <a className={styles.headerSponsor} href="/sponsorluk-basvurusu">Sponsorluk</a>
-          <a className={styles.headerRegister} href="/kayit">Kayıt Ol <span aria-hidden="true">↗</span></a>
           <button className={styles.menuToggle} type="button" aria-expanded={open} aria-controls="preview-menu" onClick={() => setOpen(!open)}>
             {open ? "Kapat" : "Menü"}
           </button>
@@ -42,8 +39,6 @@ export default function PreviewHeader() {
       </div>
       {open && <nav id="preview-menu" className={styles.mobileNav} aria-label="Mobil menü">
         {links.map((link) => <a key={link.label} href={link.href} onClick={() => setOpen(false)}>{link.label}</a>)}
-        <a href="/poster-basvurusu" onClick={() => setOpen(false)}>Poster Başvurusu</a>
-        <a href="/sponsorluk-basvurusu" onClick={() => setOpen(false)}>Sponsorluk</a>
         <a href="/#contact" onClick={() => setOpen(false)}>İletişim</a>
       </nav>}
     </header>

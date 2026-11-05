@@ -22,8 +22,6 @@ const links = [
   { href: "/program", label: "Program" },
   { href: "/konusmacilar", label: "Konuşmacılar" },
   { href: "/poster-cagrisi", label: "Poster Çağrısı" },
-  { href: "/sponsorluk-basvurusu", label: "Sponsorluk Başvurusu" },
-  { href: "/stand-basvurusu", label: "Stant Başvurusu" },
 ];
 
 export default function NotFound() {

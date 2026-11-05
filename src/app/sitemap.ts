@@ -7,10 +7,6 @@ const routes = [
   "/program",
   "/konusmacilar",
   "/poster-cagrisi",
-  "/kayit",
-  "/poster-basvurusu",
-  "/sponsorluk-basvurusu",
-  "/stand-basvurusu",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -5,18 +5,9 @@ const navLinks = [
   { label: "Hakkında", href: "/#about" },
   { label: "Program", href: "/#program" },
   { label: "Konuşmacılar", href: "/konusmacilar" },
-  { label: "Katılım", href: "/#participate" },
-  { label: "Katılımcı Firmalar", href: "/#exhibitors" },
-  { label: "Ulaşım", href: "/#venue" },
+  { label: "Sponsorlar ve Firmalar", href: "/#sponsors" },
+  { label: "Mekân", href: "/#venue" },
   { label: "İletişim", href: "/#contact" },
-];
-
-const applyLinks = [
-  { label: "Ücretsiz Kayıt", href: "/kayit" },
-  { label: "Poster Çağrısı", href: "/poster-cagrisi" },
-  { label: "Poster Başvurusu", href: "/poster-basvurusu" },
-  { label: "Stand Başvurusu", href: "/stand-basvurusu" },
-  { label: "Sponsorluk", href: "/sponsorluk-basvurusu" },
 ];
 
 const organizers = [
@@ -56,17 +47,6 @@ export default function TrialFooter() {
           </div>
 
           <div className={styles.footerCol}>
-            <h3>Başvuru</h3>
-            <nav aria-label="Başvuru bağlantıları">
-              {applyLinks.map(({ label, href }) => (
-                <a key={label} href={href}>
-                  {label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <div className={styles.footerCol}>
             <h3>Organizasyon</h3>
             <div className={styles.footerOrgs}>
               {organizers.map(({ name, logo, alt }) => (
@@ -82,6 +62,7 @@ export default function TrialFooter() {
         <div className={styles.footerBottom}>
           <p>
             © 2026 Türkiye Hidrojen Zirvesi. Tüm hakları saklıdır. ·{" "}
+            <a href="/poster-cagrisi">Poster Çağrısı</a> ·{" "}
             <a href="/komiteler">Komiteler</a>
           </p>
           <p>
